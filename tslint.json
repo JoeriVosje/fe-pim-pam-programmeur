@@ -64,6 +64,19 @@
       true,
       "as-needed"
     ],
+    "ordered-imports": {
+      "options": {
+        "module-source-path": "full",
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "angular",
+            "match": "^@angular.*|^rxjs.*",
+            "order": 10
+          }
+        ]
+      }
+    },
     "quotemark": [
       true,
       "single"
