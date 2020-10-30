@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'overview-template',
@@ -8,12 +8,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class OverviewTemplateComponent {
   @Input()
   public title: string;
-  @Output()
-  public logoutClicked = new EventEmitter<void>();
 
   constructor() { }
 
   public logout(): void {
-    this.logoutClicked.emit();
+    // Implement logout
   }
 }
