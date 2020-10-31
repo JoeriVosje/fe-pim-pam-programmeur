@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="sidebar">Sidebar</div>
+  <ppp-header class="header"
+              [title]="title"
+              (logoutClicked)="logout()">
+  </ppp-header>
+  <div class="empty-space"></div>
+  <div class="main">
+    <main>
+      <ng-content></ng-content>
+    </main>
+  </div>
+  <div class="empty-space"></div>
+</div>
