@@ -11,14 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent
   ],
-    imports: [
-        AdminModulesModule,
-        AppRoutingModule,
-        BrowserModule,
-        PppComponentsModule,
-        NgbModule,
-    ],
+  imports: [
+    AdminModulesModule,
+    AppRoutingModule,
+    BrowserModule,
+    PppComponentsModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
