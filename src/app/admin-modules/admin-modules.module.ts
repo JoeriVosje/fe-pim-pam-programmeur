@@ -15,10 +15,10 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
     ModulesToevoegenComponent,
     ModulesItemComponent
   ],
-    imports: [
-        CommonModule,
-        PppComponentsModule
-    ],
+  imports: [
+    CommonModule,
+    PppComponentsModule
+  ],
   exports: [AdminModulesComponent]
 })
 export class AdminModulesModule { }
