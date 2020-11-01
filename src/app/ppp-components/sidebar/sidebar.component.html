@@ -1,0 +1,17 @@
+<div class="ppp-sidebar">
+  <p class="role">
+    {{ isAdmin ? 'Beheerder' : 'Student' }}
+  </p>
+  <a (click)="onClick(homeLink)">
+    <i id="home" class="material-icons">home</i>
+    <span>Home</span>
+  </a>
+  <a (click)="onClick(classesLink)">
+    <i id="person" class="material-icons">person</i>
+    <span>Klassen</span>
+  </a>
+  <a (click)="onClick(modulesLink)">
+    <i id="modules" class="material-icons">layers</i>
+    <span>Modules</span>
+  </a>
+</div>
