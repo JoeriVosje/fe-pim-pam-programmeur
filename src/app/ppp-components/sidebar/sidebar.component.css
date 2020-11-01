@@ -1,0 +1,42 @@
+a {
+  text-decoration: none;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+span {
+  padding-left: 2%;
+}
+
+.ppp-sidebar {
+  height: 100%;
+  align-items: center;
+  padding-left: 30px;
+  display: grid;
+  grid-template-rows: repeat(4, 70px) repeat(6, 1fr);
+  grid-template-columns: 1fr;
+}
+
+.role {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#home {
+  color: #7764E4;
+}
+
+#person {
+  color: #F53C56;
+}
+
+#modules {
+  color: #11CDEF;
+}
+
+
