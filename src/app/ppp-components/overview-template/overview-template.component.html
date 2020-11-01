@@ -1,14 +1,17 @@
 <div class="container">
-  <div class="sidebar">Sidebar</div>
+  <ppp-sidebar class="sidebar"
+               [isAdmin]="isAdmin"
+               (navigationClicked)="onNavigation($event)">
+  </ppp-sidebar>
   <ppp-header class="header"
               [title]="title"
               (logoutClicked)="logout()">
   </ppp-header>
-  <div class="empty-space"></div>
+  <div class="empty-box-1"></div>
   <div class="main">
     <main>
       <ng-content></ng-content>
     </main>
   </div>
-  <div class="empty-space"></div>
+  <div class="empty-box-2"></div>
 </div>
