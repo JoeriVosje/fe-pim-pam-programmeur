@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -12,7 +13,8 @@ import { OverviewTemplateComponent } from './overview-template/overview-template
 @NgModule({
   declarations: [
     HeaderComponent,
-    OverviewTemplateComponent
+    OverviewTemplateComponent,
+    SidebarComponent
   ],
   exports: [
     OverviewTemplateComponent
