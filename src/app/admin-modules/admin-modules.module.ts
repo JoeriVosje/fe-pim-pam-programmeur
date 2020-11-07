@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
@@ -17,6 +18,7 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     PppComponentsModule
   ],
   exports: [AdminModulesComponent]
