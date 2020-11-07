@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-modules-item',
+  selector: 'modules-item',
   templateUrl: './modules-item.component.html',
   styleUrls: ['./modules-item.component.css']
 })
-export class ModulesItemComponent implements OnInit {
+export class ModulesItemComponent {
+  @Input() public name: string;
+  @Input() public status: boolean;
+  @Input() public dateAdded: string;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
