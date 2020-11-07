@@ -1,10 +1,10 @@
 .ppp-button {
   color: #FFF;
-  width: 127px;
-  height: 45px;
-  background: #7764E4 0 0 no-repeat padding-box;
-  box-shadow: 0 3px 6px #2C28281C;
+  width: 110px;
+  height: 40px;
+  background-color: #7764E4;
   border-radius: 5px;
+  border: none;
 }
 
 .ppp-button:hover {
@@ -12,14 +12,14 @@
   filter: brightness(80%);
 }
 
-.ppp-button.red {
+.ppp-button.warning {
   background-color: #F53C56;
+  box-shadow: 0 3px 6px #2C28281C;
 }
 
-.ppp-button.blue {
-  background-color: #11CDEF;
-}
-
-.ppp-button.white {
+.ppp-button.decline {
+  color: #172B4D;
   background-color: #FFF;
+  border: 1px solid #172B4D;
+  box-shadow: 0 3px 6px #2C28281C;
 }

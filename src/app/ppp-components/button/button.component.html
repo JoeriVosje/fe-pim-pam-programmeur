@@ -1,3 +1,6 @@
-<button class="ppp-button" [ngClass]="getButtonClass()" type="button" (click)="onClick()">
+<button class="ppp-button"
+        type="button"
+        [ngClass]="type"
+        (click)="onClick()">
   <ng-content></ng-content>
 </button>
