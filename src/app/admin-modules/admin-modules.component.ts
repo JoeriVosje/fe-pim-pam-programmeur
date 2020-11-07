@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { AdminModulesService } from './admin-modules.service';
 import { Module } from './modules-overzicht/modules-item/modules-item.model';
 
 /**
@@ -16,19 +18,30 @@ import { Module } from './modules-overzicht/modules-item/modules-item.model';
   templateUrl: './admin-modules.component.html',
   styleUrls: ['./admin-modules.component.css']
 })
-export class AdminModulesComponent implements OnInit {
+export class AdminModulesComponent implements OnInit, OnDestroy {
 
   public modules: Module[] = [];
 
-  constructor() { }
+  private readonly subscription: Subscription = new Subscription();
+
+  constructor(private readonly adminModuleService: AdminModulesService) { }
 
   ngOnInit(): void {
-    for (let i = 0; i < 10; i++) {
-      this.modules.push({
-        name: 'Module naam',
-        status: true,
-        dateAdded: '2020-11-07'
-      });
-    }
+    this.getModules();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  public getModules(): void {
+    this.subscription.add(
+      this.adminModuleService.getModules()
+      .subscribe({
+        next: modules => this.modules = modules,
+        error: error => console.log(error),
+        complete: () => console.log('complete')
+      })
+    );
   }
 }
