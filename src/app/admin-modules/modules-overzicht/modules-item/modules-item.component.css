@@ -1,0 +1,17 @@
+.modules-item {
+  height: 50px;
+  font-size: 12px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 250px) 1fr;
+}
+
+#name {
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+ppp-three-dot-button {
+  justify-self: end;
+  padding-right: 20px;
+}
