@@ -1,8 +1,14 @@
 <div class="modules-overview">
-  <div class="title">Modules overzicht</div>
-  <div class="name">NAAM</div>
-  <div class="status">STATUS</div>
-  <div class="date-added">DATUM TOEGEVOEGD</div>
+  <div class="modules-overview-headers">
+    <h3 class="title">Modules overzicht</h3>
+    <h4 class="name column">NAAM</h4>
+    <h4 class="status column">STATUS</h4>
+    <h4 class="date-added column">DATUM TOEGEVOEGD</h4>
+  </div>
 
-  <div class="item">item</div>
+  <modules-item *ngFor="let module of modules.slice(0,8)"
+                [name]="module.name"
+                [status]="module.status"
+                [dateAdded]="module.dateAdded">
+  </modules-item>
 </div>
