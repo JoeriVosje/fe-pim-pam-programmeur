@@ -3,12 +3,15 @@
   font-size: 12px;
   align-items: center;
   display: grid;
-  grid-template-columns: repeat(2, 250px) 150px 1fr;
+  grid-template-columns: repeat(2, 2fr) repeat(2, 1fr);
 }
 
 #name {
-  padding-left: 20px;
   font-weight: bold;
+}
+
+p {
+  padding-left: 20px;
 }
 
 ppp-three-dot-button {
