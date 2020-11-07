@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Module } from './modules-item/modules-item.model';
 
 /**
  * Dit is een zogenoemd 'dom' component. Dit component
@@ -11,11 +13,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './modules-overzicht.component.html',
   styleUrls: ['./modules-overzicht.component.css']
 })
-export class ModulesOverzichtComponent implements OnInit {
+export class ModulesOverzichtComponent {
+
+  @Input()
+  public modules: Module[];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
