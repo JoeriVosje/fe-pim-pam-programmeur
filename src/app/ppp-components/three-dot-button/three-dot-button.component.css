@@ -1,9 +1,12 @@
-.more-vert-button-container {
+.button {
+  display: flex;
+  box-shadow: 0 3px 6px #2C28281C;
+  align-items: center;
   background-color: #F7FAFC;
-  max-height: 30px;
-  max-width: 30px;
+  max-height: 28px;
+  max-width: 28px;
 }
+
 .icon {
-  font-size: 16px;
-  margin-top: -5px;
+  font-size: 28px;
 }
