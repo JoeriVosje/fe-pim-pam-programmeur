@@ -1,9 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HeaderComponent } from './header/header.component';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
+
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -14,13 +18,17 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   declarations: [
     HeaderComponent,
     OverviewTemplateComponent,
-    SidebarComponent
+    SidebarComponent,
+    ThreeDotButtonComponent
   ],
   exports: [
-    OverviewTemplateComponent
+    OverviewTemplateComponent,
+    ThreeDotButtonComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class PppComponentsModule { }
