@@ -3,10 +3,11 @@
   box-shadow: 0 3px 6px #2C28281C;
   align-items: center;
   background-color: #F7FAFC;
-  max-height: 28px;
-  max-width: 28px;
+  max-height: 30px;
+  max-width: 30px;
 }
 
 .icon {
-  font-size: 28px;
+  padding: 2px;
+  font-size: 26px;
 }
