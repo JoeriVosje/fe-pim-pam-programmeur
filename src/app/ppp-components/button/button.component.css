@@ -12,10 +12,14 @@
   filter: brightness(80%);
 }
 
-.ppp-button.secondary {
+.ppp-button.red {
   background-color: #F53C56;
 }
 
-.ppp-button.highlight {
+.ppp-button.blue {
   background-color: #11CDEF;
+}
+
+.ppp-button.white {
+  background-color: #FFF;
 }
