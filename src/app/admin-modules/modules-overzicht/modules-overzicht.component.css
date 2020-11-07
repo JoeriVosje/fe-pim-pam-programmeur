@@ -4,7 +4,7 @@
   background-color: white;
   display: grid;
   grid-template-rows: 60px 30px auto 60px;
-  grid-template-columns: repeat(2, 250px) 150px 1fr;
+  grid-template-columns: repeat(2, 2fr) repeat(2, 1fr);
 }
 
 .title {
@@ -30,11 +30,13 @@
 }
 
 .status {
+  padding-left: 20px;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
 }
 
 .date-added {
+  padding-left: 20px;
   grid-row: 2 / 3;
   grid-column: 3 / 5;
 }
@@ -46,7 +48,7 @@
 
 ppp-button {
   grid-row: 4 / 5;
-  grid-column: 4 / 5;
+  grid-column: 1 / 5;
   align-self: center;
   justify-self: end;
   padding-right: 20px;
