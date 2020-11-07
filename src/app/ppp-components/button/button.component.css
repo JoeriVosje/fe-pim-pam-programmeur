@@ -14,3 +14,11 @@
   cursor: pointer;
   filter: brightness(80%);
 }
+
+.ppp-button.secondary {
+  background-color: #F53C56;
+}
+
+.ppp-button.highlight {
+  background-color: #11CDEF;
+}
