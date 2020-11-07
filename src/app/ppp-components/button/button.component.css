@@ -1,4 +1,4 @@
-button {
+.ppp-button {
   color: #FFF;
   top: 343px;
   left: 1683px;
@@ -8,4 +8,9 @@ button {
   box-shadow: 0 3px 6px #2C28281C;
   border-radius: 5px;
   opacity: 1;
+}
+
+.ppp-button:hover {
+  cursor: pointer;
+  filter: brightness(80%);
 }
