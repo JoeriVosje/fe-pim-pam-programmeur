@@ -1,1 +1,7 @@
-<p>modules-toevoegen works!</p>
+<div class="modules-add">
+  <h3 class="title">Modules overzicht</h3>
+  <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)">
+    Naam
+  </ppp-input>
+  <ppp-button (clicked)="add()">Toevoegen</ppp-button>
+</div>
