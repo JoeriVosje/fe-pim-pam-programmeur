@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { MenuItem } from './menu-item.model';
 
 @Component({
   selector: 'ppp-three-dot-button',
@@ -8,13 +10,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class ThreeDotButtonComponent {
 
   @Output()
-  public clicked = new EventEmitter<void>();
+  public menuItemClicked = new EventEmitter<string>();
+
+  @Input()
+  private menuItems: MenuItem[];
 
   constructor() {
   }
 
-  public onClick(): void {
-    this.clicked.emit();
+  public menuItemNav(route: string): void {
+    this.menuItemClicked.emit(route);
   }
 
 }

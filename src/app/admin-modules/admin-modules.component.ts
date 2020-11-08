@@ -58,6 +58,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
   }
 
   public onNavigation(route: string): void {
+    console.log('wtf');
     this.router.navigate([route]);
   }
 

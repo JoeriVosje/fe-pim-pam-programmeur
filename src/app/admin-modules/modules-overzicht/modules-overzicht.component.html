@@ -14,7 +14,8 @@
                   [name]="module.name"
                   [status]="module.status"
                   [dateAdded]="module.dateAdded"
-                  [background]="even? 'light' : 'dark'">
+                  [background]="even? 'light' : 'dark'"
+    (menuItemClicked)="navigate($event)">
     </modules-item>
   </cdk-virtual-scroll-viewport>
   </ng-template>

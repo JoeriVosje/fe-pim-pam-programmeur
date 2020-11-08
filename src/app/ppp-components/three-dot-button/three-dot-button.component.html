@@ -1,3 +1,19 @@
-  <button class="button" mat-icon-button (click)="onClick()">
-    <mat-icon class="icon">more_vert</mat-icon>
-  </button>
+<button class="button" mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon class="icon">more_vert</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu" xPosition="before" class="mat-menu-customized">
+
+  <ng-template matMenuContent>
+
+    <div *ngFor="let menuItem of menuItems">
+      <button mat-menu-item
+              [ngClass]="menuItem.isRed?'mat-menu-item-customized mat-menu-item-red':'mat-menu-item-customized'"
+              (click)="menuItemNav(menuItem.route)">
+        <span>{{ menuItem.name }}</span>
+      </button>
+    </div>
+
+  </ng-template>
+
+</mat-menu>

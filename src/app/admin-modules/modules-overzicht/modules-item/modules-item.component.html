@@ -2,5 +2,5 @@
   <p id="name">{{ name }}</p>
   <p>{{ status ? 'open' : 'gesloten' }}</p>
   <p>{{ dateAdded | date: 'dd/MM/yyyy' }}</p>
-  <ppp-three-dot-button></ppp-three-dot-button>
+  <ppp-three-dot-button (menuItemClicked)="navItemClicked($event)" [menuItems]="menuItems"></ppp-three-dot-button>
 </div>
