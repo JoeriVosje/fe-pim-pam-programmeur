@@ -20,7 +20,7 @@ export class AdminScreensService {
 
     for (let i = 0; i < 10; i++) {
       screens.push({
-        title: 'Vraag titel',
+        title: 'Vraag titel' + i,
         theory: 'Theorie',
         question: 'Vraag',
         id: ''

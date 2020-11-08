@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +23,8 @@ import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht
     CommonModule,
     HttpClientModule,
     PppComponentsModule,
-    ScrollingModule
+    ScrollingModule,
+    DragDropModule
   ]
 })
 export class AdminScreensModule { }

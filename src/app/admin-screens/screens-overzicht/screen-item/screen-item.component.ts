@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { Screen } from './screen-item.model';
+
 @Component({
   selector: 'screen-item',
   templateUrl: './screen-item.component.html',
@@ -7,10 +9,11 @@ import { Component, Input } from '@angular/core';
 })
 export class ScreenItemComponent {
 
-  @Input() public title: string;
-  @Input() public theory: string;
-  @Input() public question: string;
-  @Input() public background: string;
+  @Input()
+  public screen: Screen;
+
+  @Input()
+  public background: string;
 
   constructor() {}
 
