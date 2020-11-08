@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { AppRoutingModule } from '../app-routing.module';
 import { ButtonComponent } from './button/button.component';
 import { HeaderComponent } from './header/header.component';
+import { InputComponent } from './input/input.component';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ModalComponent } from './modal/modal.component';
@@ -25,22 +26,23 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     SidebarComponent,
 
     ButtonComponent,
-    ModalComponent,
-    ThreeDotButtonComponent
-
+    ThreeDotButtonComponent,
+    InputComponent,
+    ModalComponent
   ],
   exports: [
     OverviewTemplateComponent,
     ButtonComponent,
-    ModalComponent,
-    ThreeDotButtonComponent
+    ThreeDotButtonComponent,
+    InputComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
     MatButtonModule,
     MatIconModule,
-    AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class PppComponentsModule { }

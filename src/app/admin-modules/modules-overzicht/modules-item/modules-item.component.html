@@ -1,4 +1,4 @@
-<div class="modules-item">
+<div [ngClass]="background" class="modules-item">
   <p id="name">{{ name }}</p>
   <p>{{ status ? 'open' : 'gesloten' }}</p>
   <p>{{ dateAdded | date: 'dd/MM/yyyy' }}</p>

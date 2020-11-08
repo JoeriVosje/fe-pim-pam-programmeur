@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BreadCrumb } from '../header/bread-crumb.model';
 
@@ -18,23 +19,21 @@ export class OverviewTemplateComponent implements OnInit {
   @Input()
   icon: string;
 
-  @Input()
   breadCrumbRoutes: BreadCrumb[];
 
-  ngOnInit(): void {
-    // Dit kan weg als het via de breadcrumb input komt
-    this.breadCrumbRoutes = [{name: 'Overzicht', route: '/testRoute'}, {name: 'Toevoegen', route: '/ditIsEenTest'}];
+  constructor(private router: Router) {
   }
 
-  constructor() {
-  }
-
-  public onNavigation(item: string): void {
-    // Implement navigation
-    console.log(item);
+  public async onNavigation(route: string): Promise<void> {
+    await this.router.navigate([route]);
   }
 
   public logout(): void {
-    // Implement logout
+    // todo Implement logout
+  }
+
+  ngOnInit(): void {
+    // todo Implement breadcrump through route
+    this.breadCrumbRoutes = [{name: 'Overzicht', route: '/testRoute'}, {name: 'Toevoegen', route: '/ditIsEenTest'}];
   }
 }

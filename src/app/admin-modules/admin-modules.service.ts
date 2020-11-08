@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -15,6 +15,13 @@ export class AdminModulesService {
     return of(this.createModules());
   }
 
+  public saveModule(moduleName: string): Observable<HttpResponse<void>> {
+    // return this.httpClient.post<void>('url', moduleName, {
+    //   observe: 'response'
+    // });
+    return of(new HttpResponse<void>());
+  }
+
   private createModules(): Module[] {
     const modules: Module[] = [];
 
@@ -27,4 +34,5 @@ export class AdminModulesService {
     }
     return modules;
   }
+
 }

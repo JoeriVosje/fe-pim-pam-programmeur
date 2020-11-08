@@ -11,15 +11,15 @@ export class SidebarComponent {
   public isAdmin: boolean;
 
   @Output()
-  public navigationClicked = new EventEmitter<string>();
+  public sidenavEmitter = new EventEmitter<string>();
 
-  public homeLink = 'toHome';
-  public classesLink = 'toClasses';
-  public modulesLink = 'toModules';
+  public homeLink = 'home';
+  public classesLink = 'classes';
+  public modulesLink = 'modules';
 
   constructor() { }
 
   public onClick(item: string): void {
-    this.navigationClicked.emit(item);
+    this.sidenavEmitter.emit(item);
   }
 }

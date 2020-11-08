@@ -1,4 +1,4 @@
-.modules-item {
+.screen-item {
   height: 50px;
   font-size: 12px;
   align-items: center;
@@ -11,12 +11,12 @@
 }
 
 p {
-  padding-left: 30px;
+  padding-left: 20px;
 }
 
 ppp-three-dot-button {
   justify-self: end;
-  padding-right: 30px;
+  padding-right: 20px;
 }
 
 .dark {
