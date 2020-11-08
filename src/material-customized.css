@@ -1,0 +1,16 @@
+/* Overlay Menu */
+
+.mat-menu-customized {
+  background: #FFFFFF;
+  box-shadow: 0px 3px 6px #2C28281C;
+  border-radius: 30px;
+  opacity: 1;
+}
+
+.mat-menu-item-customized {
+  text-align: right;
+  font: bold 12px Poppins;
+  letter-spacing: 0px;
+  color: #7764E4;
+  opacity: 1;
+}
