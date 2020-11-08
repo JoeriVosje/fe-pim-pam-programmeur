@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Input } from '@angular/core';
+import { Component, Inject, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class ModalComponent {
 
   @Input() texts:any
+  @Output() eventClick= new EventEmitter()
 
   constructor(public dialog: MatDialog) {}
 
@@ -19,7 +20,7 @@ export class ModalComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result: ${result}');
+      this.eventClick.emit(dialogRef.afterClosed)
     });
   }
 }
