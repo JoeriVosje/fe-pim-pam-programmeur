@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -8,12 +8,14 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 
 export class ModalComponent {
 
+  @Input() texts:any
+
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponentDialog, {
       width: '300px',
-      data: {}
+      data: this.texts
     });
 
     dialogRef.afterClosed().subscribe(result => {
