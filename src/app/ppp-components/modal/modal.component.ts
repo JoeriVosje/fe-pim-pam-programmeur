@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, } from '@angular/material/dia
 export class ModalComponent {
 
   @Input() texts: any
+  @Input() buttontext: string
   @Output() eventClick = new EventEmitter()
 
   constructor(public dialog: MatDialog) { }
