@@ -1,16 +1,16 @@
 <header class="ppp-header">
   <div class="left-part">
 
-    <div class="flex-parent-bread-crump">
+    <div class="flex-parent-bread-crumb">
 
-      <div class="flex-child-menu-title">{{ title }}</div>
+      <span class="flex-child-menu-title">{{ title }}</span>
       <mat-icon class="material-icons-outlined flex-child-bread-crumb-icon">{{ icon }}</mat-icon>
 
-      <div *ngFor="let breadCrumb of breadCrumbRoutes; let i = index"
+      <span *ngFor="let breadCrumb of breadCrumbRoutes; let i = index"
            class="flex-child-bread-crump-route">
-        <div class="separator" *ngIf="i != 0">-</div>
+        <span class="separator" *ngIf="i != 0">-</span>
         <span [routerLink]="breadCrumb.route" class="router-link"> {{ breadCrumb.name }}</span>
-      </div>
+      </span>
 
     </div>
 
