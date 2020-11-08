@@ -20,7 +20,7 @@ export class ModalComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.eventClick.emit(dialogRef.afterClosed)
+      this.eventClick.emit(result)
     });
   }
 }
@@ -39,7 +39,7 @@ export class ModalComponentDialog implements OnInit {
               }, public dialogRef: MatDialogRef<ModalComponentDialog>){}
 
   close(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('modal gesloten');
   }
 
   ngOnInit() {
