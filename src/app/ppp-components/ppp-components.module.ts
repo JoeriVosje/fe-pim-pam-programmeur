@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { AppRoutingModule } from '../app-routing.module';
 import { ButtonComponent } from './button/button.component';
 import { HeaderComponent } from './header/header.component';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
@@ -31,7 +32,8 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
   imports: [
     CommonModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule
   ]
 })
 export class PppComponentsModule { }
