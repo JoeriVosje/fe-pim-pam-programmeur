@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ModalComponent } from './modal/modal.component';
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -14,7 +15,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   declarations: [
     HeaderComponent,
     OverviewTemplateComponent,
-    SidebarComponent
+    SidebarComponent,
+    ModalComponent,
+    SimplemodalComponent
   ],
   exports: [
     OverviewTemplateComponent
