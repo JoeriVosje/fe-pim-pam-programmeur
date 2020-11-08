@@ -1,13 +1,14 @@
 <div class="container">
   <ppp-sidebar class="sidebar"
                [isAdmin]="isAdmin"
-               (navigationClicked)="onNavigation($event)">
+               (sidenavEmitter)="onNavigation($event)">
   </ppp-sidebar>
   <ppp-header class="header"
               [title]="title"
               [icon]="icon"
               [breadCrumbRoutes]="breadCrumbRoutes"
-              (logoutClicked)="logout()"
+              (logoutEmitter)="logout()"
+              (breadCrumbEmitter)="onNavigation($event)"
   >
   </ppp-header>
   <main>
