@@ -16,7 +16,6 @@ export class ModalComponent {
   openDialog(): void {
 
     const dialogRef = this.dialog.open(ModalComponentDialog, {
-      width: '400px',
       data: this.texts,
       disableClose: true,
       autoFocus: true,
@@ -32,24 +31,7 @@ export class ModalComponent {
 @Component({
   selector: 'ppp-modaldialog',
   templateUrl: './modaldialog.component.html',
-  styles: [`
-    #modal-button {
-      color: #f53c56;
-      background-color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 32px;
-      text-align: center;
-      font-size: 16px;
-      margin: 8px;
-      width: 110px;
-      height: 40px;
-      },
-      #modal-button:hover {
-        cursor: pointer;
-        filter: brightness(80%);
-      }
-    `]
+  styleUrls: ['./modal.component.css']
 })
 
 export class ModalComponentDialog implements OnInit {
