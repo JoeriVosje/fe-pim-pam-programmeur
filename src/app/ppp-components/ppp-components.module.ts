@@ -33,7 +33,6 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     InputComponent
   ],
   imports: [
-    AppRoutingModule,
     CommonModule,
     MatButtonModule,
     MatIconModule,

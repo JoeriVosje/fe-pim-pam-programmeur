@@ -2,5 +2,5 @@
                    [isAdmin]="true"
                    [icon]="'layers'">
 
-  <modules-overzicht [modules]="modules"></modules-overzicht>
+  <modules-overzicht [modules]="modules" (navToScreensOverviewClicked)="onNavigation($event)"></modules-overzicht>
 </overview-template>

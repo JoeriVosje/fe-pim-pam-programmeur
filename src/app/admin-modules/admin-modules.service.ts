@@ -34,4 +34,5 @@ export class AdminModulesService {
     }
     return modules;
   }
+
 }

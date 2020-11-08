@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AdminModulesService } from './admin-modules.service';
@@ -24,7 +25,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private readonly adminModuleService: AdminModulesService) { }
+  constructor(private readonly adminModuleService: AdminModulesService, private router: Router) { }
 
   ngOnInit(): void {
     this.getModules();
@@ -55,4 +56,9 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
         })
     );
   }
+
+  public onNavigation(route: string): void {
+    this.router.navigate([route]);
+  }
+
 }
