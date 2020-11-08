@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'modules-toevoegen',
@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modules-toevoegen.component.css']
 })
 export class ModulesToevoegenComponent implements OnInit {
+  @Output()
+  public addModule: EventEmitter<string> = new EventEmitter();
+
+  private moduleName: string;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  public getInputValue(value: string): void {
+    this.moduleName = value;
+  }
+
+  public add(): void {
+    this.addModule.emit(this.moduleName);
+  }
 }
