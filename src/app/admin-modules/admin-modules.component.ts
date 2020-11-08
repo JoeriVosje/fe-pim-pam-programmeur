@@ -37,11 +37,22 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
   public getModules(): void {
     this.subscription.add(
       this.adminModuleService.getModules()
-      .subscribe({
-        next: modules => this.modules = modules,
-        error: error => console.log(error),
-        complete: () => console.log('complete')
-      })
+        .subscribe({
+          next: modules => this.modules = modules,
+          error: error => console.log(error),
+          complete: () => console.log('complete')
+        })
+    );
+  }
+
+  public saveModule(moduleName: string): void {
+    this.subscription.add(
+      this.adminModuleService.saveModule(moduleName)
+        .subscribe({
+          next: response => console.log(response),
+          error: error => console.log(error),
+          complete: () => console.log('complete')
+        })
     );
   }
 }
