@@ -11,3 +11,10 @@ html, body {
   padding: 0;
   font-family: 'Poppins', sans-serif;
 }
+
+/* dit is misschien wat lomp maar ik vond die zwarte omlijning als een knop in focus was echt foeilelijk */
+/* en als je erover hoovert hebben we toch al dat ie iets donkerder wordt, dus je snapt wel waar je dan klikt */
+button {
+  outline: none;
+}
+

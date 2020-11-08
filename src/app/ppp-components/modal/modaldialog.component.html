@@ -1,13 +1,13 @@
-<div class="header">
-    <h1 mat-dialog-title>{{ data.title }}</h1>
+<div class="header" style="margin:8px">
+    <h1 mat-dialog-title align="center">{{ data.title }}</h1>
 </div>
 
-<div mat-dialog-content>
+<div mat-dialog-content align="center" style="margin:8px">
     <p class="dialog-message">{{ data.message }}</p>
 </div>
 
-<div mat-dialog-actions>
-    <button class="btn" (click)="close()">{{ data.confirmText }}</button>
+<div mat-dialog-actions align="center">
+    <button class="btn" id="modal-button" (click)="close()">{{ data.confirmText }}</button>
 </div>
 
 
