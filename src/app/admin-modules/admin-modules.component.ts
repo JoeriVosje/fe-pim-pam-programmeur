@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
 import { AdminModulesService } from './admin-modules.service';
 import { Module } from './modules-overzicht/modules-item/modules-item.model';
 
@@ -57,9 +58,12 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     );
   }
 
-  public onNavigation(route: string): void {
-    console.log('wtf');
-    this.router.navigate([route]);
+  public menuItem(menuItem: MenuItem): void {
+    if (menuItem.isRoute) {
+      this.router.navigate([menuItem.data]);
+    } else {
+      // todo implement delete module
+    }
   }
 
 }

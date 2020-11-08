@@ -1,5 +1,5 @@
 export interface MenuItem {
   name: string;
-  route: string;
-  isRed: boolean;
+  data: string;
+  isRoute: boolean;
 }

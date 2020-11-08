@@ -20,13 +20,13 @@ export class ModulesOverzichtComponent implements OnInit {
   public modules: Module[];
 
   @Output()
-  public navigateClicked: EventEmitter<string> = new EventEmitter();
+  public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 
   constructor() {
   }
 
-  public navigate(route: string): void {
-    this.navigateClicked.emit(route);
+  public menuItem(menuItem: MenuItem): void {
+    this.menuItemClicked.emit(menuItem);
   }
 
   ngOnInit(): void {

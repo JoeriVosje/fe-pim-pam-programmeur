@@ -6,11 +6,11 @@
 
   <ng-template matMenuContent>
 
-    <div *ngFor="let menuItem of menuItems">
+    <div *ngFor="let menuItemVar of menuItems">
       <button mat-menu-item
-              [ngClass]="menuItem.isRed?'mat-menu-item-customized mat-menu-item-red':'mat-menu-item-customized'"
-              (click)="menuItemNav(menuItem.route)">
-        <span>{{ menuItem.name }}</span>
+              [ngClass]="menuItemVar.isRoute?'mat-menu-item-customized':'mat-menu-item-customized mat-menu-item-red'"
+              (click)="menuItem(menuItemVar)">
+        <span>{{ menuItemVar.name }}</span>
       </button>
     </div>
 

@@ -10,7 +10,7 @@ import { MenuItem } from './menu-item.model';
 export class ThreeDotButtonComponent {
 
   @Output()
-  public menuItemClicked = new EventEmitter<string>();
+  public menuItemClicked = new EventEmitter<MenuItem>();
 
   @Input()
   private menuItems: MenuItem[];
@@ -18,8 +18,8 @@ export class ThreeDotButtonComponent {
   constructor() {
   }
 
-  public menuItemNav(route: string): void {
-    this.menuItemClicked.emit(route);
+  public menuItem(menuItem: MenuItem): void {
+    this.menuItemClicked.emit(menuItem);
   }
 
 }

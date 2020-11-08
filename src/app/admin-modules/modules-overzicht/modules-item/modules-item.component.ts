@@ -12,18 +12,19 @@ export class ModulesItemComponent implements OnInit {
   @Input() public status: boolean;
   @Input() public dateAdded: string;
   @Input() public background: string;
-  @Output() public menuItemClicked: EventEmitter<string> = new EventEmitter();
+  @Input() public moduleId: string;
+  @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
   menuItems: MenuItem[];
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Schermen toevoegen', route: 'modules/id/screens', isRed: false},
-      {name: 'Bewerken', route: 'modules/edit/', isRed: false},
-      {name: 'Verwijderen', route: 'modules/id/delete', isRed: true},
+      {name: 'Schermen toevoegen', data: '/modules/' + this.moduleId + '/screens', isRoute: true},
+      {name: 'Bewerken', data: '/modules/' + this.moduleId + '/edit', isRoute: true},
+      {name: 'Verwijderen', data: this.moduleId, isRoute: false},
       ];
   }
   constructor() { }
-  navItemClicked(route: string): void {
-    this.menuItemClicked.emit(route);
+  menuItem(menuItem: MenuItem): void {
+    this.menuItemClicked.emit(menuItem);
   }
 }

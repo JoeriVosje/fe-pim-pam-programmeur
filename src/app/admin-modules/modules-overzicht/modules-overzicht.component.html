@@ -12,10 +12,11 @@
   <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
     <modules-item *cdkVirtualFor="let module of modules; let even = even"
                   [name]="module.name"
+                  [moduleId]="module.id"
                   [status]="module.status"
                   [dateAdded]="module.dateAdded"
                   [background]="even? 'light' : 'dark'"
-    (menuItemClicked)="navigate($event)">
+    (menuItemClicked)="menuItem($event)">
     </modules-item>
   </cdk-virtual-scroll-viewport>
   </ng-template>
