@@ -1,16 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { AdminScreensService } from './admin-screens.service';
+import { AdminScreensService } from '../admin-screens.service';
 import { Screen } from './screens-overzicht/screen-item/screen-item.model';
 
-
 @Component({
-  selector: 'admin-screens',
-  templateUrl: './admin-screens.component.html',
-  styleUrls: ['./admin-screens.component.css']
+  selector: 'app-modules-screens',
+  templateUrl: './modules-screens.component.html',
+  styleUrls: ['./modules-screens.component.css']
 })
-export class AdminScreensComponent implements OnInit, OnDestroy {
+export class ModulesScreensComponent implements OnInit, OnDestroy {
 
   public screens: Screen[] = [];
 

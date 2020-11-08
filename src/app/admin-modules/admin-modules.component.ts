@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
 import { AdminModulesService } from './admin-modules.service';
+import { AdminScreensService } from './admin-screens.service';
 import { Module } from './modules-overzicht/modules-item/modules-item.model';
 
 /**
@@ -26,7 +27,10 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private readonly adminModuleService: AdminModulesService, private router: Router) { }
+  constructor(private readonly adminModuleService: AdminModulesService,
+              private readonly adminScreensService: AdminScreensService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getModules();
