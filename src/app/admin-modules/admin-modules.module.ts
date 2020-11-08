@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
+import { AdminModulesRoutingModule } from './admin-modules-routing.module';
 import { AdminModulesComponent } from './admin-modules.component';
 import { ModulesItemComponent } from './modules-overzicht/modules-item/modules-item.component';
 import { ModulesOverzichtComponent } from './modules-overzicht/modules-overzicht.component';
@@ -21,7 +22,8 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
     CommonModule,
     HttpClientModule,
     PppComponentsModule,
-    ScrollingModule
+    ScrollingModule,
+    AdminModulesRoutingModule
   ],
   exports: [AdminModulesComponent]
 })
