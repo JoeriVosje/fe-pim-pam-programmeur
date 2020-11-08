@@ -1,9 +1,25 @@
 <header class="ppp-header">
-  <p class="title">
-    {{ title }}
-  </p>
-  <a class="logout"
-     (click)="onClick()">
-    Uitloggen
-  </a>
+  <div class="left-part">
+
+    <div class="flex-parent-bread-crump">
+
+      <div class="flex-child-menu-title">{{ title }}</div>
+      <mat-icon class="material-icons-outlined flex-child-bread-crumb-icon">{{ icon }}</mat-icon>
+
+      <div *ngFor="let breadCrumb of breadCrumbRoutes; let i = index"
+           class="flex-child-bread-crump-route">
+        <div class="separator" *ngIf="i != 0">-</div>
+        <span [routerLink]="breadCrumb.route" class="router-link"> {{ breadCrumb.name }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="right-part">
+    <a class="logout"
+       (click)="logout()">
+      Uitloggen
+    </a></div>
+
 </header>

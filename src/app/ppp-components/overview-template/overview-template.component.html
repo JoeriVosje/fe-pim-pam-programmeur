@@ -5,7 +5,10 @@
   </ppp-sidebar>
   <ppp-header class="header"
               [title]="title"
-              (logoutClicked)="logout()">
+              [icon]="icon"
+              [breadCrumbRoutes]="breadCrumbRoutes"
+              (logoutClicked)="logout()"
+  >
   </ppp-header>
   <main>
     <ng-content></ng-content>
