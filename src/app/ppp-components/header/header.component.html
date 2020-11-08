@@ -9,7 +9,7 @@
       <span *ngFor="let breadCrumb of breadCrumbRoutes; let i = index"
            class="flex-child-bread-crump-route">
         <span class="separator" *ngIf="i != 0">-</span>
-        <span [routerLink]="breadCrumb.route" class="router-link"> {{ breadCrumb.name }}</span>
+        <span (click)="breadCrumbClicked(breadCrumb.route)" class="router-link"> {{ breadCrumb.name }}</span>
       </span>
 
     </div>
@@ -18,7 +18,7 @@
 
   <div class="right-part">
     <a class="logout"
-       (click)="logout()">
+       (click)="logoutClicked()">
       Uitloggen
     </a></div>
 

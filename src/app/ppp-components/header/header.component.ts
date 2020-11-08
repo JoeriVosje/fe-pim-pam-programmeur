@@ -11,7 +11,9 @@ export class HeaderComponent {
   @Input()
   public title: string;
   @Output()
-  public logoutClicked = new EventEmitter<void>();
+  public logoutEmitter = new EventEmitter<void>();
+  @Output()
+  public breadCrumbEmitter = new EventEmitter<string>();
   @Input()
   icon: string;
   @Input()
@@ -20,8 +22,12 @@ export class HeaderComponent {
   constructor() {
   }
 
-  public logout(): void {
-    this.logoutClicked.emit();
+  public logoutClicked(): void {
+    this.logoutEmitter.emit();
+  }
+
+  public breadCrumbClicked(route: string): void {
+    this.breadCrumbEmitter.emit(route);
   }
 
 }
