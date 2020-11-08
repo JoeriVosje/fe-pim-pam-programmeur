@@ -10,11 +10,11 @@
   </div>
   <ng-template #itemsPresent>
   <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
-    <modules-item *cdkVirtualFor="let module of modules; let i = index"
+    <modules-item *cdkVirtualFor="let module of modules; let even = even"
                   [name]="module.name"
                   [status]="module.status"
                   [dateAdded]="module.dateAdded"
-                  [background]="i%2===0? 'light' : 'dark'">
+                  [background]="even? 'light' : 'dark'">
     </modules-item>
   </cdk-virtual-scroll-viewport>
   </ng-template>

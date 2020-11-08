@@ -12,8 +12,8 @@
   <ng-template #itemsPresent>
   <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
     <div cdkDropList (cdkDropListDropped)="drop($event)">
-    <screen-item *cdkVirtualFor="let screen of screens; let i = index"
-                 cdkDrag [screen]="screen" [background]="i%2===0? 'light' : 'dark'">
+    <screen-item *cdkVirtualFor="let screen of screens; let even = even"
+                 cdkDrag [screen]="screen" [background]="even? 'light' : 'dark'">
     </screen-item>
     </div>
   </cdk-virtual-scroll-viewport>
