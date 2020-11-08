@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, } from '@angular/material/dialog';
 
 @Component({
   selector: 'ppp-modal',
@@ -14,9 +14,12 @@ export class ModalComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
+
     const dialogRef = this.dialog.open(ModalComponentDialog, {
       width: '300px',
-      data: this.texts
+      data: this.texts,
+      disableClose: true,
+      autoFocus: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
