@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Module } from './modules-item/modules-item.model';
 
@@ -18,5 +18,12 @@ export class ModulesOverzichtComponent {
   @Input()
   public modules: Module[];
 
+  @Output()
+  public navToScreensOverviewClicked: EventEmitter<string> = new EventEmitter();
+
   constructor() { }
+
+  public navToScreensOverview(): void {
+    this.navToScreensOverviewClicked.emit('screens');
+  }
 }

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
+import { AdminScreensRoutingModule } from './admin-screens-routing.module';
 import { AdminScreensComponent } from './admin-screens.component';
 import { ScreenItemComponent } from './screens-overzicht/screen-item/screen-item.component';
 import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht.component';
@@ -24,7 +25,8 @@ import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht
     HttpClientModule,
     PppComponentsModule,
     ScrollingModule,
-    DragDropModule
+    DragDropModule,
+    AdminScreensRoutingModule
   ]
 })
 export class AdminScreensModule { }
