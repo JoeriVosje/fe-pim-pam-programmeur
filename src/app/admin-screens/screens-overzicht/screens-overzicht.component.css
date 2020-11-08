@@ -1,4 +1,4 @@
-.modules-overview {
+.screens-overview {
   height: 500px;
   border-radius: 10px;
   background-color: white;
@@ -8,7 +8,7 @@
 }
 
 .title {
-  padding-left: 20px;
+  padding-left: 32px;
   font-weight: normal;
   align-self: center;
   grid-row: 1 / 2;
@@ -23,20 +23,20 @@
   align-self: center;
 }
 
-.name {
-  padding-left: 20px;
+.titleModel {
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 1 / 2;
 }
 
-.status {
-  padding-left: 20px;
+.theory {
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
 }
 
-.date-added {
-  padding-left: 20px;
+.question {
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 3 / 5;
 }
@@ -69,3 +69,5 @@ ppp-button {
   display: flex;
   justify-content: center;
 }
+
+

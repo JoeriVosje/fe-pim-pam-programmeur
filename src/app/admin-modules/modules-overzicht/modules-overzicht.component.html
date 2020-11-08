@@ -3,14 +3,20 @@
   <h4 class="name column">NAAM</h4>
   <h4 class="status column">STATUS</h4>
   <h4 class="date-added column">DATUM TOEGEVOEGD</h4>
-
+  <div class="empty-board" *ngIf="modules.length < 1; else itemsPresent">
+    <span class="empty-board-text">
+    Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
+    </span>
+  </div>
+  <ng-template #itemsPresent>
   <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
-    <modules-item *cdkVirtualFor="let module of modules"
+    <modules-item *cdkVirtualFor="let module of modules; let i = index"
                   [name]="module.name"
                   [status]="module.status"
-                  [dateAdded]="module.dateAdded">
+                  [dateAdded]="module.dateAdded"
+                  [background]="i%2===0? 'light' : 'dark'">
     </modules-item>
   </cdk-virtual-scroll-viewport>
-
+  </ng-template>
   <ppp-button>Toevoegen</ppp-button>
 </div>

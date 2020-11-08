@@ -1,0 +1,25 @@
+<div class="screens-overview">
+
+  <h3 class="title">Schermen overzicht</h3>
+  <h4 class="titleModel column">Titel</h4>
+  <h4 class="theory column">Theorie</h4>
+  <h4 class="question column">Vraag</h4>
+  <div class="empty-board" *ngIf="screens.length < 1; else itemsPresent">
+    <span class="empty-board-text">
+    Er zijn nog geen schermen toegevoegd. Klik op de knop rechtsonder om een vraag toe te voegen.
+    </span>
+  </div>
+  <ng-template #itemsPresent>
+  <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
+    <screen-item *cdkVirtualFor="let screen of screens; let i = index"
+                  [title]="screen.title"
+                  [theory]="screen.theory"
+                  [question]="screen.question"
+                  [background]="i%2===0? 'light' : 'dark'">
+    </screen-item>
+  </cdk-virtual-scroll-viewport>
+
+
+  </ng-template>
+  <ppp-button>Toevoegen</ppp-button>
+</div>
