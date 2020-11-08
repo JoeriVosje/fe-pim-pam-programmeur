@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from '../app-routing.module';
 import { ButtonComponent } from './button/button.component';
@@ -10,6 +11,7 @@ import { OverviewTemplateComponent } from './overview-template/overview-template
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ModalComponent } from './modal/modal.component';
 import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
+
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -30,13 +32,15 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
   exports: [
     OverviewTemplateComponent,
     ButtonComponent,
+    ModalComponent,
     ThreeDotButtonComponent
   ],
   imports: [
     CommonModule,
     MatButtonModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
   ]
 })
 export class PppComponentsModule { }
