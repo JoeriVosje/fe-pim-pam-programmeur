@@ -17,7 +17,6 @@ import { ModalComponent } from './modal/modal.component';
     OverviewTemplateComponent,
     SidebarComponent,
     ModalComponent,
-    SimplemodalComponent
   ],
   exports: [
     OverviewTemplateComponent
