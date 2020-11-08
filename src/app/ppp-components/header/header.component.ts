@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { BreadCrumb } from './bread-crumb.model';
+
 @Component({
   selector: 'ppp-header',
   templateUrl: './header.component.html',
@@ -10,10 +12,16 @@ export class HeaderComponent {
   public title: string;
   @Output()
   public logoutClicked = new EventEmitter<void>();
+  @Input()
+  icon: string;
+  @Input()
+  breadCrumbRoutes: BreadCrumb[];
 
-  constructor() { }
+  constructor() {
+  }
 
-  public onClick(): void {
+  public logout(): void {
     this.logoutClicked.emit();
   }
+
 }

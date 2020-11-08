@@ -1,4 +1,6 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
@@ -17,7 +19,9 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
   ],
   imports: [
     CommonModule,
-    PppComponentsModule
+    HttpClientModule,
+    PppComponentsModule,
+    ScrollingModule
   ],
   exports: [AdminModulesComponent]
 })

@@ -1,8 +1,16 @@
 <div class="modules-overview">
-  <div class="title">Modules overzicht</div>
-  <div class="name">NAAM</div>
-  <div class="status">STATUS</div>
-  <div class="date-added">DATUM TOEGEVOEGD</div>
+  <h3 class="title">Modules overzicht</h3>
+  <h4 class="name column">NAAM</h4>
+  <h4 class="status column">STATUS</h4>
+  <h4 class="date-added column">DATUM TOEGEVOEGD</h4>
 
-  <div class="item">item</div>
+  <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
+    <modules-item *cdkVirtualFor="let module of modules"
+                  [name]="module.name"
+                  [status]="module.status"
+                  [dateAdded]="module.dateAdded">
+    </modules-item>
+  </cdk-virtual-scroll-viewport>
+
+  <ppp-button>Toevoegen</ppp-button>
 </div>
