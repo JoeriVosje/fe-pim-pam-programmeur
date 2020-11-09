@@ -11,6 +11,7 @@ import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.co
 import { ModulesItemComponent } from './modules-overzicht/modules-item/modules-item.component';
 import { ModulesOverzichtComponent } from './modules-overzicht/modules-overzicht.component';
 import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
+import { SchermToevoegenComponent } from './modules-screens/scherm-toevoegen/scherm-toevoegen.component';
 import { ScreenItemComponent } from './modules-screens/screens-overzicht/screen-item/screen-item.component';
 import { ScreensOverzichtComponent } from './modules-screens/screens-overzicht/screens-overzicht.component';
 import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen.component';
@@ -25,7 +26,8 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
     ScreensOverzichtComponent,
     ScreenItemComponent,
     ModulesScreensComponent,
-    ModulesBewerkenComponent
+    ModulesBewerkenComponent,
+    SchermToevoegenComponent
   ],
   imports: [
     CommonModule,

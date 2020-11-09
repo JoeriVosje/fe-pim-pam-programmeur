@@ -20,6 +20,9 @@ export class ScreensOverzichtComponent {
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 
+  @Output()
+  public toevoegenClicked: EventEmitter<void> = new EventEmitter();
+
   constructor() {
   }
 
@@ -30,5 +33,9 @@ export class ScreensOverzichtComponent {
 
   public menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
+  }
+
+  toevoegen(): void {
+    this.toevoegenClicked.emit();
   }
 }
