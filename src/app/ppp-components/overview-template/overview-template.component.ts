@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { BreadCrumb } from '../header/bread-crumb.model';
 
@@ -21,11 +21,16 @@ export class OverviewTemplateComponent implements OnInit {
 
   breadCrumbRoutes: BreadCrumb[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
-  public async onNavigation(route: string): Promise<void> {
-    await this.router.navigate([route]);
+  public onNavigation(route: string): void {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id != null) {
+      this.router.navigate([route.replace(':id', id)]);
+    } else {
+      this.router.navigate([route]);
+    }
   }
 
   public logout(): void {
