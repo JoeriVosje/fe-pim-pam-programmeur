@@ -18,7 +18,7 @@ export class ModulesItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Schermen toevoegen', data: '/modules/' + this.moduleId + '/screens', isRoute: true},
+      {name: 'Schermen', data: '/modules/' + this.moduleId + '/screens', isRoute: true},
       {name: 'Bewerken', data: '/modules/' + this.moduleId + '/edit', isRoute: true},
       {name: 'Verwijderen', data: this.moduleId, isRoute: false},
       ];

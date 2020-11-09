@@ -22,6 +22,9 @@ export class ModulesOverzichtComponent implements OnInit {
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 
+  @Output()
+  public toevoegenClicked: EventEmitter<void> = new EventEmitter();
+
   constructor() {
   }
 
@@ -30,5 +33,9 @@ export class ModulesOverzichtComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  toevoegen(): void {
+    this.toevoegenClicked.emit();
   }
 }

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { BreadCrumb } from './bread-crumb.model';
 
@@ -7,7 +8,7 @@ import { BreadCrumb } from './bread-crumb.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   @Input()
   public title: string;
   @Output()
@@ -16,10 +17,9 @@ export class HeaderComponent {
   public breadCrumbEmitter = new EventEmitter<string>();
   @Input()
   icon: string;
-  @Input()
   breadCrumbRoutes: BreadCrumb[];
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
   }
 
   public logoutClicked(): void {
@@ -28,6 +28,10 @@ export class HeaderComponent {
 
   public breadCrumbClicked(route: string): void {
     this.breadCrumbEmitter.emit(route);
+  }
+
+  ngOnInit(): void {
+    this.breadCrumbRoutes = this.route.snapshot.data.breadCrumbs;
   }
 
 }

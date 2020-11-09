@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
 import { AdminModulesRoutingModule } from './admin-modules-routing.module';
 import { AdminModulesComponent } from './admin-modules.component';
+import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.component';
 import { ModulesItemComponent } from './modules-overzicht/modules-item/modules-item.component';
 import { ModulesOverzichtComponent } from './modules-overzicht/modules-overzicht.component';
 import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
@@ -23,7 +24,8 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
     ModulesItemComponent,
     ScreensOverzichtComponent,
     ScreenItemComponent,
-    ModulesScreensComponent
+    ModulesScreensComponent,
+    ModulesBewerkenComponent
   ],
   imports: [
     CommonModule,

@@ -70,4 +70,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     }
   }
 
+  toevoegen(): void {
+    this.router.navigate(['modules/add']);
+  }
 }
