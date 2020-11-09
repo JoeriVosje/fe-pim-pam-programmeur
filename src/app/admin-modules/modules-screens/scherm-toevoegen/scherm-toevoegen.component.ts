@@ -9,4 +9,7 @@ export class SchermToevoegenComponent {
 
   constructor() { }
 
+  toevoegen(): void {
+    return;
+  }
 }

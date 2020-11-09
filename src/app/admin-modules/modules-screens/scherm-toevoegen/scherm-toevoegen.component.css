@@ -1,0 +1,39 @@
+.scherm-toevoegen {
+  min-height: 666px;
+  border-radius: 10px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.scherm-toevoegen-title {
+  padding-left: 24px;
+  font-size: 18px;
+  font-weight: normal;
+  align-self: center;
+  grid-column: 1 / 5;
+  border-bottom: #172B4D;
+  border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.scherm-toevoegen-form {
+  display: inline-grid;
+  grid-column: 1 / 5;
+}
+
+.scherm-toevoegen-input {
+  display: inline-grid;
+  grid-column: 1 / 5;
+}
+
+.scherm-toevoegen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: end;
+}
+
+.scherm-toevoegen-button {
+  display: inline-grid;
+  grid-column: 4 / 4;
+  margin-top: 20px;
+}
