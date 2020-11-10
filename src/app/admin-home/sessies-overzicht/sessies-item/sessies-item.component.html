@@ -1,0 +1,10 @@
+<div [ngClass]="background" class="sessies-item">
+    <p id="name">{{ name }}</p>
+    <p>{{ status ? 'Bezig' : 'Afgerond' }}</p>    <!-- bezig is wanneer het een starttijd heeft, maar geen eindtijd | afgerond is als er een eindtijd is -->
+    <p>{{ progress }}</p> <!-- progress balk erin wurmen + aantal klaar + totaal aantal -->
+    <p>{{ dateStarted | date: 'dd/MM/yyyy' }}</p>
+    <p>{{ timeStarted | time: 'hh:mm' }}</p>
+    <p>{{ timeFinished | time: 'hh:mm' }}</p>
+  </div>
+
+
