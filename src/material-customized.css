@@ -3,16 +3,20 @@
 .mat-menu-customized {
   background: #FFFFFF;
   box-shadow: 0px 3px 6px #2C28281C;
-  border-radius: 30px;
+  border-radius: 10px !important;
   opacity: 1;
 }
 
 .mat-menu-item-customized {
-  text-align: right;
+  text-align: right !important;
   font: bold 12px Poppins;
   letter-spacing: 0px;
-  color: #7764E4;
   opacity: 1;
+  color: #7764E4;
+}
+
+.mat-menu-item-red {
+  color: #F53C56;
 }
 
 /* Modal */

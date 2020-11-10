@@ -2,7 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
 import { AdminModulesService } from './admin-modules.service';
+import { AdminScreensService } from './admin-screens.service';
 import { Module } from './modules-overzicht/modules-item/modules-item.model';
 
 /**
@@ -25,7 +27,10 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private readonly adminModuleService: AdminModulesService, private router: Router) { }
+  constructor(private readonly adminModuleService: AdminModulesService,
+              private readonly adminScreensService: AdminScreensService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getModules();
@@ -57,8 +62,15 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     );
   }
 
-  public onNavigation(route: string): void {
-    this.router.navigate([route]);
+  public menuItem(menuItem: MenuItem): void {
+    if (menuItem.isRoute) {
+      this.router.navigate([menuItem.data]);
+    } else {
+      // todo implement delete module
+    }
   }
 
+  toevoegen(): void {
+    this.router.navigate(['modules/add']);
+  }
 }

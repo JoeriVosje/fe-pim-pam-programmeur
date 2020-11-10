@@ -27,6 +27,7 @@ export class AdminModulesService {
 
     for (let i = 0; i < 10; i++) {
       modules.push({
+        id: i.toString(),
         name: 'Module naam',
         status: true,
         dateAdded: '2020-11-07'

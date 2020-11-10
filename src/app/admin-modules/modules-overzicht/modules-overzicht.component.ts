@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { Module } from './modules-item/modules-item.model';
 
 /**
@@ -13,17 +14,28 @@ import { Module } from './modules-item/modules-item.model';
   templateUrl: './modules-overzicht.component.html',
   styleUrls: ['./modules-overzicht.component.css']
 })
-export class ModulesOverzichtComponent {
+export class ModulesOverzichtComponent implements OnInit {
 
   @Input()
   public modules: Module[];
 
   @Output()
-  public navToScreensOverviewClicked: EventEmitter<string> = new EventEmitter();
+  public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 
-  constructor() { }
+  @Output()
+  public toevoegenClicked: EventEmitter<void> = new EventEmitter();
 
-  public navToScreensOverview(): void {
-    this.navToScreensOverviewClicked.emit('screens');
+  constructor() {
+  }
+
+  public menuItem(menuItem: MenuItem): void {
+    this.menuItemClicked.emit(menuItem);
+  }
+
+  ngOnInit(): void {
+  }
+
+  toevoegen(): void {
+    this.toevoegenClicked.emit();
   }
 }

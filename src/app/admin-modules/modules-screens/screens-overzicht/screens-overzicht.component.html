@@ -1,6 +1,6 @@
 <div class="screens-overview">
 
-  <h3 class="title">Schermen overzicht</h3>
+  <h3 class="title">Module {{ moduleName }} - Schermen</h3>
   <h4 class="titleModel column">Titel</h4>
   <h4 class="theory column">Theorie</h4>
   <h4 class="question column">Vraag</h4>
@@ -13,7 +13,7 @@
   <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
     <div cdkDropList (cdkDropListDropped)="drop($event)">
     <screen-item *cdkVirtualFor="let screen of screens; let even = even"
-                 cdkDrag [screen]="screen" [background]="even? 'light' : 'dark'">
+                 cdkDrag [screen]="screen" [screenId]="screen.id" [background]="even? 'light' : 'dark'" (menuItemClicked)="menuItem($event)">
     </screen-item>
     </div>
   </cdk-virtual-scroll-viewport>

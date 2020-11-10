@@ -1,7 +1,11 @@
-<div class="modules-add">
-  <h3 class="title">Modules overzicht</h3>
-  <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)">
-    Naam
-  </ppp-input>
-  <ppp-button (clicked)="add()">Toevoegen</ppp-button>
-</div>
+<overview-template [title]="'Modules'"
+                   [isAdmin]="true"
+                   [icon]="'layers'">
+  <div class="modules-add">
+    <h3 class="title">Modules overzicht</h3>
+    <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)">
+      Naam
+    </ppp-input>
+    <ppp-button (clicked)="add()">Toevoegen</ppp-button>
+  </div>
+</overview-template>
