@@ -1,10 +1,11 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
-  <div class="scherm-toevoegen">
+
+  <div class="container">
     <h3 class="scherm-toevoegen-title">Scherm Toevoegen</h3>
-    <form class="scherm-toevoegen-form"><!-- [formGroup]="" (ngSubmit)="">-->
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Titel</ppp-input>
+    <form [formGroup]="screenForm" class="scherm-toevoegen-form">
+      <ppp-input formControlName="titel" id="titleId" [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Titel</ppp-input>
       <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Theorie</ppp-input>
       <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Vraag</ppp-input>
       <div class="scherm-toevoegen-item scherm-toevoegen-extra-padding">
@@ -28,4 +29,5 @@
       <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
     </form>
   </div>
+
 </overview-template>

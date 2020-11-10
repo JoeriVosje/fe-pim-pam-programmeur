@@ -2,5 +2,11 @@ export interface Screen {
   title: string;
   theory: string;
   question: string;
-  id: string;
+  questionA?: string;
+  questionB?: string;
+  questionC?: string;
+  questionD?: string;
+  correctAnswer?: string;
+  feedback?: string;
+  id?: string;
 }
