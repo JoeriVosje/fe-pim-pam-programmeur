@@ -22,8 +22,16 @@
 }
 
 .scherm-toevoegen-input {
+  padding-left: 24px;
+}
+
+.scherm-toevoegen-item {
   display: inline-grid;
   grid-column: 1 / 5;
+}
+
+.scherm-toevoegen-extra-padding {
+  padding-left: 55px;
 }
 
 .scherm-toevoegen-grid {
@@ -36,4 +44,9 @@
   display: inline-grid;
   grid-column: 4 / 4;
   margin-top: 20px;
+}
+
+.scherm-toevoegen-radio-button {
+  margin-left: -20px;
+  margin-right: 30px;
 }

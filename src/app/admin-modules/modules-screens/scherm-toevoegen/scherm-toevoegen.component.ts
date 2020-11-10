@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatRadioModule } from '@angular/material/radio';
 
 @Component({
   selector: 'scherm-toevoegen',

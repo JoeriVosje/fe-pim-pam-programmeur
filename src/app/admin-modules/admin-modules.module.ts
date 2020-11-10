@@ -3,6 +3,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
 import { AdminModulesRoutingModule } from './admin-modules-routing.module';
@@ -36,6 +38,8 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
     ScrollingModule,
     AdminModulesRoutingModule,
     DragDropModule,
+    MatRadioModule,
+    MatCheckboxModule,
   ],
   exports: [AdminModulesComponent]
 })

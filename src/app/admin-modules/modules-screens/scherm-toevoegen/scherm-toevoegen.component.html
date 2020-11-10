@@ -4,19 +4,28 @@
   <div class="scherm-toevoegen">
     <h3 class="scherm-toevoegen-title">Scherm Toevoegen</h3>
     <form class="scherm-toevoegen-form"><!-- [formGroup]="" (ngSubmit)="">-->
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input">Titel</ppp-input>
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input">Theorie</ppp-input>
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input">Vraag</ppp-input>
-      <div>
-        <ppp-input class="scherm-toevoegen-input">A</ppp-input>
-        <ppp-input class="scherm-toevoegen-input">B</ppp-input>
-        <ppp-input class="scherm-toevoegen-input">C</ppp-input>
-        <ppp-input class="scherm-toevoegen-input">D</ppp-input>
+      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Titel</ppp-input>
+      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Theorie</ppp-input>
+      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Vraag</ppp-input>
+      <div class="scherm-toevoegen-item scherm-toevoegen-extra-padding">
+        <mat-checkbox>
+          Student mag vraag overslaan
+        </mat-checkbox>
       </div>
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input">Foutive Feedback</ppp-input>
-      <div class="scherm-toevoegen-grid">
-        <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
+      <div class="scherm-toevoegen-item scherm-toevoegen-extra-padding">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="A">A</mat-radio-button>
+          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
+          <mat-radio-button value="B">B</mat-radio-button>
+          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
+          <mat-radio-button value="C">C</mat-radio-button>
+          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
+          <mat-radio-button value="D">D</mat-radio-button>
+          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
+        </mat-radio-group>
       </div>
+      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Foutive Feedback</ppp-input>
+      <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
     </form>
   </div>
 </overview-template>
