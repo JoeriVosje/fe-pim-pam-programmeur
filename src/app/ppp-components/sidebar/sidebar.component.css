@@ -3,6 +3,7 @@ a {
   display: inline-flex;
   vertical-align: middle;
   align-items: center;
+  padding-left: 32px;
 }
 
 a:hover {
@@ -10,29 +11,43 @@ a:hover {
 }
 
 span {
-  padding-left: 12px;
+  padding-left: 16px;
 }
 
 .ppp-sidebar {
   height: 100%;
   align-items: center;
-  padding-left: 30px;
   display: grid;
-  grid-template-rows: repeat(4, 70px) repeat(6, 1fr);
+  grid-template-rows: 70px 24px repeat(3, 48px);
   grid-template-columns: 1fr;
 }
 
 .role {
+  grid-row: 1 / 2;
   font-weight: bold;
   font-size: 24px;
+  padding-left: 32px;
+  padding-top: 32px;
+}
+
+.home {
+  grid-row: 3 / 4;
 }
 
 #home {
   color: #7764E4;
 }
 
+.person {
+  grid-row: 4 / 5;
+}
+
 #person {
   color: #F53C56;
+}
+
+.modules {
+  grid-row: 5 / 6;
 }
 
 #modules {

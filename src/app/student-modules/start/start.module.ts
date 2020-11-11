@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { PppComponentsModule } from '../../ppp-components/ppp-components.module';
 import { StartComponent } from './start.component';
 
 
@@ -8,7 +9,8 @@ import { StartComponent } from './start.component';
   declarations: [StartComponent],
   exports: [StartComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    PppComponentsModule
   ]
 })
 export class StartModule { }
