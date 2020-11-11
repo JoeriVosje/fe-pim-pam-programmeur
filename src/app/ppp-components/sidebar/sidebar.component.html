@@ -2,15 +2,15 @@
   <p class="role">
     {{ isAdmin ? 'Beheerder' : 'Student' }}
   </p>
-  <a (click)="onClick(homeLink)">
+  <a (click)="onClick(homeLink)" class="home">
     <i id="home" class="material-icons">home</i>
     <span>Home</span>
   </a>
-  <a (click)="onClick(classesLink)">
+  <a (click)="onClick(classesLink)" class="person" *ngIf="showLink()">
     <i id="person" class="material-icons">person</i>
     <span>Klassen</span>
   </a>
-  <a (click)="onClick(modulesLink)">
+  <a (click)="onClick(modulesLink)" class="modules" *ngIf="showLink()">
     <i id="modules" class="material-icons">layers</i>
     <span>Modules</span>
   </a>
