@@ -22,4 +22,8 @@ export class SidebarComponent {
   public onClick(item: string): void {
     this.sidenavEmitter.emit(item);
   }
+
+  public showLink(): boolean {
+    return this.isAdmin;
+  }
 }
