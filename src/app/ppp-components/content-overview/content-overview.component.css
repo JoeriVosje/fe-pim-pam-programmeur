@@ -1,0 +1,23 @@
+.content-overview {
+  display: grid;
+  grid-template-rows: 84px auto;
+  height: 520px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  background-color: white;
+}
+
+.title {
+  grid-row: 1 / 2;
+  align-self: center;
+  padding-left: 32px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-weight: normal;
+  border-bottom: 0.5px solid rgba(136, 152, 170, 0.6);
+}
+
+.main-content {
+  grid-row: 2 / 3;
+}
+

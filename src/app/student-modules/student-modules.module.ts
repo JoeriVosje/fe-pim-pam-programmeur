@@ -25,7 +25,10 @@ export class StudentModulesModule {
     {
       path: StudentModulesNavigatie.START,
       pathMatch: 'full',
-      component: StartWrapperComponent
+      component: StartWrapperComponent,
+      data: {
+        breadCrumbs: [{ name: 'Overzicht', route: 'student' }]
+      }
     },
     {
       path: StudentModulesNavigatie.SCHERMEN,
