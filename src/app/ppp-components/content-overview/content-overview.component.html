@@ -1,4 +1,8 @@
-<div class="content-overview">
+<div class="content-overview"
+     [ngClass]="{'small': getClass('sm'),
+                 'medium': getClass('md'),
+                 'max': getClass('max')}">
+
   <h3 class="title">{{ title }}</h3>
 
   <main class="main-content">

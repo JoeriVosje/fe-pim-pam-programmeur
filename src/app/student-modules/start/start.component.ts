@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+
+import content from './start.content.json';
 
 @Component({
   selector: 'student-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.css']
 })
-export class StartComponent implements OnInit {
+export class StartComponent {
+
+  @Output() public naarSchermen = new EventEmitter<void>();
+
+  public headerIcon = 'home_outline';
 
   constructor() { }
 
-  ngOnInit(): void {
+  public getText(key: string): string {
+    return content[key];
   }
 
+  public startModule(): void {
+    this.naarSchermen.emit();
+  }
 }

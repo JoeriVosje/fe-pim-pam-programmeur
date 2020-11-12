@@ -21,3 +21,15 @@
   grid-row: 2 / 3;
 }
 
+.max {
+  height:100%;
+}
+
+.medium {
+  height: 440px;
+}
+
+.small {
+  height: 280px;
+}
+
