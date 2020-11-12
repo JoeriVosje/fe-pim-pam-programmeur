@@ -14,7 +14,7 @@ export class SessiesItemComponent implements OnInit {
   @Input() public timeStarted: string;
   @Input() public timeFinished: string;
   @Input() public background: string;
-  @Input() public moduleId: string;
+  @Input() public sessieId: string;
 
   constructor() { }
 

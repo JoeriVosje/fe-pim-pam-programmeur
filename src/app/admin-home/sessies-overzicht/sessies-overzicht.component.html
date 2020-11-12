@@ -6,7 +6,7 @@
     <h4 class="date-started column">STARTDATUM</h4>
     <h4 class="time-started column">STARTTIJD</h4>
     <h4 class="time-ended column">EINDTIJD</h4>
-    <div class="empty-board" *ngIf="modules.length < 1; else itemsPresent">
+    <div class="empty-board" *ngIf="sessies.length < 1; else itemsPresent">
       <span class="empty-board-text">
       Er zijn nog geen actieve sessies. Ga naar <b>modules</b> om een sessie te starten.
       </span>
@@ -14,22 +14,15 @@
     <ng-template #itemsPresent>
     <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
 
-        <sessies-item>
-            
+        <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
+                      [name]="sessie.name"
+                      [status]="sessie.status"
+                      [progress]="sessie.progress"
+                      [dateStarted]="sessie.dateStarted"
+                      [timeStarted]="sessie.timeStarted"
+                      [timeFinished]="sessie.timeFinished"
+                      [background]="even? 'light' : 'dark'">
         </sessies-item>
-
-        
-      <!-- 
-      <modules-item *cdkVirtualFor="let module of modules; let even = even"
-                    [name]="module.name"
-                    [moduleId]="module.id"
-                    [status]="module.status"
-                    [dateAdded]="module.dateAdded"
-                    [background]="even? 'light' : 'dark'"
-      (menuItemClicked)="menuItem($event)">
-      </modules-item> 
-      -->
-
 
     </cdk-virtual-scroll-viewport>
     </ng-template>

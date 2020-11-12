@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Sessie } from './sessies-item/sessies-item.model';
 
 /**
  * Dit is een zogenoemd 'dom' component. Dit component
@@ -12,6 +13,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sessies-overzicht.component.css']
 })
 export class SessiesOverzichtComponent implements OnInit {
+
+  @Input()
+  public sessies: Sessie[];
 
   constructor() { }
 
