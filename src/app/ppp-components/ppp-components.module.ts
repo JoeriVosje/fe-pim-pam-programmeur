@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { ButtonComponent } from './button/button.component';
+import { ContentOverviewComponent } from './content-overview/content-overview.component';
 import { HeaderComponent } from './header/header.component';
 import { InputComponent } from './input/input.component';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
@@ -25,10 +26,10 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     HeaderComponent,
     OverviewTemplateComponent,
     SidebarComponent,
-
     ButtonComponent,
     ThreeDotButtonComponent,
     InputComponent,
+    ContentOverviewComponent,
     ModalComponent
   ],
   exports: [
@@ -36,7 +37,8 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     ButtonComponent,
     ThreeDotButtonComponent,
     InputComponent,
-    ModalComponent
+    ModalComponent,
+    ContentOverviewComponent
   ],
   imports: [
     CommonModule,

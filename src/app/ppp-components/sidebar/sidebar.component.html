@@ -2,7 +2,7 @@
   <p class="role">
     {{ isAdmin ? 'Beheerder' : 'Student' }}
   </p>
-  <a (click)="onClick(homeLink)" class="home">
+  <a (click)="onClick(isAdmin ? homeLink: studentHomeLink)" class="home">
     <i id="home" class="material-icons">home</i>
     <span>Home</span>
   </a>

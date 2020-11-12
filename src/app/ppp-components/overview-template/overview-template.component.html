@@ -7,10 +7,10 @@
               [title]="title"
               [icon]="icon"
               (logoutEmitter)="logout()"
-              (breadCrumbEmitter)="onNavigation($event)"
-  >
+              (breadCrumbEmitter)="onNavigation($event)">
   </ppp-header>
   <main>
     <ng-content></ng-content>
   </main>
+  <footer></footer>
 </div>
