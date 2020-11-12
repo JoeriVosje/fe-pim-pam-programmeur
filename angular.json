@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "fe-pim-pam-programmeur"
+  "defaultProject": "fe-pim-pam-programmeur",
+  "cli": {
+    "analytics": "4b613d52-75ba-46c8-afa5-2029caca5ddf"
+  }
 }
