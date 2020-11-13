@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminModulesComponent } from './admin-modules.component';
 import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.component';
+import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modules-bewerken.wrapper.component';
 import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
 import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen.component';
 import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
     }
   },
   {
-    path: ':id/edit', component: ModulesBewerkenComponent,
+    path: ':id/edit', component: ModulesBewerkenWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)]
     }
