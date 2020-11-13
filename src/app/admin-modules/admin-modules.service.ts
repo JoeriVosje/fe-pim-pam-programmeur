@@ -17,8 +17,18 @@ export class AdminModulesService {
     return this.httpClient.get<Module[]>(`${this.baseurl}/module`);
   }
 
+  public getModule(id: string): Observable<Module> {
+    return this.httpClient.get<Module>(`${this.baseurl}/module/${id}`);
+  }
+
   public saveModule(moduleName: string): Observable<HttpResponse<void>> {
     return this.httpClient.post<void>(`${this.baseurl}/module`, { name: moduleName }, {
+      observe: 'response'
+    });
+  }
+
+  public updateModule(moduleId: string, moduleName: string): Observable<HttpResponse<void>> {
+    return this.httpClient.put<void>(`${this.baseurl}/module/`, { id: moduleId, name: moduleName }, {
       observe: 'response'
     });
   }

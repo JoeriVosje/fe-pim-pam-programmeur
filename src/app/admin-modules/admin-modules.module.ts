@@ -8,6 +8,7 @@ import { PppComponentsModule } from '../ppp-components/ppp-components.module';
 import { AdminModulesRoutingModule } from './admin-modules-routing.module';
 import { AdminModulesComponent } from './admin-modules.component';
 import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.component';
+import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modules-bewerken.wrapper.component';
 import { ModulesItemComponent } from './modules-overzicht/modules-item/modules-item.component';
 import { ModulesOverzichtComponent } from './modules-overzicht/modules-overzicht.component';
 import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
@@ -27,7 +28,8 @@ import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/mo
     ScreensOverzichtComponent,
     ScreenItemComponent,
     ModulesScreensComponent,
-    ModulesBewerkenComponent
+    ModulesBewerkenComponent,
+    ModulesBewerkenWrapperComponent
   ],
   imports: [
     CommonModule,
