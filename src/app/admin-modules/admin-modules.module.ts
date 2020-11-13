@@ -14,6 +14,7 @@ import { ModulesScreensComponent } from './modules-screens/modules-screens.compo
 import { ScreenItemComponent } from './modules-screens/screens-overzicht/screen-item/screen-item.component';
 import { ScreensOverzichtComponent } from './modules-screens/screens-overzicht/screens-overzicht.component';
 import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen.component';
+import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
     AdminModulesComponent,
     ModulesOverzichtComponent,
     ModulesToevoegenComponent,
+    ModulesToevoegenWrapperComponent,
     ModulesItemComponent,
     ScreensOverzichtComponent,
     ScreenItemComponent,
