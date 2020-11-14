@@ -44,10 +44,7 @@ export class SchermToevoegenComponent implements OnInit {
     }
 
   public isEmpty(input: string): boolean {
-    if (typeof input !== 'undefined' && input){
-      return false;
-  }
-    return true;
+    return !(typeof input !== 'undefined' && input);
   }
   public addScreen(): void {
     console.log(this.screenForm);
@@ -74,7 +71,6 @@ export class SchermToevoegenComponent implements OnInit {
         return;
       }
     }
-
 
     const answersInput: Array<Answer> = this.getAnswersInput(this.screenForm.controls.correctAnswer.value);
     console.log(this.screenForm.controls.skippable.value);

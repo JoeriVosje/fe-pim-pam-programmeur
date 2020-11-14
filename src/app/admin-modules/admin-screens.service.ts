@@ -1,4 +1,4 @@
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -12,27 +12,16 @@ export class AdminScreensService {
   public constructor(private readonly httpClient: HttpClient) {
   }
 
-  public getScreens(): Observable<Screen[]> {
-    // return this.httpClient.get<Screen[]>('https://baseurl/api');
-    return of(this.createScreens());
+  public getScreens(moduleId: string): Observable<Screen[]> {
+    return this.httpClient.get<Screen[]>(`${this.baseurl}/Component/module/${moduleId}` );
   }
 
   public saveScreen(screen: Screen): Observable<HttpResponse<Screen>> {
     return this.httpClient.post<Screen>(`${this.baseurl}/Component/`, screen, { observe: 'response' });
   }
 
-  private createScreens(): Screen[] {
-    const screens: Screen[] = [];
-
-    for (let i = 0; i < 10; i++) {
-      screens.push({
-        title: 'Vraag titel' + i,
-        theory: 'Theorie',
-        question: 'Vraag',
-        moduleId: '',
-      });
-    }
-    return screens;
+  public reOrderScreen(screens: Screen[]): Observable<HttpResponse<Screen[]>> {
+    return this.httpClient.put<Screen[]>(`${this.baseurl}/Component/Order`, screens, { observe: 'response' });
   }
 
 }

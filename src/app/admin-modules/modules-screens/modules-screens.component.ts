@@ -34,7 +34,7 @@ export class ModulesScreensComponent implements OnInit, OnDestroy {
 
   public getScreens(): void {
     this.subscription.add(
-      this.adminScreensService.getScreens()
+      this.adminScreensService.getScreens(this.moduleId)
         .subscribe({
           next: screens => this.screens = screens,
           error: error => console.log(error),
