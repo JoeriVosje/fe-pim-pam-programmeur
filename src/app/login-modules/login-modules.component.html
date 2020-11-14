@@ -1,11 +1,15 @@
-<p>login-modules works!</p>
-<article>
-  <h1>Pim Pam Programmeur</h1>
-  <p>Welkom terug! Login om verder te gaan.</p>
-  <b *ngIf="loginFailed">Login is mislukt</b>
-  <form>
-    <ppp-input (inputFieldChange)="getEmail($event)">Gebruikersnaam of email</ppp-input>
-    <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'">Wachtwoord</ppp-input>
-    <ppp-button (clicked)="inloggen()">Inloggen</ppp-button>
-  </form>
-</article>
+<div class="container">
+  <main>
+    <img class="hacker" src="/assets/hacker.png" alt="Pim Pam Programmeur">
+    <article class="page">
+      <h1>Pim Pam Programmeur</h1>
+      <form>
+        <ppp-input (inputFieldChange)="getEmail($event)">Gebruikersnaam of email</ppp-input>
+        <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'">Wachtwoord</ppp-input>
+        <ppp-button (clicked)="inloggen()">Inloggen</ppp-button>
+        <div class="mat-error" *ngIf="loginFailed">Login is mislukt. Probeer het opniew.</div>
+      </form>
+    </article>
+  </main>
+  <footer></footer>
+</div>
