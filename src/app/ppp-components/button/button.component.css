@@ -18,6 +18,10 @@
   box-shadow: 0 3px 6px #2C28281C;
 }
 
+.ppp-button.highlight {
+  background-color: #11CDEF;
+}
+
 .ppp-button.decline {
   color: #172B4D;
   background-color: #FFF;

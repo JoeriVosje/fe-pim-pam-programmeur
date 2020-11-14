@@ -1,23 +1,26 @@
 .container {
   height: 100%;
   background-color: #172C4C;
-  display: grid;
-  grid-template-rows: 70px auto 32px;
-  grid-template-columns: 250px auto;
-  grid-template-areas: "sidebar  header"
-                       "sidebar  main"
-                       "sidebar  footer";
 }
 
-.page {
-  height: 520px;
-  border-radius: 10px;
-  background-color: white;
-  display: grid;
-  grid-template-rows: 60px 30px auto 100px;
-  grid-template-columns: repeat(2, 2fr) repeat(2, 1fr);
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hacker {
+  position: relative;
   height: 195px;
+}
+
+.page {
+  position: relative;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.login-button {
+  padding: 30px;
+  widows: 30px;
 }

@@ -4,11 +4,11 @@
     <article class="page">
       <h1>Pim Pam Programmeur</h1>
       <form>
-        <ppp-input (inputFieldChange)="getEmail($event)">Gebruikersnaam of email</ppp-input>
-        <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'">Wachtwoord</ppp-input>
-        <ppp-button (clicked)="inloggen()">Inloggen</ppp-button>
-        <div class="mat-error" *ngIf="loginFailed">Login is mislukt. Probeer het opniew.</div>
+        <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L">Gebruikersnaam of email</ppp-input>
+        <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L">Wachtwoord</ppp-input>
+        <ppp-button class="login-button" (clicked)="inloggen()" [type]="'highlight'">Inloggen</ppp-button>
       </form>
+      <div class="mat-error" *ngIf="loginFailed">Login is mislukt. Probeer het opniew.</div>
     </article>
   </main>
   <footer></footer>
