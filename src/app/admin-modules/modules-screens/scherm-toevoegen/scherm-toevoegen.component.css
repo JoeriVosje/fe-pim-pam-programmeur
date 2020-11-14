@@ -1,11 +1,9 @@
 .container {
-  height: 800px;
   border-radius: 10px;
   background-color: white;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(10, 1fr);
-  overflow-y: scroll;
 }
 
 .scroll-content{

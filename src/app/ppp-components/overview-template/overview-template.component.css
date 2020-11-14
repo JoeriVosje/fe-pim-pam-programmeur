@@ -1,5 +1,5 @@
 .container {
-  height: 100%;
+  height: auto;
   background-color: #172C4C;
   display: grid;
   grid-template-rows: 70px auto;
