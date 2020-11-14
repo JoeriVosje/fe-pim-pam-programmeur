@@ -1,20 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-modules-bewerken',
+  selector: 'modules-bewerken',
   templateUrl: './modules-bewerken.component.html',
   styleUrls: ['./modules-bewerken.component.css']
 })
 export class ModulesBewerkenComponent implements OnInit {
+  @Input() 
+  public moduleName: string;
 
-  public id: string;
+  @Output()
+  public updateModule: EventEmitter<string> = new EventEmitter();
 
-  constructor(private router: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.id = this.router.snapshot.paramMap.get('id');
+    console.log(this.moduleName);
+  }
+
+  public getInputValue(value: string): void {
+    this.moduleName = value;
+  } 
+
+  public update(){
+    this.updateModule.next(this.moduleName);
   }
 
 }

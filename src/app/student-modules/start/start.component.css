@@ -1,0 +1,23 @@
+.student-overview {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  height: 100%;
+}
+
+.overview-text {
+  grid-row: 1 / 2;
+}
+
+ppp-button {
+  grid-row: 2 / 3;
+  align-self: end;
+  justify-self: end;
+  padding-right: 32px;
+  padding-bottom: 32px;
+}
+
+.student-overview p {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 32px;
+}

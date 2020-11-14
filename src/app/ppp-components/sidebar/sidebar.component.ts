@@ -14,6 +14,7 @@ export class SidebarComponent {
   public sidenavEmitter = new EventEmitter<string>();
 
   public homeLink = 'home';
+  public studentHomeLink = 'student';
   public classesLink = 'classes';
   public modulesLink = 'modules';
 
@@ -21,5 +22,9 @@ export class SidebarComponent {
 
   public onClick(item: string): void {
     this.sidenavEmitter.emit(item);
+  }
+
+  public showLink(): boolean {
+    return this.isAdmin;
   }
 }

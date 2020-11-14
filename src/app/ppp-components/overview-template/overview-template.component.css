@@ -2,10 +2,11 @@
   height: 100%;
   background-color: #172C4C;
   display: grid;
-  grid-template-rows: 70px auto;
+  grid-template-rows: 70px auto 32px;
   grid-template-columns: 250px auto;
   grid-template-areas: "sidebar  header"
-                       "sidebar  main";
+                       "sidebar  main"
+                       "sidebar  footer";
 }
 
 .sidebar {
@@ -24,6 +25,6 @@ main {
   padding-top: 40px;
 }
 
-.empty-box-2 {
+.footer {
   grid-area: empty-box-2;
 }
