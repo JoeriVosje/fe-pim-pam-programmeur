@@ -4,27 +4,27 @@
   <form [formGroup]="screenForm" (ngSubmit)="addScreen()">
     <div class="container">
 
-        <div class="header-grid">
-          <div class="scherm-toevoegen-title">
-            Scherm Toevoegen
-          </div>
+      <div class="header-grid">
+        <div class="scherm-toevoegen-title">
+          Scherm Toevoegen
         </div>
+      </div>
 
-        <div class="titel-grid inputWidth">
-          <label id="input-label" for="input-field">
-            Titel
-          </label>
-          <input label="title" type="text" id="input-field" name="input-field"/>
-        </div>
+      <div class="titel-grid inputWidth">
+        <label id="input-label" for="input-field">
+          Titel
+        </label>
+        <input label="title" type="text" id="input-field" name="input-field"/>
+      </div>
 
 
-        <div class="theorie-grid">Theorie
-          <div class="editor">
-            <editor
-              id="theory"
-              initialValue="<p>Initial content of the editor</p>"
-              apiKey='2m3rqe9g14p0ru6mjqafw1sakrbz0fln413wzqumvt4bhq3a'
-              [init]="{
+      <div class="theorie-grid">Theorie
+        <div class="editor">
+          <editor
+            id="theory"
+            initialValue="<p>Initial content of the editor</p>"
+            apiKey='2m3rqe9g14p0ru6mjqafw1sakrbz0fln413wzqumvt4bhq3a'
+            [init]="{
      height: 300,
     menubar: false,
     plugins: [
@@ -35,69 +35,60 @@
     ],
     toolbar: 'undo redo | formatselect | bold italic |  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | code codesample image | help'
   }">
-            </editor>
-          </div>
+          </editor>
         </div>
+      </div>
 
 
-        <div class="vraag-grid inputWidth">
-          <label id="vraag" for="input-field">
-            Vraag
-          </label>
-          <div class="naast-elkaar">
+      <div class="vraag-grid inputWidth">
+        <label id="vraag" for="input-field">
+          Vraag
+        </label>
+        <div class="naast-elkaar">
           <input label="vraag" type="text" id="vraag-field" name="input-field"/>
           <div class="skippable">
             <mat-radio-button value="skippable">Student mag vraag overslaan</mat-radio-button>
           </div>
+        </div>
+
+      </div>
+
+      <mat-radio-group>
+        <div class="multiple-choice-grid">
+          <div class="questionA">
+            <mat-radio-button value="A">A</mat-radio-button>
+            <input label="vraag" type="text" id="a" name="input-field"/>
+          </div>
+          <div class="questionB">
+            <mat-radio-button value="B">B</mat-radio-button>
+            <input label="vraag" type="text" id="b" name="input-field"/>
+          </div>
+          <div class="questionC">
+            <mat-radio-button value="C">C</mat-radio-button>
+            <input label="vraag" type="text" id="c" name="input-field"/>
+          </div>
+          <div class="questionD">
+            <mat-radio-button value="D">D</mat-radio-button>
+            <input label="vraag" type="text" id="d" name="input-field"/>
           </div>
 
         </div>
-
-        <mat-radio-group>
-          <div class="multiple-choice-grid">
-            <div class="questionA">
-              <mat-radio-button value="A">A</mat-radio-button>
-              <input label="vraag" type="text" id="a" name="input-field"/>
-            </div>
-            <div class="questionB">
-              <mat-radio-button value="B">B</mat-radio-button>
-              <input label="vraag" type="text" id="b" name="input-field"/>
-            </div>
-            <div class="questionC">
-              <mat-radio-button value="C">C</mat-radio-button>
-              <input label="vraag" type="text" id="c" name="input-field"/>
-            </div>
-            <div class="questionD">
-              <mat-radio-button value="D">D</mat-radio-button>
-              <input label="vraag" type="text" id="d" name="input-field"/>
-            </div>
-
-          </div>
-        </mat-radio-group>
-        <div class="feedback-grid inputWidth">
-          <label id="feedback" for="input-field">
-            Feedback
-          </label>
-          <input label="vraag" type="text" id="feedback-field" name="input-field"/>
-        </div>
+      </mat-radio-group>
 
 
-        <!--    <div class="scherm-toevoegen-title">Scherm Toevoegen-->
-        <!--      <div class="border"></div></div>-->
-        <!--    <form [formGroup]="screenForm" (ngSubmit)="addScreen()">-->
-        <!--      <mat-form-field class="full-width titleQuestion">-->
-        <!--        <input matInput type="String"-->
-        <!--               id="title"-->
-        <!--               formControlName="title"-->
-        <!--               class="inputPPP">-->
-        <!--      </mat-form-field>-->
-        <!--    </form>-->
-        <div class="toevoegen-grid">
-          <div class="toevoegen-button">
-            <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
-          </div>
+      <div class="feedback-grid inputWidth">
+        <label id="feedback" for="input-field">
+          Feedback
+        </label>
+        <input label="vraag" type="text" id="feedback-field" name="input-field"/>
+      </div>
+
+      <div class="toevoegen-grid">
+        <div class="toevoegen-button">
+          <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
         </div>
       </div>
+    </div>
 
   </form>
 
