@@ -5,7 +5,7 @@
   <b *ngIf="loginFailed">Login is mislukt</b>
   <form>
     <ppp-input (inputFieldChange)="getEmail($event)">Gebruikersnaam of email</ppp-input>
-    <ppp-input (inputFieldChange)="getPassword($event)">Wachtwoord</ppp-input>
+    <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'">Wachtwoord</ppp-input>
     <ppp-button (clicked)="inloggen()">Inloggen</ppp-button>
   </form>
 </article>

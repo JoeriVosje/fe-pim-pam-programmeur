@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthHttpInterceptor } from './http-interceptor';
 import { LoginModulesModule } from './login-modules/login-modules.module';
 import { StudentModulesModule } from './student-modules/student-modules.module';
-import { CookieService} from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
