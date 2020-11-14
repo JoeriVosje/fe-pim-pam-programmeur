@@ -17,8 +17,8 @@ const routes: Routes = [
   {
     // todo Replace classes import with import('./admin-classes/admin-classes.module').then(theImport => theImport.ClassModule)
     path: 'classes', loadChildren: () =>
-      import('./admin-modules/admin-modules.module')
-        .then(theImport => theImport.AdminModulesModule)
+      import('./admin-klassen/admin-klassen.module')
+        .then(theImport => theImport.AdminKlassenModule)
   },
   {
     path: 'modules', loadChildren: () =>

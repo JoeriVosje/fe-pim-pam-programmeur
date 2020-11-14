@@ -1,0 +1,18 @@
+<overview-template [title]="'Klas'"
+                   [isAdmin]="true"
+                   [icon]="'layers'">
+  <div class="klas-add">
+    <h3 class="title">Klas toevoegen</h3>
+    <ppp-input [size]="'L'" (inputFieldChange)="getNameValue($event)">
+      Naam
+    </ppp-input>
+    <ppp-input [size]="'L'" (inputFieldChange)="getMajorValue($event)">
+      Opleiding
+    </ppp-input>
+    <ppp-select [values]="select" [size]="'L'" (inputFieldChange)="getSelectValue($event)">
+      Module
+    </ppp-select>
+
+    <ppp-button (clicked)="add()">Toevoegen</ppp-button>
+  </div>
+</overview-template>

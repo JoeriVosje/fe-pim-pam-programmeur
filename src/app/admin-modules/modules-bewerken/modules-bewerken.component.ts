@@ -22,7 +22,7 @@ export class ModulesBewerkenComponent implements OnInit {
 
   public getInputValue(value: string): void {
     this.moduleName = value;
-  }
+  } 
 
   public update(){
     this.updateModule.next(this.moduleName);
