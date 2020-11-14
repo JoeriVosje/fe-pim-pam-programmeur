@@ -8,5 +8,6 @@ export interface Screen {
   questionD?: string;
   correctAnswer?: string;
   feedback?: string;
+  skippable?: string;
   id?: string;
 }

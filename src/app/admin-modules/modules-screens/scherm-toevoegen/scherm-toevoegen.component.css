@@ -32,22 +32,15 @@
   width: 100%;
 }
 
-input, label {
-  box-sizing: border-box;
-  display: block;
-}
-
-#input-label {
-  font-size: 15px;
-  padding-bottom: 7px;
-}
-
 input {
   height: 50px;
   border: 1px solid #7764E4;
   border-radius: 5px;
   box-shadow: 0 2px 4px #1717172E;
   font-size: 15px;
+  padding-bottom: 7px;
+  box-sizing: border-box;
+  display: block;
 }
 
 .theorie-grid {

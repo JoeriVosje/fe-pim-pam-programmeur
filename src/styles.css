@@ -14,14 +14,21 @@ html, body {
 
 
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
-  border-color:#7765e3;;
+  border-color:#7765e3;
 }
 
 .mat-radio-button.mat-accent .mat-radio-inner-circle{
-  color:#7765e3;;
-  background-color:#7765e3; ;
+  color:#7765e3;
+  background-color:#7765e3;
 }
 
 .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-  background-color:#7765e3;;
+  background-color:#7765e3;
+}
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #7765e3;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #7765e3;
 }

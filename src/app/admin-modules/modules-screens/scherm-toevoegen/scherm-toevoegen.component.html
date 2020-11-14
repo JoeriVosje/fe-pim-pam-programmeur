@@ -11,22 +11,21 @@
       </div>
 
       <div class="titel-grid inputWidth">
-        <label id="input-label" for="input-field">
-          Titel
-        </label>
-        <input label="title" type="text" id="input-field" name="input-field"/>
+        Titel
+        <input type="text" formControlName="title"/>
       </div>
 
 
       <div class="theorie-grid">Theorie
-        <div class="editor">
+        <div >
           <editor
-            id="theory"
+            formControlName="theory"
             initialValue="<p>Initial content of the editor</p>"
-            apiKey='2m3rqe9g14p0ru6mjqafw1sakrbz0fln413wzqumvt4bhq3a'
             [init]="{
-     height: 300,
-    menubar: false,
+                       base_url: '/tinymce',
+                       suffix: '.min'  ,
+                       height: 300,
+                       menubar: true,
     plugins: [
       'advlist autolink lists link image charmap print',
       'preview anchor searchreplace visualblocks code codesample',
@@ -41,35 +40,36 @@
 
 
       <div class="vraag-grid inputWidth">
-        <label id="vraag" for="input-field">
-          Vraag
-        </label>
+        Vraag
         <div class="naast-elkaar">
-          <input label="vraag" type="text" id="vraag-field" name="input-field"/>
+          <input formControlName="question"/>
           <div class="skippable">
-            <mat-radio-button value="skippable">Student mag vraag overslaan</mat-radio-button>
+            <mat-checkbox formControlName="skippable">
+              Student mag vraag overslaan
+            </mat-checkbox>
+
           </div>
         </div>
 
       </div>
 
-      <mat-radio-group>
+      <mat-radio-group formControlName="correctAnswer">
         <div class="multiple-choice-grid">
           <div class="questionA">
             <mat-radio-button value="A">A</mat-radio-button>
-            <input label="vraag" type="text" id="a" name="input-field"/>
+            <input type="text" formControlName="questionA"/>
           </div>
           <div class="questionB">
             <mat-radio-button value="B">B</mat-radio-button>
-            <input label="vraag" type="text" id="b" name="input-field"/>
+            <input type="text" formControlName="questionB"/>
           </div>
           <div class="questionC">
             <mat-radio-button value="C">C</mat-radio-button>
-            <input label="vraag" type="text" id="c" name="input-field"/>
+            <input type="text" formControlName="questionC"/>
           </div>
           <div class="questionD">
             <mat-radio-button value="D">D</mat-radio-button>
-            <input label="vraag" type="text" id="d" name="input-field"/>
+            <input type="text" formControlName="questionD"/>
           </div>
 
         </div>
@@ -77,15 +77,13 @@
 
 
       <div class="feedback-grid inputWidth">
-        <label id="feedback" for="input-field">
-          Feedback
-        </label>
-        <input label="vraag" type="text" id="feedback-field" name="input-field"/>
+        Feedback
+        <input type="text" formControlName="feedback"/>
       </div>
 
       <div class="toevoegen-grid">
         <div class="toevoegen-button">
-          <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
+          <ppp-button (clicked)="addScreen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
         </div>
       </div>
     </div>
