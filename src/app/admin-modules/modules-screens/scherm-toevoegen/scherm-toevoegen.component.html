@@ -1,8 +1,16 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
+
+
+  <ppp-modal *ngIf="inValid"
+    (eventClick)="handleEventClicked($event)"
+    [texts]="modalvraag1"
+    [buttontext]="kliktekst">
+  </ppp-modal><>
+
   <form [formGroup]="screenForm" (ngSubmit)="addScreen()">
-    <div class="container">
+    <div class="scherm-container">
 
       <div class="header-grid">
         <div class="scherm-toevoegen-title">
@@ -20,7 +28,6 @@
         <div >
           <editor
             formControlName="theory"
-            initialValue="<p>Initial content of the editor</p>"
             [init]="{
                        base_url: '/tinymce',
                        suffix: '.min'  ,
@@ -41,7 +48,7 @@
 
       <div class="vraag-grid inputWidth">
         Vraag
-        <div class="naast-elkaar">
+        <div class="nextToEachtOther">
           <input formControlName="question"/>
           <div class="skippable">
             <mat-checkbox formControlName="skippable">
@@ -53,26 +60,24 @@
 
       </div>
 
-      <mat-radio-group formControlName="correctAnswer">
-        <div class="multiple-choice-grid">
-          <div class="questionA">
+      <mat-radio-group formControlName="correctAnswer" class="multiple-choice-grid">
+          <div class="questionA-grid nextToEachtOther">
             <mat-radio-button value="A">A</mat-radio-button>
             <input type="text" formControlName="questionA"/>
           </div>
-          <div class="questionB">
+          <div class="questionB-grid nextToEachtOther">
             <mat-radio-button value="B">B</mat-radio-button>
             <input type="text" formControlName="questionB"/>
           </div>
-          <div class="questionC">
+          <div class="questionC-grid nextToEachtOther">
             <mat-radio-button value="C">C</mat-radio-button>
             <input type="text" formControlName="questionC"/>
           </div>
-          <div class="questionD">
+          <div class="questionD-grid nextToEachtOther s">
             <mat-radio-button value="D">D</mat-radio-button>
             <input type="text" formControlName="questionD"/>
           </div>
 
-        </div>
       </mat-radio-group>
 
 

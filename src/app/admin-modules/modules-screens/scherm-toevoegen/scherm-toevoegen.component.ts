@@ -19,6 +19,15 @@ export class SchermToevoegenComponent implements OnInit {
 
   screenForm: FormGroup;
 
+  modalvraag1 = {
+    title: 'Verkeerde input ingevuld.',
+    message: 'U moet alle velden inclusief theorie invullen.',
+    confirmText: 'Klik op toevoegen als u alle velden heeft ingevuld.'
+  };
+
+  kliktekst = 'Klikkie';
+  invalid: boolean;
+
   ngOnInit(): void {
     this.screenForm = new FormGroup({
       title: new FormControl(null, [Validators.required]),
@@ -37,10 +46,13 @@ export class SchermToevoegenComponent implements OnInit {
 
 
 
+  handleEventClicked(data): void {
+    console.log('received: ', data);
+  }
+
   public addScreen(): void {
-    console.log('sent');
-    console.log(this.screenForm);
     if (this.screenForm.invalid) {
+      this.invalid = true;
       return;
     }
     const product: Screen = {

@@ -1,4 +1,4 @@
-.container {
+.scherm-container {
   border-radius: 10px;
   background-color: white;
   display: grid;
@@ -9,102 +9,50 @@
 
 .header-grid {
   grid-row: 1/2;
-}
-
-.scherm-toevoegen-title {
-  padding-left: 24px;
-  font-size: 18px;
-  font-weight: normal;
-  align-self: center;
-  grid-row: 1/2;
-  border-bottom: 1px solid rgb(214, 214, 214);
-  margin-top: 16px;
-  margin-bottom: 0;
-  margin-left: 16px;
+  padding: 0 30px;
 }
 
 .titel-grid {
   grid-row: 2/3;
-  margin: -32px 16px;
-}
-
-.inputWidth input {
-  width: 100%;
-}
-
-input {
-  height: 50px;
-  border: 1px solid #7764E4;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px #1717172E;
-  font-size: 15px;
-  padding-bottom: 7px;
-  box-sizing: border-box;
-  display: block;
+  padding: 0 30px;
 }
 
 .theorie-grid {
   grid-row: 3/7;
-  margin: 0 16px
+  padding: 0 30px;
 }
 
 .vraag-grid {
   grid-row: 7/8;
-  margin: -8px 16px;
-}
-
-.naast-elkaar {
-  display: flex;
-  align-items: center;
-  direction: ltr;
-}
-
-.skippable {
-  padding-left: 32px;
+  padding: 0 30px;
 }
 
 .multiple-choice-grid {
   grid-row: 8/9;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 8px 16px
+  padding: 8px 30px;
 }
 
-mat-radio-button {
-  padding-right: 16px;
-}
-
-.questionA {
+.questionA-grid {
   grid-column: 1/2;
-  display: flex;
-  align-items: center;
-  direction: ltr;
 }
 
-.questionB {
+.questionB-grid {
   grid-column: 2/3;
-  display: flex;
-  align-items: center;
-  direction: ltr;
 }
 
-.questionC {
+.questionC-grid {
   grid-column: 3/4;
-  display: flex;
-  align-items: center;
-  direction: ltr;
 }
 
-.questionD {
+.questionD-grid {
   grid-column: 4/5;
-  display: flex;
-  align-items: center;
-  direction: ltr;
 }
 
 .feedback-grid {
   grid-row: 9/10;
-  margin: 8px 16px
+  padding: 0 30px;
 }
 
 .toevoegen-grid {
@@ -113,4 +61,47 @@ mat-radio-button {
   padding-top: 16px;
   padding-right: 30px;
   padding-bottom: 30px;
+}
+
+mat-radio-button {
+  padding-right: 16px;
+}
+
+.nextToEachtOther {
+  display: flex;
+  align-items: center;
+  direction: ltr;
+}
+
+input {
+  height: 50px;
+  border: 1px solid #7764E4;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px #1717172E;
+  font-size: 15px;
+  box-sizing: border-box;
+  display: block;
+  padding-left: 30px;
+}
+
+.scherm-toevoegen-title {
+  font-size: 18px;
+  font-weight: normal;
+  align-self: center;
+  grid-row: 1/2;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.skippable {
+  padding-left: 32px;
+}
+
+.inputWidth input {
+  width: 100%;
 }
