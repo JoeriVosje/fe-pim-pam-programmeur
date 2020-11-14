@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import {Answer, Screen} from '../screens-overzicht/screen-item/screen-item.model';
+import { Answer, Screen } from '../screens-overzicht/screen-item/screen-item.model';
 
 @Component({
   selector: 'scherm-toevoegen',
