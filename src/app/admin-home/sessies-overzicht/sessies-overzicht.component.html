@@ -1,4 +1,7 @@
-<div class="sessies-overview">
+<overview-template [title]="'Home'"
+                   [isAdmin]="true"
+                   [icon]="'layers'">
+  <div class="sessies-overview">
     <h3 class="title">Sessie overzicht</h3>
     <h4 class="name column">NAAM</h4>
     <h4 class="status column">STATUS</h4>
@@ -12,7 +15,7 @@
       </span>
     </div>
     <ng-template #itemsPresent>
-    <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
+      <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
 
         <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
                       [name]="sessie.name"
@@ -24,6 +27,7 @@
                       [background]="even? 'light' : 'dark'">
         </sessies-item>
 
-    </cdk-virtual-scroll-viewport>
+      </cdk-virtual-scroll-viewport>
     </ng-template>
   </div>
+</overview-template>
