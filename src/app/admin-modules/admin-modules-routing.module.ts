@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminModulesComponent } from './admin-modules.component';
 import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.component';
+import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modules-bewerken.wrapper.component';
 import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
 import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen.component';
+import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
 
 const breadCrumpMap = new Map([
   [0, {name: 'Overzicht', route: 'modules'}],
@@ -16,13 +18,13 @@ const breadCrumpMap = new Map([
 const routes: Routes = [
   {path: '', component: AdminModulesComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}},
   {
-    path: 'add', component: ModulesToevoegenComponent,
+    path: 'add', component: ModulesToevoegenWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)]
     }
   },
   {
-    path: ':id/edit', component: ModulesBewerkenComponent,
+    path: ':id/edit', component: ModulesBewerkenWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)]
     }

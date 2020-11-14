@@ -1,0 +1,13 @@
+<overview-template [title]="getText('title')" [icon]="headerIcon">
+  <ppp-content-overview [title]="getText('content-title')" [size]="'md'">
+
+    <div class="student-overview">
+      <div class="overview-text">
+        <p>{{ getText('main') }}</p>
+        <p>{{ getText('footer') }}</p>
+      </div>
+      <ppp-button (clicked)="startModule()">Start Module</ppp-button>
+    </div>
+
+  </ppp-content-overview>
+</overview-template>

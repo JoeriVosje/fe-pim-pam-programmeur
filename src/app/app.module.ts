@@ -1,3 +1,4 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -5,11 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminModulesModule } from './admin-modules/admin-modules.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthHttpInterceptor } from './http-interceptor';
 import { LoginModulesModule } from './login-modules/login-modules.module';
+import { StudentModulesModule } from './student-modules/student-modules.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     LoginModulesModule,
@@ -17,8 +20,11 @@ import { LoginModulesModule } from './login-modules/login-modules.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    StudentModulesModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

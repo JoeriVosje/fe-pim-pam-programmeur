@@ -51,17 +51,6 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     );
   }
 
-  public saveModule(moduleName: string): void {
-    this.subscription.add(
-      this.adminModuleService.saveModule(moduleName)
-        .subscribe({
-          next: response => console.log(response),
-          error: error => console.log(error),
-          complete: () => console.log('complete')
-        })
-    );
-  }
-
   public menuItem(menuItem: MenuItem): void {
     if (menuItem.isRoute) {
       this.router.navigate([menuItem.data]);

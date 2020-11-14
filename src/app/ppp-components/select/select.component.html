@@ -1,0 +1,8 @@
+<div [ngClass]="size">
+  <label id="select-label" for="select-field">
+    <ng-content></ng-content>
+  </label>
+  <select [formControl]="selectField" id="select-field" name="select-field">
+    <option *ngFor="let value of values" [value]="value.key">{{value.value}}</option>
+  </select>
+</div>
