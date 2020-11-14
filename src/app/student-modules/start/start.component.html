@@ -1,10 +1,11 @@
 <overview-template [title]="getText('title')" [icon]="headerIcon">
-  <ppp-content-overview [title]="getText('content-title')" [size]="'md'">
+  <ppp-content-overview [title]="getName()" [size]="'md'">
 
     <div class="student-overview">
       <div class="overview-text">
         <p>{{ getText('main') }}</p>
-        <p>{{ getText('footer') }}</p>
+        <p *ngIf="canStartModule">{{ getPersonalText() }}</p>
+        <p *ngIf="!canStartModule">{{ getPersonalText() }}</p>
       </div>
       <ppp-button (clicked)="startModule()">Start Module</ppp-button>
     </div>
