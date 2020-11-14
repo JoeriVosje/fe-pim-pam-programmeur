@@ -11,3 +11,17 @@ html, body {
   padding: 0;
   font-family: 'Poppins', sans-serif;
 }
+
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#7765e3;;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:#7765e3;;
+  background-color:#7765e3; ;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color:#7765e3;;
+}
