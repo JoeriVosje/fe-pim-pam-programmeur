@@ -23,8 +23,8 @@ export class SchermToevoegenComponent implements OnInit {
   ngOnInit(): void {
     this.screenForm = new FormGroup({
       title: new FormControl(null, [Validators.required]),
-      theory: new FormControl(null, [Validators.required]),
-      question: new FormControl(null, [Validators.required]),
+      theory: new FormControl(null, []),
+      question: new FormControl(null, []),
       questionA: new FormControl(null, [Validators.required]),
       questionB: new FormControl(null, [Validators.required]),
       questionC: new FormControl(null, [Validators.required]),
