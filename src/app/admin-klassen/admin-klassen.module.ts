@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
 import { AdminKlassenRoutingModule } from './admin-klassen-routing.module';
@@ -40,6 +41,7 @@ import { KlassenToevoegenWrapperComponent } from './klassen-toevoegen/wrapper/kl
     ScrollingModule,
     AdminKlassenRoutingModule,
     DragDropModule,
+    MatProgressBarModule,
     MatButtonModule
   ]
 })

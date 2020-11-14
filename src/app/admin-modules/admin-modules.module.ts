@@ -3,6 +3,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MatProgressBar, MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
 import { AdminModulesRoutingModule } from './admin-modules-routing.module';
@@ -34,6 +36,7 @@ import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/mo
   imports: [
     CommonModule,
     HttpClientModule,
+    MatSnackBarModule,
     PppComponentsModule,
     ScrollingModule,
     AdminModulesRoutingModule,

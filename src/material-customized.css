@@ -19,6 +19,8 @@
   color: #F53C56;
 }
 
+/* Button */
+
 .mat-flat-button {
   box-shadow: 0px 3px 6px #2C28281C !important;
   border-radius: 5px !important;
@@ -43,3 +45,22 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Snackbar */
+
+.snackbar {
+  font-style: normal;
+  box-shadow: 0px 3px 6px #2C28281C;
+  border-radius: 10px !important;
+  opacity: 1;
+  font: bold 15px Poppins !important;
+  text-align: right !important;
+  letter-spacing: 0px;
+  color: white;
+  background-color: limegreen;
+}
+
+.error{
+  background-color: red;
+}
+
