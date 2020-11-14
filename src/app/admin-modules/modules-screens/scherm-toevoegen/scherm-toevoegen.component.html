@@ -2,13 +2,6 @@
                    [isAdmin]="true"
                    [icon]="'layers'">
 
-
-  <ppp-modal *ngIf="inValid"
-    (eventClick)="handleEventClicked($event)"
-    [texts]="modalvraag1"
-    [buttontext]="kliktekst">
-  </ppp-modal><>
-
   <form [formGroup]="screenForm" (ngSubmit)="addScreen()">
     <div class="scherm-container">
 
