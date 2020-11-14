@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { KlassenOverzichtWrapperComponent } from './klassen-overzicht/wrapper/klassen-overzicht.wrapper.component';
+import { KlassenStudentenOverzichtWrapperComponent } from './klassen-studenten-overzicht/klassen-studenten-overzicht-wrapper/klassen-studenten-overzicht-wrapper.component';
+import { KlassenStudentenToevoegenWrapperComponent } from './klassen-studenten-toevoegen/klassen-studenten-toevoegen-wrapper/klassen-studenten-toevoegen-wrapper.component';
 import { KlassenToevoegenWrapperComponent } from './klassen-toevoegen/wrapper/klassen-toevoegen.wrapper.component';
 
 
 const breadCrumpMap = new Map([
   [0, {name: 'Overzicht', route: 'classes'}],
   [1, {name: 'Toevoegen', route: 'classes/add'}],
-  [2, {name: 'Bewerken', route: 'classes/:id/edit'}],
-]); 
+  [2, {name: 'Studenten', route: 'classes/:id/students'}],
+  [3, {name: 'Toevoegen', route: 'classes/:id/students/add'}],
+]);
 
 const routes: Routes = [
   {path: '', component: KlassenOverzichtWrapperComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}},
@@ -18,6 +22,23 @@ const routes: Routes = [
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)]
     }
   },
+  {
+    path: ':id/students', component: KlassenStudentenOverzichtWrapperComponent,
+    data: {
+      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)]
+    }
+  },
+  {
+    path: ':id/students/add', component: KlassenStudentenToevoegenWrapperComponent,
+    data: {
+      breadCrumbs: [
+        breadCrumpMap.get(0),
+        breadCrumpMap.get(2),
+        breadCrumpMap.get(3),
+      ]
+    }
+  },
+
   // {
   //   path: ':id/edit', component: ModulesBewerkenWrapperComponent,
   //   data: {

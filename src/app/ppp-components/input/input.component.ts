@@ -11,6 +11,7 @@ export class InputComponent implements OnInit{
   @Input() public size: string;
   @Input() public id: string;
   @Input() public value: string;
+  @Input() public lastItem: boolean;
   @Output() public inputFieldChange: EventEmitter<string> = new EventEmitter();
 
   public inputField: FormControl = new FormControl('');

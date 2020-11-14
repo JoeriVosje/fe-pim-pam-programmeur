@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { KlasRequest } from '../klassen-request.model';
 
 @Component({
@@ -14,7 +15,8 @@ export class KlassenToevoegenComponent implements OnInit {
   public modules: any[];
   private klas: KlasRequest = {id: null, moduleId: null, major: null, name: null};
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

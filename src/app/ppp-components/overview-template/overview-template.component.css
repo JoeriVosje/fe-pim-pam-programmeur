@@ -4,9 +4,7 @@
   display: grid;
   grid-template-rows: 70px auto 32px;
   grid-template-columns: 250px auto;
-  grid-template-areas: "sidebar  header"
-                       "sidebar  main"
-                       "sidebar  footer";
+  grid-template-areas: "sidebar  header" "sidebar  main" "sidebar  footer";
 }
 
 .sidebar {

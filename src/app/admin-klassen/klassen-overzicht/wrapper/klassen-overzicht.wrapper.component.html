@@ -1,5 +1,5 @@
 <overview-template [title]="'Klassen'"
                    [isAdmin]="true"
-                   [icon]="'layers'">
-  <klassen-overzicht [klassen]="klassen" (toevoegenClicked)="toevoegenClicked()"></klassen-overzicht>
+                   [icon]="'person'">
+  <klassen-overzicht [klassen]="klassen" (toevoegenClicked)="toevoegenClicked()" (menuItemClicked)="menuItemClicked($event)"></klassen-overzicht>
 </overview-template>

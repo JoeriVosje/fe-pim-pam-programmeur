@@ -1,36 +1,44 @@
-div {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-input,
-label {
-    box-sizing: border-box;
-    display: block;
-}
-
 #input-label {
-    font-size: 15px;
-    padding-bottom: 7px;
+  display: block;
+  padding-bottom: 8px;
+  font-size: 15px;
+  color: #172B4D;
 }
 
 .input-field {
-    height: 50px;
-    border: 1px solid #7764E4;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px #1717172E;
-    font-size: 15px;
-    padding-left: 30px;
+  height: 50px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #F7FAFC;
+  color: #172B4D;
+  font-size: 15px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px #1717171E;
+  font-style: normal;
+}
+
+textarea:focus, input:focus {
+  color: #7764E4;
+  background-color: #FFFFFF;
+}
+
+.no-padding {
+  padding-bottom: 0;
+}
+
+.bottom-padding {
+  padding-bottom: 16px;
 }
 
 .S input {
-    width: 35%;
+  width: 35%;
 }
 
 .M input {
-    width: 70%;
+  width: 70%;
 }
 
 .L input {
-    width: 100%;
+  width: 100%;
 }

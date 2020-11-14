@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*noinspection CssUnknownTarget*/
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body {
@@ -12,5 +13,12 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
+.align-button {
+  display: flex;
+  padding-top: 32px;
+  justify-content: flex-end;
+}
 
-
+.input-field-padding {
+  padding: 24px 32px 32px;
+}
