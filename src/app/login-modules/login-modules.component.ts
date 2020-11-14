@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LoginRequest } from './login-request.model';
 
 /**
  * Dit component moet de bovenste laag van de login app
@@ -16,9 +17,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginModulesComponent implements OnInit {
 
+  @Output()
+  public login: EventEmitter<LoginRequest> = new EventEmitter();
+
+  @Input()
+  public loginFailed: boolean = false;
+
+  private password: string;
+  private email: string;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  inloggen(){
+    const loginRequest: LoginRequest = {email: this.email, password: this.password};
+    this.login.emit(loginRequest);
+  }
+
+  public getEmail(value: string): void {
+    this.email = value;
+  }
+
+  public getPassword(value: string): void {
+    this.password = value;
+  }
 }
