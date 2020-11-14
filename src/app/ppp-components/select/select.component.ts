@@ -10,17 +10,17 @@ import { Subscription } from 'rxjs';
 export class SelectComponent implements OnInit{
   @Input() public size: string;
   @Input() public values: any[];
-  @Output() public inputFieldChange: EventEmitter<string> = new EventEmitter();
+  @Output() public selectFieldChange: EventEmitter<string> = new EventEmitter();
 
-  public inputField: FormControl = new FormControl('');
+  public selectField: FormControl = new FormControl('');
 
   private subscription: Subscription;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.subscription = this.inputField.valueChanges.subscribe(() => {
-      this.inputFieldChange.emit(this.inputField.value);
+    this.subscription = this.selectField.valueChanges.subscribe(() => {
+      this.selectFieldChange.emit(this.selectField.value);
     });
   }
 }

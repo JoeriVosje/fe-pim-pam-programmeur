@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class InputComponent implements OnInit{
   @Input() public size: string;
+  @Input() public id: string;
   @Input() public value: string;
   @Output() public inputFieldChange: EventEmitter<string> = new EventEmitter();
 

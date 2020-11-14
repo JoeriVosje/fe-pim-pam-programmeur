@@ -1,7 +1,9 @@
+import { Module } from '../admin-modules/modules-overzicht/modules-item/modules-item.model';
+
 export interface Klas {
     id: string;
     name: string;
-    moduleId: string;
+    module: Module;
     major: string;
   }
   
