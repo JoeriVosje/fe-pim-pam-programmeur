@@ -18,3 +18,17 @@
 .mat-menu-item-red {
   color: #F53C56;
 }
+
+/* Modal */
+
+.ppp-modalbox > mat-dialog-container {
+  border: 3px solid #f53c56;
+  border-radius: 10px;
+  background-color: #f53c56;
+  width: 500px;
+  color: white;
+  float: left;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
+}

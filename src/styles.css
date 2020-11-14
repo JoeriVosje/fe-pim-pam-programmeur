@@ -12,7 +12,6 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
-
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
   border-color:#7765e3;
 }

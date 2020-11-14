@@ -1,35 +1,36 @@
 div {
-  padding-left: 30px;
-  padding-right: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-input, label {
-  box-sizing: border-box;
-  display: block;
+input,
+label {
+    box-sizing: border-box;
+    display: block;
 }
 
 #input-label {
-  font-size: 15px;
-  padding-bottom: 7px;
+    font-size: 15px;
+    padding-bottom: 7px;
 }
 
-#input-field {
-  height: 50px;
-  border: 1px solid #7764E4;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px #1717172E;
-  font-size: 15px;
-  padding-left: 30px;
+.input-field {
+    height: 50px;
+    border: 1px solid #7764E4;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px #1717172E;
+    font-size: 15px;
+    padding-left: 30px;
 }
 
 .S input {
-  width: 35%;
+    width: 35%;
 }
 
 .M input {
-  width: 70%;
+    width: 70%;
 }
 
 .L input {
-  width: 100%;
+    width: 100%;
 }

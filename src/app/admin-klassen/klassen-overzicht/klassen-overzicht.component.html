@@ -1,0 +1,21 @@
+<div class="klassen-overview">
+  <h3 class="title">Klassen overzicht</h3>
+  <h4 class="name column">Naam</h4>
+  <h4 class="opleiding column">Opleiding</h4>
+  <h4 class="module column">Module</h4>
+  <div class="empty-board" *ngIf="klassen.length < 1; else itemsPresent">
+    <span class="empty-board-text">
+    Er zijn nog geen klassen toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
+    </span>
+  </div>
+  <ng-template #itemsPresent>
+  <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
+    <klassen-item *cdkVirtualFor="let klas of klassen; let even = even"
+                  [klas]="klas"
+                  [background]="even? 'light' : 'dark'"
+    (menuItemClicked)="menuItem($event)">
+    </klassen-item>
+  </cdk-virtual-scroll-viewport>
+  </ng-template>
+  <ppp-button (clicked)="toevoegen()">Toevoegen</ppp-button>
+</div>

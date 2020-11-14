@@ -1,5 +1,12 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
-  <p>modules-bewerken met id {{ id }}</p>
+  <div class="modules-update">
+    <h3 class="title">Modules overzicht</h3>
+    <ppp-input [value]="moduleName" [size]="'L'" (inputFieldChange)="getInputValue($event)">
+      Naam
+    </ppp-input>
+    
+    <ppp-button (clicked)="update()">Wijzigen</ppp-button>
+  </div>
 </overview-template>
