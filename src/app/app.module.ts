@@ -8,22 +8,26 @@ import { AdminModulesModule } from './admin-modules/admin-modules.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthHttpInterceptor } from './http-interceptor';
+import { LoginModulesModule } from './login-modules/login-modules.module';
 import { StudentModulesModule } from './student-modules/student-modules.module';
+import { CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    LoginModulesModule,
     AdminModulesModule,
     AdminHomeModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    StudentModulesModule
+    StudentModulesModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+    CookieService
   ],
   bootstrap: [AppComponent],
 })
