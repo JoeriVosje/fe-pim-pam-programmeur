@@ -16,7 +16,7 @@ export class TokenService {
     // TODO check if the cookie can be created as a secure cookie
     const expireDate = new Date();
     expireDate.setHours(expireDate.getHours()+20);
-    this.cookieService.set(this.cookieName, JSON.stringify(loginResponse), );
+    this.cookieService.set(this.cookieName, JSON.stringify(loginResponse), expireDate);
   }
 
   public readToken(): LoginResponse {
