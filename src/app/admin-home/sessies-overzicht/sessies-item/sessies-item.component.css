@@ -17,9 +17,18 @@
     grid-column: 2 / 3;
   }
 
+.progress-bar {
+  width: 50% !important;
+  margin: 10px;
+
+}
+
   #progress {
       padding-left: 30px;
       grid-column: 3 / 4;
+      display: flex;   
+      align-items: center;   
+      direction: ltr;
   }
   
   #dateStarted {

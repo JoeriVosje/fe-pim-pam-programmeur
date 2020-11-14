@@ -23,7 +23,7 @@ export class AdminHomeService {
         id: i.toString(),
         name: 'Sessie naam',
         status: true,
-        progress: 'balkje met cijfers ervoor',
+        progress: '40',
         dateStarted: '2020-11-12',
         timeStarted: '2020-11-12T23:45',
         timeFinished: '2020-11-12T23:59'
