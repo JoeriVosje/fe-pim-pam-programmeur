@@ -1,6 +1,6 @@
 export interface MenuItem {
-  extraDataLolFixLater?: string;
+  data?: string;
   name: string;
-  data: string;
+  routeOrID: string;
   isRoute: boolean;
 }

@@ -46,9 +46,9 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
 
   public menuItemClicked(menuItem: MenuItem): void {
     if (menuItem.isRoute) {
-      this.router.navigate([menuItem.data], { state: { klasNaam : menuItem.extraDataLolFixLater }});
+      this.router.navigate([menuItem.routeOrID], { state: { klasNaam : menuItem.data }});
     } else {
-      // todo implement delete classroom
+      // todo implement snackbar, loading and delete
     }
   }
 }

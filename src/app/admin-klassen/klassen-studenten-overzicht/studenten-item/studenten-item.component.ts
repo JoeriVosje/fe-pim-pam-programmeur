@@ -16,7 +16,7 @@ export class StudentenItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Verwijderen', data: this.student.id, isRoute: false},
+      {name: 'Verwijderen', routeOrID: this.student.id, isRoute: false},
     ];
   }
   constructor() { }

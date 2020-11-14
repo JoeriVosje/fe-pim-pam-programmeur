@@ -52,9 +52,10 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
 
   public menuItemClicked(menuItem: MenuItem): void {
     if (menuItem.isRoute) {
-      this.router.navigate([menuItem.data], {state: {klasNaam: this.klasNaam}});
+      this.router.navigate([menuItem.routeOrID], {state: {klasNaam: this.klasNaam}});
     } else {
-      // todo implement delete student
+      // todo implement snackbar, loading and delete
+      // this.studentenService.deleteStudent(menuItem.routeOrID);
     }
   }
 }

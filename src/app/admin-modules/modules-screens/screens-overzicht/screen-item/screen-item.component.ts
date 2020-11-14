@@ -21,7 +21,7 @@ export class ScreenItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Verwijderen', data: this.screenId, isRoute: false},
+      {name: 'Verwijderen', routeOrID: this.screenId, isRoute: false},
     ];
   }
 
