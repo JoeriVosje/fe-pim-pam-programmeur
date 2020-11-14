@@ -1,1 +1,5 @@
-<student-start></student-start>
+<student-start *ngIf="!isLoading"
+               [student]="student"
+               [canStartModule]="canStartModule()"
+               (naarSchermen)="naarSchermen()">
+</student-start>
