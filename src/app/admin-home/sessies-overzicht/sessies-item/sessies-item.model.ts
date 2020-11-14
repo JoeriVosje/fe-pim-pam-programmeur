@@ -5,8 +5,8 @@ export interface Sessie {
       moduleName: string;
       creationDate: string;
     }
-    studentsFinished: number;
-    studentsTotal: number;
+    studentsFinished: string;
+    studentsTotal: string;
     timeStarted: string;
     timeFinished: string;
   }

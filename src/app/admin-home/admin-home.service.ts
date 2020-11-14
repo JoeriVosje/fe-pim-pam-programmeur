@@ -18,7 +18,7 @@ export class AdminHomeService {
   private createSessies(): Sessie[] {
     const sessies: Sessie[] = [];
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       sessies.push({
         id: i.toString(),
         module: {
@@ -26,8 +26,8 @@ export class AdminHomeService {
           moduleName: 'Sessie naam',
           creationDate: '2020-11-12T23:45'
         },
-        studentsFinished: 5,
-        studentsTotal: 20,
+        studentsFinished: '5',
+        studentsTotal: '20',
         timeStarted: '2020-11-12T23:45',
         timeFinished: '2020-11-12T23:45'
       });
