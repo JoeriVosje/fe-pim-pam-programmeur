@@ -70,17 +70,29 @@ input {
 }
 .questionA{
   grid-column: 1/2;
+  display: flex;
+  align-items: center;
+  direction: ltr;
 }
 
 .questionB{
   grid-column: 2/3;
+  display: flex;
+  align-items: center;
+  direction: ltr;
 }
 
 .questionC{
   grid-column: 3/4;
+  display: flex;
+  align-items: center;
+  direction: ltr;
 }
 .questionD{
   grid-column: 4/5;
+  display: flex;
+  align-items: center;
+  direction: ltr;
 }
 
 .feedback-grid{
