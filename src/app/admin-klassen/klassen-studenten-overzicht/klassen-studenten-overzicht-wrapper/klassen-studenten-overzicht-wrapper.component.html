@@ -1,0 +1,6 @@
+<overview-template [title]="'Klassen'"
+                   [isAdmin]="true"
+                   [icon]="'person'">
+  <app-klassen-studenten-overzicht [studenten]="studenten" (toevoegenClicked)="toevoegenClicked()"
+                                   (menuItemClicked)="menuItemClicked($event)" [klasNaam]="klasNaam"></app-klassen-studenten-overzicht>
+</overview-template>
