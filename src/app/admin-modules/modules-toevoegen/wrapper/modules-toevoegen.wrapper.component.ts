@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AdminModulesService } from '../../admin-modules.service';
 
 @Component({
@@ -14,12 +15,12 @@ export class ModulesToevoegenWrapperComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addModule(moduleName: string){
+  addModule(moduleName: string): void{
     this.service.saveModule(moduleName).subscribe({
       next: e => console.log(e),
       error: error => console.log(error),
       complete: () => this.router.navigate(['/modules'])
-    })
-  } 
+    });
+  }
 
 }
