@@ -9,20 +9,24 @@
     <h4 class="date-started column">STARTDATUM</h4>
     <h4 class="time-started column">STARTTIJD</h4>
     <h4 class="time-ended column">EINDTIJD</h4>
-    <div class="empty-board" *ngIf="sessies.length < 1; else itemsPresent">
+
+    <div class="empty-board" *ngIf="sessies == undefined || sessies.length < 1; else itemsPresent">
       <span class="empty-board-text">
-      Er zijn nog geen actieve sessies. Ga naar <b>modules</b> om een sessie te starten.
+
+
+
+      Er zijn nog geen actieve sessies. Ga naar <b> modules </b> om een sessie te starten.
       </span>
     </div>
     <ng-template #itemsPresent>
       <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
 
         <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
-                      [name]="sessie.module.moduleName"
+                      [name]="sessie.module.name"
                       [studentsFinished]="sessie.studentsFinished"
-                      [studentsTotal]="sessie.studentsTotal"
-                      [timeStarted]="sessie.timeStarted"
-                      [timeFinished]="sessie.timeFinished"
+                      [studentsTotal]="sessie.totalStudents"
+                      [timeStarted]="sessie.startTime"
+                      [timeFinished]="sessie.endTime"
                       [background]="even? 'light' : 'dark'">
         </sessies-item>
 

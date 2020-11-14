@@ -22,8 +22,6 @@ export class SessiesItemComponent implements OnInit {
   ngOnInit(): void {
     var finished = Number(this.studentsFinished);
     var total = Number(this.studentsTotal);
-    console.log("total", total)
-    console.log("finished", finished)
     this.progress = finished / total * 100;
     this.progressString = this.studentsFinished + " / " + this.studentsTotal;
   }

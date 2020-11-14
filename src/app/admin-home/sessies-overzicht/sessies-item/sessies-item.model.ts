@@ -1,14 +1,12 @@
+import { Module } from 'src/app/admin-modules/modules-overzicht/modules-item/modules-item.model';
+
 export interface Sessie {
     id: string;
-    module: {
-      moduleId: string;
-      moduleName: string;
-      creationDate: string;
-    }
+    module: Module;
     studentsFinished: string;
-    studentsTotal: string;
-    timeStarted: string;
-    timeFinished: string;
+    totalStudents: string;
+    startTime: string;
+    endTime: string;
   }
 
 

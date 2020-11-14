@@ -29,7 +29,9 @@ export class WrapperComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.adminHomeService.getSessies()
         .subscribe({
-          next: sessies => this.sessies = sessies,
+          next: sessies => 
+          //console.log(sessies),
+          this.sessies = sessies,
           error: error => console.log(error),
           complete: () => console.log('complete')
         })
