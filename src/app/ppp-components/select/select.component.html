@@ -1,9 +1,8 @@
 <div [ngClass]="size">
-  <label id="input-label" for="input-field">
+  <label id="select-label" for="select-field">
     <ng-content></ng-content>
   </label>
-  <select *ngFor="let value of values">
-    <option [formControl]="inputField" [value]="value.key">{{value.value}}</option>
+  <select [formControl]="selectField" id="select-field" name="select-field">
+    <option *ngFor="let value of values" [value]="value.key">{{value.value}}</option>
   </select>
-  <!-- <input [formControl]="inputField" [value]="value" type="text" id="input-field" name="input-field"/> -->
 </div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.model';
 import { AdminKlassenService } from '../../admin-klassen.service';
@@ -21,7 +22,7 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
   public klassen: Klas[] =[];
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private klassenService: AdminKlassenService) {
+  constructor(private klassenService: AdminKlassenService, private router: Router ) {
   }
 
 
@@ -40,4 +41,7 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  toevoegenClicked(){
+    this.router.navigate(['classes/add']);
+  }
 }

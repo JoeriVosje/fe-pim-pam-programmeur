@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { KlasRequest } from '../klassen-request.model';
 
 @Component({
@@ -10,13 +10,13 @@ export class KlassenToevoegenComponent implements OnInit {
   @Output()
   public addKlas: EventEmitter<KlasRequest> = new EventEmitter();
 
-  public select: any[] = [];
-  private klas: KlasRequest;
+  @Input()
+  public modules: any[];
+  private klas: KlasRequest = {id: null, moduleId: null, major: null, name: null};
 
   constructor() { }
 
   ngOnInit(): void {
-    this.select.push({key: 'a', value: 'm'})
   }
 
   public getNameValue(value: string): void {
@@ -28,7 +28,7 @@ export class KlassenToevoegenComponent implements OnInit {
   }
 
   public getSelectValue(value: string): void {
-    console.log(value);
+    this.klas.moduleId = value;
   }
 
   public add(): void {

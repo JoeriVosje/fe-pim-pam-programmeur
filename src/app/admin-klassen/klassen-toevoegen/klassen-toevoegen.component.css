@@ -1,6 +1,6 @@
 .klas-add {
     align-items: center;
-    height: 300px;
+    height: auto;
     border-radius: 10px;
     background-color: white;
     display: grid;
@@ -13,12 +13,20 @@
     grid-row: 1 / 2;
 }
 
-ppp-input {
+.input-name {
     grid-row: 2 / 3;
 }
 
-ppp-button {
+.input-major {
     grid-row: 3 / 4;
+}
+
+.input-module {
+    grid-row: 4 / 5;
+}
+
+ppp-button {
+    grid-row: 5 / 5;
     justify-self: end;
     padding-right: 30px;
     padding-top: 30px;
