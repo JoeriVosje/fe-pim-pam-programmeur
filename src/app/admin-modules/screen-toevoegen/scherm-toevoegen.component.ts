@@ -25,21 +25,56 @@ export class SchermToevoegenComponent implements OnInit {
       title: new FormControl(null, [Validators.required]),
       theory: new FormControl(null, []),
       question: new FormControl(null, []),
-      questionA: new FormControl(null, [Validators.required]),
-      questionB: new FormControl(null, [Validators.required]),
-      questionC: new FormControl(null, [Validators.required]),
-      questionD: new FormControl(null, [Validators.required]),
-      feedback: new FormControl(null, [Validators.required]),
+      questionA: new FormControl(null, []),
+      questionB: new FormControl(null, []),
+      questionC: new FormControl(null, []),
+      questionD: new FormControl(null, []),
+      feedback: new FormControl(null, []),
       skippable: new FormControl(null, []),
-      correctAnswer: new FormControl(null, [Validators.required])
+      correctAnswer: new FormControl(null, [])
     });
   }
 
+  public validMultipleChoiceAnswers(): boolean{
+    return !(this.isEmpty(this.screenForm.controls.questionA.value) ||
+      this.isEmpty(this.screenForm.controls.questionB.value ) ||
+        this.isEmpty(this.screenForm.controls.questionC.value) ||
+          this.isEmpty(this.screenForm.controls.questionD.value) ||
+            this.isEmpty(this.screenForm.controls.correctAnswer.value));
+    }
+
+  public isEmpty(input: string): boolean {
+    if (typeof input !== 'undefined' && input){
+      return false;
+  }
+    return true;
+  }
   public addScreen(): void {
+    console.log(this.screenForm);
     if (this.screenForm.invalid) {
-      alert('Graag alle velden invullen.');
+      alert('Titel is verplicht');
       return;
     }
+    if (this.isEmpty(this.screenForm.controls.question.value)) {
+        if (this.isEmpty(this.screenForm.controls.theory.value)) {
+          alert('Als de vraag leeg is, is de theorie verplicht.');
+          return;
+        }
+      }
+    if (this.isEmpty(this.screenForm.controls.theory.value)) {
+      if (this.isEmpty(this.screenForm.controls.question.value)) {
+          alert('Als de theorie leeg is, is de vraag verplicht.');
+          return;
+        }
+
+    }
+    if (!this.isEmpty(this.screenForm.controls.question.value )){
+      if (!this.validMultipleChoiceAnswers()){
+        alert('Als de vraag is ingevuld moeten alle antwoord mogenlijkheden ingevuld zijn inclusief het correcte antwoord.');
+        return;
+      }
+    }
+
 
     const answersInput: Array<Answer> = this.getAnswersInput(this.screenForm.controls.correctAnswer.value);
     console.log(this.screenForm.controls.skippable.value);
@@ -57,6 +92,9 @@ export class SchermToevoegenComponent implements OnInit {
   }
 
   private getAnswersInput(type: string): Array<Answer> {
+    if (this.screenForm.controls.question.value === null){
+      return;
+    }
     return [
       {
         description: this.screenForm.controls.questionA.value,
