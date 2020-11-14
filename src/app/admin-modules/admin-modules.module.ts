@@ -1,13 +1,21 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { LayoutModule } from '@angular/cdk/layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
-import { BrowserModule } from '@angular/platform-browser';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
 import { AdminModulesRoutingModule } from './admin-modules-routing.module';
 import { AdminModulesComponent } from './admin-modules.component';
@@ -43,6 +51,19 @@ import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen
     MatRadioModule,
     MatCheckboxModule,
     FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    DragDropModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    EditorModule
   ],
   exports: [AdminModulesComponent]
 })

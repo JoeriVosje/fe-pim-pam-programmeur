@@ -14,7 +14,6 @@ export class SchermToevoegenComponent implements OnInit {
   @Output()
   public screenAdded: EventEmitter<Screen> = new EventEmitter<Screen>();
 
-
   constructor() { }
 
   screenForm: FormGroup;
@@ -31,6 +30,7 @@ export class SchermToevoegenComponent implements OnInit {
 
 
   public addScreen(): void {
+    console.log('sent');
     if (this.screenForm.invalid) {
       return;
     }

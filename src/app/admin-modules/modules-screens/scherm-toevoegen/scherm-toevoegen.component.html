@@ -1,33 +1,100 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
+  <form [formGroup]="screenForm" (ngSubmit)="addScreen()">
+    <div class="scroll-content">
+    <div class="container">
 
-  <div class="container">
-    <h3 class="scherm-toevoegen-title">Scherm Toevoegen</h3>
-    <form [formGroup]="screenForm" class="scherm-toevoegen-form">
-      <ppp-input formControlName="titel" id="titleId" [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Titel</ppp-input>
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Theorie</ppp-input>
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Vraag</ppp-input>
-      <div class="scherm-toevoegen-item scherm-toevoegen-extra-padding">
-        <mat-checkbox>
-          Student mag vraag overslaan
-        </mat-checkbox>
-      </div>
-      <div class="scherm-toevoegen-item scherm-toevoegen-extra-padding">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="A">A</mat-radio-button>
-          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
-          <mat-radio-button value="B">B</mat-radio-button>
-          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
-          <mat-radio-button value="C">C</mat-radio-button>
-          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
-          <mat-radio-button value="D">D</mat-radio-button>
-          <ppp-input class="scherm-toevoegen-item scherm-toevoegen-radio-button"></ppp-input>
+        <div class="header-grid">
+          <div class="scherm-toevoegen-title">
+            Scherm Toevoegen
+          </div>
+        </div>
+
+        <div class="titel-grid inputWidth">
+          <label id="input-label" for="input-field">
+            Titel
+          </label>
+          <input label="title" type="text" id="input-field" name="input-field"/>
+        </div>
+
+
+        <div class="theorie-grid">Theorie
+          <div class="editor">
+            <editor
+              id="theory"
+              initialValue="<p>Initial content of the editor</p>"
+              apiKey='2m3rqe9g14p0ru6mjqafw1sakrbz0fln413wzqumvt4bhq3a'
+              [init]="{
+     height: 300,
+    menubar: false,
+    plugins: [
+      'advlist autolink lists link image charmap print',
+      'preview anchor searchreplace visualblocks code codesample',
+      'insertdatetime media table paste',
+      'help wordcount'
+    ],
+    toolbar: 'undo redo | formatselect | bold italic |  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | code codesample image | help'
+  }">
+            </editor>
+          </div>
+        </div>
+
+
+        <div class="vraag-grid inputWidth">
+          <label id="vraag" for="input-field">
+            Vraag
+          </label>
+          <input label="vraag" type="text" id="vraag-field" name="input-field"/>
+        </div>
+
+        <mat-radio-group>
+          <div class="multiple-choice-grid">
+            <div class="questionA">
+              <mat-radio-button value="A">A</mat-radio-button>
+              <input label="vraag" type="text" id="a" name="input-field"/>
+            </div>
+            <div class="questionB">
+              <mat-radio-button value="B">B</mat-radio-button>
+              <input label="vraag" type="text" id="b" name="input-field"/>
+            </div>
+            <div class="questionC">
+              <mat-radio-button value="C">C</mat-radio-button>
+              <input label="vraag" type="text" id="c" name="input-field"/>
+            </div>
+            <div class="questionD">
+              <mat-radio-button value="D">D</mat-radio-button>
+              <input label="vraag" type="text" id="d" name="input-field"/>
+            </div>
+
+          </div>
         </mat-radio-group>
+        <div class="feedback-grid inputWidth">
+          <label id="feedback" for="input-field">
+            Feedback
+          </label>
+          <input label="vraag" type="text" id="feedback-field" name="input-field"/>
+        </div>
+
+
+        <!--    <div class="scherm-toevoegen-title">Scherm Toevoegen-->
+        <!--      <div class="border"></div></div>-->
+        <!--    <form [formGroup]="screenForm" (ngSubmit)="addScreen()">-->
+        <!--      <mat-form-field class="full-width titleQuestion">-->
+        <!--        <input matInput type="String"-->
+        <!--               id="title"-->
+        <!--               formControlName="title"-->
+        <!--               class="inputPPP">-->
+        <!--      </mat-form-field>-->
+        <!--    </form>-->
+        <div class="toevoegen-grid">
+          <div class="toevoegen-button">
+            <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
+          </div>
+        </div>
       </div>
-      <ppp-input [size]="'L'" class="scherm-toevoegen-input scherm-toevoegen-item">Foutive Feedback</ppp-input>
-      <ppp-button (clicked)="toevoegen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
-    </form>
-  </div>
+    </div>
+
+  </form>
 
 </overview-template>

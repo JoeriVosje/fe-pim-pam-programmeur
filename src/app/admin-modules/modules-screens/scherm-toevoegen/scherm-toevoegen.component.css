@@ -1,9 +1,19 @@
 .container {
-  min-height: 666px;
+  height: 800px;
   border-radius: 10px;
   background-color: white;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(10, 1fr);
+  overflow-y: scroll;
+}
+
+.scroll-content{
+  overflow-y: scroll;
+}
+
+.header-grid{
+  grid-row: 1/2;
 }
 
 .scherm-toevoegen-title {
@@ -11,42 +21,79 @@
   font-size: 18px;
   font-weight: normal;
   align-self: center;
-  grid-column: 1 / 5;
-  border-bottom: #172B4D;
+  grid-row: 1/2;
   border-bottom: 1px solid rgb(214, 214, 214);
+  margin: 25px 0;
 }
 
-.scherm-toevoegen-form {
-  display: inline-grid;
-  grid-column: 1 / 5;
+.titel-grid {
+  grid-row: 2/3;
+  margin: 8px 16px;
 }
 
-.scherm-toevoegen-input {
-  padding-left: 24px;
+.inputWidth input{
+  width: 100%;
 }
 
-.scherm-toevoegen-item {
-  display: inline-grid;
-  grid-column: 1 / 5;
+input, label {
+  box-sizing: border-box;
+  display: block;
 }
 
-.scherm-toevoegen-extra-padding {
-  padding-left: 55px;
+#input-label {
+  font-size: 15px;
+  padding-bottom: 7px;
 }
 
-.scherm-toevoegen-grid {
+input {
+  height: 50px;
+  border: 1px solid #7764E4;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px #1717172E;
+  font-size: 15px;
+  padding-left: 30px;
+}
+
+.theorie-grid {
+  grid-row: 3/7;
+  margin: 8px 16px
+}
+
+.vraag-grid {
+  grid-row: 7/8;
+  margin: 8px 16px
+}
+
+.multiple-choice-grid {
+  grid-row: 8/9;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-items: end;
+  margin: 8px 16px
+}
+.questionA{
+  grid-column: 1/2;
 }
 
-.scherm-toevoegen-button {
-  display: inline-grid;
-  grid-column: 4 / 4;
-  margin-top: 20px;
+.questionB{
+  grid-column: 2/3;
 }
 
-.scherm-toevoegen-radio-button {
-  margin-left: -20px;
-  margin-right: 30px;
+.questionC{
+  grid-column: 3/4;
+}
+.questionD{
+  grid-column: 4/5;
+}
+
+.feedback-grid{
+  grid-row: 9/10;
+  margin: 8px 16px
+}
+
+.toevoegen-grid{
+  grid-row: 10/10;
+  justify-self: end;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
 }
