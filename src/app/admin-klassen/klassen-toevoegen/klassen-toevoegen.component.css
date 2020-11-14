@@ -1,0 +1,26 @@
+.klas-add {
+    align-items: center;
+    height: 300px;
+    border-radius: 10px;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 60px 1fr 100px;
+}
+
+.title {
+    padding-left: 30px;
+    font-weight: normal;
+    grid-row: 1 / 2;
+}
+
+ppp-input {
+    grid-row: 2 / 3;
+}
+
+ppp-button {
+    grid-row: 3 / 4;
+    justify-self: end;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
