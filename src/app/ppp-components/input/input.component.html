@@ -1,6 +1,6 @@
 <div [ngClass]="size">
-  <label id="input-label" for="input-field">
+  <label id="input-label" [for]="id">
     <ng-content></ng-content>
   </label>
-  <input [formControl]="inputField" [value]="value" type="text" id="input-field" name="input-field"/>
+  <input [formControl]="inputField" [value]="value" type="text" [id]="id" class="input-field" name="input-field"/>
 </div>

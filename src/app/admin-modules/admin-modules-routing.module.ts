@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminLoginGuard } from '../admin-login-guard';
 
 import { AdminModulesComponent } from './admin-modules.component';
 import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.component';
@@ -16,24 +17,27 @@ const breadCrumpMap = new Map([
 ]);
 
 const routes: Routes = [
-  {path: '', component: AdminModulesComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}},
+  {path: '', component: AdminModulesComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}, canActivate: [AdminLoginGuard],},
   {
     path: 'add', component: ModulesToevoegenWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)]
-    }
+    },
+    canActivate: [AdminLoginGuard]
   },
   {
     path: ':id/edit', component: ModulesBewerkenWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)]
-    }
+    },
+    canActivate: [AdminLoginGuard]
   },
   {
     path: ':id/screens', component: ModulesScreensComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3)]
-    }
+    },
+    canActivate: [AdminLoginGuard]
   },
 ];
 

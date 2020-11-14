@@ -14,6 +14,7 @@ import { OverviewTemplateComponent } from './overview-template/overview-template
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ModalComponent } from './modal/modal.component';
 import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
+import { SelectComponent } from './select/select.component';
 
 
 /**
@@ -30,7 +31,8 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     ThreeDotButtonComponent,
     InputComponent,
     ContentOverviewComponent,
-    ModalComponent
+    ModalComponent,
+    SelectComponent
   ],
   exports: [
     OverviewTemplateComponent,
@@ -38,7 +40,8 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     ThreeDotButtonComponent,
     InputComponent,
     ModalComponent,
-    ContentOverviewComponent
+    ContentOverviewComponent,
+    SelectComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StudentLoginGuard } from '../student-login-guard';
 
 import { SchermenWrapperComponent } from './schermen/wrapper/schermen.wrapper.component';
 import { SchermenWrapperModule } from './schermen/wrapper/schermen.wrapper.module';
@@ -28,15 +29,18 @@ export class StudentModulesModule {
       component: StartWrapperComponent,
       data: {
         breadCrumbs: [{ name: 'Overzicht', route: 'student' }]
-      }
+      },
+      canActivate: [StudentLoginGuard]
     },
     {
       path: StudentModulesNavigation.SCHERMEN,
-      component: SchermenWrapperComponent
+      component: SchermenWrapperComponent,
+      canActivate: [StudentLoginGuard]
     },
     {
       path: '**',
-      redirectTo: StudentModulesNavigation.START
-    }
+      redirectTo: StudentModulesNavigation.START,
+      canActivate: [StudentLoginGuard]
+    },
   ];
 }

@@ -1,0 +1,6 @@
+<div [ngClass]="background" class="klassen-item">
+  <p id="name">{{ klas.name }}</p>
+  <p>{{ klas.major}}</p>
+  <p>{{ klas.module.name }}</p>
+  <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
+</div>

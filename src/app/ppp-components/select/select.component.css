@@ -3,18 +3,18 @@ div {
     padding-right: 30px;
 }
 
-input,
+select,
 label {
     box-sizing: border-box;
     display: block;
 }
 
-#input-label {
+#select-label {
     font-size: 15px;
     padding-bottom: 7px;
 }
 
-.input-field {
+#select-field {
     height: 50px;
     border: 1px solid #7764E4;
     border-radius: 5px;
@@ -23,14 +23,14 @@ label {
     padding-left: 30px;
 }
 
-.S input {
+.S select {
     width: 35%;
 }
 
-.M input {
+.M select {
     width: 70%;
 }
 
-.L input {
+.L select {
     width: 100%;
 }
