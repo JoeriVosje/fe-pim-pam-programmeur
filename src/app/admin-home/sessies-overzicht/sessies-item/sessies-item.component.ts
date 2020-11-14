@@ -8,15 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SessiesItemComponent implements OnInit {
 
   @Input() public name: string;
-  @Input() public status: boolean;
-  @Input() public progress: string; //nog aanpassen voor progressbar en getallen ervoor
-  @Input() public dateStarted: string;
+  @Input() public studentsFinished: number; //nog aanpassen voor progressbar en getallen ervoor
+  @Input() public studentsTotal: number;
+  public progressString: string;
+  public progress: number;
   @Input() public timeStarted: string;
   @Input() public timeFinished: string;
   @Input() public background: string;
-  @Input() public sessieId: string;
 
-  constructor() { }
+
+  constructor() {
+    this.progress = this.studentsFinished / this.studentsTotal;
+    this.progressString = this.studentsFinished + " / " + this.studentsTotal;
+   }
 
   ngOnInit(): void {
   }

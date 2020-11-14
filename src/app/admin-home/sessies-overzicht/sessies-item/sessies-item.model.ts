@@ -1,9 +1,12 @@
 export interface Sessie {
     id: string;
-    name: string;
-    status: boolean;
-    progress: string;
-    dateStarted: string;
+    module: {
+      moduleId: string;
+      moduleName: string;
+      creationDate: string;
+    }
+    studentsFinished: number;
+    studentsTotal: number;
     timeStarted: string;
     timeFinished: string;
   }

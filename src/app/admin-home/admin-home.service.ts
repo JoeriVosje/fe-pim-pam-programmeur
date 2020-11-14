@@ -21,12 +21,15 @@ export class AdminHomeService {
     for (let i = 0; i < 10; i++) {
       sessies.push({
         id: i.toString(),
-        name: 'Sessie naam',
-        status: true,
-        progress: '40',
-        dateStarted: '2020-11-12',
+        module: {
+          moduleId: 'allo',
+          moduleName: 'Sessie naam',
+          creationDate: '2020-11-12T23:45'
+        },
+        studentsFinished: 5,
+        studentsTotal: 20,
         timeStarted: '2020-11-12T23:45',
-        timeFinished: '2020-11-12T23:59'
+        timeFinished: '2020-11-12T23:45'
       });
     }
     return sessies;

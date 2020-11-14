@@ -18,10 +18,9 @@
       <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
 
         <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
-                      [name]="sessie.name"
-                      [status]="sessie.status"
-                      [progress]="sessie.progress"
-                      [dateStarted]="sessie.dateStarted"
+                      [name]="sessie.module.moduleName"
+                      [studentsFinished]="sessie.studentsFinished"
+                      [studentsTotal]="sessie.studentsTotal"
                       [timeStarted]="sessie.timeStarted"
                       [timeFinished]="sessie.timeFinished"
                       [background]="even? 'light' : 'dark'">
