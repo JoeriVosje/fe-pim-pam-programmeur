@@ -1,9 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { Screen } from '../screens-overzicht/screen-item/screen-item.model';
-import {log} from 'util';
-
+import {Answer, Screen} from '../screens-overzicht/screen-item/screen-item.model';
 
 @Component({
   selector: 'scherm-toevoegen',
@@ -15,7 +13,10 @@ export class SchermToevoegenComponent implements OnInit {
   @Output()
   public screenAdded: EventEmitter<Screen> = new EventEmitter<Screen>();
 
-  constructor() { }
+  @Input() public moduleId: string;
+
+  constructor() {
+  }
 
   screenForm: FormGroup;
 
@@ -30,7 +31,7 @@ export class SchermToevoegenComponent implements OnInit {
       questionD: new FormControl(null, [Validators.required]),
       feedback: new FormControl(null, [Validators.required]),
       skippable: new FormControl(null, []),
-      correctAnswer:  new FormControl(null, [Validators.required])
+      correctAnswer: new FormControl(null, [Validators.required])
     });
   }
 
@@ -39,20 +40,41 @@ export class SchermToevoegenComponent implements OnInit {
       alert('Graag alle velden invullen.');
       return;
     }
+
+    const answersInput: Array<Answer> = this.getAnswersInput(this.screenForm.controls.correctAnswer.value);
+    console.log(this.screenForm.controls.skippable.value);
     const product: Screen = {
       title: this.screenForm.controls.title.value,
       theory: this.screenForm.controls.theory.value,
-      correctAnswer: this.screenForm.controls.correctAnswer.value,
       question: this.screenForm.controls.question.value,
-      questionA: this.screenForm.controls.questionA.value,
-      questionB: this.screenForm.controls.questionB.value,
-      questionC: this.screenForm.controls.questionC.value,
-      questionD: this.screenForm.controls.questionD.value,
-      feedback: this.screenForm.controls.feedback.value,
-      skippable: this.screenForm.controls.skippable.value
+      answers: answersInput,
+      hint: this.screenForm.controls.feedback.value,
+      skippable: this.screenForm.controls.skippable.value === true,
+      moduleId: this.moduleId
     };
     console.log(product);
     this.screenAdded.emit(product);
+  }
+
+  private getAnswersInput(type: string): Array<Answer> {
+    return [
+      {
+        description: this.screenForm.controls.questionA.value,
+        isCorrectAnswer: type === 'A'
+      },
+      {
+        description: this.screenForm.controls.questionB.value,
+        isCorrectAnswer: type === 'B'
+      },
+      {
+        description: this.screenForm.controls.questionC.value,
+        isCorrectAnswer: type === 'C'
+      },
+      {
+        description: this.screenForm.controls.questionD.value,
+        isCorrectAnswer: type === 'D'
+      }
+    ];
   }
 
 }

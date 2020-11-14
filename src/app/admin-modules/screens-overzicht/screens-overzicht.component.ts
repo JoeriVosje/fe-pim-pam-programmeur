@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
+import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { Screen } from './screen-item/screen-item.model';
 
 @Component({

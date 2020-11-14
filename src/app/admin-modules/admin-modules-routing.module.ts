@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminModulesComponent } from './admin-modules.component';
-import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.component';
 import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modules-bewerken.wrapper.component';
 import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
-import { SchermToevoegenComponent } from './modules-screens/scherm-toevoegen/scherm-toevoegen.component';
-import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen.component';
 import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
+import { SchermToevoegenWrapperComponent } from './screen-toevoegen/wrapper/scherm-toevoegen.wrapper.component';
 
 const breadCrumpMap = new Map([
   [0, {name: 'Overzicht', route: 'modules'}],
@@ -43,7 +41,7 @@ const routes: Routes = [
     }
   },
   {
-    path: ':id/screens/create', component: SchermToevoegenComponent,
+    path: ':id/screens/create', component: SchermToevoegenWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3), breadCrumpMap.get(4)]
     }

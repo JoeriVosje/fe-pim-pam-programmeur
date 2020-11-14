@@ -24,11 +24,12 @@ import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modu
 import { ModulesItemComponent } from './modules-overzicht/modules-item/modules-item.component';
 import { ModulesOverzichtComponent } from './modules-overzicht/modules-overzicht.component';
 import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
-import { SchermToevoegenComponent } from './modules-screens/scherm-toevoegen/scherm-toevoegen.component';
-import { ScreenItemComponent } from './modules-screens/screens-overzicht/screen-item/screen-item.component';
-import { ScreensOverzichtComponent } from './modules-screens/screens-overzicht/screens-overzicht.component';
+import { SchermToevoegenComponent } from './screen-toevoegen/scherm-toevoegen.component';
+import { ScreenItemComponent } from './screens-overzicht/screen-item/screen-item.component';
+import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht.component';
 import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen.component';
 import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
+import {SchermToevoegenWrapperComponent} from './screen-toevoegen/wrapper/scherm-toevoegen.wrapper.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/mo
     ModulesScreensComponent,
     ModulesBewerkenComponent,
     SchermToevoegenComponent,
+    SchermToevoegenWrapperComponent,
     ModulesBewerkenComponent,
     ModulesBewerkenWrapperComponent
   ],

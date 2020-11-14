@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { AdminScreensService } from '../admin-screens.service';
-import { Screen } from './screens-overzicht/screen-item/screen-item.model';
+import { Screen } from '../screens-overzicht/screen-item/screen-item.model';
 
 @Component({
   selector: 'app-modules-screens',

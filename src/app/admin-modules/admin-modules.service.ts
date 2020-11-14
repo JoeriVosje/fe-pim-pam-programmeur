@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { Module } from './modules-overzicht/modules-item/modules-item.model';
+import {Screen} from './screens-overzicht/screen-item/screen-item.model';
 
 @Injectable({ providedIn: 'root' })
 export class AdminModulesService {
