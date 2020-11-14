@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminLoginGuard } from '../admin-login-guard';
 
 import { KlassenOverzichtWrapperComponent } from './klassen-overzicht/wrapper/klassen-overzicht.wrapper.component';
 import { KlassenStudentenOverzichtWrapperComponent } from './klassen-studenten-overzicht/klassen-studenten-overzicht-wrapper/klassen-studenten-overzicht-wrapper.component';
@@ -15,21 +16,24 @@ const breadCrumpMap = new Map([
 ]);
 
 const routes: Routes = [
-  {path: '', component: KlassenOverzichtWrapperComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}},
+  {path: '', component: KlassenOverzichtWrapperComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}, canActivate: [AdminLoginGuard]},
   {
     path: 'add', component: KlassenToevoegenWrapperComponent,
+    canActivate: [AdminLoginGuard],
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)]
     }
   },
   {
     path: ':id/students', component: KlassenStudentenOverzichtWrapperComponent,
+    canActivate: [AdminLoginGuard],
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)]
     }
   },
   {
     path: ':id/students/add', component: KlassenStudentenToevoegenWrapperComponent,
+    canActivate: [AdminLoginGuard],
     data: {
       breadCrumbs: [
         breadCrumpMap.get(0),

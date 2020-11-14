@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { Student } from '../models/student.model';
 import content from './start.content.json';
 
 @Component({
@@ -9,6 +10,8 @@ import content from './start.content.json';
 })
 export class StartComponent {
 
+  @Input() public student: Student;
+  @Input() public canStartModule: boolean;
   @Output() public naarSchermen = new EventEmitter<void>();
 
   public headerIcon = 'home_outline';
@@ -17,6 +20,22 @@ export class StartComponent {
 
   public getText(key: string): string {
     return content[key];
+  }
+
+  public getName(): string {
+    return content['content.title'] + `, ${this.student.firstName}`;
+  }
+
+  public getPersonalText(): string {
+    if (this.canStartModule) {
+      let text: string = content['footer.open'];
+      text = text.replace('{klas}', this.student.classroom.name);
+      text = text.replace('{module}', this.student.classroom.module.name);
+
+      return text;
+    } else {
+      return content['footer.closed'];
+    }
   }
 
   public startModule(): void {
