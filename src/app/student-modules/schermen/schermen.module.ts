@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import {PppComponentsModule} from '../../ppp-components/ppp-components.module';
 
 import { SchermenComponent } from './schermen.component';
 
@@ -9,7 +10,8 @@ import { SchermenComponent } from './schermen.component';
   declarations: [SchermenComponent],
   exports: [SchermenComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    PppComponentsModule
   ]
 })
 export class SchermenModule { }

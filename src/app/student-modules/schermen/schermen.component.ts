@@ -5,11 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './schermen.component.html',
   styleUrls: ['./schermen.component.css']
 })
-export class SchermenComponent implements OnInit {
+export class SchermenComponent {
+
+  public title = 'ModuleName';
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

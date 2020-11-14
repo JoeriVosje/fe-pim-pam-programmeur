@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
+import { Question } from './models/question.model';
 import { Session } from './models/session.model';
 import { Student } from './models/student.model';
 
@@ -29,6 +30,69 @@ export class StudentModulesService {
       map( session => session.length > 0 ? session[session.length - 1] : null),
       tap(session => this.sessionId = session.sessionId)
     );
+  }
+
+  public getQuestions(): Observable<Question[]> {
+    return of(this.createQuestions());
+  }
+
+  private createQuestions(): Question[] {
+    const questions: Question[] = [
+      {
+        id: '123',
+        title: 'q1',
+        theory: 'Dit is uitleg',
+        question: 'Dit is het antwoord',
+        skippable: false,
+        hint: 'hint, hint',
+        moduleId: '123',
+        answers: [
+          {
+            id: '123',
+            description: 'Dit is een omschrijving van de vraag'
+          },
+          {
+            id: '456',
+            description: 'Volgende description'
+          }
+          ]
+      },
+      {
+        id: '456',
+        title: 'q2',
+        theory: 'Dit is uitleg',
+        skippable: false,
+        moduleId: '123',
+        answers: [
+          {
+            id: '123',
+            description: 'Dit is een omschrijving van de vraag'
+          },
+          {
+            id: '456',
+            description: 'Volgende description'
+          }
+        ]
+      },
+      {
+        id: '789',
+        title: 'q3',
+        question: 'Dit is het antwoord',
+        skippable: false,
+        moduleId: '123',
+        answers: [
+          {
+            id: '123',
+            description: 'Dit is een omschrijving van de vraag'
+          },
+          {
+            id: '456',
+            description: 'Volgende description'
+          }
+        ]
+      }
+    ];
+    return questions;
   }
 }
 
