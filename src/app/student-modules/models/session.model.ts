@@ -1,5 +1,5 @@
-export interface Sessie {
-  id: string;
+export interface Session {
+  sessionId: string;
   module: Module;
   studentsFinished: number;
   totalStudents: number;

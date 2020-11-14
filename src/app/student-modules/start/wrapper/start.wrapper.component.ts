@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Sessie } from '../../models/sessie.model';
+import { Session } from '../../models/session.model';
 import { Student } from '../../models/student.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
@@ -13,7 +13,7 @@ import { StudentModulesService } from '../../student-modules.service';
 export class StartWrapperComponent implements OnInit, OnDestroy {
 
   public student: Student;
-  public sessie: Sessie;
+  public session: Session;
   public isLoading: boolean;
 
   private readonly subscription: Subscription = new Subscription();
@@ -36,25 +36,31 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
       this.service.getStudent()
         .subscribe({
           next: student => this.student = student,
-          error: err => console.log(err),
-          complete: () => this.loadSessie(this.student.classroom.module.id)
+          error: err => {
+            console.log(err);
+            this.isLoading = false;
+          },
+          complete: () => this.loadSession(this.student.classroom.module.id)
         })
     );
   }
 
-  private loadSessie(moduleId: string): void {
+  private loadSession(moduleId: string): void {
     this.subscription.add(
       this.service.getSession(moduleId)
         .subscribe({
-          next: sessie => this.sessie = sessie,
-          error: err => console.log(err),
+          next: session => this.session = session,
+          error: err => {
+            console.log(err);
+            this.isLoading = false;
+          },
           complete: () => this.isLoading = false
         })
     );
   }
 
   public canStartModule(): boolean {
-    return !this.sessie.endTime;
+    return this.session ? !this.session.endTime : false;
   }
 
   public naarSchermen(): void {
