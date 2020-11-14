@@ -25,8 +25,8 @@ export class AdminHomeService {
         status: true,
         progress: 'balkje met cijfers ervoor',
         dateStarted: '2020-11-12',
-        timeStarted: '23:45',
-        timeFinished: '23:59'
+        timeStarted: '2020-11-12T23:45',
+        timeFinished: '2020-11-12T23:59'
       });
     }
     return sessies;

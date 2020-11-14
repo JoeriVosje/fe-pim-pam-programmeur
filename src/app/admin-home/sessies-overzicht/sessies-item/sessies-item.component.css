@@ -3,15 +3,41 @@
     font-size: 12px;
     align-items: center;
     display: grid;
-    grid-template-columns: repeat(2, 2fr) repeat(2, 1fr);
+    grid-template-columns:  repeat(6, 1fr);
   }
   
   #name {
     font-weight: bold;
+    padding-left: 30px;
+    grid-column: 1 / 2;
   }
   
-  p {
+  #status {
     padding-left: 30px;
+    grid-column: 2 / 3;
+  }
+
+  #progress {
+      padding-left: 30px;
+      grid-column: 3 / 4;
+  }
+  
+  #dateStarted {
+    padding-left: 30px;
+    grid-column: 4 / 5;
+    justify-self: start;
+  }
+  
+  #timeStarted {
+    padding-left: 30px;
+    grid-column: 5 / 6;
+    justify-self: start;
+  }
+
+  #timeFinished {
+    padding-left: 30px;
+    grid-column: 6 / 7;
+    justify-self: start;
   }
   
   

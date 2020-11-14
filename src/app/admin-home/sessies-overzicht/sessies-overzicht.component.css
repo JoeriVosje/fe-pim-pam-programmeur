@@ -4,7 +4,7 @@
     background-color: white;
     display: grid;
     grid-template-rows: 60px 30px auto 100px;
-    grid-template-columns: repeat(2, 2fr) repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr) 20px;
   }
   
   .title {
@@ -12,7 +12,7 @@
     font-weight: normal;
     align-self: center;
     grid-row: 1 / 2;
-    grid-column: 1 / 7;
+    grid-column: 1 / 8;
   }
   
   .column {
@@ -61,13 +61,13 @@
 
   .items-container {
     grid-row: 3 / 4;
-    grid-column: 1 / 7;
+    grid-column: 1 / 8;
   }
   
   
   .empty-board {
     grid-row: 3 / 4;
-    grid-column: 1 / 7;
+    grid-column: 1 / 8;
     font-size: 16px;
     letter-spacing: 0px;
     color: #172B4D;
