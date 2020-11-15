@@ -1,6 +1,6 @@
 <button mat-flat-button
         class="ppp-button"
-        [ngClass]="type"
+        [ngClass]="[type, size]"
         type="button"
         (click)="onClick()">
   <ng-content></ng-content>

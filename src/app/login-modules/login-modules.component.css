@@ -18,9 +18,11 @@ main {
   position: relative;
   border-radius: 10px;
   background-color: white;
+  width: 500px;
+  margin-top: 200px;
+  padding: 30px;
 }
 
 .login-button {
   padding: 30px;
-  widows: 30px;
 }

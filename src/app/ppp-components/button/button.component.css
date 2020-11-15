@@ -32,3 +32,15 @@
 button {
   font-size: medium;
 }
+
+.S input {
+  width: 35%;
+}
+
+.M input {
+  width: 70%;
+}
+
+.L input {
+  width: 100%;
+}
