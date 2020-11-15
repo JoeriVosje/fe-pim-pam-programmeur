@@ -16,7 +16,7 @@ div p:first-of-type {
   top: 83px;
 }
 
-.page {
+.login-page {
   position: absolute;
   border-radius: 10px;
   background-color: white;
@@ -25,8 +25,4 @@ div p:first-of-type {
   margin-top: 200px;
   padding: 30px;
   text-align: center;
-}
-
-.login-button {
-  position: relative;
 }
