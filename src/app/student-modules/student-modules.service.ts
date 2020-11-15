@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
+import { Question } from './models/question.model';
 import { Session } from './models/session.model';
 import { Student } from './models/student.model';
 
@@ -29,6 +30,10 @@ export class StudentModulesService {
       map( session => session.length > 0 ? session[session.length - 1] : null),
       tap(session => this.sessionId = session.sessionId)
     );
+  }
+
+  public getQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.baseUrl}Component/module/${this.moduleId}`);
   }
 }
 
