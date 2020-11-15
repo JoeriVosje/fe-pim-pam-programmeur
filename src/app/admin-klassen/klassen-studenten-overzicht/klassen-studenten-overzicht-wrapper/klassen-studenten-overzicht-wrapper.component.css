@@ -7,14 +7,6 @@
   grid-template-columns: repeat(2, 1fr) repeat(3, 1fr);
 }
 
-.title {
-  padding-left: 30px;
-  font-weight: normal;
-  align-self: center;
-  grid-row: 1 / 2;
-  grid-column: 1 / 5;
-}
-
 .column {
   font-size: 12px;
   font-weight: normal;

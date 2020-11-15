@@ -4,7 +4,7 @@
                  'max': getClass('max'),
                  'auto': getClass('auto')}">
 
-  <h3 class="title">{{ title }}</h3>
+  <h3 [ngClass]="hideBorder ? 'title-no-border' : 'title'">{{ title }}</h3>
 
   <main class="main-content">
     <ng-content></ng-content>

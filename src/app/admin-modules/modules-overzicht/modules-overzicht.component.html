@@ -1,15 +1,16 @@
+<ppp-content-overview [title]="'Modules'" size="'auto'" [hideBorder]="true">
 <div class="modules-overview">
-  <h3 class="title">Modules overzicht</h3>
   <h4 class="name column">NAAM</h4>
   <h4 class="status column">STATUS</h4>
   <h4 class="date-added column">DATUM TOEGEVOEGD</h4>
+</div>
   <div class="empty-board" *ngIf="modules.length < 1; else itemsPresent">
     <span class="empty-board-text">
     Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
     </span>
   </div>
   <ng-template #itemsPresent>
-  <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
+  <cdk-virtual-scroll-viewport itemSize="72" class="items-container" >
     <modules-item *cdkVirtualFor="let module of modules; let even = even"
                   [name]="module.name"
                   [moduleId]="module.id"
@@ -20,5 +21,7 @@
     </modules-item>
   </cdk-virtual-scroll-viewport>
   </ng-template>
-  <ppp-button (clicked)="toevoegen()">Toevoegen</ppp-button>
-</div>
+  <div class="align-button bottom-right-padding">
+    <ppp-button (clicked)="toevoegen()">Toevoegen</ppp-button>
+  </div>
+</ppp-content-overview>

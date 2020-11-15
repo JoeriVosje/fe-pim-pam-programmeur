@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ContentOverviewComponent {
   @Input() public title: string;
   @Input() public size: string;
+  @Input() public hideBorder: boolean;
 
   constructor() { }
 
