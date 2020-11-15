@@ -12,7 +12,7 @@
     </span>
   </div>
   <ng-template #itemsPresent>
-    <cdk-virtual-scroll-viewport itemSize="72" class="items-container" >
+    <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
       <klassen-item *cdkVirtualFor="let klas of klassen; let even = even"
                     [klas]="klas"
                     [background]="even? 'light' : 'dark'"

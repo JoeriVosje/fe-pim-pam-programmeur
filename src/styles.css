@@ -106,8 +106,11 @@ html, body {
   height: 72px;
   font-size: 12px;
   display: grid;
-  margin-right: -16px;
   grid-template-rows: 0;
+}
+
+.needs-margin {
+  margin-right: -16px;
 }
 
 /* COLUMNS */

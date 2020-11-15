@@ -9,7 +9,7 @@
     <h4 class="column-header header-two">STATUS</h4>
     <h4 class="column-header header-three">VOLTOOID</h4>
     <h4 class="column-header header-four">STARTDATUM</h4>
-    <h4 class="column-header header-five">EINDDATUM</h4>
+    <h4 class="column-header header-five">STARTTIJD</h4>
     <h4 class="column-header header-six">EINDTIJD</h4>
   </div>
 
@@ -27,6 +27,7 @@
                     [studentsTotal]="sessie.totalStudents"
                     [timeStarted]="sessie.startTime"
                     [timeFinished]="sessie.endTime"
+                    [hasVerticalScrollbar]="sessies.length > 5"
                     [background]="even? 'light' : 'dark'">
       </sessies-item>
 

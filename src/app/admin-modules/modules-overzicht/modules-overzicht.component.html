@@ -19,6 +19,7 @@
                   [status]="module.status"
                   [dateAdded]="module.creationDate"
                   [background]="even? 'light' : 'dark'"
+                  [hasVerticalScrollbar]="modules.length > 5"
     (menuItemClicked)="menuItem($event)">
     </modules-item>
   </cdk-virtual-scroll-viewport>

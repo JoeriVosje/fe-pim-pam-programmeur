@@ -1,12 +1,14 @@
-<div [ngClass]="background" class="column-items-start with-three-columns">
+<div [ngClass]="hasVerticalScrollbar ? 'needs-margin' : null">
+  <div [ngClass]="background" class="column-items-start with-three-columns">
 
-  <span class="column-one" id="name">{{ name }}</span>
-  <span class="column-two">{{ status ? 'open' : 'gesloten' }}</span>
-  <span class="column-three column-double">
+    <span class="column-one" id="name">{{ name }}</span>
+    <span class="column-two">{{ status ? 'open' : 'gesloten' }}</span>
+    <span class="column-three column-double">
 
   <span class="column-double-first-child">{{ dateAdded | date: 'dd/MM/yyyy' }}</span>
     <span class="column-double-second-child">
     <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
     </span>
   </span>
+  </div>
 </div>
