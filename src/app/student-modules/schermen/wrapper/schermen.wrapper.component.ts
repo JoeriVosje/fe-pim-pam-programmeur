@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Question } from '../../models/question.model';
+import { Screen } from '../../models/screen.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
 
@@ -11,7 +11,8 @@ import { StudentModulesService } from '../../student-modules.service';
 })
 export class SchermenWrapperComponent implements OnInit, OnDestroy {
 
-  public questions: Question[];
+  public screens: Screen[];
+  public currentScreen = 0;
   public isLoading: boolean;
 
   private readonly subscription: Subscription = new Subscription();
@@ -22,7 +23,7 @@ export class SchermenWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.loadQuestions();
+    this.loadScreens();
   }
 
   ngOnDestroy(): void {
@@ -30,18 +31,23 @@ export class SchermenWrapperComponent implements OnInit, OnDestroy {
   }
 
   public next(): void {
-
+    this.currentScreen++;
   }
 
-  // public getQuestion(): Question {
-  //   return this.questions[0];
-  // }
+  public finished(): void {
+    this.navigatie.toStart();
+  }
 
-  private loadQuestions(): void {
+  public getScreen(): Screen {
+    this.isLastScreen();
+    return this.screens[this.currentScreen];
+  }
+
+  private loadScreens(): void {
     this.subscription.add(
-      this.service.getQuestions()
+      this.service.getScreens()
         .subscribe({
-          next: questions => this.questions = questions,
+          next: screens => this.screens = screens,
           error: err => {
             console.log(err);
             this.isLoading = false;
@@ -49,5 +55,11 @@ export class SchermenWrapperComponent implements OnInit, OnDestroy {
           complete: () => this.isLoading = false
         })
     );
+  }
+
+  private isLastScreen(): void {
+    if (this.screens.length === this.currentScreen + 1) {
+      this.screens[this.currentScreen].lastScreen = true;
+    }
   }
 }

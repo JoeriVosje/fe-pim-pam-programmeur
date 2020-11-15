@@ -4,7 +4,11 @@
       <p style="padding-bottom: 24px">{{ getText('main') }}</p>
       <p *ngIf="canStartModule">{{ getPersonalText() }}</p>
       <p *ngIf="!canStartModule">{{ getPersonalText() }}</p>
-      <ppp-button class="align-button" (clicked)="startModule()">Start Module</ppp-button>
+      <ppp-button class="align-button"
+                  *ngIf="canStartModule"
+                  (clicked)="startModule()">
+        Start Module
+      </ppp-button>
     </div>
   </ppp-content-overview>
 </overview-template>

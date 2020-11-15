@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class StudentModulesNavigation {
   public static START = '';
+  public static STUDENT = 'student';
   public static SCHERMEN = 'scherm';
 
 
@@ -13,11 +14,11 @@ export class StudentModulesNavigation {
     this.router.navigate([`/${path}`]);
   }
 
-  public naarStart(): void {
-    this.internal(StudentModulesNavigation.START);
+  public toStart(): void {
+    this.internal(StudentModulesNavigation.STUDENT);
   }
 
-  public naarSchermen(): void {
+  public toScreens(): void {
     this.internal(StudentModulesNavigation.SCHERMEN);
   }
 }
