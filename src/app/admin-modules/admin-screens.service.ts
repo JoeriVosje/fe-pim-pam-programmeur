@@ -2,7 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Screen } from './screens-overzicht/screen-item/screen-item.model';
+import { Screen } from './schermen-overzicht/scherm-item/scherm-item.model';
 
 @Injectable({ providedIn: 'root' })
 export class AdminScreensService {
