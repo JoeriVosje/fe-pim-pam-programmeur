@@ -15,7 +15,7 @@ import { Klas } from '../klassen-item.model';
   styleUrls: ['./klassen-overzicht.component.css']
 })
 export class KlassenOverzichtComponent implements OnInit {
- 
+
   @Input()
   public klassen: Klas[];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { TokenService } from 'src/app/token.service';
 import { LoginRequest } from '../login-request.model';
 import { LoginService } from '../login.service';
@@ -18,7 +19,7 @@ export class LoginModulesWrapperComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(request: LoginRequest){
+  login(request: LoginRequest): void{
     this.loginService.login(request).subscribe({
       next: e => {
         this.tokenService.writeToken(e.body);
@@ -28,10 +29,10 @@ export class LoginModulesWrapperComponent implements OnInit {
       },
       complete: () => {
         const user = this.tokenService.readToken();
-        if(user == null){
+        if (user == null){
           this.loginFailed = true;
         }
-        if(user.roleId === 1){
+        if (user.roleId === 1){
           this.router.navigate(['/']);
         } else {
           this.router.navigate(['/student']);

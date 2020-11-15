@@ -19,6 +19,19 @@
   color: #F53C56;
 }
 
+/* Button */
+
+.mat-flat-button {
+  box-shadow: 0px 3px 6px #2C28281C !important;
+  border-radius: 5px !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+  color: #FFFFFF;
+
+  background-color: #7764E4;
+  height: 50px;
+}
+
 /* Modal */
 
 .ppp-modalbox > mat-dialog-container {
@@ -30,5 +43,54 @@
   float: left;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }
+
+/* Snackbar */
+
+.snackbar {
+  font-style: normal;
+  box-shadow: 0px 3px 6px #2C28281C;
+  border-radius: 10px !important;
+  opacity: 1;
+  font: bold 15px Poppins !important;
+  text-align: right !important;
+  letter-spacing: 0px;
+  color: white;
+  background-color: limegreen;
+}
+
+.error{
+  background-color: red;
+}
+
+/* Radio and Checkbox */
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:#7765e3;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:#7765e3;
+  background-color:#7765e3;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color:#7765e3;
+}
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #7765e3;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #7765e3;
+}
+
+/* Div modules item light */
+
+.modules-item {
+  padding-top: 0px !important;
+  grid-template-rows: 1fr;
+}
+
+

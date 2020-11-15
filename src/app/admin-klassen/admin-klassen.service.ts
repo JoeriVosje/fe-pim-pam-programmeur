@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+
 import { Klas } from './klassen-item.model';
 import { KlasRequest } from './klassen-request.model';
 
@@ -8,8 +9,7 @@ import { KlasRequest } from './klassen-request.model';
 @Injectable({ providedIn: 'root' })
 export class AdminKlassenService {
 
-  private baseurl = "https://be-pim-pam-programmeur.azurewebsites.net/api";
-
+  private baseurl = 'https://be-pim-pam-programmeur.azurewebsites.net/api';
 
   public constructor(private readonly httpClient: HttpClient) {
   }

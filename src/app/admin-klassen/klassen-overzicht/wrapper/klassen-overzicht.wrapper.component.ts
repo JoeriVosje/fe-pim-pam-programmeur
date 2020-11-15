@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.model';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { Klas } from '../../klassen-item.model';
-
 
 /**
  * Dit is een zogenoemd 'dom' component. Dit component
@@ -19,21 +19,20 @@ import { Klas } from '../../klassen-item.model';
 })
 export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
 
-  public klassen: Klas[] =[];
+  public klassen: Klas[] = [];
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private klassenService: AdminKlassenService, private router: Router ) {
+  constructor(private klassenService: AdminKlassenService, private router: Router) {
   }
-
 
   ngOnInit(): void {
     this.subscription.add(
       this.klassenService.getKlassen()
-      .subscribe({
-        next: klassen => this.klassen = klassen,
-        error: error => console.log(error),
-        complete: () => console.log('complete')
-      })
+        .subscribe({
+          next: klassen => this.klassen = klassen,
+          error: error => console.log(error),
+          complete: () => console.log('complete')
+        })
     );
   }
 
@@ -41,7 +40,15 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  toevoegenClicked(){
+  toevoegenClicked(): void {
     this.router.navigate(['classes/add']);
+  }
+
+  public menuItemClicked(menuItem: MenuItem): void {
+    if (menuItem.isRoute) {
+      this.router.navigate([menuItem.routeOrID], { state: { klasNaam : menuItem.data }});
+    } else {
+      // todo implement snackbar, loading and delete
+    }
   }
 }

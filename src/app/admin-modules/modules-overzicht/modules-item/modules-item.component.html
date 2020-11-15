@@ -1,6 +1,10 @@
 <div [ngClass]="background" class="modules-item">
-  <p id="name">{{ name }}</p>
-  <p>{{ status ? 'open' : 'gesloten' }}</p>
-  <p>{{ dateAdded | date: 'dd/MM/yyyy' }}</p>
-  <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
+  <span class="item name" id="name">{{ name }}</span>
+  <span class="item status">{{ status ? 'open' : 'gesloten' }}</span>
+  <span class="item last-column">
+  <span class="item date-added">{{ dateAdded | date: 'dd/MM/yyyy' }}</span>
+    <span class="item ppp-button">
+    <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
+    </span>
+  </span>
 </div>

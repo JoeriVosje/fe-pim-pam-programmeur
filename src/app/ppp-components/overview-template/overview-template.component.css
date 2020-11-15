@@ -1,12 +1,11 @@
 .container {
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
   background-color: #172C4C;
   display: grid;
   grid-template-rows: 70px auto 32px;
   grid-template-columns: 250px auto;
-  grid-template-areas: "sidebar  header"
-                       "sidebar  main"
-                       "sidebar  footer";
+  grid-template-areas: "sidebar  header" "sidebar  main" "sidebar  footer";
 }
 
 .sidebar {

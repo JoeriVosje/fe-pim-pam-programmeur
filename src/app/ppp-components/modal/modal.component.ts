@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, } from '@angular/material/dialog';
+import { Component, Output, Inject, Input, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'ppp-modal',
@@ -8,11 +8,12 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, } from '@angular/material/dia
 
 export class ModalComponent {
 
-  @Input() texts: any
-  @Input() buttontext: string
-  @Output() eventClick = new EventEmitter()
+  @Input() texts: any;
+  @Input() buttontext: string;
+  @Output() eventClick = new EventEmitter();
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {
+  }
 
   openDialog(): void {
 
@@ -24,7 +25,7 @@ export class ModalComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.eventClick.emit(result)
+      this.eventClick.emit(result);
     });
   }
 }
@@ -35,18 +36,19 @@ export class ModalComponent {
   styleUrls: ['./modal.component.css']
 })
 
-export class ModalComponentDialog implements OnInit {
+export class ModalComponentDialog {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {
-    confirmText: string,
-    message: string,
-    title: string
-  }, public dialogRef: MatDialogRef<ModalComponentDialog>) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: {
+      confirmText: string,
+      message: string,
+      title: string
+      },
+    public dialogRef: MatDialogRef<ModalComponentDialog>) {
+  }
 
   close(): void {
     this.dialogRef.close('modal gesloten');
   }
 
-  ngOnInit() {
-  }
 }

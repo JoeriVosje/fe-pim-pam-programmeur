@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { MenuItem } from '../../../../ppp-components/three-dot-button/menu-item.model';
+import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { Screen } from './screen-item.model';
 
 @Component({
@@ -21,7 +21,7 @@ export class ScreenItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Verwijderen', data: this.screenId, isRoute: false},
+      {name: 'Verwijderen', routeOrID: this.screenId, isRoute: false},
     ];
   }
 
