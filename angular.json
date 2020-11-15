@@ -26,10 +26,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/material-customized.css"
+              "src/material-customized.css",
+              "src/assets/prism.css"
             ],
             "scripts": [
-              "node_modules/tinymce/tinymce.min.js"
+              "node_modules/tinymce/tinymce.min.js",
+              "src/assets/prism.js"
             ]
           },
           "configurations": {

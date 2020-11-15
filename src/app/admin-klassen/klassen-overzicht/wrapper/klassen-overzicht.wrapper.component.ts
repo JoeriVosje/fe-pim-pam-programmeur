@@ -31,7 +31,7 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
         .subscribe({
           next: klassen => this.klassen = klassen,
           error: error => console.log(error),
-          complete: () => console.log('complete')
+          complete: () => console.log('Klassen opgehaald')
         })
     );
   }
