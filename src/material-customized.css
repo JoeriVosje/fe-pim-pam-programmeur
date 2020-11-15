@@ -97,13 +97,11 @@
 
 .default-overlay {
   color: white;
-  background: #000;
-  opacity: 0.85 !important;
 }
 
 .backdrop {
   color: white;
-  background: #000;
+  background: #172C4C;
   opacity: 0.85 !important;
 }
 

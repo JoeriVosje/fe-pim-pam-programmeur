@@ -3,7 +3,7 @@ import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 
 import { OverlayComponent} from './overlay.component';
-import { OverlayRefComponent } from './overlayRef.component'
+import { OverlayRefComponent } from './overlayRef.component';
 
 interface OverlayDialogConfig {
     panelClass?: string;
@@ -17,19 +17,15 @@ export class OverlayService {
   constructor(private overlay: Overlay) { }
 
   open(config: OverlayDialogConfig = {}) {
-    // Override default configuration
+
     const dialogConfig = config;
 
-    // Returns an OverlayRef which is a PortalHost
     const overlayRef = this.createOverlay(dialogConfig);
 
-    // Instantiate remote control
     const dialogRef = new OverlayRefComponent(overlayRef);
 
-    // Create ComponentPortal that can be attached to a PortalHost
     const overlayPortal = new ComponentPortal(OverlayComponent);
 
-    // Attach ComponentPortal to PortalHost
     overlayRef.attach(overlayPortal);
 
     // NOG DOEN: fixen dat ie sluit waar je ook klikt
