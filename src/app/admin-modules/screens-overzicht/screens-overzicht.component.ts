@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
+import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { Screen } from './screen-item/screen-item.model';
 
 @Component({
@@ -20,6 +20,9 @@ export class ScreensOverzichtComponent {
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 
+  @Output()
+  public toevoegenClicked: EventEmitter<void> = new EventEmitter();
+
   constructor() {
   }
 
@@ -30,5 +33,9 @@ export class ScreensOverzichtComponent {
 
   public menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
+  }
+
+  toevoegen(): void {
+    this.toevoegenClicked.emit();
   }
 }

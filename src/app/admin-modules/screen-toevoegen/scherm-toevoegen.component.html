@@ -1,0 +1,91 @@
+<overview-template [title]="'Modules'"
+                   [isAdmin]="true"
+                   [icon]="'layers'">
+
+  <form [formGroup]="screenForm" (ngSubmit)="addScreen()">
+    <div class="scherm-container">
+
+      <div class="header-grid">
+        <div class="scherm-toevoegen-title">
+          Scherm Toevoegen
+        </div>
+      </div>
+
+      <div class="titel-grid inputWidth">
+        Titel
+        <input type="text" formControlName="title"/>
+      </div>
+
+
+      <div class="theorie-grid">Theorie
+        <div >
+          <editor
+            formControlName="theory"
+            [init]="{
+                       base_url: '/tinymce',
+                       suffix: '.min'  ,
+                       height: 300,
+                       menubar: true,
+    plugins: [
+      'advlist autolink lists link image charmap print',
+      'preview anchor searchreplace visualblocks code codesample',
+      'insertdatetime media table paste',
+      'help wordcount'
+    ],
+    toolbar: 'undo redo | formatselect | bold italic |  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | code codesample image | help'
+  }">
+          </editor>
+        </div>
+      </div>
+
+
+      <div class="vraag-grid inputWidth">
+        Vraag
+        <div class="nextToEachtOther">
+          <input formControlName="question"/>
+          <div class="skippable">
+            <mat-checkbox formControlName="skippable">
+              Student mag vraag overslaan
+            </mat-checkbox>
+
+          </div>
+        </div>
+
+      </div>
+
+      <mat-radio-group formControlName="correctAnswer" class="multiple-choice-grid">
+          <div class="questionA-grid nextToEachtOther">
+            <mat-radio-button value="A">A</mat-radio-button>
+            <input type="text" formControlName="questionA"/>
+          </div>
+          <div class="questionB-grid nextToEachtOther">
+            <mat-radio-button value="B">B</mat-radio-button>
+            <input type="text" formControlName="questionB"/>
+          </div>
+          <div class="questionC-grid nextToEachtOther">
+            <mat-radio-button value="C">C</mat-radio-button>
+            <input type="text" formControlName="questionC"/>
+          </div>
+          <div class="questionD-grid nextToEachtOther s">
+            <mat-radio-button value="D">D</mat-radio-button>
+            <input type="text" formControlName="questionD"/>
+          </div>
+
+      </mat-radio-group>
+
+
+      <div class="feedback-grid inputWidth">
+        Feedback
+        <input type="text" formControlName="feedback"/>
+      </div>
+
+      <div class="toevoegen-grid">
+        <div class="toevoegen-button">
+          <ppp-button (clicked)="addScreen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</overview-template>
