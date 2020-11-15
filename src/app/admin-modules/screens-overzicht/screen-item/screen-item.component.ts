@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { MenuItem } from '../../../../ppp-components/three-dot-button/menu-item.model';
+import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { Screen } from './screen-item.model';
 
 @Component({
