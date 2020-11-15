@@ -15,6 +15,9 @@ export class KlassenToevoegenComponent implements OnInit {
   public modules: any[];
   private klas: KlasRequest = {id: null, moduleId: null, major: null, name: null};
 
+  @Input()
+  loading: boolean;
+
   constructor() {
   }
 
