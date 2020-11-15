@@ -9,7 +9,6 @@ export class AdminModulesService {
 
   private baseurl = 'https://be-pim-pam-programmeur.azurewebsites.net/api';
 
-
   public constructor(private readonly httpClient: HttpClient) {
   }
 

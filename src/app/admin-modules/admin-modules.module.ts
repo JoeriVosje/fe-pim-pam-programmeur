@@ -9,7 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
@@ -47,7 +49,9 @@ import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht
   imports: [
     CommonModule,
     HttpClientModule,
+    MatSnackBarModule,
     PppComponentsModule,
+    MatProgressBarModule,
     ScrollingModule,
     AdminModulesRoutingModule,
     DragDropModule,
@@ -65,4 +69,5 @@ import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht
   ],
   exports: [AdminModulesComponent]
 })
-export class AdminModulesModule { }
+export class AdminModulesModule {
+}

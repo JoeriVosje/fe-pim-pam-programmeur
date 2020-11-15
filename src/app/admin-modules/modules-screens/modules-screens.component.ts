@@ -44,8 +44,8 @@ export class ModulesScreensComponent implements OnInit, OnDestroy {
   }
 
   deleteScreen(menuItem: MenuItem): void {
-    console.log('Delete screen id ' + menuItem.data);
-    // todo Implement
+    console.log('Delete screen id ' + menuItem.routeOrID);
+    // todo implement snackbar, loading and delete
   }
 
   toevoegen(): void {

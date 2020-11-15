@@ -1,26 +1,3 @@
-.ppp-button {
-  color: #FFF;
-  width: 185px;
-  height: 50px;
-  font-size: 18px;
-  background-color: #7764E4;
-  border-radius: 5px;
-  border: none;
-}
-
-.ppp-button:hover {
-  cursor: pointer;
-  filter: brightness(80%);
-}
-
-.ppp-button.warning {
-  background-color: #F53C56;
-  box-shadow: 0 3px 6px #2C28281C;
-}
-
-.ppp-button.decline {
-  color: #172B4D;
-  background-color: #FFF;
-  border: 1px solid #172B4D;
-  box-shadow: 0 3px 6px #2C28281C;
+button {
+  font-size: medium;
 }

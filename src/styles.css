@@ -12,22 +12,12 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
-  border-color:#7765e3;
+.align-button {
+  display: flex;
+  padding-top: 32px;
+  justify-content: flex-end;
 }
 
-.mat-radio-button.mat-accent .mat-radio-inner-circle{
-  color:#7765e3;
-  background-color:#7765e3;
-}
-
-.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-  background-color:#7765e3;
-}
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #7765e3;
-}
-
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #7765e3;
+.input-field-padding {
+  padding: 24px 32px 32px;
 }
