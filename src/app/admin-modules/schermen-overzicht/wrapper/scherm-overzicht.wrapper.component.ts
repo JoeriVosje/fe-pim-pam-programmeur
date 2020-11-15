@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { AdminScreensService } from '../../admin-screens.service';
-import { Screen } from '../scherm-item/scherm-item.model';
+import { OrderListItem, Screen } from '../scherm-item/scherm-item.model';
 
 @Component({
   selector: 'scherm-overzicht-wrapper',
@@ -36,7 +36,10 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   }
 
   reOrderScreens(screens: Screen[]): void{
-    this.service.reOrderScreen(screens).subscribe({
+    const orderedList: Array<string> = [];
+    screens.map(screen => { orderedList.push(screen.id); });
+    console.log(orderedList);
+    this.service.reOrderScreen({componentIds: orderedList}).subscribe({
       next: e => console.log(e),
       error: error => console.log(error),
       complete: () => this.router.navigate([`modules/${this.moduleId}/screens`])

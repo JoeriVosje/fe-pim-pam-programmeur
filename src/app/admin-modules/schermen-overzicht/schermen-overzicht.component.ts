@@ -20,6 +20,9 @@ export class SchermenOverzichtComponent {
   @Output()
   public toevoegenClicked: EventEmitter<void> = new EventEmitter();
 
+  @Output()
+  public reOrdered: EventEmitter<Screen[]> = new EventEmitter();
+
   @Input()
   public screens: Screen[];
 
@@ -29,6 +32,7 @@ export class SchermenOverzichtComponent {
   drop(event: CdkDragDrop<Screen[]>): void {
     moveItemInArray(this.screens, event.previousIndex, event.currentIndex);
     this.screens = [...this.screens];
+    this.reOrdered.emit(this.screens);
   }
 
   public menuItem(menuItem: MenuItem): void {
