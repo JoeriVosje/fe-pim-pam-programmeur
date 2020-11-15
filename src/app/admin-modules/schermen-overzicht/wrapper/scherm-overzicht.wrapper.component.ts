@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { AdminScreensService } from '../../admin-screens.service';
-import { OrderListItem, Screen } from '../scherm-item/scherm-item.model';
+import { Screen } from '../scherm-item/scherm-item.model';
 
 @Component({
   selector: 'scherm-overzicht-wrapper',
@@ -58,7 +58,6 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   }
 
   public getScreens(): void {
-
     this.subscription.add(
       this.service.getScreens(this.moduleId)
         .subscribe({
