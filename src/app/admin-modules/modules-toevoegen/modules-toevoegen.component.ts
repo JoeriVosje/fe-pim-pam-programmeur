@@ -21,7 +21,7 @@ export class ModulesToevoegenComponent implements OnInit {
   }
 
   public getInputValue(value: string): void {
-    this.moduleName = value;
+    this.moduleName = value?.length === 0 ? null : value;
   }
 
   public add(): void {

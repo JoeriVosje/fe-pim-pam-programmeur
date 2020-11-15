@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationEnd, Router } from '@angular/router';
 
+import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminStudentenService } from '../../admin-studenten-service.service';
 import { StudentRequest } from '../../studenten-request.model';
 
@@ -15,7 +15,7 @@ export class KlassenStudentenToevoegenWrapperComponent implements OnInit, OnDest
   mySubscription;
   loading: boolean;
 
-  constructor(private service: AdminStudentenService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private service: AdminStudentenService, private router: Router, private snackBar: PppSnackerService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.mySubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -42,36 +42,18 @@ export class KlassenStudentenToevoegenWrapperComponent implements OnInit, OnDest
           next: e => console.log(e),
           error: error => {
             console.log(error);
-            this.snackBar.open('Er ging iets mis, probeer het later opnieuw!', '🥵', {
-              announcementMessage: 'wtf',
-              duration: 4000,
-              horizontalPosition: 'end',
-              verticalPosition: 'top',
-              panelClass: ['snackbar', 'error']
-            });
+            this.snackBar.showErGingIetsMis();
             this.loading = false;
           },
           complete: () => {
             this.router.navigate([this.router.url]);
-            this.snackBar.open('Student toegevoegd!', '🎉', {
-              announcementMessage: 'wtf',
-              duration: 4000,
-              horizontalPosition: 'end',
-              verticalPosition: 'top',
-              panelClass: ['snackbar']
-            });
+            this.snackBar.showToegevoegd('Student');
             this.loading = false;
           }
         });
       }
     } else {
-      this.snackBar.open('Oeps, alle velden invullen aub!', '✋', {
-        announcementMessage: 'wtf',
-        duration: 4000,
-        horizontalPosition: 'end',
-        verticalPosition: 'top',
-        panelClass: ['snackbar', 'error']
-      });
+      this.snackBar.showError('Oeps, alle velden invullen aub!');
     }
   }
 }
