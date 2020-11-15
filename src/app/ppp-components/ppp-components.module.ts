@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { ButtonComponent } from './button/button.component';
 import { ContentOverviewComponent } from './content-overview/content-overview.component';
@@ -15,6 +16,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ModalComponent } from './modal/modal.component';
 import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
 import { SelectComponent } from './select/select.component';
+import { OverlayComponent } from './overlay/overlay.component';
+import { OverlayService } from './overlay/overlay.service';
 
 
 /**
@@ -32,7 +35,8 @@ import { SelectComponent } from './select/select.component';
     InputComponent,
     ContentOverviewComponent,
     ModalComponent,
-    SelectComponent
+    SelectComponent,
+    OverlayComponent
   ],
   exports: [
     OverviewTemplateComponent,
@@ -41,7 +45,8 @@ import { SelectComponent } from './select/select.component';
     InputComponent,
     ModalComponent,
     ContentOverviewComponent,
-    SelectComponent
+    SelectComponent,
+    OverlayComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +54,11 @@ import { SelectComponent } from './select/select.component';
     MatIconModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    OverlayModule
+  ],
+  providers: [ 
+    OverlayService 
   ]
 })
 export class PppComponentsModule { }
