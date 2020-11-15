@@ -1,6 +1,8 @@
-<div [ngClass]="size">
-  <label id="input-label" [for]="id">
-    <ng-content></ng-content>
-  </label>
-  <input [formControl]="inputField" [value]="value" [type]="type" [id]="id" class="input-field" name="input-field"/>
+<div [ngClass]="lastItem ? 'no-padding' : 'bottom-padding'">
+  <div [ngClass]="size">
+    <label id="input-label" [for]="id">
+      <ng-content></ng-content>
+    </label>
+    <input [formControl]="inputField" [value]="value" type="text" [id]="id" class="input-field" name="input-field"/>
+  </div>
 </div>

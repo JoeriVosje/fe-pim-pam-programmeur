@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { LoginRequest } from './login-request.model';
 
 /**
@@ -31,7 +32,7 @@ export class LoginModulesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  inloggen(){
+  inloggen(): void {
     const loginRequest: LoginRequest = {email: this.email, password: this.password};
     this.login.emit(loginRequest);
   }

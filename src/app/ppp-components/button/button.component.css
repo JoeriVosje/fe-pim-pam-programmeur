@@ -28,3 +28,7 @@
   border: 1px solid #172B4D;
   box-shadow: 0 3px 6px #2C28281C;
 }
+
+button {
+  font-size: medium;
+}

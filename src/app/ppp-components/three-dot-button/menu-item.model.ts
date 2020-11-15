@@ -1,5 +1,6 @@
 export interface MenuItem {
+  data?: string;
   name: string;
-  data: string;
+  routeOrID: string;
   isRoute: boolean;
 }

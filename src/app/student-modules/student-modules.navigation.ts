@@ -1,6 +1,8 @@
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-export class StudentModulesNavigatie {
+@Injectable({ providedIn: 'root' })
+export class StudentModulesNavigation {
   public static START = '';
   public static SCHERMEN = 'scherm';
 
@@ -12,10 +14,10 @@ export class StudentModulesNavigatie {
   }
 
   public naarStart(): void {
-    this.internal(StudentModulesNavigatie.START);
+    this.internal(StudentModulesNavigation.START);
   }
 
   public naarSchermen(): void {
-    this.internal(StudentModulesNavigatie.SCHERMEN);
+    this.internal(StudentModulesNavigation.SCHERMEN);
   }
 }

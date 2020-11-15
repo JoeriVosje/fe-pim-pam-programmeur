@@ -1,26 +1,31 @@
 .modules-overview {
-  height: 520px;
-  border-radius: 10px;
-  background-color: white;
   display: grid;
-  grid-template-rows: 60px 30px auto 100px;
-  grid-template-columns: repeat(2, 2fr) repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.bottom-right-padding {
+  padding-bottom: 32px;
+  padding-right: 32px;
 }
 
 .title {
   padding-left: 30px;
   font-weight: normal;
-  align-self: center;
+  align-self: start;
   grid-row: 1 / 2;
   grid-column: 1 / 5;
 }
 
 .column {
+  display: flex;
+  align-items: center;
+  justify-items: start;
   font-size: 12px;
+  height: 40px;
   font-weight: normal;
   background-color: #F1F3F9;
   color: #8898AA;
-  align-self: center;
 }
 
 .name {
@@ -42,17 +47,10 @@
 }
 
 .items-container {
+  min-height: 400px;
+  overflow-x: hidden; overflow-y: auto;
   grid-row: 3 / 4;
   grid-column: 1 / 5;
-}
-
-ppp-button {
-  grid-row: 4 / 5;
-  grid-column: 1 / 5;
-  justify-self: end;
-  padding-top: 30px;
-  padding-right: 30px;
-  padding-bottom: 30px;
 }
 
 .empty-board {

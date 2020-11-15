@@ -1,9 +1,10 @@
 <div class="content-overview"
      [ngClass]="{'small': getClass('sm'),
                  'medium': getClass('md'),
-                 'max': getClass('max')}">
+                 'max': getClass('max'),
+                 'auto': getClass('auto')}">
 
-  <h3 class="title">{{ title }}</h3>
+  <h3 [ngClass]="hideBorder ? 'title-no-border' : 'title'">{{ title }}</h3>
 
   <main class="main-content">
     <ng-content></ng-content>

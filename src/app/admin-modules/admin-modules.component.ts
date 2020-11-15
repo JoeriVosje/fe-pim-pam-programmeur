@@ -53,9 +53,9 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   public menuItem(menuItem: MenuItem): void {
     if (menuItem.isRoute) {
-      this.router.navigate([menuItem.data]);
+      this.router.navigate([menuItem.routeOrID]);
     } else {
-      // todo implement delete module
+      // todo implement snackbar, loading and delete
     }
   }
 

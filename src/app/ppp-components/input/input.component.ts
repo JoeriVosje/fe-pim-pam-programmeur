@@ -7,18 +7,20 @@ import { Subscription } from 'rxjs';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css']
 })
-export class InputComponent implements OnInit{
+export class InputComponent implements OnInit {
   @Input() public size: string;
   @Input() public id: string;
   @Input() public value: string;
   @Input() public type = 'text';
+  @Input() public lastItem: boolean;
   @Output() public inputFieldChange: EventEmitter<string> = new EventEmitter();
 
   public inputField: FormControl = new FormControl('');
 
   private subscription: Subscription;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.subscription = this.inputField.valueChanges.subscribe(() => {

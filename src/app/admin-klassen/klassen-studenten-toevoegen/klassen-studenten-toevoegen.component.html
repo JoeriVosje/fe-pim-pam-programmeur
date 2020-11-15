@@ -1,0 +1,23 @@
+<overview-template [title]="'Klassen'"
+                   [isAdmin]="true"
+                   [icon]="'person'">
+  <ppp-content-overview [title]="title()" [size]="'auto'">
+    <div *ngIf="loading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="input-field-padding">
+      <ppp-input [size]="'L'" id="name" (inputFieldChange)="getNameValue($event)">
+        Voornaam
+      </ppp-input>
+      <ppp-input [size]="'L'" id="major" (inputFieldChange)="getLastNameValue($event)">
+        Achternaam
+      </ppp-input>
+      <ppp-input [size]="'L'" (inputFieldChange)="getEmailValue($event)" [lastItem]="true">
+        Email
+      </ppp-input>
+    <div class="align-button">
+      <ppp-button (clicked)="add()">Toevoegen</ppp-button>
+    </div>
+    </div>
+  </ppp-content-overview>
+</overview-template>

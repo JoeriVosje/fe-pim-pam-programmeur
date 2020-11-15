@@ -3,21 +3,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginGuard } from '../admin-login-guard';
 
 import { AdminModulesComponent } from './admin-modules.component';
-import { ModulesBewerkenComponent } from './modules-bewerken/modules-bewerken.component';
 import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modules-bewerken.wrapper.component';
-import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
-import { ModulesToevoegenComponent } from './modules-toevoegen/modules-toevoegen.component';
 import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
+import { SchermToevoegenWrapperComponent } from './scherm-toevoegen/wrapper/scherm-toevoegen.wrapper.component';
+import { SchermOverzichtWrapperComponent } from './schermen-overzicht/wrapper/scherm-overzicht.wrapper.component';
 
 const breadCrumpMap = new Map([
   [0, {name: 'Overzicht', route: 'modules'}],
   [1, {name: 'Toevoegen', route: 'modules/add'}],
   [2, {name: 'Bewerken', route: 'modules/:id/edit'}],
   [3, {name: 'Schermen', route: 'modules/:id/screens'}],
+  [4, {name: 'Toevoegen', route: 'modules/:id/screens/create'}],
 ]);
 
 const routes: Routes = [
-  {path: '', component: AdminModulesComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}, canActivate: [AdminLoginGuard],},
+  {
+    path: '', component: AdminModulesComponent,
+    data: {
+      breadCrumbs: [breadCrumpMap.get(0)]
+    }
+  },
   {
     path: 'add', component: ModulesToevoegenWrapperComponent,
     data: {
@@ -33,11 +38,18 @@ const routes: Routes = [
     canActivate: [AdminLoginGuard]
   },
   {
-    path: ':id/screens', component: ModulesScreensComponent,
+    path: ':id/screens', component: SchermOverzichtWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3)]
     },
     canActivate: [AdminLoginGuard]
+  },
+  {
+    path: ':id/screens/create', component: SchermToevoegenWrapperComponent,
+    data: {
+      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3), breadCrumpMap.get(4)],
+      canActivate: [AdminLoginGuard]
+    }
   },
 ];
 

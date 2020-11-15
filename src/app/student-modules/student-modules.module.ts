@@ -8,7 +8,7 @@ import { SchermenWrapperModule } from './schermen/wrapper/schermen.wrapper.modul
 import { StartWrapperComponent } from './start/wrapper/start.wrapper.component';
 import { StartWrapperModule } from './start/wrapper/start.wrapper.module';
 import { StudentModulesComponent } from './student-modules.component';
-import { StudentModulesNavigatie } from './student-modules.navigatie';
+import { StudentModulesNavigation } from './student-modules.navigation';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ export class StudentModulesModule {
 
   public static readonly routes: Routes = [
     {
-      path: StudentModulesNavigatie.START,
+      path: StudentModulesNavigation.START,
       pathMatch: 'full',
       component: StartWrapperComponent,
       data: {
@@ -33,13 +33,13 @@ export class StudentModulesModule {
       canActivate: [StudentLoginGuard]
     },
     {
-      path: StudentModulesNavigatie.SCHERMEN,
+      path: StudentModulesNavigation.SCHERMEN,
       component: SchermenWrapperComponent,
       canActivate: [StudentLoginGuard]
     },
     {
       path: '**',
-      redirectTo: StudentModulesNavigatie.START,
+      redirectTo: StudentModulesNavigation.START,
       canActivate: [StudentLoginGuard]
     },
   ];
