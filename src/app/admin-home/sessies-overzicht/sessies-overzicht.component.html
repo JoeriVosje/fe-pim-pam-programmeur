@@ -1,36 +1,38 @@
 <overview-template [title]="'Home'"
                    [isAdmin]="true"
                    [icon]="'home'">
-  <div class="sessies-overview">
-    <h3 class="title">Sessie overzicht</h3>
-    <h4 class="name column">NAAM</h4>
-    <h4 class="status column">STATUS</h4>
-    <h4 class="progress column">VOLTOOID</h4>
-    <h4 class="date-started column">STARTDATUM</h4>
-    <h4 class="time-started column">STARTTIJD</h4>
-    <h4 class="time-ended column">EINDTIJD</h4>
 
-    <div class="empty-board" *ngIf="sessies == undefined || sessies.length < 1; else itemsPresent">
-      <span class="empty-board-text">
+<ppp-content-overview [title]="'Sessies Overzicht'" size="'auto'" [hideBorder]="true">
 
-
-
-      Er zijn nog geen actieve sessies. Ga naar <b> modules </b> om een sessie te starten.
-      </span>
-    </div>
-    <ng-template #itemsPresent>
-      <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
-
-        <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
-                      [name]="sessie.module.name"
-                      [studentsFinished]="sessie.studentsFinished"
-                      [studentsTotal]="sessie.totalStudents"
-                      [timeStarted]="sessie.startTime"
-                      [timeFinished]="sessie.endTime"
-                      [background]="even? 'light' : 'dark'">
-        </sessies-item>
-
-      </cdk-virtual-scroll-viewport>
-    </ng-template>
+  <div class="overview-start with-six-columns">
+    <h4 class="column-header header-one">NAAM</h4>
+    <h4 class="column-header header-two">STATUS</h4>
+    <h4 class="column-header header-three">VOLTOOID</h4>
+    <h4 class="column-header header-four">STARTDATUM</h4>
+    <h4 class="column-header header-five">EINDDATUM</h4>
+    <h4 class="column-header header-six">EINDTIJD</h4>
   </div>
+
+  <div class="empty-board" *ngIf="sessies == undefined || sessies.length < 1; else itemsPresent">
+      <span class="empty-board-text">
+      Er zijn nog geen actieve sessies. Ga naar modules om een sessie te starten.
+      </span>
+  </div>
+  <ng-template #itemsPresent>
+    <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
+
+      <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
+                    [name]="sessie.module.name"
+                    [studentsFinished]="sessie.studentsFinished"
+                    [studentsTotal]="sessie.totalStudents"
+                    [timeStarted]="sessie.startTime"
+                    [timeFinished]="sessie.endTime"
+                    [background]="even? 'light' : 'dark'">
+      </sessies-item>
+
+    </cdk-virtual-scroll-viewport>
+  </ng-template>
+
+</ppp-content-overview>
+
 </overview-template>

@@ -51,6 +51,10 @@ html, body {
   grid-template-columns: repeat(5, 1fr);
 }
 
+.with-six-columns {
+  grid-template-columns: repeat(6, 1fr);
+}
+
 .overview-start {
   display: grid;
   grid-template-rows: auto;
@@ -65,7 +69,7 @@ html, body {
   font-weight: normal;
   background-color: #F1F3F9;
   color: #8898AA;
-  padding-left: 30px;
+  padding-left: 32px;
 }
 
 .header-one {
@@ -111,42 +115,42 @@ html, body {
 .column-one {
   align-self: center;
   font-weight: bold;
-  padding-left: 30px;
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 1 / 2;
 }
 
 .column-two {
   align-self: center;
-  padding-left: 30px;
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
 }
 
 .column-three {
   align-self: center;
-  padding-left: 30px;
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 3 / 4;
 }
 
 .column-four {
   align-self: center;
-  padding-left: 30px;
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 4 / 5;
 }
 
 .column-five {
   align-self: center;
-  padding-left: 30px;
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 5 / 6;
 }
 
 .column-six {
   align-self: center;
-  padding-left: 30px;
+  padding-left: 32px;
   grid-row: 2 / 3;
   grid-column: 6 / 7;
 }
@@ -164,6 +168,7 @@ html, body {
 
 .column-double-second-child {
   align-self: center;
+  justify-self: end;
   padding-right: 48px;
   padding-left: 16px;
   grid-row: 1 / 2;
@@ -182,17 +187,16 @@ html, body {
 .empty-board {
   grid-row: 3 / 4;
   grid-column: 1 / 5;
-  font-size: 16px;
   letter-spacing: 0px;
   color: #172B4D;
   text-align: center;
-  padding-left: 24px;
-  padding-top: 24px;
-  padding-right: 24px;
+  padding: 32px;
 }
 
 .empty-board-text {
+  font-size: 15px;
   display: flex;
+  font-style: italic;
   justify-content: center;
 }
 
