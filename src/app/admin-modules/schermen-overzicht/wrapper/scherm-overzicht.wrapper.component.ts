@@ -1,5 +1,5 @@
 import { Component , Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
@@ -21,9 +21,14 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   @Input()
   public moduleName: string;
 
-  constructor(private service: AdminScreensService,
-              private router: Router,
-              private route: ActivatedRoute) {}
+  constructor(private service: AdminScreensService, private router: Router, private route: ActivatedRoute) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.subscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });
+  }
 
 
   ngOnInit(): void {
@@ -35,9 +40,11 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  reOrderScreens(screens: Screen[]): void{
+  reOrderScreens(screens: Screen[]): void {
     const orderedList: Array<string> = [];
-    screens.map(screen => { orderedList.push(screen.id); });
+    screens.map(screen => {
+      orderedList.push(screen.id);
+    });
     console.log(orderedList);
     this.service.reOrderScreen({componentIds: orderedList}).subscribe({
       next: e => console.log(e),
@@ -51,9 +58,10 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   }
 
   verwijderen(menuItem: MenuItem): void {
+    console.log('deleted');
     this.service.deleteScreen(menuItem.routeOrID).subscribe({
       error: error => console.log(error),
-      complete: () =>  this.router.navigate([`modules/${this.moduleId}/screens`])
+      complete: () => this.router.navigate([this.router.url])
     });
   }
 
