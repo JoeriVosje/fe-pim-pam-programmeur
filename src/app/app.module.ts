@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
-
 import { CookieService } from 'ngx-cookie-service';
 import { AdminHomeModule } from './admin-home/admin-home.module';
 import { AdminModulesModule } from './admin-modules/admin-modules.module';

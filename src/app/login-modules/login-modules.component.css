@@ -10,19 +10,30 @@ main {
 }
 
 .hacker {
-  position: relative;
-  height: 195px;
+  position: absolute;
+  height: 165px;
+  top: 83px;
 }
 
 .page {
-  position: relative;
+  position: absolute;
   border-radius: 10px;
   background-color: white;
-  width: 500px;
+  width: 425px;
+  top: 50px;
   margin-top: 200px;
   padding: 30px;
+  text-align: center;
 }
 
 .login-button {
-  padding: 30px;
+  position: relative;
+}
+
+article p {
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: #172B4D;
 }
