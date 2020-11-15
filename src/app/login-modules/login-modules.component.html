@@ -4,8 +4,8 @@
     <article class="page">
       <h1>Pim Pam Programmeur</h1>
       <p>Welkom terug! Login om verder te gaan.</p>
-      <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L">Gebruikersnaam of email</ppp-input>
-      <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L">Wachtwoord</ppp-input>
+      <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L" icon="email">Gebruikersnaam of email</ppp-input>
+      <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L" icon="lock">Wachtwoord</ppp-input>
       <br/>
       <ppp-button class="login-button" (clicked)="inloggen()" [type]="'highlight'">Inloggen</ppp-button>
       <div class="mat-error" *ngIf="loginFailed">Login is mislukt. Probeer het opniew.</div>

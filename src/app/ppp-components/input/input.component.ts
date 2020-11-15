@@ -13,6 +13,7 @@ export class InputComponent implements OnInit {
   @Input() public value: string;
   @Input() public type = 'text';
   @Input() public lastItem: boolean;
+  @Input() public icon: string;
   @Output() public inputFieldChange: EventEmitter<string> = new EventEmitter();
 
   public inputField: FormControl = new FormControl('');

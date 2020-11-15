@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit{
 
   public logoutClicked(): void {
     this.logoutEmitter.emit();
+
   }
 
   public breadCrumbClicked(route: string): void {
