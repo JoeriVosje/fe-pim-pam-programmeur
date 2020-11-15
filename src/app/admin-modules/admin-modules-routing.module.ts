@@ -4,9 +4,9 @@ import { AdminLoginGuard } from '../admin-login-guard';
 
 import { AdminModulesComponent } from './admin-modules.component';
 import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modules-bewerken.wrapper.component';
-import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
 import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
-import { SchermToevoegenWrapperComponent } from './screen-toevoegen/wrapper/scherm-toevoegen.wrapper.component';
+import { SchermToevoegenWrapperComponent } from './scherm-toevoegen/wrapper/scherm-toevoegen.wrapper.component';
+import { SchermOverzichtWrapperComponent } from './schermen-overzicht/wrapper/scherm-overzicht.wrapper.component';
 
 const breadCrumpMap = new Map([
   [0, {name: 'Overzicht', route: 'modules'}],
@@ -39,7 +39,7 @@ const routes: Routes = [
     canActivate: [AdminLoginGuard]
   },
   {
-    path: ':id/screens', component: ModulesScreensComponent,
+    path: ':id/screens', component: SchermOverzichtWrapperComponent,
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3)]
     },

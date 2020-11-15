@@ -1,17 +1,29 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { Screen } from './scherm-item/scherm-item.model';
 import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { AdminScreensService } from '../admin-screens.service';
-import { Screen } from '../screens-overzicht/screen-item/screen-item.model';
+
+
 
 @Component({
-  selector: 'app-modules-screens',
-  templateUrl: './modules-screens.component.html',
-  styleUrls: ['./modules-screens.component.css']
+  selector: 'screens-overzicht',
+  templateUrl: './schermen-overzicht.component.html',
+  styleUrls: ['./schermen-overzicht.component.css']
 })
-export class ModulesScreensComponent implements OnInit, OnDestroy {
+export class SchermenOverzichtComponent implements OnInit, OnDestroy {
+
+  @Input()
+  public moduleName: string;
+
+  @Output()
+  public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
+
+  @Output()
+  public toevoegenClicked: EventEmitter<void> = new EventEmitter();
 
   public screens: Screen[] = [];
   public moduleId: string;
@@ -20,7 +32,8 @@ export class ModulesScreensComponent implements OnInit, OnDestroy {
 
   constructor(private readonly adminScreensService: AdminScreensService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     // logging route id for demo purposes and usage in - to be made - 'edit module screen', delete when clear
@@ -31,6 +44,20 @@ export class ModulesScreensComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  drop(event: CdkDragDrop<Screen[]>): void {
+    moveItemInArray(this.screens, event.previousIndex, event.currentIndex);
+    this.screens = [...this.screens];
+  }
+
+  public menuItem(menuItem: MenuItem): void {
+    this.menuItemClicked.emit(menuItem);
+  }
+
+  toevoegen(): void {
+      this.toevoegenClicked.emit();
+  }
+
 
   public getScreens(): void {
     this.subscription.add(
@@ -46,9 +73,5 @@ export class ModulesScreensComponent implements OnInit, OnDestroy {
   deleteScreen(menuItem: MenuItem): void {
     console.log('Delete screen id ' + menuItem.routeOrID);
     // todo implement snackbar, loading and delete
-  }
-
-  toevoegen(): void {
-    this.router.navigate(['modules/' + this.moduleId + '/screens/create']);
   }
 }

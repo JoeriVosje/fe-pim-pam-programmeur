@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AdminScreensService } from '../../admin-screens.service';
-import { Screen } from '../../screens-overzicht/screen-item/screen-item.model';
+import { Screen } from '../../schermen-overzicht/scherm-item/scherm-item.model';
 
 @Component({
   selector: 'scherm-toevoegen-wrapper',
