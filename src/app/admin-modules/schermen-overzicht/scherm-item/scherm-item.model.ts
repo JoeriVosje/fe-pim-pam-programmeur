@@ -14,3 +14,8 @@ export interface Answer {
   description: string;
   isCorrectAnswer: boolean;
 }
+
+
+export interface OrderListItem {
+  componentIds: Array<string>;
+}

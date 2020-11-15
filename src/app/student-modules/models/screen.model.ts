@@ -1,4 +1,4 @@
-export interface Question {
+export interface Screen {
   id: string;
   title: string;
   theory?: string;
@@ -7,6 +7,7 @@ export interface Question {
   hint?: string;
   moduleId: string;
   answers: Answer[];
+  lastScreen?: boolean;
 }
 
 export interface Answer {

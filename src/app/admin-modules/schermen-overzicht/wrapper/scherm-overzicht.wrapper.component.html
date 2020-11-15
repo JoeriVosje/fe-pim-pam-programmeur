@@ -1,6 +1,8 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
-  <screens-overzicht [moduleName]="moduleId" (menuItemClicked)="($event)"
-                     (toevoegenClicked)="toevoegen()"></screens-overzicht>
+  <screens-overzicht [moduleName]="moduleId" [screens]="screens"
+                     (menuItemClicked)="verwijderen($event)"
+                     (toevoegenClicked)="toevoegen()"
+                      (reOrdered)="reOrderScreens($event)"></screens-overzicht>
 </overview-template>

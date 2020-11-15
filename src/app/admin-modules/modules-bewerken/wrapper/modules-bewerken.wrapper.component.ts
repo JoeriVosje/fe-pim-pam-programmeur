@@ -27,7 +27,7 @@ export class ModulesBewerkenWrapperComponent implements OnInit {
     this.service.getModule(this.id).subscribe({
       next: e => this.moduleName = e.name,
       error: error => console.log(error)
-    });
+    })
   }
 
   updateModule(moduleName: string): void {
