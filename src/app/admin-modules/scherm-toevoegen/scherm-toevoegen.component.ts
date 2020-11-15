@@ -13,6 +13,9 @@ export class SchermToevoegenComponent implements OnInit {
   @Output()
   public screenAdded: EventEmitter<Screen> = new EventEmitter<Screen>();
 
+  @Output()
+  public validationFailed: EventEmitter<string> = new EventEmitter<string>();
+
   @Input() public moduleId: string;
 
   constructor() {
@@ -47,33 +50,31 @@ export class SchermToevoegenComponent implements OnInit {
     return !(typeof input !== 'undefined' && input);
   }
   public addScreen(): void {
-    console.log(this.screenForm);
     if (this.screenForm.invalid) {
-      alert('Titel is verplicht');
+      this.validationFailed.emit('Titel is verplicht');
       return;
     }
     if (this.isEmpty(this.screenForm.controls.question.value)) {
         if (this.isEmpty(this.screenForm.controls.theory.value)) {
-          alert('Als de vraag leeg is, is de theorie verplicht.');
+          this.validationFailed.emit('Als de vraag leeg is, is de theorie verplicht.');
           return;
         }
       }
     if (this.isEmpty(this.screenForm.controls.theory.value)) {
       if (this.isEmpty(this.screenForm.controls.question.value)) {
-          alert('Als de theorie leeg is, is de vraag verplicht.');
+          this.validationFailed.emit('Als de theorie leeg is, is de vraag verplicht.');
           return;
         }
 
     }
     if (!this.isEmpty(this.screenForm.controls.question.value )){
       if (!this.validMultipleChoiceAnswers()){
-        alert('Als de vraag is ingevuld moeten alle antwoord mogenlijkheden ingevuld zijn inclusief het correcte antwoord.');
+        this.validationFailed.emit('Als de vraag is ingevuld moeten alle antwoord mogenlijkheden ingevuld zijn inclusief het correcte antwoord.');
         return;
       }
     }
 
     const answersInput: Array<Answer> = this.getAnswersInput(this.screenForm.controls.correctAnswer.value);
-    console.log(this.screenForm.controls.skippable.value);
     const product: Screen = {
       title: this.screenForm.controls.title.value,
       theory: this.screenForm.controls.theory.value,
@@ -83,7 +84,6 @@ export class SchermToevoegenComponent implements OnInit {
       skippable: this.screenForm.controls.skippable.value === true,
       moduleId: this.moduleId
     };
-    console.log(product);
     this.screenAdded.emit(product);
   }
 

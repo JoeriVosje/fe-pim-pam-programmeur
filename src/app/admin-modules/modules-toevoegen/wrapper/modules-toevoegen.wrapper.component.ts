@@ -12,7 +12,9 @@ import { AdminModulesService } from '../../admin-modules.service';
 export class ModulesToevoegenWrapperComponent implements OnInit {
   loading: boolean;
 
-  constructor(private service: AdminModulesService, private router: Router, private snackBar: PppSnackerService) {
+  constructor(private service: AdminModulesService,
+              private router: Router,
+              private snackBar: PppSnackerService) {
   }
 
   ngOnInit(): void {

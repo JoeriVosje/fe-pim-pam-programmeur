@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { AdminScreensService } from '../../admin-screens.service';
 import { Screen } from '../scherm-item/scherm-item.model';
+import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 @Component({
   selector: 'scherm-overzicht-wrapper',
@@ -21,7 +22,10 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   @Input()
   public moduleName: string;
 
-  constructor(private service: AdminScreensService, private router: Router, private route: ActivatedRoute) {
+  constructor(private service: AdminScreensService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private snackBar: PppSnackerService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -45,11 +49,13 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
     screens.map(screen => {
       orderedList.push(screen.id);
     });
-    console.log(orderedList);
     this.service.reOrderScreen({componentIds: orderedList}).subscribe({
       next: e => console.log(e),
       error: error => console.log(error),
-      complete: () => this.router.navigate([`modules/${this.moduleId}/screens`])
+      complete: () => {
+        this.router.navigate([`modules/${this.moduleId}/screens`]);
+        this.snackBar.showBewerkt('De volgorde is succesvol opgeslagen.');
+      }
     });
   }
 
@@ -61,7 +67,10 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
     console.log('deleted');
     this.service.deleteScreen(menuItem.routeOrID).subscribe({
       error: error => console.log(error),
-      complete: () => this.router.navigate([this.router.url])
+      complete: () => {
+        this.router.navigate([this.router.url]);
+        this.snackBar.showVerwijderd('Scherm');
+      }
     });
   }
 
