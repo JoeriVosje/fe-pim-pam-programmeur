@@ -1,9 +1,9 @@
-<div [ngClass]="background" class="modules-item">
-  <span class="item name" id="name">{{ name }}</span>
-  <span class="item status">{{ status ? 'open' : 'gesloten' }}</span>
-  <span class="item last-column">
-  <span class="item date-added">{{ dateAdded | date: 'dd/MM/yyyy' }}</span>
-    <span class="item ppp-button">
+<div [ngClass]="background" class="column-items-start with-three-columns">
+  <span class="column-one" id="name">{{ name }}</span>
+  <span class="column-two">{{ status ? 'open' : 'gesloten' }}</span>
+  <span class="column-double">
+  <span class="column-double-first-child">{{ dateAdded | date: 'dd/MM/yyyy' }}</span>
+    <span class="column-double-second-child">
     <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
     </span>
   </span>

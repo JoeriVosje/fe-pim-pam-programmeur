@@ -34,5 +34,4 @@ export class AdminStudentenService {
       observe: 'response'
     });
   }
-
 }
