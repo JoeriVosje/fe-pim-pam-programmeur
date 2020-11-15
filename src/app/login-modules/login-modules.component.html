@@ -3,9 +3,7 @@
   <h1>Pim Pam Programmeur</h1>
   <p>Welkom terug! Login om verder te gaan.</p>
   <b *ngIf="loginFailed">Login is mislukt</b>
-  <form>
-    <ppp-input (inputFieldChange)="getEmail($event)">Gebruikersnaam of email</ppp-input>
-    <ppp-input (inputFieldChange)="getPassword($event)">Wachtwoord</ppp-input>
-    <ppp-button (clicked)="inloggen()">Inloggen</ppp-button>
-  </form>
+  <ppp-input (inputFieldChange)="getEmail($event)">Gebruikersnaam of email</ppp-input>
+  <ppp-input (inputFieldChange)="getPassword($event)">Wachtwoord</ppp-input>
+  <ppp-button (clicked)="inloggen()">Inloggen</ppp-button>
 </article>
