@@ -27,7 +27,6 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    console.log(this.route);
     this.moduleId = this.route.snapshot.paramMap.get('id');
     this.getScreens();
   }
@@ -36,11 +35,11 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  reOrderScreens(screen: Screen[]): void{
-    this.service.reOrderScreen(screen).subscribe({
+  reOrderScreens(screens: Screen[]): void{
+    this.service.reOrderScreen(screens).subscribe({
       next: e => console.log(e),
       error: error => console.log(error),
-      complete: () => this.router.navigate(['/modules'])
+      complete: () => this.router.navigate([`modules/${this.moduleId}/screens`])
     });
   }
 
@@ -50,12 +49,8 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
 
   verwijderen(menuItem: MenuItem): void {
     this.service.deleteScreen(menuItem.routeOrID).subscribe({
-      next: e => console.log(e),
       error: error => console.log(error),
-      complete: () =>  {
-        this.router.navigate([`modules/${this.moduleId}/screens`]);
-      }
-
+      complete: () =>  this.router.navigate([`modules/${this.moduleId}/screens`])
     });
   }
 
