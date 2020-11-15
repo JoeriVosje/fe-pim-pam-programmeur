@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'login', loadChildren: () =>
+      import('./login-modules/login-modules.module')
+        .then(theImport => theImport.LoginModulesModule)
+  },
+  {
     // todo Replace AdminModulesModule with LoginModule
     path: '', loadChildren: () =>
       import('./admin-modules/admin-modules.module')
@@ -11,8 +16,8 @@ const routes: Routes = [
   {
     // todo Replace home import with import('./admin-home/admin-home.module').then(theImport => theImport.HomeModule)
     path: 'home', loadChildren: () =>
-      import('./admin-modules/admin-modules.module')
-        .then(theImport => theImport.AdminModulesModule)
+      import('./admin-home/admin-home.module')
+        .then(theImport => theImport.AdminHomeModule)
   },
   {
     // todo Replace classes import with import('./admin-classes/admin-classes.module').then(theImport => theImport.ClassModule)
