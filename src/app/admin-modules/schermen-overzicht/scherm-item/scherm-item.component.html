@@ -1,6 +1,6 @@
 <div [ngClass]="background" class="screen-item" >
   <p id="title">{{ screenInput.title }}</p>
-  <p id="theory">{{ screenInput.theory.slice(0, 100) }}</p>
+  <p id="theory">{{  screenInput.theory !== undefined && screenInput.theory ? screenInput.theory.slice(0, 100 ): ""}}</p>
   <p id="question">{{ screenInput.question }}</p>
   <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
 </div>
