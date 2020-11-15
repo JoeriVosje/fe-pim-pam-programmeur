@@ -1,9 +1,10 @@
+div p:first-of-type {
+  margin-bottom: 30px;
+}
+
 .container {
   height: 100%;
   background-color: #172C4C;
-}
-
-main {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,12 +29,4 @@ main {
 
 .login-button {
   position: relative;
-}
-
-article p {
-  margin-bottom: 30px;
-}
-
-h1 {
-  color: #172B4D;
 }

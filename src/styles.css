@@ -21,3 +21,7 @@ html, body {
 .input-field-padding {
   padding: 24px 32px 32px;
 }
+
+h1 {
+  color: #172B4D;
+}
