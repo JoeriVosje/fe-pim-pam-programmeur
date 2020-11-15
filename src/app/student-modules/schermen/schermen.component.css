@@ -1,12 +1,5 @@
 .container {
-  box-sizing: border-box;
-  height: 100%;
-  padding-top: 48px;
-  padding-left: 48px;
-  padding-right: 48px;
+  min-height: 100%;
+  padding: 48px;
   background-color: #172C4C;
-}
-
-ppp-content-overview {
-
 }

@@ -1,12 +1,18 @@
 <div class="container">
 
 <!--  Theorie-->
-  <ppp-content-overview [title]="title" [size]="'md'">
-
+  <ppp-content-overview [title]="question.title" [size]="'auto'">
+    <div class="input-field-padding">
+      <span [innerHTML]="question.theory"> </span>
+      <ppp-button class="align-button" (clicked)="onNext()">Volgende</ppp-button>
+    </div>
   </ppp-content-overview>
 
 <!--  Vraag-->
-  <ppp-content-overview [title]="title" [size]="'md'">
+  <ppp-content-overview [title]="'Vraag'" [size]="'auto'">
+    <div class="input-field-padding">
 
+      <ppp-button class="align-button" (clicked)="onNext()">Volgende</ppp-button>
+    </div>
   </ppp-content-overview>
 </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Question } from '../models/question.model';
 
 @Component({
   selector: 'student-schermen',
@@ -7,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchermenComponent {
 
+  @Input() public question: Question;
+  @Output() public next = new EventEmitter<void>();
+
   public title = 'ModuleName';
 
   constructor() { }
 
+  public onNext(): void {
+    this.next.emit();
+  }
 }
