@@ -24,4 +24,7 @@ export class AdminScreensService {
     return this.httpClient.put<Screen[]>(`${this.baseurl}/Component/Order`, screens, { observe: 'response' });
   }
 
+  deleteScreen(screenId: string): Observable<HttpResponse<void>> {
+    return this.httpClient.delete<void>(`${this.baseurl}/Component/${screenId}`, { observe: 'response' });
+  }
 }

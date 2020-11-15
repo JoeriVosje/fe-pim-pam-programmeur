@@ -46,7 +46,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
         .subscribe({
           next: modules => this.modules = modules,
           error: error => console.log(error),
-          complete: () => console.log('complete')
+          complete: () => console.log('Modules opgehaal.')
         })
     );
   }

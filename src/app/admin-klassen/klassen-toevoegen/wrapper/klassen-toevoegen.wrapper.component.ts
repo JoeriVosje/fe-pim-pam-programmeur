@@ -30,7 +30,7 @@ export class KlassenToevoegenWrapperComponent implements OnInit {
           return {key: e.id, value: e.name};
         }),
         error: error => console.log(error),
-        complete: () => console.log('complete')
+        complete: () => console.log('Modules opgehaald in klassen.')
       });
   }
 
