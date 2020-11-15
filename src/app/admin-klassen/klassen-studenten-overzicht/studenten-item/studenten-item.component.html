@@ -5,7 +5,7 @@
     <span class="column-two" id="last-name">{{ student.lastName }}</span>
     <span class="column-three" id="email">{{ student.email }}</span>
     <span class="column-four column-double">
-    <span class="column-double-first-child" id="creation-date">{{ student.creationDate }}</span>
+    <span class="column-double-first-child" id="creation-date">{{ student.creationDate | date:'dd/MM/yyyy'}}</span>
     <span class="column-double-second-child">
     <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
       </span>
