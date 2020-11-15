@@ -9,6 +9,7 @@ import { StartWrapperComponent } from './start/wrapper/start.wrapper.component';
 import { StartWrapperModule } from './start/wrapper/start.wrapper.module';
 import { StudentModulesComponent } from './student-modules.component';
 import { StudentModulesNavigation } from './student-modules.navigation';
+import { EscapeHtmlPipe } from './keep-html.pipe';
 
 
 @NgModule({
@@ -18,6 +19,9 @@ import { StudentModulesNavigation } from './student-modules.navigation';
     RouterModule.forChild(StudentModulesModule.routes),
     SchermenWrapperModule,
     StartWrapperModule
+  ],
+  providers: [
+    EscapeHtmlPipe
   ]
 })
 export class StudentModulesModule {

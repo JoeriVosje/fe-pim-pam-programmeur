@@ -3,7 +3,7 @@
 <!--  Theorie-->
   <ppp-content-overview [title]="question.title" [size]="'auto'">
     <div class="input-field-padding">
-      <span [innerHTML]="question.theory"> </span>
+      <span [innerHTML]="question.theory | keepHtml"> </span>
       <ppp-button class="align-button" (clicked)="onNext()">Volgende</ppp-button>
     </div>
   </ppp-content-overview>
