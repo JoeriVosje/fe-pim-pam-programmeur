@@ -11,7 +11,10 @@ import { Screen } from '../../schermen-overzicht/scherm-item/scherm-item.model';
 })
 export class SchermToevoegenWrapperComponent implements OnInit {
 
-  constructor(private service: AdminScreensService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private service: AdminScreensService,
+              private router: Router,
+              private route: ActivatedRoute) {}
+
   moduleId: string;
   ngOnInit(): void {
     console.log(this.route);
@@ -22,7 +25,7 @@ export class SchermToevoegenWrapperComponent implements OnInit {
     this.service.saveScreen(screen).subscribe({
       next: e => console.log(e),
       error: error => console.log(error),
-      complete: () => this.router.navigate(['/modules'])
+      complete: () => this.router.navigate([`/modules/${this.moduleId}/screens`])
     });
   }
 
