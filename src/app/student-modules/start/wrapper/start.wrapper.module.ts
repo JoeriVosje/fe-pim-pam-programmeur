@@ -9,8 +9,8 @@ import { StartWrapperComponent } from './start.wrapper.component';
   declarations: [StartWrapperComponent],
   exports: [StartWrapperComponent],
   imports: [
-    StartModule,
-    CommonModule
+    CommonModule,
+    StartModule
   ]
 })
 export class StartWrapperModule { }

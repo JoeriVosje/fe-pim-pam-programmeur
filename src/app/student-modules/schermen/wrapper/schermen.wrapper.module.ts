@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { SchermenModule } from '../schermen.module';
@@ -8,6 +9,7 @@ import { SchermenWrapperComponent } from './schermen.wrapper.component';
   declarations: [SchermenWrapperComponent],
   exports: [SchermenWrapperComponent],
   imports: [
+    CommonModule,
     SchermenModule
   ]
 })

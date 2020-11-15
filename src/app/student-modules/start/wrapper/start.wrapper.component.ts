@@ -60,11 +60,11 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
   }
 
   public canStartModule(): boolean {
-    return this.session ? !this.session.endTime : false;
+    return !!this.session;
   }
 
   public naarSchermen(): void {
-    this.navigatie.naarSchermen();
+    this.navigatie.toScreens();
   }
 
 }

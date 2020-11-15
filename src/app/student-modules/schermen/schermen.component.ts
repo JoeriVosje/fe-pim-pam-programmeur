@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
-import { Question } from '../models/question.model';
+import { Screen } from '../models/screen.model';
 
 @Component({
   selector: 'student-schermen',
@@ -9,14 +9,19 @@ import { Question } from '../models/question.model';
 })
 export class SchermenComponent {
 
-  @Input() public question: Question;
-  @Output() public next = new EventEmitter<void>();
+  @Input() public screen: Screen;
+  @Output() public nextScreen = new EventEmitter<void>();
+  @Output() public finished = new EventEmitter<void>();
 
   public title = 'ModuleName';
 
   constructor() { }
 
   public onNext(): void {
-    this.next.emit();
+    this.screen.lastScreen ? this.finished.emit() : this.nextScreen.emit();
+  }
+
+  public showButton(): boolean {
+    return !this.screen.question;
   }
 }
