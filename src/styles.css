@@ -14,10 +14,15 @@ html, body {
 }
 
 .align-button {
-   display: flex;
-   padding-top: 32px;
-   justify-content: flex-end;
- }
+  display: flex;
+  padding-top: 32px;
+  justify-content: flex-end;
+}
+
+.bottom-right-padding {
+  padding-bottom: 32px;
+  padding-right: 32px;
+}
 
 .input-field-padding {
   padding: 24px 32px 32px;
