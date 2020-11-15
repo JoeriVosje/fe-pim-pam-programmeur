@@ -4,14 +4,14 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatProgressBar, MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { PppComponentsModule } from '../ppp-components/ppp-components.module';
@@ -51,6 +51,7 @@ import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht
     HttpClientModule,
     MatSnackBarModule,
     PppComponentsModule,
+    MatProgressBarModule,
     ScrollingModule,
     AdminModulesRoutingModule,
     DragDropModule,
@@ -68,4 +69,5 @@ import { ScreensOverzichtComponent } from './screens-overzicht/screens-overzicht
   ],
   exports: [AdminModulesComponent]
 })
-export class AdminModulesModule { }
+export class AdminModulesModule {
+}

@@ -3,7 +3,9 @@
                    [icon]="'layers'">
       <ppp-content-overview [title]="'Modules overzicht'" [size]="'auto'">
     <div class="input-field-padding">
-
+      <div *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
         <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)">
           Naam
         </ppp-input>
