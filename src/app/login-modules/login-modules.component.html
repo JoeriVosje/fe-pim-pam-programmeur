@@ -3,11 +3,9 @@
     <img class="hacker" src="/assets/hacker.png" alt="Pim Pam Programmeur">
     <article class="page">
       <h1>Pim Pam Programmeur</h1>
-      <form>
-        <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L">Gebruikersnaam of email</ppp-input>
-        <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L">Wachtwoord</ppp-input>
-        <ppp-button class="login-button" (clicked)="inloggen()" [type]="'highlight'" style="width:100%">Inloggen</ppp-button>
-      </form>
+      <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L">Gebruikersnaam of email</ppp-input>
+      <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L">Wachtwoord</ppp-input>
+      <ppp-button class="login-button" (clicked)="inloggen()" [type]="'highlight'" style="width:100%">Inloggen</ppp-button>
       <div class="mat-error" *ngIf="loginFailed">Login is mislukt. Probeer het opniew.</div>
     </article>
   </main>
