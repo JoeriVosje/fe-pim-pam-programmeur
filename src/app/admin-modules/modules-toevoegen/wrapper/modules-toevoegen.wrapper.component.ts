@@ -26,10 +26,8 @@ export class ModulesToevoegenWrapperComponent implements OnInit {
       if (this.loading === false) {
         this.loading = true;
         this.service.saveModule(moduleName).subscribe({
-          next: e => console.log(e),
           error: error => {
-            console.log(error);
-            this.snackBar.showErGingIetsMis();
+            this.snackBar.showErGingIetsMis(error);
             this.loading = false;
           },
           complete: () => {

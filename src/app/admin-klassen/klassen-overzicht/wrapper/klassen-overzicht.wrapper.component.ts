@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.model';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { Klas } from '../../klassen-item.model';
+import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 /**
  * Dit is een zogenoemd 'dom' component. Dit component
@@ -22,7 +23,9 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
   public klassen: Klas[] = [];
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private klassenService: AdminKlassenService, private router: Router) {
+  constructor(private klassenService: AdminKlassenService,
+              private router: Router,
+              private snackBar: PppSnackerService) {
   }
 
   ngOnInit(): void {
@@ -30,8 +33,7 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
       this.klassenService.getKlassen()
         .subscribe({
           next: klassen => this.klassen = klassen,
-          error: error => console.log(error),
-          complete: () => console.log('Klassen opgehaald')
+          error: error => this.snackBar.showErGingIetsMis(error)
         })
     );
   }

@@ -3,9 +3,9 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
+import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminScreensService } from '../../admin-screens.service';
 import { Screen } from '../scherm-item/scherm-item.model';
-import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 @Component({
   selector: 'scherm-overzicht-wrapper',
@@ -50,8 +50,7 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
       orderedList.push(screen.id);
     });
     this.service.reOrderScreen({componentIds: orderedList}).subscribe({
-      next: e => console.log(e),
-      error: error => console.log(error),
+      error: error => this.snackBar.showErGingIetsMis(error),
       complete: () => {
         this.router.navigate([`modules/${this.moduleId}/screens`]);
         this.snackBar.showBewerkt('De volgorde is succesvol opgeslagen.');
@@ -64,9 +63,8 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   }
 
   verwijderen(menuItem: MenuItem): void {
-    console.log('deleted');
     this.service.deleteScreen(menuItem.routeOrID).subscribe({
-      error: error => console.log(error),
+      error: error => this.snackBar.showErGingIetsMis(error),
       complete: () => {
         this.router.navigate([this.router.url]);
         this.snackBar.showVerwijderd('Scherm');
@@ -79,8 +77,7 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
       this.service.getScreens(this.moduleId)
         .subscribe({
           next: screens => this.screens = screens,
-          error: error => console.log(error),
-          complete: () => console.log('Schermen opgehaald.')
+          error: error => this.snackBar.showErGingIetsMis(error)
         })
     );
   }

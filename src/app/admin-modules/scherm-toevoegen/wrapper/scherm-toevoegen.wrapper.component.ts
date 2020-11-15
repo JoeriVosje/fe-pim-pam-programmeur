@@ -18,15 +18,14 @@ export class SchermToevoegenWrapperComponent implements OnInit {
               private snackBar: PppSnackerService) {}
 
   moduleId: string;
+
   ngOnInit(): void {
-    console.log(this.route);
     this.moduleId = this.route.snapshot.paramMap.get('id');
   }
 
   addScreen(screen: Screen): void{
     this.service.saveScreen(screen).subscribe({
-      next: e => console.log(e),
-      error: error => console.log(error),
+      error: error => this.snackBar.showErGingIetsMis(error),
       complete: () => {
         this.snackBar.showToegevoegd('Scherm');
         this.router.navigate([`/modules/${this.moduleId}/screens`]);

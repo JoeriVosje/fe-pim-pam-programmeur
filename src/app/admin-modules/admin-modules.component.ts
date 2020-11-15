@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
+import { PppSnackerService } from '../ppp-services/ppp-snacker.service';
 import { AdminModulesService } from './admin-modules.service';
 import { AdminScreensService } from './admin-screens.service';
 import { Module } from './modules-overzicht/modules-item/modules-item.model';
@@ -29,7 +30,8 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   constructor(private readonly adminModuleService: AdminModulesService,
               private readonly adminScreensService: AdminScreensService,
-              private router: Router) {
+              private router: Router,
+              private snackBar: PppSnackerService) {
   }
 
   ngOnInit(): void {
@@ -45,8 +47,16 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
       this.adminModuleService.getModules()
         .subscribe({
           next: modules => this.modules = modules,
-          error: error => console.log(error),
-          complete: () => console.log('Modules opgehaal.')
+          error: error => this.snackBar.showErGingIetsMis(error)
+        })
+    );
+  }
+  public deleteModule(id: string): void {
+    this.subscription.add(
+      this.adminModuleService.deleteModule(id)
+        .subscribe({
+          error: error => this.snackBar.showErGingIetsMis(error),
+          complete: () => this.snackBar.showVerwijderd('module')
         })
     );
   }
@@ -55,7 +65,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     if (menuItem.isRoute) {
       this.router.navigate([menuItem.routeOrID]);
     } else {
-      // todo implement snackbar, loading and delete
+      this.deleteModule(menuItem.routeOrID);
     }
   }
 

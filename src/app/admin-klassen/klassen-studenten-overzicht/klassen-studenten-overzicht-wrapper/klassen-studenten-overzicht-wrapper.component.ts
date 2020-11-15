@@ -7,6 +7,7 @@ import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.mode
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { AdminStudentenService } from '../../admin-studenten-service.service';
 import { Student } from '../../studenten-item.model';
+import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
   constructor(private studentenService: AdminStudentenService,
               private router: Router,
               private route: ActivatedRoute,
-              private adminKlassenService: AdminKlassenService) {
+              private adminKlassenService: AdminKlassenService,
+              private snackBar: PppSnackerService) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -34,10 +36,7 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
       this.studentenService.getStudenten(this.klasId)
         .subscribe({
           next: studenten => this.studenten = studenten,
-          error: error => console.log(error),
-          complete: () => {
-            console.log(this.studenten);
-          }
+          error: error => this.snackBar.showErGingIetsMis(error)
         })
     );
   }

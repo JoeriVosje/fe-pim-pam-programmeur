@@ -16,6 +16,12 @@ export class AdminModulesService {
     return this.httpClient.get<Module[]>(`${this.baseurl}/module`);
   }
 
+  public deleteModule(id: string): Observable<HttpResponse<void>> {
+    return this.httpClient.delete<void>(`${this.baseurl}/module/${id}` , {
+      observe: 'response'
+    });
+  }
+
   public getModule(id: string): Observable<Module> {
     return this.httpClient.get<Module>(`${this.baseurl}/module/${id}`);
   }

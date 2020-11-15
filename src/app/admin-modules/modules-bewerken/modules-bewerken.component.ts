@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'modules-bewerken',
   templateUrl: './modules-bewerken.component.html',
   styleUrls: ['./modules-bewerken.component.css']
 })
-export class ModulesBewerkenComponent implements OnInit {
+export class ModulesBewerkenComponent {
   @Input()
   public moduleName: string;
 
@@ -16,10 +16,6 @@ export class ModulesBewerkenComponent implements OnInit {
   loading: boolean;
 
   constructor() {
-  }
-
-  ngOnInit(): void {
-    console.log(this.moduleName);
   }
 
   public getInputValue(value: string): void {

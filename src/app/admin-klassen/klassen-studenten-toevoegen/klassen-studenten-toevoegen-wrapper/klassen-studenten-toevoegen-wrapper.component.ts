@@ -39,10 +39,8 @@ export class KlassenStudentenToevoegenWrapperComponent implements OnInit, OnDest
       if (this.loading === false) {
         this.loading = true;
         this.service.saveStudent(student).subscribe({
-          next: e => console.log(e),
           error: error => {
-            console.log(error);
-            this.snackBar.showErGingIetsMis();
+            this.snackBar.showErGingIetsMis(error);
             this.loading = false;
           },
           complete: () => {

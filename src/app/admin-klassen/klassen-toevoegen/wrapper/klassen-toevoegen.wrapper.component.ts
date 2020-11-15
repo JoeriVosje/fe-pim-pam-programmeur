@@ -29,8 +29,7 @@ export class KlassenToevoegenWrapperComponent implements OnInit {
         next: modules => this.modules = modules.map(e => {
           return {key: e.id, value: e.name};
         }),
-        error: error => console.log(error),
-        complete: () => console.log('Modules opgehaald in klassen.')
+        error: error => this.snackBar.showErGingIetsMis(error)
       });
   }
 
@@ -39,10 +38,8 @@ export class KlassenToevoegenWrapperComponent implements OnInit {
       if (this.loading === false) {
         this.loading = true;
         this.service.saveKlas(klas).subscribe({
-          next: e => console.log(e),
           error: error => {
-            console.log(error);
-            this.snackBar.showErGingIetsMis();
+            this.snackBar.showErGingIetsMis(error);
             this.loading = false;
           },
           complete: () => {
