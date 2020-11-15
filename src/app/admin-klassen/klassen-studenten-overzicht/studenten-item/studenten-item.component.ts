@@ -9,6 +9,7 @@ import { Student } from '../../studenten-item.model';
   styleUrls: ['./studenten-item.component.css']
 })
 export class StudentenItemComponent implements OnInit {
+  @Input() public hasVerticalScrollbar: boolean;
   @Input() public student: Student;
   @Input() public background: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();

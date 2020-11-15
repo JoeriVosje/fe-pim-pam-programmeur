@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'modules-bewerken',
@@ -7,11 +6,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./modules-bewerken.component.css']
 })
 export class ModulesBewerkenComponent implements OnInit {
-  @Input() 
+  @Input()
   public moduleName: string;
 
   @Output()
   public updateModule: EventEmitter<string> = new EventEmitter();
+
+  @Input()
+  loading: boolean;
 
   constructor() {
   }
@@ -21,11 +23,10 @@ export class ModulesBewerkenComponent implements OnInit {
   }
 
   public getInputValue(value: string): void {
-    this.moduleName = value;
-  } 
-
-  public update(){
-    this.updateModule.next(this.moduleName);
+    this.moduleName = value?.length === 0 ? null : value;
   }
 
+  public update(): void{
+    this.updateModule.emit(this.moduleName);
+  }
 }

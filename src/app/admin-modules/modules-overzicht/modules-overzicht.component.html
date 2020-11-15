@@ -1,9 +1,11 @@
 <ppp-content-overview [title]="'Modules'" size="'auto'" [hideBorder]="true">
-<div class="modules-overview">
-  <h4 class="name column">NAAM</h4>
-  <h4 class="status column">STATUS</h4>
-  <h4 class="date-added column">DATUM TOEGEVOEGD</h4>
+
+<div class="overview-start with-three-columns">
+  <h4 class="column-header header-one">NAAM</h4>
+  <h4 class="column-header header-two">STATUS</h4>
+  <h4 class="column-header header-three">DATUM TOEGEVOEGD</h4>
 </div>
+
   <div class="empty-board" *ngIf="modules.length < 1; else itemsPresent">
     <span class="empty-board-text">
     Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
@@ -17,11 +19,12 @@
                   [status]="module.status"
                   [dateAdded]="module.creationDate"
                   [background]="even? 'light' : 'dark'"
+                  [hasVerticalScrollbar]="modules.length > 5"
     (menuItemClicked)="menuItem($event)">
     </modules-item>
   </cdk-virtual-scroll-viewport>
   </ng-template>
-  <div class="align-button bottom-right-padding">
-    <ppp-button (clicked)="toevoegen()">Toevoegen</ppp-button>
-  </div>
+
+    <ppp-button class="align-button bottom-right-padding" (clicked)="toevoegen()">Toevoegen</ppp-button>
+
 </ppp-content-overview>

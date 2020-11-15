@@ -42,7 +42,7 @@ import { KlassenToevoegenWrapperComponent } from './klassen-toevoegen/wrapper/kl
     AdminKlassenRoutingModule,
     DragDropModule,
     MatProgressBarModule,
-    MatButtonModule
+    MatButtonModule,
   ]
 })
 export class AdminKlassenModule {

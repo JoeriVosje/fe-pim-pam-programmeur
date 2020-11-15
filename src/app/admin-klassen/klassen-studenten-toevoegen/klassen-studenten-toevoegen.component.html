@@ -1,7 +1,7 @@
 <overview-template [title]="'Klassen'"
                    [isAdmin]="true"
                    [icon]="'person'">
-  <ppp-content-overview [title]="title()" [size]="'auto'">
+  <ppp-content-overview [title]="getTitle()" [size]="'auto'">
     <div *ngIf="loading">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>

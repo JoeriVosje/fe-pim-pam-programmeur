@@ -1,17 +1,15 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
-      <ppp-content-overview [title]="'Modules overzicht'" [size]="'auto'">
-    <div class="input-field-padding">
-      <div *ngIf="loading">
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </div>
-        <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)">
-          Naam
-        </ppp-input>
-        <div class="align-button">
-          <ppp-button (clicked)="add()">Toevoegen</ppp-button>
-        </div>
+  <ppp-content-overview [title]="'Module Toevoegen'" [size]="'auto'">
+    <div *ngIf="loading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-      </ppp-content-overview>
+    <div class="input-field-padding">
+      <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)">
+        Naam
+      </ppp-input>
+      <ppp-button class="align-button" (clicked)="add()">Toevoegen</ppp-button>
+    </div>
+  </ppp-content-overview>
 </overview-template>
