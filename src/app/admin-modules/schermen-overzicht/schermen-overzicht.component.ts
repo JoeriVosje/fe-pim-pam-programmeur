@@ -43,4 +43,7 @@ export class SchermenOverzichtComponent {
       this.toevoegenClicked.emit();
   }
 
+  getTitle(): string {
+    return (this.moduleName === null ? '' : this.moduleName + ' - ') + 'Schermen';
+  }
 }

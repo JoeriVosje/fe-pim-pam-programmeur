@@ -1,6 +1,6 @@
 /* tslint:disable:no-string-literal */
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.model';
@@ -69,7 +69,7 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
 
   public menuItemClicked(menuItem: MenuItem): void {
     if (menuItem.isRoute) {
-      this.router.navigate([menuItem.routeOrID], {state: {klasNaam: this.klasNaam}});
+      this.router.navigate([menuItem.routeOrID]);
     } else {
       this.deleteStudent(menuItem.routeOrID);
       // todo implement snackbar, loading and delete
