@@ -51,6 +51,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
         })
     );
   }
+
   public deleteModule(id: string): void {
     this.subscription.add(
       this.adminModuleService.deleteModule(id)
