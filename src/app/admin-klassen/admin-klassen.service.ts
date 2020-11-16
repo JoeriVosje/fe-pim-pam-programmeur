@@ -27,4 +27,10 @@ export class AdminKlassenService {
       observe: 'response'
     });
   }
+
+  deleteKlas(id: string): Observable<HttpResponse<void>> {
+    return this.httpClient.delete<void>(`${this.baseurl}/classroom/${id}`, {
+      observe: 'response'
+    });
+  }
 }

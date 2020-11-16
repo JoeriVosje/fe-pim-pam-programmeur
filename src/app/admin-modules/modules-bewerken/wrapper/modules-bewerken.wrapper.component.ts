@@ -26,8 +26,8 @@ export class ModulesBewerkenWrapperComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getModule(this.id).subscribe({
       next: e => this.moduleName = e.name,
-      error: error => console.log(error)
-    })
+      error: error => this.snackBar.showErGingIetsMis(error)
+    });
   }
 
   updateModule(moduleName: string): void {
@@ -35,10 +35,8 @@ export class ModulesBewerkenWrapperComponent implements OnInit {
       if (this.loading === false) {
         this.loading = true;
         this.service.updateModule(this.id, moduleName).subscribe({
-          next: e => console.log(e),
           error: error => {
-            console.log(error);
-            this.snackBar.showErGingIetsMis();
+            this.snackBar.showErGingIetsMis(error);
             this.loading = false;
           },
           complete: () => {

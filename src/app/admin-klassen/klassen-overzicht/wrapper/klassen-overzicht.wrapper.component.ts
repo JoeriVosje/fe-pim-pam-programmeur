@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.model';
+import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { Klas } from '../../klassen-item.model';
 
@@ -22,7 +23,15 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
   public klassen: Klas[] = [];
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private klassenService: AdminKlassenService, private router: Router) {
+  constructor(private klassenService: AdminKlassenService,
+              private router: Router,
+              private snackBar: PppSnackerService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.subscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -30,8 +39,7 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
       this.klassenService.getKlassen()
         .subscribe({
           next: klassen => this.klassen = klassen,
-          error: error => console.log(error),
-          complete: () => console.log('Klassen opgehaald')
+          error: error => this.snackBar.showErGingIetsMis(error)
         })
     );
   }
@@ -46,9 +54,21 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
 
   public menuItemClicked(menuItem: MenuItem): void {
     if (menuItem.isRoute) {
-      this.router.navigate([menuItem.routeOrID], { state: { klasNaam : menuItem.data }});
+      this.router.navigate([menuItem.routeOrID], {state: {klasNaam: menuItem.data}});
     } else {
-      // todo implement snackbar, loading and delete
+      this.deleteClass(menuItem.routeOrID);
+      // todo implement loading
     }
+  }
+
+  public deleteClass(id: string): void {
+    this.klassenService.deleteKlas(id)
+      .subscribe({
+        error: error => this.snackBar.showErGingIetsMis(error),
+        complete: () => {
+          this.snackBar.showVerwijderd('Klas');
+          this.router.navigate([this.router.url]);
+        }
+      });
   }
 }

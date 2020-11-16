@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AdminScreensService } from '../../admin-screens.service';
 import { Screen } from '../../schermen-overzicht/scherm-item/scherm-item.model';
+import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 @Component({
   selector: 'scherm-toevoegen-wrapper',
@@ -13,20 +14,26 @@ export class SchermToevoegenWrapperComponent implements OnInit {
 
   constructor(private service: AdminScreensService,
               private router: Router,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private snackBar: PppSnackerService) {}
 
   moduleId: string;
+
   ngOnInit(): void {
-    console.log(this.route);
     this.moduleId = this.route.snapshot.paramMap.get('id');
   }
 
   addScreen(screen: Screen): void{
     this.service.saveScreen(screen).subscribe({
-      next: e => console.log(e),
-      error: error => console.log(error),
-      complete: () => this.router.navigate([`/modules/${this.moduleId}/screens`])
+      error: error => this.snackBar.showErGingIetsMis(error),
+      complete: () => {
+        this.snackBar.showToegevoegd('Scherm');
+        this.router.navigate([`/modules/${this.moduleId}/screens`]);
+      }
     });
   }
 
+  showAlert($event: string): void {
+    this.snackBar.showError($event);
+  }
 }

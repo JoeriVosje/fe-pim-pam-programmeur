@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { AdminHomeService } from '../../admin-home.service';
 import { Sessie } from '../sessies-item/sessies-item.model';
+import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 @Component({
   selector: 'app-wrapper',
@@ -14,7 +15,8 @@ export class WrapperComponent implements OnInit, OnDestroy {
 
   private readonly subscription: Subscription = new Subscription();
 
-  constructor(private readonly adminHomeService: AdminHomeService) {
+  constructor(private readonly adminHomeService: AdminHomeService,
+              private snackbar: PppSnackerService) {
   }
 
   ngOnInit(): void {
@@ -30,8 +32,7 @@ export class WrapperComponent implements OnInit, OnDestroy {
       this.adminHomeService.getSessies()
         .subscribe({
           next: sessies => this.sessies = sessies,
-          error: error => console.log(error),
-          complete: () => console.log('Sessies opgehaald.')
+          error: error => this.snackbar.showErGingIetsMis(error)
         })
     );
   }
