@@ -28,6 +28,10 @@ html, body {
   padding: 24px 32px 32px;
 }
 
+h1 {
+  color: #172B4D;
+}
+
 /* COLUMN HEADER */
 
 .with-one-column {
@@ -206,6 +210,7 @@ html, body {
 .dark {
   background-color: #F7FAFC;
 }
+
 .light {
   background-color: #ffffff;
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AdminLoginGuard } from '../admin-login-guard';
 import { WrapperComponent } from './sessies-overzicht/wrapper/wrapper.component';
 
 const breadCrumpMap = new Map([
@@ -8,7 +9,13 @@ const breadCrumpMap = new Map([
 ]);
 
 const routes: Routes = [
-  {path: '', component: WrapperComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}},
+  {
+    path: '', component: WrapperComponent,
+    canActivate: [AdminLoginGuard],
+    data: {
+      breadCrumbs: [breadCrumpMap.get(0)],
+    }
+  },
 ];
 
 @NgModule({

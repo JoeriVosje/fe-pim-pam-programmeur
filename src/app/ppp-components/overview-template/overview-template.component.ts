@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { CookieService } from 'ngx-cookie-service';
 import { BreadCrumb } from '../header/bread-crumb.model';
 
 @Component({
@@ -21,7 +22,7 @@ export class OverviewTemplateComponent implements OnInit {
 
   breadCrumbRoutes: BreadCrumb[];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private cookieService: CookieService) {
   }
 
   public onNavigation(route: string): void {
@@ -34,11 +35,11 @@ export class OverviewTemplateComponent implements OnInit {
   }
 
   public logout(): void {
-    // todo Implement logout
+    this.cookieService.deleteAll();
   }
 
   ngOnInit(): void {
-    // todo Implement breadcrump through route
+    // todo Implement breadcrumb through route
     this.breadCrumbRoutes = [{name: 'Overzicht', route: '/testRoute'}, {name: 'Toevoegen', route: '/ditIsEenTest'}];
   }
 }

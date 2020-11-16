@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -10,7 +9,6 @@ export class TokenService {
 
   public constructor(private readonly cookieService: CookieService) {
   }
-
   private cookieName = 'loginCookie';
 
   public writeToken(loginResponse: LoginResponse): void {
@@ -27,5 +25,4 @@ export class TokenService {
     }
     return JSON.parse(cookie);
   }
-
 }

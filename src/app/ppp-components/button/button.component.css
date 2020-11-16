@@ -1,3 +1,29 @@
-button {
+.ppp-button {
+  color: #FFF;
+  width: 100%;
+  height: 50px;
   font-size: medium;
+  background-color: #7764E4;
+  border-radius: 5px;
+  border: none;
+}
+
+.ppp-button:hover {
+  filter: brightness(80%);
+}
+
+.ppp-button.warning {
+  background-color: #F53C56;
+  box-shadow: 0 3px 6px #2C28281C;
+}
+
+.ppp-button.highlight {
+  background-color: #11CDEF;
+}
+
+.ppp-button.decline {
+  color: #172B4D;
+  background-color: #FFF;
+  border: 1px solid #172B4D;
+  box-shadow: 0 3px 6px #2C28281C;
 }

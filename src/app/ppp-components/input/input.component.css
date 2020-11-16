@@ -12,7 +12,7 @@
   background-color: #F7FAFC;
   color: #172B4D;
   font-size: 15px;
-  padding-left: 24px;
+  padding-left: 20px;
   box-sizing: border-box;
   box-shadow: 0 2px 4px #1717171E;
   font-style: normal;
@@ -41,4 +41,14 @@ textarea:focus, input:focus {
 
 .L input {
   width: 100%;
+}
+
+.input-icons mat-icon {
+  position: absolute !important;
+  padding: 14px 14px;
+}
+
+/* extra padding when this input field contains an icon */
+.icon {
+  padding-left: 44px;
 }

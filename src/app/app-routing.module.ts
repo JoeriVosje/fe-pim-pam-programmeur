@@ -8,7 +8,6 @@ const routes: Routes = [
         .then(theImport => theImport.LoginModulesModule)
   },
   {
-    // todo Replace AdminModulesModule with LoginModule
     path: '', loadChildren: () =>
       import('./admin-modules/admin-modules.module')
         .then(theImport => theImport.AdminModulesModule)
@@ -34,7 +33,7 @@ const routes: Routes = [
     path: 'student', loadChildren: () =>
       import('./student-modules/student-modules.module')
         .then(theImport => theImport.StudentModulesModule)
-  }
+  },
 ];
 
 @NgModule({

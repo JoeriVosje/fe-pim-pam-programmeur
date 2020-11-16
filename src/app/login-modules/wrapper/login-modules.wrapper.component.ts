@@ -19,7 +19,7 @@ export class LoginModulesWrapperComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(request: LoginRequest): void{
+  login(request: LoginRequest): void {
     this.loginService.login(request).subscribe({
       next: e => {
         this.tokenService.writeToken(e.body);
@@ -32,7 +32,7 @@ export class LoginModulesWrapperComponent implements OnInit {
         if (user == null){
           this.loginFailed = true;
         }
-        if (user.roleId === 1){
+        if (user.roleId === 1) {
           this.router.navigate(['/']);
         } else {
           this.router.navigate(['/student']);
