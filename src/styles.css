@@ -220,7 +220,7 @@ html, body {
   background-color: white;
 }
 
-.light-clickable:hover {
+.light-item-clickable:hover {
   animation-iteration-count: infinite;
   animation-name: animation;
   animation-duration: 0.5s;
@@ -229,7 +229,7 @@ html, body {
   cursor: pointer;
 }
 
-.dark-clickable:hover {
+.dark-item-clickable:hover {
   background-color: white;
   animation-iteration-count: infinite;
   animation-name: animation;
