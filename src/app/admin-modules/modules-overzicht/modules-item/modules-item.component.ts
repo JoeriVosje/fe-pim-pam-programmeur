@@ -8,6 +8,7 @@ import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.mod
   styleUrls: ['./modules-item.component.css']
 })
 export class ModulesItemComponent implements OnInit {
+  @Input() public hasVerticalScrollbar: boolean;
   @Input() public name: string;
   @Input() public status: boolean;
   @Input() public dateAdded: string;
@@ -21,9 +22,12 @@ export class ModulesItemComponent implements OnInit {
       {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true},
       {name: 'Bewerken', routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
       {name: 'Verwijderen', routeOrID: this.moduleId, isRoute: false},
-      ];
+    ];
   }
-  constructor() { }
+
+  constructor() {
+  }
+
   menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
   }

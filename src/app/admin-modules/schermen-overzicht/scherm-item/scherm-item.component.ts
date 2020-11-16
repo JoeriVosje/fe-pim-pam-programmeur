@@ -11,17 +11,16 @@ import { Screen } from './scherm-item.model';
 export class SchermItemComponent implements OnInit {
 
   @Input()
-  public screen: Screen;
+  public screenInput: Screen;
 
   @Input()
   public background: string;
-  @Input() public screenId: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
   menuItems: MenuItem[];
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Verwijderen', routeOrID: this.screenId, isRoute: false},
+      {name: 'Verwijderen', routeOrID: this.screenInput.id, isRoute: false},
     ];
   }
 

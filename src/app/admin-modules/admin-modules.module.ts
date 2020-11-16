@@ -65,7 +65,7 @@ import { SchermOverzichtWrapperComponent } from './schermen-overzicht/wrapper/sc
     MatIconModule,
     MatListModule,
     DragDropModule,
-    EditorModule
+    EditorModule,
   ],
   exports: [AdminModulesComponent]
 })

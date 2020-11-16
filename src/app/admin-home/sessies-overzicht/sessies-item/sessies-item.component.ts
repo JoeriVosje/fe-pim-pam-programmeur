@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sessies-item',
@@ -8,22 +8,23 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SessiesItemComponent implements OnInit {
 
   @Input() public name: string;
-  @Input() public studentsFinished: string; 
+  @Input() public studentsFinished: string;
   @Input() public studentsTotal: string;
   public progressString: string;
   public progress: number;
   @Input() public timeStarted: string;
   @Input() public timeFinished: string;
   @Input() public background: string;
+  @Input() hasVerticalScrollbar: boolean;
 
 
   constructor() { }
 
   ngOnInit(): void {
-    var finished = Number(this.studentsFinished);
-    var total = Number(this.studentsTotal);
+    const finished = Number(this.studentsFinished);
+    const total = Number(this.studentsTotal);
     this.progress = finished / total * 100;
-    this.progressString = this.studentsFinished + " / " + this.studentsTotal;
+    this.progressString = this.studentsFinished + ' / ' + this.studentsTotal;
   }
 
 }
