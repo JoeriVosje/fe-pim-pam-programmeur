@@ -182,7 +182,8 @@ html, body {
 
 .items-container {
   min-height: 400px;
-  overflow-x: hidden; overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   grid-row: 3 / 4;
   grid-column: 1 / 5;
 }
@@ -206,6 +207,31 @@ html, body {
 .dark {
   background-color: #F7FAFC;
 }
+
 .light {
-  background-color: #ffffff;
+  background-color: white;
+}
+
+.light:hover {
+  animation-iteration-count: infinite;
+  animation-name: animation;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+  cursor: pointer;
+}
+
+.dark:hover {
+  background-color: white;
+  animation-iteration-count: infinite;
+  animation-name: animation;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+  cursor: pointer;
+}
+
+@keyframes animation {
+  from {background-color: #F7FAFC;}
+  to {background-color: #f1f3f9;}
 }
