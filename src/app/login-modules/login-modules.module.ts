@@ -8,9 +8,11 @@ import { PppComponentsModule } from '../ppp-components/ppp-components.module';
 import { LoginModulesComponent } from './login-modules.component';
 import { LoginModulesWrapperComponent } from './wrapper/login-modules.wrapper.component';
 
-// path declare
 const routes: Routes = [
-  {path: 'login', component: LoginModulesWrapperComponent, data: {}}
+  {
+    path: 'login', component: LoginModulesWrapperComponent,
+    data: {},
+  }
 ];
 
 @NgModule({

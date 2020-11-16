@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StudentLoginGuard } from '../student-login-guard';
 
+import { StudentLoginGuard } from '../student-login-guard';
 import { SchermenWrapperComponent } from './schermen/wrapper/schermen.wrapper.component';
 import { SchermenWrapperModule } from './schermen/wrapper/schermen.wrapper.module';
 import { StartWrapperComponent } from './start/wrapper/start.wrapper.component';
