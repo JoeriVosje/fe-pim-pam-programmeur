@@ -1,13 +1,13 @@
 /* tslint:disable:no-string-literal */
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.model';
+import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { AdminStudentenService } from '../../admin-studenten-service.service';
 import { Student } from '../../studenten-item.model';
-import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 
 @Component({

@@ -6,4 +6,3 @@ export interface Klas {
     module: Module;
     major: string;
   }
-  

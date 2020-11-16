@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminLoginGuard } from '../admin-login-guard';
 
+import { AdminLoginGuard } from '../admin-login-guard';
 import { KlassenOverzichtWrapperComponent } from './klassen-overzicht/wrapper/klassen-overzicht.wrapper.component';
 import { KlassenStudentenOverzichtWrapperComponent } from './klassen-studenten-overzicht/klassen-studenten-overzicht-wrapper/klassen-studenten-overzicht-wrapper.component';
 import { KlassenStudentenToevoegenWrapperComponent } from './klassen-studenten-toevoegen/klassen-studenten-toevoegen-wrapper/klassen-studenten-toevoegen-wrapper.component';

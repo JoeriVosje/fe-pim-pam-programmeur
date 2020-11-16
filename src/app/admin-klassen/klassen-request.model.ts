@@ -4,4 +4,3 @@ export interface KlasRequest {
     moduleId: string;
     major: string;
   }
-  
