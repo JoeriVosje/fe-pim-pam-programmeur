@@ -28,7 +28,7 @@ html, body {
   padding: 24px 32px 32px;
 }
 
-/* COLUMN HEADER */
+/* GRID LIST HEADER */
 
 .with-one-column {
   grid-template-columns: repeat(1, 1fr);
@@ -113,7 +113,7 @@ html, body {
   margin-right: -16px;
 }
 
-/* COLUMNS */
+/* GRID LIST CONTENT */
 
 .column-one {
   align-self: center;
@@ -178,7 +178,7 @@ html, body {
   grid-column: 2 / 3;
 }
 
-/* BOARD */
+/* GRID LISTS ITEMS */
 
 .items-container {
   min-height: 400px;
@@ -204,15 +204,23 @@ html, body {
   justify-content: center;
 }
 
-.dark {
+.dark-item {
   background-color: #F7FAFC;
 }
 
-.light {
+.light-item {
   background-color: white;
 }
 
-.light:hover {
+.dark-item-clickable {
+  background-color: #F7FAFC;
+}
+
+.light-item-clickable {
+  background-color: white;
+}
+
+.light-clickable:hover {
   animation-iteration-count: infinite;
   animation-name: animation;
   animation-duration: 0.5s;
@@ -221,7 +229,7 @@ html, body {
   cursor: pointer;
 }
 
-.dark:hover {
+.dark-clickable:hover {
   background-color: white;
   animation-iteration-count: infinite;
   animation-name: animation;

@@ -16,7 +16,7 @@
     <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
       <studenten-item *cdkVirtualFor="let student of studenten; let even = even"
                       [student]="student"
-                      [background]="even? 'light' : 'dark'"
+                      [background]="even? 'light-item-clickable' : 'dark-item-clickable'"
                       [hasVerticalScrollbar]="studenten.length > 5"
                       (menuItemClicked)="menuItem($event)">
       </studenten-item>

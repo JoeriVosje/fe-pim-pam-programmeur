@@ -13,7 +13,7 @@
   <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
     <div cdkDropList (cdkDropListDropped)="drop($event)">
     <screen-item *cdkVirtualFor="let screen of screens; let even = even"
-                 cdkDrag [screenInput]="screen" [background]="even? 'light' : 'dark'" (menuItemClicked)="menuItem($event)">
+                 cdkDrag [screenInput]="screen" [background]="even? 'light-item-clickable' : 'dark-item-clickable'" (menuItemClicked)="menuItem($event)">
     </screen-item>
     </div>
   </cdk-virtual-scroll-viewport>
