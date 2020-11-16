@@ -1,4 +1,4 @@
-<div [ngClass]="background" class="column-items-start with-three-columns">
+<div [ngClass]="background" class="column-items-start with-three-columns" (click)="navToItem()">
 
   <span class="column-one" id="name">{{ klas.name }}</span>
   <span class="column-two">{{ klas.major }}</span>

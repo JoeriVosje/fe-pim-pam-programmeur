@@ -12,16 +12,25 @@ export class KlassenItemComponent implements OnInit {
   @Input() public klas: Klas;
   @Input() public background: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
+  @Output() public itemClicked: EventEmitter<MenuItem> = new EventEmitter();
   menuItems: MenuItem[];
 
   ngOnInit(): void {
     this.menuItems = [
       {name: 'Studenten', routeOrID: '/classes/' + this.klas.id + '/students', isRoute: true, data: this.klas.name},
       {name: 'Verwijderen', routeOrID: this.klas.id, isRoute: false},
-      ];
+    ];
   }
-  constructor() { }
+
+  constructor() {
+  }
+
   menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
   }
+
+  navToItem(): void {
+    this.itemClicked.emit(this.menuItems[0]);
+  }
+
 }

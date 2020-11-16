@@ -16,6 +16,7 @@
       <klassen-item *cdkVirtualFor="let klas of klassen; let even = even"
                     [klas]="klas"
                     [background]="even? 'light-item-clickable' : 'dark-item-clickable'"
+                    (itemClicked)="menuItem($event)"
                     (menuItemClicked)="menuItem($event)">
       </klassen-item>
     </cdk-virtual-scroll-viewport>
