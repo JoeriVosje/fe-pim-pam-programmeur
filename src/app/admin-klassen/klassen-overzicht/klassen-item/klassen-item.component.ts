@@ -12,7 +12,6 @@ export class KlassenItemComponent implements OnInit {
   @Input() public klas: Klas;
   @Input() public background: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
-  @Output() public itemClicked: EventEmitter<MenuItem> = new EventEmitter();
   menuItems: MenuItem[];
 
   ngOnInit(): void {
@@ -30,7 +29,7 @@ export class KlassenItemComponent implements OnInit {
   }
 
   navToItem(): void {
-    this.itemClicked.emit(this.menuItems[0]);
+    this.menuItemClicked.emit(this.menuItems[0]);
   }
 
 }

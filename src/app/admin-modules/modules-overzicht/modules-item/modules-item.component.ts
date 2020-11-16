@@ -31,4 +31,8 @@ export class ModulesItemComponent implements OnInit {
   menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
   }
+
+  navToItem(): void {
+    this.menuItemClicked.emit(this.menuItems[0]);
+  }
 }

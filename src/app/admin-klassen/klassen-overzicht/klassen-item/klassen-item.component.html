@@ -1,12 +1,10 @@
 <div [ngClass]="background" class="column-items-start with-three-columns" (click)="navToItem()">
-
   <span class="column-one" id="name">{{ klas.name }}</span>
   <span class="column-two">{{ klas.major }}</span>
   <span class="column-three column-double">
-
       <span class="column-double-first-child">{{ klas.module.name }}</span>
     <span class="column-double-second-child">
-    <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
+    <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems" (click)="$event.stopPropagation();"></ppp-three-dot-button>
     </span>
   </span>
 </div>
