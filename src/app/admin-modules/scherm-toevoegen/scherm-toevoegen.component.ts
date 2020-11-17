@@ -27,7 +27,7 @@ export class SchermToevoegenComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.screenForm = new FormGroup({
-      title: new FormControl(null, [Validators.required]),
+      title: new FormControl(null, []),
       theory: new FormControl(null, []),
       question: new FormControl(null, []),
       questionA: new FormControl(null, []),
@@ -41,20 +41,19 @@ export class SchermToevoegenComponent implements OnInit {
     this.moduleName = await this.adminModulesService.getModule(this.moduleId).toPromise().then(value => value.name);
   }
 
-  public validMultipleChoiceAnswers(): boolean{
+  private validMultipleChoiceAnswers(): boolean{
     return !(this.isEmpty(this.screenForm.controls.questionA.value) ||
       this.isEmpty(this.screenForm.controls.questionB.value ) ||
         this.isEmpty(this.screenForm.controls.questionC.value) ||
-          this.isEmpty(this.screenForm.controls.questionD.value) ||
-            this.isEmpty(this.screenForm.controls.correctAnswer.value));
+          this.isEmpty(this.screenForm.controls.questionD.value));
     }
 
-  public isEmpty(input: string): boolean {
-    return !(typeof input !== undefined && input);
+  private isEmpty(input: string): boolean {
+    return !(typeof input !== undefined && input && input.length > 0);
   }
   public addScreen(): void {
-    if (this.screenForm.invalid) {
-      this.validationFailed.emit('Titel is verplicht');
+    if (this.isEmpty(this.screenForm.controls.question.value)) {
+      this.validationFailed.emit('Titel is verplicht.');
       return;
     }
     if (this.isEmpty(this.screenForm.controls.question.value)) {
@@ -72,6 +71,9 @@ export class SchermToevoegenComponent implements OnInit {
     }
     if (!this.isEmpty(this.screenForm.controls.question.value )){
       if (!this.validMultipleChoiceAnswers()){
+        this.validationFailed.emit('Vul alle opties van de vraag in.');
+        return;
+      } else if (this.isEmpty(this.screenForm.controls.correctAnswer.value)) {
         this.validationFailed.emit('Selecteer het correcte antwoord.');
         return;
       }
@@ -114,7 +116,7 @@ export class SchermToevoegenComponent implements OnInit {
     ];
   }
 
-  getTitle(): string {
+  public getTitle(): string {
     return (this.moduleName !== null && this.moduleName !== undefined ? `${this.moduleName} - ` : '') + 'Scherm Toevoegen';
   }
 
