@@ -2,19 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { ButtonComponent } from './button/button.component';
 import { ContentOverviewComponent } from './content-overview/content-overview.component';
 import { HeaderComponent } from './header/header.component';
 import { InputComponent } from './input/input.component';
-import { OverviewTemplateComponent } from './overview-template/overview-template.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { ModalComponent } from './modal/modal.component';
-import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
+import { OverviewTemplateComponent } from './overview-template/overview-template.component';
+import { PppFormInputComponent } from './ppp-form-input/ppp-form-input.component';
 import { SelectComponent } from './select/select.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
 
 
 /**
@@ -32,12 +33,14 @@ import { SelectComponent } from './select/select.component';
     InputComponent,
     ContentOverviewComponent,
     ModalComponent,
-    SelectComponent
+    SelectComponent,
+    PppFormInputComponent
   ],
   exports: [
     OverviewTemplateComponent,
     ButtonComponent,
     ThreeDotButtonComponent,
+    PppFormInputComponent,
     InputComponent,
     ModalComponent,
     ContentOverviewComponent,

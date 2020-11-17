@@ -1,27 +1,16 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
+  <ppp-content-overview [title]="getTitle()" [size]="'auto'">
+    <form [formGroup]="screenForm">
+      <div class="input-field-padding">
+        <ppp-form-input formControlName="title" type="text">Titel</ppp-form-input>
 
-  <form [formGroup]="screenForm">
-    <div class="scherm-container">
-
-      <div class="header-grid">
-        <div class="scherm-toevoegen-title">
-          Scherm Toevoegen
-        </div>
-      </div>
-
-      <div class="titel-grid inputWidth">
-        Titel
-        <input type="text" formControlName="title"/>
-      </div>
-
-
-      <div class="theorie-grid">Theorie
-        <div >
-          <editor
-            formControlName="theory"
-            [init]="{
+        <div class="input-label">Theorie</div>
+            <editor
+              class="form-field"
+              formControlName="theory"
+              [init]="{
                        base_url: '/tinymce',
                        suffix: '.min'  ,
                        height: 300,
@@ -34,26 +23,17 @@
     ],
     toolbar: 'undo redo | formatselect | bold italic |  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | code codesample image | help'
   }">
-          </editor>
+            </editor>
+
+        <div style="padding-bottom: 16px"></div>
+
+        <div class="column-double-question">
+          <ppp-form-input formControlName="question" class="column-double-question-first-child">Vraag</ppp-form-input>
+          <mat-checkbox formControlName="skippable" class="column-double-question-second-child">
+            Student mag vraag overslaan
+          </mat-checkbox>
         </div>
-      </div>
-
-
-      <div class="vraag-grid inputWidth">
-        Vraag
-        <div class="nextToEachtOther">
-          <input formControlName="question"/>
-          <div class="skippable">
-            <mat-checkbox formControlName="skippable">
-              Student mag vraag overslaan
-            </mat-checkbox>
-
-          </div>
-        </div>
-
-      </div>
-
-      <mat-radio-group formControlName="correctAnswer" class="multiple-choice-grid">
+        <mat-radio-group formControlName="correctAnswer" class="multiple-choice-grid">
           <div class="questionA-grid nextToEachtOther">
             <mat-radio-button value="A">A</mat-radio-button>
             <input type="text" formControlName="questionA"/>
@@ -71,21 +51,18 @@
             <input type="text" formControlName="questionD"/>
           </div>
 
-      </mat-radio-group>
+        </mat-radio-group>
 
 
-      <div class="feedback-grid inputWidth">
-        Feedback
-        <input type="text" formControlName="feedback"/>
-      </div>
-
-      <div class="toevoegen-grid">
-        <div class="toevoegen-button">
-          <ppp-button (clicked)="addScreen()" class="scherm-toevoegen-button">Toevoegen</ppp-button>
+        <div class="feedback-grid inputWidth">
+          Feedback
+          <input type="text" formControlName="feedback"/>
         </div>
+
+        <ppp-button (clicked)="addScreen()" class="align-button">Toevoegen</ppp-button>
+
       </div>
-    </div>
-
-  </form>
-
+    </form>
+  </ppp-content-overview>
 </overview-template>
+<pre><code>{{ screenForm.value | json }}</code></pre>

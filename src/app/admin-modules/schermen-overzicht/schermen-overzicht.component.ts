@@ -44,6 +44,6 @@ export class SchermenOverzichtComponent {
   }
 
   getTitle(): string {
-    return (this.moduleName === null ? '' : this.moduleName + ' - ') + 'Schermen';
+    return ((this.moduleName === undefined || this.moduleName === null) ? '' : this.moduleName + ' - ') + 'Schermen';
   }
 }

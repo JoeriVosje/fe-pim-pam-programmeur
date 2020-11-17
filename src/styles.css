@@ -243,3 +243,42 @@ html, body {
   from {background-color: #F7FAFC;}
   to {background-color: #f1f3f9;}
 }
+
+
+/* Input Field */
+
+#input-label, .input-label {
+  display: block;
+  padding-bottom: 8px;
+  font-size: 15px;
+  color: #172B4D;
+}
+
+.form-field {
+  background-color: #F7FAFC;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px #1717171E;
+  color: #172B4D;
+  border: 0;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.input-field {
+  height: 50px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #F7FAFC;
+  color: #172B4D;
+  font-size: 15px;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px #1717171E;
+  font-style: normal;
+}
+
+textarea:focus, input:focus {
+  color: #7764E4;
+  background-color: #FFFFFF;
+}
