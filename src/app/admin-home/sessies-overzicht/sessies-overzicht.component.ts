@@ -1,7 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ErrorOverlayComponent } from 'src/app/ppp-components/error-overlay/error-overlay.component';
-import { OverlayService } from 'src/app/ppp-components/overlay/overlay.service';
-import { OverlayRefComponent } from 'src/app/ppp-components/overlay/overlayRef.component';
 
 import { Sessie } from './sessies-item/sessies-item.model';
 
@@ -21,15 +18,11 @@ export class SessiesOverzichtComponent implements OnInit {
   @Input()
   public sessies: Sessie[];
 
-  constructor(private overlay: OverlayService) {   }
+  constructor() {   }
 
   ngOnInit(): void {
   }
 
-  showOverlay() {
-    let dialogRef: OverlayRefComponent = this.overlay.open(ErrorOverlayComponent);
-    setTimeout(() => { dialogRef.close();}, 5000); // autoclose after 5 seconds
-  }
 
 
 }
