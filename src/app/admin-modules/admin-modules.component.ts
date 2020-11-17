@@ -60,6 +60,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
           complete: () => {
             this.snackBar.showVerwijderd('Module');
             this.router.navigate([this.router.url]);
+            this.getModules();
           }
         })
     );
