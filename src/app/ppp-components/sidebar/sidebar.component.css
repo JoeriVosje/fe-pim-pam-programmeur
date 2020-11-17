@@ -9,13 +9,7 @@ a {
 a:hover,
 a.active {
   cursor: pointer;
-  background-color: #F7FAFC;
-  color: green;
-}
-
-a:hover i,
-a.active i {
-  filter: brightness(50%);
+  background-color: #F6F9FC;
 }
 
 span {
@@ -42,7 +36,9 @@ span {
   grid-row: 3 / 4;
 }
 
-#home {
+#home,
+a.active.home,
+a.home:hover {
   color: #7764E4;
 }
 
@@ -50,7 +46,9 @@ span {
   grid-row: 4 / 5;
 }
 
-#klassen {
+#klassen,
+a.active.klassen,
+a.klassen:hover {
   color: #F53C56;
 }
 
@@ -58,7 +56,9 @@ span {
   grid-row: 5 / 6;
 }
 
-#modules {
+#modules,
+a.active.modules,
+a.modules:hover {
   color: #11CDEF;
 }
 
