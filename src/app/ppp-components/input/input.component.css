@@ -17,3 +17,13 @@
 .L input {
   width: 100%;
 }
+
+.input-icons mat-icon {
+  position: absolute !important;
+  padding: 14px 14px;
+}
+
+/* extra padding when this input field contains an icon */
+.icon {
+  padding-left: 44px;
+}

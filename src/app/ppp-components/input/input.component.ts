@@ -12,6 +12,7 @@ export class InputComponent implements OnInit {
   @Input() public id: string;
   @Input() public value = '';
   @Input() public lastItem: boolean;
+  @Input() public icon: string;
   @Output() public inputFieldChange: EventEmitter<string> = new EventEmitter();
 
   @Input() disabled: boolean;

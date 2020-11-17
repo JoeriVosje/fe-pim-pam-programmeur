@@ -7,7 +7,6 @@ import { KlassenStudentenOverzichtWrapperComponent } from './klassen-studenten-o
 import { KlassenStudentenToevoegenWrapperComponent } from './klassen-studenten-toevoegen/klassen-studenten-toevoegen-wrapper/klassen-studenten-toevoegen-wrapper.component';
 import { KlassenToevoegenWrapperComponent } from './klassen-toevoegen/wrapper/klassen-toevoegen.wrapper.component';
 
-
 const breadCrumpMap = new Map([
   [0, {name: 'Overzicht', route: 'classes'}],
   [1, {name: 'Toevoegen', route: 'classes/add'}],
@@ -16,20 +15,25 @@ const breadCrumpMap = new Map([
 ]);
 
 const routes: Routes = [
-  {path: '', component: KlassenOverzichtWrapperComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}, canActivate: [AdminLoginGuard]},
+  {
+    path: '', component: KlassenOverzichtWrapperComponent,
+    canActivate: [AdminLoginGuard],
+    data: {
+      breadCrumbs: [breadCrumpMap.get(0)]},
+    },
   {
     path: 'add', component: KlassenToevoegenWrapperComponent,
     canActivate: [AdminLoginGuard],
     data: {
-      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)]
-    }
+      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)],
+    },
   },
   {
     path: ':id/students', component: KlassenStudentenOverzichtWrapperComponent,
     canActivate: [AdminLoginGuard],
     data: {
-      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)]
-    }
+      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)],
+    },
   },
   {
     path: ':id/students/add', component: KlassenStudentenToevoegenWrapperComponent,
@@ -39,8 +43,8 @@ const routes: Routes = [
         breadCrumpMap.get(0),
         breadCrumpMap.get(2),
         breadCrumpMap.get(3),
-      ]
-    }
+      ],
+    },
   },
 
   // {

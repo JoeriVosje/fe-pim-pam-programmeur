@@ -32,8 +32,9 @@ FROM nginx:1.16.0-alpine
 # copy artifact build from the 'build environment'
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# expose port 80
+# expose port 80 and 443
 EXPOSE 80
+EXPOSE 443
 
 # run nginx
 CMD ["nginx", "-g", "daemon off;"]
