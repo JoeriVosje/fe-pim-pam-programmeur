@@ -28,11 +28,7 @@ html, body {
   padding: 24px 32px 32px;
 }
 
-h1 {
-  color: #172B4D;
-}
-
-/* COLUMN HEADER */
+/* GRID LIST HEADER */
 
 .with-one-column {
   grid-template-columns: repeat(1, 1fr);
@@ -117,7 +113,7 @@ h1 {
   margin-right: -16px;
 }
 
-/* COLUMNS */
+/* GRID LIST CONTENT */
 
 .column-one {
   align-self: center;
@@ -175,6 +171,12 @@ h1 {
 
 .column-double-second-child {
   align-self: center;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+
+.column-double-second-child-end {
+  align-self: center;
   justify-self: end;
   padding-right: 48px;
   padding-left: 16px;
@@ -182,11 +184,12 @@ h1 {
   grid-column: 2 / 3;
 }
 
-/* BOARD */
+/* GRID LISTS ITEMS */
 
 .items-container {
   min-height: 400px;
-  overflow-x: hidden; overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   grid-row: 3 / 4;
   grid-column: 1 / 5;
 }
@@ -207,10 +210,81 @@ h1 {
   justify-content: center;
 }
 
-.dark {
+.dark-item {
   background-color: #F7FAFC;
 }
 
-.light {
-  background-color: #ffffff;
+.light-item {
+  background-color: white;
+}
+
+.dark-item-clickable {
+  background-color: #F7FAFC;
+}
+
+.light-item-clickable {
+  background-color: white;
+}
+
+.light-item-clickable:hover {
+  animation-iteration-count: infinite;
+  animation-name: animation;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+  cursor: pointer;
+}
+
+.dark-item-clickable:hover {
+  background-color: white;
+  animation-iteration-count: infinite;
+  animation-name: animation;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+  cursor: pointer;
+}
+
+@keyframes animation {
+  from {background-color: #F7FAFC;}
+  to {background-color: #f1f3f9;}
+}
+
+
+/* Input Field */
+
+#input-label, .input-label {
+  display: block;
+  padding-bottom: 8px;
+  font-size: 15px;
+  color: #172B4D;
+}
+
+.form-field {
+  background-color: #F7FAFC;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px #1717171E;
+  color: #172B4D;
+  border: 0;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.input-field {
+  height: 50px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #F7FAFC;
+  color: #172B4D;
+  font-size: 15px;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px #1717171E;
+  font-style: normal;
+}
+
+textarea:focus, input:focus {
+  color: #7764E4;
+  background-color: #FFFFFF;
 }

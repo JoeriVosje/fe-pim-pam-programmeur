@@ -17,6 +17,7 @@ export class SchermItemComponent implements OnInit {
   public background: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
   menuItems: MenuItem[];
+  @Input() public hasVerticalScrollbar: boolean;
 
   ngOnInit(): void {
     this.menuItems = [

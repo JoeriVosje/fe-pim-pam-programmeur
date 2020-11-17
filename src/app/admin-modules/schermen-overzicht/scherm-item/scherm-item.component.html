@@ -1,6 +1,14 @@
-<div [ngClass]="background" class="screen-item" >
-  <p id="title">{{ screenInput.title }}</p>
-  <p id="theory">{{  screenInput.theory !== undefined && screenInput.theory ? screenInput.theory.slice(0, 100 ): ""}}</p>
-  <p id="question">{{ screenInput.question }}</p>
-  <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
+<div [ngClass]="hasVerticalScrollbar ? 'needs-margin' : null">
+  <div [ngClass]="background" class="column-items-start with-three-columns">
+
+    <span class="column-one" id="title">{{ screenInput.title }}</span>
+    <span class="column-two" id="theory" >{{  screenInput.theory !== undefined && screenInput.theory ? screenInput.theory.slice(0, 100 ): ""}}</span>
+    <span class="column-three column-double">
+
+  <span class="column-double-first-child" id="question">{{ screenInput.question }}</span>
+    <span class="column-double-second-child-end">
+    <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
+    </span>
+  </span>
+  </div>
 </div>

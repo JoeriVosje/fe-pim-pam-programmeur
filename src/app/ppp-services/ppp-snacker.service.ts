@@ -18,7 +18,7 @@ export class PppSnackerService {
   }
 
   showErGingIetsMis(errorObject?: object): void {
-    this.showSnackbar('Er ging iets mis, probeer het opnieuw!', '🥵', ['snackbar', 'error']);
+    this.showSnackbar('Er ging iets mis, probeer het opnieuw!', '👻', ['snackbar', 'error']);
     console.log(errorObject);
   }
 

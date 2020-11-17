@@ -56,7 +56,7 @@ export class KlassenStudentenToevoegenComponent implements OnInit {
   }
 
   getTitle(): string {
-    return (this.klasNaam == null ? '' : this.klasNaam + ' - ') + 'Studenten Toevoegen';
+    return (this.klasNaam === null || this.klasNaam === undefined ? '' : this.klasNaam + ' - ') + 'Studenten Toevoegen';
   }
 
 }

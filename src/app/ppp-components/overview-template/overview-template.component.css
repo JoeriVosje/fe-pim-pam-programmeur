@@ -1,6 +1,6 @@
 .container {
   min-height: 100%;
-  width: 100%;
+  min-width: fit-content;
   background-color: #172C4C;
   display: grid;
   grid-template-rows: 70px auto 32px;

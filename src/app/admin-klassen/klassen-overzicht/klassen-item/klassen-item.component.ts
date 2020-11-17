@@ -18,10 +18,18 @@ export class KlassenItemComponent implements OnInit {
     this.menuItems = [
       {name: 'Studenten', routeOrID: '/classes/' + this.klas.id + '/students', isRoute: true, data: this.klas.name},
       {name: 'Verwijderen', routeOrID: this.klas.id, isRoute: false},
-      ];
+    ];
   }
-  constructor() { }
+
+  constructor() {
+  }
+
   menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
   }
+
+  navToItem(): void {
+    this.menuItemClicked.emit(this.menuItems[0]);
+  }
+
 }

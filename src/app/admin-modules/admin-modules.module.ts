@@ -55,7 +55,6 @@ import { SchermOverzichtWrapperComponent } from './schermen-overzicht/wrapper/sc
     ScrollingModule,
     AdminModulesRoutingModule,
     DragDropModule,
-    MatRadioModule,
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
@@ -66,6 +65,7 @@ import { SchermOverzichtWrapperComponent } from './schermen-overzicht/wrapper/sc
     MatListModule,
     DragDropModule,
     EditorModule,
+    MatRadioModule,
   ],
   exports: [AdminModulesComponent]
 })

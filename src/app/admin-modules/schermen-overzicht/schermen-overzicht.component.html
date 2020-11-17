@@ -1,24 +1,28 @@
-<div class="screens-overview">
+<ppp-content-overview [title]="getTitle()" size="'auto'" [hideBorder]="true">
 
-  <h3 class="title">Module {{ moduleName }} - Schermen</h3>
-  <h4 class="titleModel column">Titel</h4>
-  <h4 class="theory column">Theorie</h4>
-  <h4 class="question column">Vraag</h4>
+  <div class="overview-start with-three-columns">
+    <h4 class="column-header header-one">TITEL</h4>
+    <h4 class="column-header header-two">THEORIE</h4>
+    <h4 class="column-header header-three">VRAAG</h4>
+  </div>
+
   <div class="empty-board" *ngIf="screens.length < 1; else itemsPresent">
     <span class="empty-board-text">
-    Er zijn nog geen schermen toegevoegd. Klik op de knop rechtsonder om een vraag toe te voegen.
+    Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
     </span>
   </div>
   <ng-template #itemsPresent>
-  <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
-    <div cdkDropList (cdkDropListDropped)="drop($event)">
-    <screen-item *cdkVirtualFor="let screen of screens; let even = even"
-                 cdkDrag [screenInput]="screen" [background]="even? 'light' : 'dark'" (menuItemClicked)="menuItem($event)">
-    </screen-item>
-    </div>
-  </cdk-virtual-scroll-viewport>
-
-
+    <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
+      <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <screen-item *cdkVirtualFor="let screen of screens; let even = even"
+                     [hasVerticalScrollbar]="screens.length > 5"
+                     cdkDrag [screenInput]="screen" [background]="even? 'light-item' : 'dark-item'"
+                     (menuItemClicked)="menuItem($event)">
+        </screen-item>
+      </div>
+    </cdk-virtual-scroll-viewport>
   </ng-template>
-  <ppp-button (clicked)="toevoegen()">Toevoegen</ppp-button>
-</div>
+
+  <ppp-button class="align-button bottom-right-padding" (clicked)="toevoegen()">Toevoegen</ppp-button>
+
+</ppp-content-overview>

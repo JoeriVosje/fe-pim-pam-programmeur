@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { AdminModulesService } from '../admin-modules.service';
 import { Answer, Screen } from '../schermen-overzicht/scherm-item/scherm-item.model';
 
 @Component({
@@ -17,13 +18,14 @@ export class SchermToevoegenComponent implements OnInit {
   public validationFailed: EventEmitter<string> = new EventEmitter<string>();
 
   @Input() public moduleId: string;
+  public moduleName: string;
 
-  constructor() {
+  constructor(private adminModulesService: AdminModulesService) {
   }
 
   screenForm: FormGroup;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.screenForm = new FormGroup({
       title: new FormControl(null, [Validators.required]),
       theory: new FormControl(null, []),
@@ -36,6 +38,7 @@ export class SchermToevoegenComponent implements OnInit {
       skippable: new FormControl(null, []),
       correctAnswer: new FormControl(null, [])
     });
+    this.moduleName = await this.adminModulesService.getModule(this.moduleId).toPromise().then(value => value.name);
   }
 
   public validMultipleChoiceAnswers(): boolean{
@@ -47,7 +50,7 @@ export class SchermToevoegenComponent implements OnInit {
     }
 
   public isEmpty(input: string): boolean {
-    return !(typeof input !== 'undefined' && input);
+    return !(typeof input !== undefined && input);
   }
   public addScreen(): void {
     if (this.screenForm.invalid) {
@@ -69,7 +72,7 @@ export class SchermToevoegenComponent implements OnInit {
     }
     if (!this.isEmpty(this.screenForm.controls.question.value )){
       if (!this.validMultipleChoiceAnswers()){
-        this.validationFailed.emit('Als de vraag is ingevuld moeten alle antwoord mogenlijkheden ingevuld zijn inclusief het correcte antwoord.');
+        this.validationFailed.emit('Selecteer het correcte antwoord.');
         return;
       }
     }
@@ -109,6 +112,10 @@ export class SchermToevoegenComponent implements OnInit {
         isCorrectAnswer: type === 'D'
       }
     ];
+  }
+
+  getTitle(): string {
+    return (this.moduleName !== null && this.moduleName !== undefined ? `${this.moduleName} - ` : '') + 'Scherm Toevoegen';
   }
 
 }

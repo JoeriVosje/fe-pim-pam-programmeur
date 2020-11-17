@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
+import { AdminModulesService } from '../../admin-modules.service';
 import { AdminScreensService } from '../../admin-screens.service';
 import { Screen } from '../scherm-item/scherm-item.model';
 
@@ -19,10 +20,10 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   public screens: Screen[] = [];
   private readonly subscription: Subscription = new Subscription();
 
-  @Input()
   public moduleName: string;
 
   constructor(private service: AdminScreensService,
+              private moduleService: AdminModulesService,
               private router: Router,
               private route: ActivatedRoute,
               private snackBar: PppSnackerService) {
@@ -35,8 +36,9 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.moduleId = this.route.snapshot.paramMap.get('id');
+    this.moduleName = await this.moduleService.getModule(this.moduleId).toPromise().then(value => value.name);
     this.getScreens();
   }
 
@@ -53,7 +55,7 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
       error: error => this.snackBar.showErGingIetsMis(error),
       complete: () => {
         this.router.navigate([`modules/${this.moduleId}/screens`]);
-        this.snackBar.showBewerkt('De volgorde is succesvol opgeslagen.');
+        this.snackBar.showBewerkt('Volgorde');
       }
     });
   }

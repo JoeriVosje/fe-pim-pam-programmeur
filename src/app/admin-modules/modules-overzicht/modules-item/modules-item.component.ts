@@ -19,7 +19,7 @@ export class ModulesItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true},
+      {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true, data: this.name},
       {name: 'Bewerken', routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
       {name: 'Verwijderen', routeOrID: this.moduleId, isRoute: false},
     ];
@@ -30,5 +30,9 @@ export class ModulesItemComponent implements OnInit {
 
   menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
+  }
+
+  navToItem(): void {
+    this.menuItemClicked.emit(this.menuItems[0]);
   }
 }

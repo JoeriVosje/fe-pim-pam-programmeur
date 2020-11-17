@@ -57,7 +57,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
       this.adminModuleService.deleteModule(id)
         .subscribe({
           error: error => this.snackBar.showErGingIetsMis(error),
-          complete: () => this.snackBar.showVerwijderd('module')
+          complete: () => this.snackBar.showVerwijderd('Module')
         })
     );
   }
