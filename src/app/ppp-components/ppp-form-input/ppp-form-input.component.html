@@ -1,0 +1,8 @@
+<ppp-input [type]="type"
+           [size]="'L'"
+           [placeholder]="placeholder"
+           [value]="value"
+           [disabled]="disabled"
+           (input)="onChange($event.target.value) //noinspection UnresolvedVariable">
+  <ng-content></ng-content>
+</ppp-input>
