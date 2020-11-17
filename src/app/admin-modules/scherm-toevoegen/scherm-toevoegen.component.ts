@@ -53,7 +53,7 @@ export class SchermToevoegenComponent implements OnInit {
   }
   public addScreen(): void {
     if (this.isEmpty(this.screenForm.controls.question.value)) {
-      this.validationFailed.emit('De titel is verplicht.');
+      this.validationFailed.emit('Titel is verplicht.');
       return;
     }
     if (this.isEmpty(this.screenForm.controls.question.value)) {
@@ -74,7 +74,7 @@ export class SchermToevoegenComponent implements OnInit {
         this.validationFailed.emit('Vul alle opties van de vraag in.');
         return;
       } else if (this.isEmpty(this.screenForm.controls.correctAnswer.value)) {
-        this.validationFailed.emit('Kies het juiste antwoord.');
+        this.validationFailed.emit('Selecteer het correcte antwoord.');
         return;
       }
     }
