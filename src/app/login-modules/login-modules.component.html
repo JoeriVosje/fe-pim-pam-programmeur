@@ -6,7 +6,7 @@
     <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L" icon="email">Gebruikersnaam of email</ppp-input>
     <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L" icon="lock">Wachtwoord</ppp-input>
     <br/>
-    <ppp-button (clicked)="inloggen()" [type]="'highlight'">Inloggen</ppp-button>
+    <ppp-button [loginButton]="true" (clicked)="inloggen()" [type]="'highlight'">Inloggen</ppp-button>
     <p class="mat-error" *ngIf="loginFailed">Login is mislukt. Probeer het opniew.</p>
   </div>
 </div>
