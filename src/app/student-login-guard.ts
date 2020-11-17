@@ -9,7 +9,7 @@ export class StudentLoginGuard implements CanActivate {
 
     public canActivate(): boolean {
         const user = this.tokenService.readToken();
-        if (user == null || user.roleId !== 1) {
+        if (user == null || user.roleId !== 0) {
             this.router.navigate(['/login']);
             return;
         }
