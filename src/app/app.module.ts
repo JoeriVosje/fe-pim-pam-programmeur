@@ -1,9 +1,11 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { CookieService } from 'ngx-cookie-service';
 import { AdminHomeModule } from './admin-home/admin-home.module';
 import { AdminModulesModule } from './admin-modules/admin-modules.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +13,6 @@ import { AppComponent } from './app.component';
 import { AuthHttpInterceptor } from './http-interceptor';
 import { LoginModulesModule } from './login-modules/login-modules.module';
 import { StudentModulesModule } from './student-modules/student-modules.module';
-import { CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CookieService} from 'ngx-cookie-service';
     BrowserAnimationsModule,
     BrowserModule,
     EditorModule,
-    StudentModulesModule
+    StudentModulesModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

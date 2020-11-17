@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { AdminModulesService } from 'src/app/admin-modules/admin-modules.service';
+import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { KlasRequest } from '../../klassen-request.model';
 
@@ -19,7 +19,7 @@ export class KlassenToevoegenWrapperComponent implements OnInit {
   constructor(private service: AdminKlassenService,
               private moduleService: AdminModulesService,
               private router: Router,
-              private snackBar: MatSnackBar) {
+              private snackBar: PppSnackerService) {
   }
 
   ngOnInit(): void {
@@ -29,8 +29,7 @@ export class KlassenToevoegenWrapperComponent implements OnInit {
         next: modules => this.modules = modules.map(e => {
           return {key: e.id, value: e.name};
         }),
-        error: error => console.log(error),
-        complete: () => console.log('complete')
+        error: error => this.snackBar.showErGingIetsMis(error)
       });
   }
 
@@ -39,39 +38,19 @@ export class KlassenToevoegenWrapperComponent implements OnInit {
       if (this.loading === false) {
         this.loading = true;
         this.service.saveKlas(klas).subscribe({
-          next: e => console.log(e),
           error: error => {
-            console.log(error);
-            this.snackBar.open('Er ging iets mis, probeer het later opnieuw!', '🥵', {
-              announcementMessage: 'wtf',
-              duration: 4000,
-              horizontalPosition: 'end',
-              verticalPosition: 'top',
-              panelClass: ['snackbar', 'error']
-            });
+            this.snackBar.showErGingIetsMis(error);
             this.loading = false;
           },
           complete: () => {
             this.router.navigate(['classes']);
-            this.snackBar.open('Klas toegevoegd!', '🎉', {
-              announcementMessage: 'wtf',
-              duration: 4000,
-              horizontalPosition: 'end',
-              verticalPosition: 'top',
-              panelClass: ['snackbar']
-            });
+            this.snackBar.showToegevoegd('Klas');
             this.loading = false;
           }
         });
       }
     } else {
-      this.snackBar.open('Oeps, alle velden invullen aub!', '✋', {
-        announcementMessage: 'wtf',
-        duration: 4000,
-        horizontalPosition: 'end',
-        verticalPosition: 'top',
-        panelClass: ['snackbar', 'error']
-      });
+      this.snackBar.showAlleVeldenInvullen();
     }
   }
 

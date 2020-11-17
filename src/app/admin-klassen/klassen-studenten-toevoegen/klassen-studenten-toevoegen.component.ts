@@ -40,22 +40,23 @@ export class KlassenStudentenToevoegenComponent implements OnInit {
   }
 
   public getNameValue(value: string): void {
-    this.student.firstName = value;
+    this.student.firstName = value?.length === 0 ? null : value;
   }
 
   public getLastNameValue(value: string): void {
-    this.student.lastName = value;
+    this.student.lastName = value?.length === 0 ? null : value;
   }
 
   public getEmailValue(value: string): void {
-    this.student.email = value;
+    this.student.email = value?.length === 0 ? null : value;
   }
 
   public add(): void {
     this.addStudent.emit(this.student);
   }
 
-  title(): string {
-    return 'Studenten Toevoegen' + (this.klasNaam == null ? '' : ' - ' + this.klasNaam);
+  getTitle(): string {
+    return (this.klasNaam === null || this.klasNaam === undefined ? '' : this.klasNaam + ' - ') + 'Studenten Toevoegen';
   }
+
 }

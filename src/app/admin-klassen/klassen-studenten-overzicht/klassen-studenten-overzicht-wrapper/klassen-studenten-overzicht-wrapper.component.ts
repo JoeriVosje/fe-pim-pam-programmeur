@@ -1,9 +1,10 @@
 /* tslint:disable:no-string-literal */
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.model';
+import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { AdminStudentenService } from '../../admin-studenten-service.service';
 import { Student } from '../../studenten-item.model';
@@ -24,7 +25,14 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
   constructor(private studentenService: AdminStudentenService,
               private router: Router,
               private route: ActivatedRoute,
-              private adminKlassenService: AdminKlassenService) {
+              private adminKlassenService: AdminKlassenService,
+              private snackBar: PppSnackerService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.subscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });
   }
 
   async ngOnInit(): Promise<void> {
@@ -34,10 +42,7 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
       this.studentenService.getStudenten(this.klasId)
         .subscribe({
           next: studenten => this.studenten = studenten,
-          error: error => console.log(error),
-          complete: () => {
-            console.log(this.studenten);
-          }
+          error: error => this.snackBar.showErGingIetsMis(error)
         })
     );
   }
@@ -50,10 +55,23 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
     this.router.navigate([`classes/${this.klasId}/students/add`]);
   }
 
+  deleteStudent(studentId: string): void {
+    this.studentenService.deleteStudent(studentId).subscribe(
+      {
+        error: error => this.snackBar.showErGingIetsMis(error),
+        complete: () => {
+          this.snackBar.showVerwijderd('Student');
+          this.router.navigate([this.router.url]);
+        }
+      }
+    );
+  }
+
   public menuItemClicked(menuItem: MenuItem): void {
     if (menuItem.isRoute) {
-      this.router.navigate([menuItem.routeOrID], {state: {klasNaam: this.klasNaam}});
+      this.router.navigate([menuItem.routeOrID]);
     } else {
+      this.deleteStudent(menuItem.routeOrID);
       // todo implement snackbar, loading and delete
       // this.studentenService.deleteStudent(menuItem.routeOrID);
     }

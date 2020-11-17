@@ -1,0 +1,53 @@
+.column-double-question {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.column-double-question-first-child {
+  align-self: center;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+.column-double-question-second-child {
+  padding-top: 16px;
+  padding-right: 16px;
+  align-self: center;
+  justify-self: end;
+  font-size: 15px;
+  padding-left: 24px;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+
+.with-gap {
+  grid-gap: 32px;
+}
+
+.column-double-multiple-choice-option {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+}
+
+mat-radio-button {
+  padding-right: 24px;
+}
+
+.column-double-multiple-choice-first-child {
+  align-self: center;
+  justify-self: left;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+.end-of-input-padding {
+  padding-bottom: 16px;
+}
+
+.end-of-input-padding-large {
+  padding-bottom: 24px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

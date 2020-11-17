@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Answer, Screen } from '../screens-overzicht/screen-item/screen-item.model';
+import { AdminModulesService } from '../admin-modules.service';
+import { Answer, Screen } from '../schermen-overzicht/scherm-item/scherm-item.model';
 
 @Component({
   selector: 'scherm-toevoegen',
@@ -13,16 +14,20 @@ export class SchermToevoegenComponent implements OnInit {
   @Output()
   public screenAdded: EventEmitter<Screen> = new EventEmitter<Screen>();
 
-  @Input() public moduleId: string;
+  @Output()
+  public validationFailed: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() {
+  @Input() public moduleId: string;
+  public moduleName: string;
+
+  constructor(private adminModulesService: AdminModulesService) {
   }
 
   screenForm: FormGroup;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.screenForm = new FormGroup({
-      title: new FormControl(null, [Validators.required]),
+      title: new FormControl(null, []),
       theory: new FormControl(null, []),
       question: new FormControl(null, []),
       questionA: new FormControl(null, []),
@@ -33,47 +38,48 @@ export class SchermToevoegenComponent implements OnInit {
       skippable: new FormControl(null, []),
       correctAnswer: new FormControl(null, [])
     });
+    this.moduleName = await this.adminModulesService.getModule(this.moduleId).toPromise().then(value => value.name);
   }
 
-  public validMultipleChoiceAnswers(): boolean{
+  private validMultipleChoiceAnswers(): boolean{
     return !(this.isEmpty(this.screenForm.controls.questionA.value) ||
       this.isEmpty(this.screenForm.controls.questionB.value ) ||
         this.isEmpty(this.screenForm.controls.questionC.value) ||
-          this.isEmpty(this.screenForm.controls.questionD.value) ||
-            this.isEmpty(this.screenForm.controls.correctAnswer.value));
+          this.isEmpty(this.screenForm.controls.questionD.value));
     }
 
-  public isEmpty(input: string): boolean {
-    return !(typeof input !== 'undefined' && input);
+  private isEmpty(input: string): boolean {
+    return !(typeof input !== undefined && input && input.length > 0);
   }
   public addScreen(): void {
-    console.log(this.screenForm);
-    if (this.screenForm.invalid) {
-      alert('Titel is verplicht');
+    if (this.isEmpty(this.screenForm.controls.question.value)) {
+      this.validationFailed.emit('Titel is verplicht.');
       return;
     }
     if (this.isEmpty(this.screenForm.controls.question.value)) {
         if (this.isEmpty(this.screenForm.controls.theory.value)) {
-          alert('Als de vraag leeg is, is de theorie verplicht.');
+          this.validationFailed.emit('Als de vraag leeg is, is de theorie verplicht.');
           return;
         }
       }
     if (this.isEmpty(this.screenForm.controls.theory.value)) {
       if (this.isEmpty(this.screenForm.controls.question.value)) {
-          alert('Als de theorie leeg is, is de vraag verplicht.');
+          this.validationFailed.emit('Als de theorie leeg is, is de vraag verplicht.');
           return;
         }
 
     }
     if (!this.isEmpty(this.screenForm.controls.question.value )){
       if (!this.validMultipleChoiceAnswers()){
-        alert('Als de vraag is ingevuld moeten alle antwoord mogenlijkheden ingevuld zijn inclusief het correcte antwoord.');
+        this.validationFailed.emit('Vul alle opties van de vraag in.');
+        return;
+      } else if (this.isEmpty(this.screenForm.controls.correctAnswer.value)) {
+        this.validationFailed.emit('Selecteer het correcte antwoord.');
         return;
       }
     }
 
     const answersInput: Array<Answer> = this.getAnswersInput(this.screenForm.controls.correctAnswer.value);
-    console.log(this.screenForm.controls.skippable.value);
     const product: Screen = {
       title: this.screenForm.controls.title.value,
       theory: this.screenForm.controls.theory.value,
@@ -83,7 +89,6 @@ export class SchermToevoegenComponent implements OnInit {
       skippable: this.screenForm.controls.skippable.value === true,
       moduleId: this.moduleId
     };
-    console.log(product);
     this.screenAdded.emit(product);
   }
 
@@ -109,6 +114,10 @@ export class SchermToevoegenComponent implements OnInit {
         isCorrectAnswer: type === 'D'
       }
     ];
+  }
+
+  public getTitle(): string {
+    return (this.moduleName !== null && this.moduleName !== undefined ? `${this.moduleName} - ` : '') + 'Scherm Toevoegen';
   }
 
 }

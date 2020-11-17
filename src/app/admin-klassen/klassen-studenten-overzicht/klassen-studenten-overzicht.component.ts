@@ -42,4 +42,7 @@ export class KlassenStudentenOverzichtComponent implements OnInit {
     this.toevoegenClicked.emit();
   }
 
+  getTitle(): string {
+    return (this.klasNaam != null ? `${this.klasNaam} - ` : '') + 'Studenten';
+  }
 }

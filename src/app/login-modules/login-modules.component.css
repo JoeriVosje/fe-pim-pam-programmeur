@@ -1,0 +1,28 @@
+div p:first-of-type {
+  margin-bottom: 30px;
+}
+
+.container {
+  height: 100%;
+  background-color: #172C4C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hacker {
+  position: absolute;
+  height: 165px;
+  top: 83px;
+}
+
+.login-page {
+  position: absolute;
+  border-radius: 10px;
+  background-color: white;
+  width: 425px;
+  top: 50px;
+  margin-top: 200px;
+  padding: 30px;
+  text-align: center;
+}

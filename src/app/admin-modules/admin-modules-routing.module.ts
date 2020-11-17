@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminLoginGuard } from '../admin-login-guard';
 
+import { AdminLoginGuard } from '../admin-login-guard';
 import { AdminModulesComponent } from './admin-modules.component';
 import { ModulesBewerkenWrapperComponent } from './modules-bewerken/wrapper/modules-bewerken.wrapper.component';
-import { ModulesScreensComponent } from './modules-screens/modules-screens.component';
 import { ModulesToevoegenWrapperComponent } from './modules-toevoegen/wrapper/modules-toevoegen.wrapper.component';
-import { SchermToevoegenWrapperComponent } from './screen-toevoegen/wrapper/scherm-toevoegen.wrapper.component';
+import { SchermToevoegenWrapperComponent } from './scherm-toevoegen/wrapper/scherm-toevoegen.wrapper.component';
+import { SchermOverzichtWrapperComponent } from './schermen-overzicht/wrapper/scherm-overzicht.wrapper.component';
 
 const breadCrumpMap = new Map([
   [0, {name: 'Overzicht', route: 'modules'}],
@@ -17,39 +17,39 @@ const breadCrumpMap = new Map([
 ]);
 
 const routes: Routes = [
-  {path: '', component: AdminModulesComponent, data: {breadCrumbs: [breadCrumpMap.get(0)]}, canActivate: [AdminLoginGuard],},
   {
     path: '', component: AdminModulesComponent,
+    canActivate: [AdminLoginGuard],
     data: {
-      breadCrumbs: [breadCrumpMap.get(0)]
-    }
+      breadCrumbs: [breadCrumpMap.get(0)],
+    },
   },
   {
     path: 'add', component: ModulesToevoegenWrapperComponent,
+    canActivate: [AdminLoginGuard],
     data: {
-      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)]
+      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(1)],
     },
-    canActivate: [AdminLoginGuard]
   },
   {
     path: ':id/edit', component: ModulesBewerkenWrapperComponent,
+    canActivate: [AdminLoginGuard],
     data: {
-      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)]
+      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(2)],
     },
-    canActivate: [AdminLoginGuard]
   },
   {
-    path: ':id/screens', component: ModulesScreensComponent,
+    path: ':id/screens', component: SchermOverzichtWrapperComponent,
+    canActivate: [AdminLoginGuard],
     data: {
-      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3)]
+      breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3)],
     },
-    canActivate: [AdminLoginGuard]
   },
   {
     path: ':id/screens/create', component: SchermToevoegenWrapperComponent,
+    canActivate: [AdminLoginGuard],
     data: {
       breadCrumbs: [breadCrumpMap.get(0), breadCrumpMap.get(3), breadCrumpMap.get(4)],
-      canActivate: [AdminLoginGuard]
     }
   },
 ];

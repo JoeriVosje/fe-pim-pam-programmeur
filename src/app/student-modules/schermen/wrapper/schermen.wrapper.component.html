@@ -1,1 +1,5 @@
-<student-schermen></student-schermen>
+<student-schermen *ngIf="!isLoading"
+                  [screen]="getScreen()"
+                  (nextScreen)="next()"
+                  (finished)="finished()">
+</student-schermen>

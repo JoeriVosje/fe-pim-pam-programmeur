@@ -1,1 +1,6 @@
-  <button mat-flat-button (click)="onClick()"><ng-content></ng-content></button>
+<button mat-flat-button
+        [ngClass]="loginButton ? 'ppp-login-button' : type + ' ppp-button'"
+        type="button"
+        (click)="onClick()">
+  <ng-content></ng-content>
+</button>

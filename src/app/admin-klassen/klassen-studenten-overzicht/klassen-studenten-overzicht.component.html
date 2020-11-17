@@ -1,9 +1,12 @@
-<div class="studenten-overview">
-  <h3 class="title">Studenten - {{ klasNaam }}</h3>
-  <h4 class="student-name column">NAAM</h4>
-  <h4 class="studenten-lastname column">ACHTERNAAM</h4>
-  <h4 class="studenten-email column">EMAIL</h4>
-  <h4 class="studenten-date column">DATUM TOEGEVOEGD</h4>
+<ppp-content-overview [title]="getTitle()" size="'auto'" [hideBorder]="true">
+
+  <div class="overview-start with-four-columns">
+    <h4 class="column-header header-one">NAAM</h4>
+    <h4 class="column-header header-two">ACHTERNAAM</h4>
+    <h4 class="column-header header-three">EMAIL</h4>
+    <h4 class="column-header header-four">DATUM TOEGEVOEGD</h4>
+  </div>
+
   <div class="empty-board" *ngIf="studenten?.length < 1; else itemsPresent">
     <span class="empty-board-text">
     Er zijn nog geen studenten toegevoegd. Klik op de knop rechtsonder om een student toe te voegen.
@@ -12,11 +15,14 @@
   <ng-template #itemsPresent>
     <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
       <studenten-item *cdkVirtualFor="let student of studenten; let even = even"
-                    [student]="student"
-                    [background]="even? 'light' : 'dark'"
-                    (menuItemClicked)="menuItem($event)">
+                      [student]="student"
+                      [background]="even? 'light-item' : 'dark-item'"
+                      [hasVerticalScrollbar]="studenten.length > 5"
+                      (menuItemClicked)="menuItem($event)">
       </studenten-item>
     </cdk-virtual-scroll-viewport>
   </ng-template>
-  <ppp-button (clicked)="toevoegen()">Toevoegen</ppp-button>
-</div>
+
+  <ppp-button class="align-button bottom-right-padding" (clicked)="toevoegen()">Toevoegen</ppp-button>
+
+</ppp-content-overview>

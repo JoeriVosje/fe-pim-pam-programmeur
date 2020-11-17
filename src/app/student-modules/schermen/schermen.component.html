@@ -1,1 +1,32 @@
-<p>schermen works good!</p>
+<div class="container">
+
+<!--  Theorie-->
+  <ppp-content-overview *ngIf="screen.theory"
+                        [title]="screen.title"
+                        [size]="'auto'">
+
+    <div class="input-field-padding">
+      <span [innerHTML]="screen.theory | keepHtml"> </span>
+      <ppp-button class="align-button"
+                  *ngIf="showButton()"
+                  (clicked)="onNext()">
+        Volgende
+      </ppp-button>
+    </div>
+
+  </ppp-content-overview>
+
+<!--  Vraag-->
+  <ppp-content-overview *ngIf="screen.question"
+                        [title]="'Vraag'"
+                        [size]="'auto'">
+
+    <div class="input-field-padding">
+      <ppp-button class="align-button"
+                  (clicked)="onNext()">
+        Volgende
+      </ppp-button>
+    </div>
+
+  </ppp-content-overview>
+</div>

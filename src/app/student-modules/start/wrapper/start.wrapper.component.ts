@@ -5,6 +5,7 @@ import { Session } from '../../models/session.model';
 import { Student } from '../../models/student.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
+import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 @Component({
   selector: 'student-start-wrapper',
@@ -20,7 +21,8 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly navigatie: StudentModulesNavigation,
-    private readonly service: StudentModulesService) { }
+    private readonly service: StudentModulesService,
+    private readonly snackBar: PppSnackerService) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -36,8 +38,8 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
       this.service.getStudent()
         .subscribe({
           next: student => this.student = student,
-          error: err => {
-            console.log(err);
+          error: error => {
+            this.snackBar.showErGingIetsMis(error);
             this.isLoading = false;
           },
           complete: () => this.loadSession(this.student.classroom.module.id)
@@ -50,8 +52,8 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
       this.service.getSession(moduleId)
         .subscribe({
           next: session => this.session = session,
-          error: err => {
-            console.log(err);
+          error: error => {
+            this.snackBar.showErGingIetsMis(error);
             this.isLoading = false;
           },
           complete: () => this.isLoading = false
@@ -60,11 +62,11 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
   }
 
   public canStartModule(): boolean {
-    return this.session ? !this.session.endTime : false;
+    return !!this.session;
   }
 
   public naarSchermen(): void {
-    this.navigatie.naarSchermen();
+    this.navigatie.toScreens();
   }
 
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Screen } from './screens-overzicht/screen-item/screen-item.model';
+import {OrderListItem, Screen} from './schermen-overzicht/scherm-item/scherm-item.model';
 
 @Injectable({ providedIn: 'root' })
 export class AdminScreensService {
@@ -20,8 +20,11 @@ export class AdminScreensService {
     return this.httpClient.post<Screen>(`${this.baseurl}/Component/`, screen, { observe: 'response' });
   }
 
-  public reOrderScreen(screens: Screen[]): Observable<HttpResponse<Screen[]>> {
+  public reOrderScreen(screens: OrderListItem): Observable<HttpResponse<Screen[]>> {
     return this.httpClient.put<Screen[]>(`${this.baseurl}/Component/Order`, screens, { observe: 'response' });
   }
 
+  deleteScreen(screenId: string): Observable<HttpResponse<void>> {
+    return this.httpClient.delete<void>(`${this.baseurl}/Component/${screenId}`, { observe: 'response' });
+  }
 }

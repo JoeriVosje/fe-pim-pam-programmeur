@@ -7,14 +7,14 @@ import { Sessie } from './sessies-overzicht/sessies-item/sessies-item.model';
 @Injectable({ providedIn: 'root' })
 export class AdminHomeService {
 
-  private baseurl = "https://be-pim-pam-programmeur.azurewebsites.net/api";
+  private baseurl = 'https://be-pim-pam-programmeur.azurewebsites.net/api';
 
   public constructor(private readonly httpClient: HttpClient) {
   }
 
   public getSessies(): Observable<Sessie[]> {
     return this.httpClient.get<Sessie[]>(`${this.baseurl}/Session`);
-    //return of(this.createSessies());
+    // return of(this.createSessies());
   }
 
   /*

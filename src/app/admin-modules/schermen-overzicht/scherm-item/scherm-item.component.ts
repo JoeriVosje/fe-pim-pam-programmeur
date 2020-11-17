@@ -1,27 +1,27 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
-import { Screen } from './screen-item.model';
+import { Screen } from './scherm-item.model';
 
 @Component({
   selector: 'screen-item',
-  templateUrl: './screen-item.component.html',
-  styleUrls: ['./screen-item.component.css']
+  templateUrl: './scherm-item.component.html',
+  styleUrls: ['./scherm-item.component.css']
 })
-export class ScreenItemComponent implements OnInit {
+export class SchermItemComponent implements OnInit {
 
   @Input()
-  public screen: Screen;
+  public screenInput: Screen;
 
   @Input()
   public background: string;
-  @Input() public screenId: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
   menuItems: MenuItem[];
+  @Input() public hasVerticalScrollbar: boolean;
 
   ngOnInit(): void {
     this.menuItems = [
-      {name: 'Verwijderen', routeOrID: this.screenId, isRoute: false},
+      {name: 'Verwijderen', routeOrID: this.screenInput.id, isRoute: false},
     ];
   }
 

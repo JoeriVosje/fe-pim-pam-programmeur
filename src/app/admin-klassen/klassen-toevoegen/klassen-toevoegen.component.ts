@@ -25,15 +25,15 @@ export class KlassenToevoegenComponent implements OnInit {
   }
 
   public getNameValue(value: string): void {
-    this.klas.name = value;
+    this.klas.name = value?.length === 0 ? null : value;
   }
 
   public getMajorValue(value: string): void {
-    this.klas.major = value;
+    this.klas.major = value?.length === 0 ? null : value;
   }
 
   public getSelectValue(value: string): void {
-    this.klas.moduleId = value;
+    this.klas.moduleId = value?.length === 0 ? null : value;
   }
 
   public add(): void {
