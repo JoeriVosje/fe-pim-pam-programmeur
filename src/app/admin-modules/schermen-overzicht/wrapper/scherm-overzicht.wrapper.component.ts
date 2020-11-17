@@ -55,7 +55,7 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
       error: error => this.snackBar.showErGingIetsMis(error),
       complete: () => {
         this.router.navigate([`modules/${this.moduleId}/screens`]);
-        this.snackBar.showBewerkt('De volgorde is succesvol opgeslagen.');
+        this.snackBar.showBewerkt('Volgorde');
       }
     });
   }

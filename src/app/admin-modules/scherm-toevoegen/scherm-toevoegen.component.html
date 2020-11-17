@@ -4,63 +4,90 @@
   <ppp-content-overview [title]="getTitle()" [size]="'auto'">
     <form [formGroup]="screenForm">
       <div class="input-field-padding">
+<!--Title-->
         <ppp-form-input formControlName="title" type="text">Titel</ppp-form-input>
-
+        <div class="end-of-input-padding"></div>
+<!--Theory-->
         <div class="input-label">Theorie</div>
-            <editor
-              class="form-field"
-              formControlName="theory"
-              [init]="{
+        <editor
+          class="form-field"
+          formControlName="theory"
+          [init]="{
                        base_url: '/tinymce',
                        suffix: '.min'  ,
                        height: 300,
                        menubar: true,
-    plugins: [
-      'advlist autolink lists link image charmap print',
-      'preview anchor searchreplace visualblocks code codesample',
-      'insertdatetime media table paste',
-      'help wordcount'
-    ],
-    toolbar: 'undo redo | formatselect | bold italic |  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | code codesample image | help'
-  }">
-            </editor>
-
-        <div style="padding-bottom: 16px"></div>
-
+          plugins: [
+          'advlist autolink lists link image charmap print',
+          'preview anchor searchreplace visualblocks code codesample',
+          'insertdatetime media table paste',
+          'help wordcount'],
+          toolbar: 'undo redo | formatselect | bold italic |  alignleft aligncenter alignright alignjustify | ' +
+           'bullist numlist outdent indent | code codesample image | help'}">
+        </editor>
+        <div class="end-of-input-padding-large"></div>
+<!--Question-->
         <div class="column-double-question">
           <ppp-form-input formControlName="question" class="column-double-question-first-child">Vraag</ppp-form-input>
           <mat-checkbox formControlName="skippable" class="column-double-question-second-child">
             Student mag vraag overslaan
           </mat-checkbox>
         </div>
-        <mat-radio-group formControlName="correctAnswer" class="multiple-choice-grid">
-          <div class="questionA-grid nextToEachtOther">
-            <mat-radio-button value="A">A</mat-radio-button>
-            <input type="text" formControlName="questionA"/>
+        <div class="end-of-input-padding"></div>
+<!--Multiple Choice-->
+        <mat-radio-group formControlName="correctAnswer">
+<!--A + B-->
+          <div class="column-double with-gap">
+            <span class="column-double-first-child">
+              <span class="column-double-multiple-choice-option">
+                <span class="column-double-multiple-choice-first-child">
+                  <mat-radio-button value="A">A</mat-radio-button>
+                </span>
+                <span class="column-double-second-child">
+                  <ppp-form-input type="text" formControlName="questionA"></ppp-form-input>
+                </span>
+              </span>
+            </span>
+            <span class="column-double-second-child">
+              <span class="column-double-multiple-choice-option">
+                <span class="column-double-multiple-choice-first-child">
+                  <mat-radio-button value="B">B</mat-radio-button>
+                </span>
+                <span class="column-double-second-child">
+                  <ppp-form-input type="text" formControlName="questionB"></ppp-form-input>
+                </span>
+              </span>
+            </span>
           </div>
-          <div class="questionB-grid nextToEachtOther">
-            <mat-radio-button value="B">B</mat-radio-button>
-            <input type="text" formControlName="questionB"/>
+          <!--C + D-->
+          <div class="column-double with-gap">
+            <span class="column-double-first-child">
+              <span class="column-double-multiple-choice-option">
+                <span class="column-double-multiple-choice-first-child">
+                  <mat-radio-button value="C">C</mat-radio-button>
+                </span>
+                <span class="column-double-second-child">
+                  <ppp-form-input type="text" formControlName="questionC"></ppp-form-input>
+                </span>
+              </span>
+            </span>
+            <span class="column-double-second-child">
+              <span class="column-double-multiple-choice-option">
+                <span class="column-double-multiple-choice-first-child">
+                  <mat-radio-button value="D">D</mat-radio-button>
+                </span>
+                <span class="column-double-second-child">
+                  <ppp-form-input type="text" formControlName="questionD"></ppp-form-input>
+                </span>
+              </span>
+            </span>
           </div>
-          <div class="questionC-grid nextToEachtOther">
-            <mat-radio-button value="C">C</mat-radio-button>
-            <input type="text" formControlName="questionC"/>
-          </div>
-          <div class="questionD-grid nextToEachtOther s">
-            <mat-radio-button value="D">D</mat-radio-button>
-            <input type="text" formControlName="questionD"/>
-          </div>
-
         </mat-radio-group>
-
-
-        <div class="feedback-grid inputWidth">
-          Feedback
-          <input type="text" formControlName="feedback"/>
-        </div>
-
+        <div class="end-of-input-padding"></div>
+<!--Feedback-->
+        <ppp-form-input formControlName="feedback" type="text">Feedback</ppp-form-input>
+<!--Add Button-->
         <ppp-button (clicked)="addScreen()" class="align-button">Toevoegen</ppp-button>
-
       </div>
     </form>
   </ppp-content-overview>

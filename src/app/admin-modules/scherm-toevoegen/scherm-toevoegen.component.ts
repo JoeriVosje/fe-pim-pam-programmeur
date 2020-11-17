@@ -72,7 +72,7 @@ export class SchermToevoegenComponent implements OnInit {
     }
     if (!this.isEmpty(this.screenForm.controls.question.value )){
       if (!this.validMultipleChoiceAnswers()){
-        this.validationFailed.emit('Als de vraag is ingevuld moeten alle antwoord mogenlijkheden ingevuld zijn inclusief het correcte antwoord.');
+        this.validationFailed.emit('Selecteer het correcte antwoord.');
         return;
       }
     }

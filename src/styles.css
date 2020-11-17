@@ -171,6 +171,12 @@ html, body {
 
 .column-double-second-child {
   align-self: center;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+
+.column-double-second-child-end {
+  align-self: center;
   justify-self: end;
   padding-right: 48px;
   padding-left: 16px;
