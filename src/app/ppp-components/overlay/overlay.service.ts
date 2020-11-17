@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
 
-import { OverlayComponent} from './overlay.component';
 import { OverlayRefComponent } from './overlayRef.component';
 
 interface OverlayDialogConfig {
@@ -16,7 +15,7 @@ export class OverlayService {
 
   constructor(private overlay: Overlay) { }
 
-  open(config: OverlayDialogConfig = {}) {
+  open(componentType: ComponentType<unknown>, config: OverlayDialogConfig = {}) {
 
     const dialogConfig = config;
 
@@ -24,7 +23,7 @@ export class OverlayService {
 
     const dialogRef = new OverlayRefComponent(overlayRef);
 
-    const overlayPortal = new ComponentPortal(OverlayComponent);
+    const overlayPortal = new ComponentPortal(componentType);
 
     overlayRef.attach(overlayPortal);
 

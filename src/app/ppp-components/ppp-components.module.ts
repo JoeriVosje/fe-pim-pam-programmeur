@@ -17,7 +17,6 @@ import { PppFormInputComponent } from './ppp-form-input/ppp-form-input.component
 import { SelectComponent } from './select/select.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
-import { OverlayComponent } from './overlay/overlay.component';
 import { OverlayService } from './overlay/overlay.service';
 import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
 
@@ -37,7 +36,6 @@ import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
     ContentOverviewComponent,
     ModalComponent,
     SelectComponent,
-    OverlayComponent,
     PppFormInputComponent,
     ErrorOverlayComponent
   ],
@@ -50,7 +48,7 @@ import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
     ModalComponent,
     ContentOverviewComponent,
     SelectComponent,
-    OverlayComponent
+    ErrorOverlayComponent,
   ],
   imports: [
     CommonModule,
