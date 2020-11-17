@@ -52,12 +52,15 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     );
   }
 
-  public deleteModule(id: string): void {
+  public deleteModule(moduleId: string): void {
     this.subscription.add(
-      this.adminModuleService.deleteModule(id)
+      this.adminModuleService.deleteModule(moduleId)
         .subscribe({
           error: error => this.snackBar.showErGingIetsMis(error),
-          complete: () => this.snackBar.showVerwijderd('Module')
+          complete: () => {
+            this.snackBar.showVerwijderd('Module');
+            this.router.navigate([this.router.url]);
+          }
         })
     );
   }
