@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ErrorOverlayComponent } from 'src/app/ppp-components/error-overlay/error-overlay.component';
 
 import { Sessie } from './sessies-item/sessies-item.model';
 
@@ -18,9 +19,14 @@ export class SessiesOverzichtComponent implements OnInit {
   @Input()
   public sessies: Sessie[];
 
-  constructor() { }
+  constructor(private errorLayover: ErrorOverlayComponent) {   }
 
   ngOnInit(): void {
   }
+
+  showOverlay(){
+    this.errorLayover.showOverlay();
+  }
+
 
 }

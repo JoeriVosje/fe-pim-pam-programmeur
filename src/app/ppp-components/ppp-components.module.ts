@@ -19,6 +19,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { OverlayService } from './overlay/overlay.service';
+import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -37,7 +38,8 @@ import { OverlayService } from './overlay/overlay.service';
     ModalComponent,
     SelectComponent,
     OverlayComponent,
-    PppFormInputComponent
+    PppFormInputComponent,
+    ErrorOverlayComponent
   ],
   exports: [
     OverviewTemplateComponent,
