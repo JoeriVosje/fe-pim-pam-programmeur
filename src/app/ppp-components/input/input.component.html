@@ -3,8 +3,10 @@
     <label id="input-label" [for]="id">
       <ng-content></ng-content>
     </label>
-    <label>
-      <input [formControl]="inputField" [value]="value" [type]="type" [placeholder]="placeholder" [id]="id" class="input-field" name="input-field"/>
-    </label>
+      <div [ngClass]="icon ? 'input-icons' : ''">
+        <mat-icon class="icon" *ngIf="icon">{{ icon }}</mat-icon>
+        <input [formControl]="inputField" [value]="value" [type]="type" [placeholder]="placeholder" [id]="id"
+               class="input-field" name="input-field"/>
+      </div>
   </div>
 </div>
