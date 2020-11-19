@@ -4,6 +4,9 @@ a {
   vertical-align: middle;
   align-items: center;
   padding: 12px 32px;
+  margin: 10px;
+  font: normal normal medium 13px/20px Poppins;
+  border-right: 5px;
 }
 
 a:hover,
@@ -36,9 +39,7 @@ span {
   grid-row: 3 / 4;
 }
 
-#home,
-a.active.home,
-a.home:hover {
+#home {
   color: #7764E4;
 }
 
@@ -46,9 +47,7 @@ a.home:hover {
   grid-row: 4 / 5;
 }
 
-#klassen,
-a.active.klassen,
-a.klassen:hover {
+#klassen {
   color: #F53C56;
 }
 
@@ -56,9 +55,7 @@ a.klassen:hover {
   grid-row: 5 / 6;
 }
 
-#modules,
-a.active.modules,
-a.modules:hover {
+#modules {
   color: #11CDEF;
 }
 
