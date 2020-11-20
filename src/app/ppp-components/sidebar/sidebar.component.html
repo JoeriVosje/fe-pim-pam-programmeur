@@ -1,17 +1,19 @@
-<div class="ppp-sidebar">
-  <p class="role">
+<nav class="ppp-sidebar">
+  <h1 class="role">
     {{ isAdmin ? 'Beheerder' : 'Student' }}
-  </p>
-  <a (click)="onClick(isAdmin ? homeLink: studentHomeLink)" class="home">
+    <i id="role" class="material-icons">bar_chart</i>
+  </h1>
+  <a (click)="onClick(isAdmin ? homeLink: studentHomeLink)" class="home"
+     [ngClass]="{'active': (isAdmin ? homeLink: studentHomeLink) === this.router.url.substring(1)}">
     <i id="home" class="material-icons">home</i>
     <span>Home</span>
   </a>
-  <a (click)="onClick(classesLink)" class="person" *ngIf="showLink()">
-    <i id="person" class="material-icons">person</i>
+  <a (click)="onClick(classesLink)" class="klassen" *ngIf="showLink()" [ngClass]="{'active': classesLink === this.router.url.substring(1)}">
+    <i id="klassen" class="material-icons">person</i>
     <span>Klassen</span>
   </a>
-  <a (click)="onClick(modulesLink)" class="modules" *ngIf="showLink()">
+  <a (click)="onClick(modulesLink)" class="modules" *ngIf="showLink()" [ngClass]="{'active': modulesLink === this.router.url.substring(1)}">
     <i id="modules" class="material-icons">layers</i>
     <span>Modules</span>
   </a>
-</div>
+</nav>
