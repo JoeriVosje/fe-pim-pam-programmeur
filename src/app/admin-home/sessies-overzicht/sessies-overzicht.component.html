@@ -14,9 +14,10 @@
   </div>
 
   <div class="empty-board" *ngIf="sessies == undefined || sessies.length < 1; else itemsPresent">
-    <span class="empty-board-text">
+    <span class="empty-board-text" *ngIf="loaded">
       Er zijn nog geen actieve sessies. Ga naar modules om een sessie te starten.
     </span>
+    <ppp-spinner *ngIf="!loaded"></ppp-spinner>
   </div>
   <ng-template #itemsPresent>
     <cdk-virtual-scroll-viewport itemSize="72" class="items-container">

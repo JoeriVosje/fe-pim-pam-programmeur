@@ -18,6 +18,9 @@ export class SessiesOverzichtComponent implements OnInit {
   @Input()
   public sessies: Sessie[];
 
+  @Input()
+  public loaded: boolean;
+
   constructor() {   }
 
   ngOnInit(): void {

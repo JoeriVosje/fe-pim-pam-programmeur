@@ -25,6 +25,7 @@ import { Module } from './modules-overzicht/modules-item/modules-item.model';
 export class AdminModulesComponent implements OnInit, OnDestroy {
 
   public modules: Module[] = [];
+  public loaded = false;
 
   private readonly subscription: Subscription = new Subscription();
 
@@ -46,7 +47,10 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.adminModuleService.getModules()
         .subscribe({
-          next: modules => this.modules = modules,
+          next: modules => {
+            this.loaded = true;
+            this.modules = modules
+          },
           error: error => this.snackBar.showErGingIetsMis(error)
         })
     );

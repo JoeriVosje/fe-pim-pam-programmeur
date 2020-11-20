@@ -13,6 +13,10 @@ export class ModulesOverzichtComponent implements OnInit {
   @Input()
   public modules: Module[];
 
+  @Input()
+  public loaded: boolean;
+  
+
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 

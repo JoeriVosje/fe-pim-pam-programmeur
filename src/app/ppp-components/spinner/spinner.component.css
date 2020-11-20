@@ -1,0 +1,13 @@
+ .ppp-spinner ::ng-deep .mat-progress-spinner circle,
+ .mat-spinner circle {
+     stroke: #7764e4;
+ }
+ 
+ .ppp-spinner {
+     margin-top: 15px;
+     margin-bottom: 15px;
+ }
+ 
+ mat-spinner {
+     margin: 0 auto;
+ }

@@ -7,9 +7,10 @@
   </div>
 
   <div class="empty-board" *ngIf="screens.length < 1; else itemsPresent">
-    <span class="empty-board-text">
+    <span class="empty-board-text" *ngIf="loaded">
       Er zijn nog geen schermen toegevoegd. Klik op de knop rechtsonder om een scherm toe te voegen.
     </span>
+    <ppp-spinner *ngIf="!loaded"></ppp-spinner>
   </div>
   <ng-template #itemsPresent>
     <cdk-virtual-scroll-viewport itemSize="50" class="items-container">

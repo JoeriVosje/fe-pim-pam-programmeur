@@ -12,6 +12,7 @@ import { Sessie } from '../sessies-item/sessies-item.model';
 })
 export class WrapperComponent implements OnInit, OnDestroy {
   public sessies: Sessie[];
+  public loaded = false;
 
   private readonly subscription: Subscription = new Subscription();
 
@@ -31,7 +32,10 @@ export class WrapperComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.adminHomeService.getSessies()
         .subscribe({
-          next: sessies => this.sessies = sessies,
+          next: sessies => {
+            this.loaded = true;
+            this.sessies = sessies;
+          },
           error: error => this.snackbar.showErGingIetsMis(error)
         })
     );
