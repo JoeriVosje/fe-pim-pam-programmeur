@@ -1,32 +1,55 @@
 <div class="container">
-
-<!--  Theorie-->
-  <ppp-content-overview *ngIf="screen.theory"
-                        [title]="screen.title"
-                        [size]="'auto'">
-
-    <div class="input-field-padding">
-      <span [innerHTML]="screen.theory | keepHtml"> </span>
-      <ppp-button class="align-button"
-                  *ngIf="showButton()"
-                  (clicked)="onNext()">
-        Volgende
-      </ppp-button>
+  <div class="grid">
+    <div class="theory">
+      <ppp-content-overview *ngIf="screen.theory"
+                            [title]="screen.title"
+                            [size]="'auto'">
+        <div class="input-field-padding">
+          <span [innerHTML]="screen.theory | keepHtml"></span>
+          <ppp-button class="align-button"
+                      *ngIf="showButton()"
+                      (clicked)="onNext()">
+            {{ getNextButtonText() }}
+          </ppp-button>
+        </div>
+      </ppp-content-overview>
     </div>
 
-  </ppp-content-overview>
+    <div class="question">
+      <ppp-content-overview *ngIf="screen.question"
+                            [title]="'Vraag'"
+                            [size]="'auto'">
+        <div class="input-field-padding">
+          <p>{{ screen.question }}</p>
+          <form [formGroup]="answerForm">
+            <mat-error *ngIf="showRequiredError()">
+              <b>Vergeet niet een antwoord op te geven!</b>
+            </mat-error>
+            <mat-radio-group formControlName="options">
+              <div class="answers" *ngFor="let answer of screen.answers; index as i">
+                <mat-radio-button [value]="alphabet[i]"></mat-radio-button>
+                <label for="answer"><b>{{ alphabet[i] + '.' }}</b></label>
+                <p id="answer">{{ answer.description }}</p>
+              </div>
+            </mat-radio-group>
 
-<!--  Vraag-->
-  <ppp-content-overview *ngIf="screen.question"
-                        [title]="'Vraag'"
-                        [size]="'auto'">
-
-    <div class="input-field-padding">
-      <ppp-button class="align-button"
-                  (clicked)="onNext()">
-        Volgende
-      </ppp-button>
+            <div class="flex-container">
+              <button *ngIf="screen.skippable"
+                      mat-flat-button
+                      class="warning"
+                      type="button"
+                      (click)="onNext()">
+                {{ getSkippableButtonText() }}
+              </button>
+              <button mat-flat-button
+                      type="button"
+                      (click)="onNext()">
+                {{ getNextButtonText() }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </ppp-content-overview>
     </div>
-
-  </ppp-content-overview>
+  </div>
 </div>
