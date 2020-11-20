@@ -18,9 +18,11 @@ export class SessiesOverzichtComponent implements OnInit {
   @Input()
   public sessies: Sessie[];
 
-  constructor() { }
+  constructor() {   }
 
   ngOnInit(): void {
   }
+
+
 
 }

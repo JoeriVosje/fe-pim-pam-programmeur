@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { ButtonComponent } from './button/button.component';
 import { ContentOverviewComponent } from './content-overview/content-overview.component';
@@ -16,7 +17,9 @@ import { PppFormInputComponent } from './ppp-form-input/ppp-form-input.component
 import { SelectComponent } from './select/select.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
-
+import { OverlayService } from './overlay/overlay.service';
+import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
+import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.component';
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -34,7 +37,9 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     ContentOverviewComponent,
     ModalComponent,
     SelectComponent,
-    PppFormInputComponent
+    PppFormInputComponent,
+    ErrorOverlayComponent,
+    SuccesOverlayComponent
   ],
   exports: [
     OverviewTemplateComponent,
@@ -44,7 +49,8 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     InputComponent,
     ModalComponent,
     ContentOverviewComponent,
-    SelectComponent
+    SelectComponent,
+    ErrorOverlayComponent,
   ],
   imports: [
     CommonModule,
@@ -52,7 +58,11 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
     MatIconModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    OverlayModule
+  ],
+  providers: [ 
+    OverlayService 
   ]
 })
 export class PppComponentsModule { }
