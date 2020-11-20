@@ -33,7 +33,7 @@ export class LoginModulesWrapperComponent implements OnInit {
           this.loginFailed = true;
         }
         if (user.roleId === 1) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         } else {
           this.router.navigate(['/student']);
         }
