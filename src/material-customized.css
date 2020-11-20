@@ -93,6 +93,17 @@
   grid-template-rows: 1fr;
 }
 
+/* Overlays */
+
+.default-overlay {
+  color: white;
+}
+
+.backdrop {
+  color: white;
+  background: #172C4C;
+  opacity: 0.85 !important;
+}
 
 /*toggle*/
 

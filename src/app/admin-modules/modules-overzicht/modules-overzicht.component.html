@@ -8,11 +8,11 @@
 
   <div class="empty-board" *ngIf="modules.length < 1; else itemsPresent">
     <span class="empty-board-text">
-    Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
+      Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
     </span>
   </div>
   <ng-template #itemsPresent>
-  <cdk-virtual-scroll-viewport itemSize="72" class="items-container" >
+  <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
     <modules-item *cdkVirtualFor="let module of modules; let even = even"
                   [name]="module.name"
                   [moduleId]="module.id"
@@ -26,6 +26,6 @@
   </cdk-virtual-scroll-viewport>
   </ng-template>
 
-    <ppp-button class="align-button bottom-right-padding" (clicked)="toevoegen()">Toevoegen</ppp-button>
+  <ppp-button class="align-button bottom-right-padding" (clicked)="toevoegen()">Toevoegen</ppp-button>
 
 </ppp-content-overview>

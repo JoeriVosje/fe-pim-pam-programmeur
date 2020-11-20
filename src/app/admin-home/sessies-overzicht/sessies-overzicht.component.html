@@ -14,13 +14,12 @@
   </div>
 
   <div class="empty-board" *ngIf="sessies == undefined || sessies.length < 1; else itemsPresent">
-      <span class="empty-board-text">
+    <span class="empty-board-text">
       Er zijn nog geen actieve sessies. Ga naar modules om een sessie te starten.
-      </span>
+    </span>
   </div>
   <ng-template #itemsPresent>
     <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
-
       <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
                     [name]="sessie.module.name"
                     [studentsFinished]="sessie.studentsFinished"
@@ -30,10 +29,8 @@
                     [hasVerticalScrollbar]="sessies.length > 5"
                     [background]="even? 'light-item' : 'dark-item'">
       </sessies-item>
-
     </cdk-virtual-scroll-viewport>
   </ng-template>
 
 </ppp-content-overview>
 
-</overview-template>
