@@ -22,6 +22,9 @@ export class ModulesItemComponent implements OnInit {
   @Input()
   isOpen: boolean;
 
+  @Input()
+  isOpenParentMethod: (value: any) => boolean;
+
   spamFilter = false;
 
   ngOnInit(): void {
@@ -56,8 +59,8 @@ export class ModulesItemComponent implements OnInit {
       };
       console.log(module);
       this.openCloseToggle.emit(module);
-      this.isOpen = !this.isOpen;
       this.status = this.isOpen ? 'open' : 'closed';
+      this.isOpen = this.isOpenParentMethod(module);
       setTimeout((_) => this.spamFilter = false, 1000);
     }
   }

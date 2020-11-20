@@ -25,28 +25,30 @@ export class AdminModulesComponent implements OnInit {
 
   public modules: Module[] = [];
 
+  isValid = (module: Module) => {
+    return this.isOpen(module);
+  }
+
   constructor(private readonly adminModuleService: AdminModulesService,
               private readonly adminScreensService: AdminScreensService,
               private router: Router,
               private snackBar: PppSnackerService) {
   }
 
-  ngOnInit(): void {
-    this.getModules();
-    console.log(this.modules);
+  async ngOnInit(): Promise<void> {
+    await this.getModules();
   }
 
-  public getModules(): void {
-    this.adminModuleService.getModules()
-      .subscribe({
-        next: modules => {
-          this.modules = modules;
-          console.log(this.modules);
-        },
-        error: error => this.snackBar.showErGingIetsMis(error)
-      });
-    console.log(this.modules);
-  }
+   public async getModules(): Promise<void> {
+
+     try {
+       this.modules = await this.adminModuleService.getModules().toPromise();
+     } catch (e) {
+       this.snackBar.showErGingIetsMis(e);
+     }
+
+     console.log(`this zijn de modules: ${this.modules}`);
+   }
 
   public deleteModule(moduleId: string): void {
     this.adminModuleService.deleteModule(moduleId)
@@ -80,6 +82,7 @@ export class AdminModulesComponent implements OnInit {
           error: error => this.snackBar.showErGingIetsMis(error),
           complete: () => {
             this.snackBar.showSuccess('Module is gesloten.');
+            this.modules.find(value => value.id).status = 'closed';
           }
         });
     } else {
@@ -87,6 +90,7 @@ export class AdminModulesComponent implements OnInit {
         .subscribe({
           error: error => {
             if (error.status === 400) {
+              console.log(error);
               this.snackBar.showError('Voeg eerst een component toe');
             } else {
               this.snackBar.showErGingIetsMis(error);
@@ -94,8 +98,15 @@ export class AdminModulesComponent implements OnInit {
           },
           complete: () => {
             this.snackBar.showSuccess('Module is geopend.');
+            this.modules.find(value => value.id).status = 'open';
           }
         });
     }
+  }
+
+  isOpen(module: Module): boolean {
+    console.log(module);
+    console.log(this.modules);
+    return this.modules.find(value => value.id === module.id).isOpen;
   }
 }

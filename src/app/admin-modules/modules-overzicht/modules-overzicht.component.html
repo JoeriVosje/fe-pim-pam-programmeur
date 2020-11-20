@@ -18,6 +18,7 @@
                   [moduleId]="module.id"
                   [status]="module.status"
                   [isOpen]="module.status === 'open'"
+                  [isOpenParentMethod]="isOpen"
                   [dateAdded]="module.creationDate"
                   [background]="even ? 'light-item-clickable' : 'dark-item-clickable'"
                   [hasVerticalScrollbar]="modules.length > 5"
