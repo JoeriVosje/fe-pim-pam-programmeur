@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { Module } from './modules-item.model';
@@ -23,13 +22,15 @@ export class ModulesItemComponent implements OnInit {
   @Input()
   isOpen: boolean;
 
+  spamFilter = false;
+
   ngOnInit(): void {
+    console.log(`status: ${this.isOpen}`);
     this.menuItems = [
       {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true, data: this.name},
       {name: 'Bewerken', routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
       {name: 'Verwijderen', routeOrID: this.moduleId, isRoute: false},
     ];
-    this.isOpen = this.status === 'open';
   }
 
   constructor() {
@@ -44,13 +45,20 @@ export class ModulesItemComponent implements OnInit {
   }
 
   openCloseModule(): void {
-    const module: Module = {
-      status : this.status,
-      id: this.moduleId,
-      name: this.name,
-      creationDate: null
-    };
-    console.log(module);
-    this.openCloseToggle.emit(module);
+    if (!this.spamFilter) {
+      this.spamFilter = true;
+      const module: Module = {
+        status : this.status,
+        isOpen : this.isOpen,
+        id: this.moduleId,
+        name: this.name,
+        creationDate: null
+      };
+      console.log(module);
+      this.openCloseToggle.emit(module);
+      this.isOpen = !this.isOpen;
+      this.status = this.isOpen ? 'open' : 'closed';
+      setTimeout((_) => this.spamFilter = false, 1000);
+    }
   }
 }

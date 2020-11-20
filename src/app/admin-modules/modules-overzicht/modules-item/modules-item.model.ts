@@ -3,4 +3,5 @@ export interface Module {
   name: string;
   status: string;
   creationDate: string;
+  isOpen?: boolean;
 }

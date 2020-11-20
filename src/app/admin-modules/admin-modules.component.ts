@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
 import { PppSnackerService } from '../ppp-services/ppp-snacker.service';
@@ -22,11 +21,9 @@ import { Module } from './modules-overzicht/modules-item/modules-item.model';
   templateUrl: './admin-modules.component.html',
   styleUrls: ['./admin-modules.component.css']
 })
-export class AdminModulesComponent implements OnInit, OnDestroy {
+export class AdminModulesComponent implements OnInit {
 
   public modules: Module[] = [];
-
-  private readonly subscription: Subscription = new Subscription();
 
   constructor(private readonly adminModuleService: AdminModulesService,
               private readonly adminScreensService: AdminScreensService,
@@ -39,36 +36,28 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     console.log(this.modules);
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   public getModules(): void {
-    this.subscription.add(
-      this.adminModuleService.getModules()
-        .subscribe({
-          next: modules => {
-            this.modules = modules;
-            console.log(this.modules);
-          },
-          error: error => this.snackBar.showErGingIetsMis(error)
-        })
-    );
+    this.adminModuleService.getModules()
+      .subscribe({
+        next: modules => {
+          this.modules = modules;
+          console.log(this.modules);
+        },
+        error: error => this.snackBar.showErGingIetsMis(error)
+      });
     console.log(this.modules);
   }
 
   public deleteModule(moduleId: string): void {
-    this.subscription.add(
-      this.adminModuleService.deleteModule(moduleId)
-        .subscribe({
-          error: error => this.snackBar.showErGingIetsMis(error),
-          complete: () => {
-            this.snackBar.showVerwijderd('Module');
-            this.router.navigate([this.router.url]);
-            this.getModules();
-          }
-        })
-    );
+    this.adminModuleService.deleteModule(moduleId)
+      .subscribe({
+        error: error => this.snackBar.showErGingIetsMis(error),
+        complete: () => {
+          this.snackBar.showVerwijderd('Module');
+          this.router.navigate([this.router.url]);
+          this.getModules();
+        }
+      });
   }
 
   public menuItem(menuItem: MenuItem): void {
@@ -85,31 +74,28 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   openCloseSession(module: Module): void {
     console.log(module.status);
-    if ((module.status === 'open')) {
-      console.log('sluit maar');
-      this.subscription.add(
-        this.adminModuleService.closeSession(module.id)
-          .subscribe({
-            error: error => this.snackBar.showErGingIetsMis(error),
-            complete: () => this.snackBar.showSuccess('Module is gesloten.')
-          })
-      );
-    }
-    else {
-      this.subscription.add(
-        this.adminModuleService.openSession(module.id)
-          .subscribe({
-            error: error => {
-              if (error.status === 400 ) {
-                this.snackBar.showError('Voeg eerst een component toe');
-              }
-              else {
-                this.snackBar.showErGingIetsMis(error);
-              }
-            },
-            complete: () => this.snackBar.showSuccess('Module is geopend.')
-          })
-      );
+    if (module.isOpen) {
+      this.adminModuleService.closeSession(module.id)
+        .subscribe({
+          error: error => this.snackBar.showErGingIetsMis(error),
+          complete: () => {
+            this.snackBar.showSuccess('Module is gesloten.');
+          }
+        });
+    } else {
+      this.adminModuleService.openSession(module.id)
+        .subscribe({
+          error: error => {
+            if (error.status === 400) {
+              this.snackBar.showError('Voeg eerst een component toe');
+            } else {
+              this.snackBar.showErGingIetsMis(error);
+            }
+          },
+          complete: () => {
+            this.snackBar.showSuccess('Module is geopend.');
+          }
+        });
     }
   }
 }

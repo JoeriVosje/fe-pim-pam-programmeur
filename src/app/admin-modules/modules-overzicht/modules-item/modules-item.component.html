@@ -3,7 +3,7 @@
 
     <span class="column-one" id="name">{{ name }}</span>
 
-    <span class="column-two"><mat-slide-toggle checked="{{isOpen}}" (toggleChange)="openCloseModule()" (click)="$event.stopPropagation();"></mat-slide-toggle></span>
+    <span class="column-two"><mat-slide-toggle [disabled]=spamFilter [checked]=isOpen (toggleChange)="openCloseModule()" (click)="$event.stopPropagation();"></mat-slide-toggle></span>
     <span class="column-three column-double">
 
   <span class="column-double-first-child">{{ dateAdded | date: 'dd/MM/yyyy' }}</span>
