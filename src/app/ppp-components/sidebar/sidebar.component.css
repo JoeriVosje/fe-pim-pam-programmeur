@@ -3,11 +3,16 @@ a {
   display: inline-flex;
   vertical-align: middle;
   align-items: center;
-  padding-left: 32px;
+  padding: 12px 32px;
+  margin: 10px;
+  font: normal normal medium 13px/20px Poppins;
+  border-right: 5px;
 }
 
-a:hover {
+a:hover,
+a.active {
   cursor: pointer;
+  background-color: #F6F9FC;
 }
 
 span {
@@ -38,11 +43,11 @@ span {
   color: #7764E4;
 }
 
-.person {
+.klassen {
   grid-row: 4 / 5;
 }
 
-#person {
+#klassen {
   color: #F53C56;
 }
 
@@ -52,4 +57,10 @@ span {
 
 #modules {
   color: #11CDEF;
+}
+
+#role {
+  float: right;
+  padding: 6px;
+  transform: rotate(-90deg);
 }

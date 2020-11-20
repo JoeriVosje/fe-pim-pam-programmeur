@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ppp-sidebar',
@@ -18,7 +19,7 @@ export class SidebarComponent {
   public classesLink = 'classes';
   public modulesLink = 'modules';
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   public onClick(item: string): void {
     this.sidenavEmitter.emit(item);
