@@ -28,9 +28,8 @@ export class StudentModulesService {
       params: { moduleId }
     }).pipe(
       map( sessions => {
-        return !sessions ? null
-          : sessions[sessions.length - 1].endTime ? null
-            : sessions[sessions.length - 1];
+        const session = sessions[sessions.length - 1];
+        return !sessions ? null : session.endTime ? null : session;
       }),
       tap(session => session ? this.sessionId = session.sessionId : null)
     );
