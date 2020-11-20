@@ -77,4 +77,25 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
   toevoegen(): void {
     this.router.navigate(['modules/add']);
   }
+
+  openCloseSession(module: Module): void {
+    if (module.status) {
+      this.subscription.add(
+        this.adminModuleService.closeSession(module.id)
+          .subscribe({
+            error: error => this.snackBar.showErGingIetsMis(error),
+            complete: () => this.snackBar.showSuccess('Module is gesloten.')
+          })
+      );
+    }
+    else {
+      this.subscription.add(
+        this.adminModuleService.openSession(module.id)
+          .subscribe({
+            error: error => this.snackBar.showErGingIetsMis(error),
+            complete: () => this.snackBar.showSuccess('Module is geopend.')
+          })
+      );
+    }
+  }
 }

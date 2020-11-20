@@ -19,6 +19,9 @@ export class ModulesOverzichtComponent implements OnInit {
   @Output()
   public toevoegenClicked: EventEmitter<void> = new EventEmitter();
 
+  @Output()
+  public toggleClicked: EventEmitter<Module> = new EventEmitter();
+
   constructor() {
   }
 
@@ -31,5 +34,9 @@ export class ModulesOverzichtComponent implements OnInit {
 
   toevoegen(): void {
     this.toevoegenClicked.emit();
+  }
+
+  toggleModule(module: Module): void {
+    this.toggleClicked.emit(module);
   }
 }

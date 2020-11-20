@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
+import { Module } from './modules-item.model';
 
 @Component({
   selector: 'modules-item',
@@ -15,6 +17,7 @@ export class ModulesItemComponent implements OnInit {
   @Input() public background: string;
   @Input() public moduleId: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
+  @Output() public openCloseToggle: EventEmitter<Module> = new EventEmitter();
   menuItems: MenuItem[];
 
   ngOnInit(): void {
@@ -34,5 +37,16 @@ export class ModulesItemComponent implements OnInit {
 
   navToItem(): void {
     this.menuItemClicked.emit(this.menuItems[0]);
+  }
+
+  openCloseModule(): void {
+    const module: Module = {
+      status : this.status,
+      id: this.moduleId,
+      name: this.name,
+      creationDate: null
+    };
+    console.log(module);
+    this.openCloseToggle.emit(module);
   }
 }
