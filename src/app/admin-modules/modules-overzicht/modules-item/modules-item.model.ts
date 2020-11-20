@@ -1,6 +1,6 @@
 export interface Module {
   id: string;
   name: string;
-  status: boolean;
+  status: string;
   creationDate: string;
 }

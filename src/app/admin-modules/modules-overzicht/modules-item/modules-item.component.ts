@@ -12,7 +12,7 @@ import { Module } from './modules-item.model';
 export class ModulesItemComponent implements OnInit {
   @Input() public hasVerticalScrollbar: boolean;
   @Input() public name: string;
-  @Input() public status: boolean;
+  @Input() public status: string;
   @Input() public dateAdded: string;
   @Input() public background: string;
   @Input() public moduleId: string;
@@ -20,12 +20,16 @@ export class ModulesItemComponent implements OnInit {
   @Output() public openCloseToggle: EventEmitter<Module> = new EventEmitter();
   menuItems: MenuItem[];
 
+  @Input()
+  isOpen: boolean;
+
   ngOnInit(): void {
     this.menuItems = [
       {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true, data: this.name},
       {name: 'Bewerken', routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
       {name: 'Verwijderen', routeOrID: this.moduleId, isRoute: false},
     ];
+    this.isOpen = this.status === 'open';
   }
 
   constructor() {

@@ -36,6 +36,7 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getModules();
+    console.log(this.modules);
   }
 
   ngOnDestroy(): void {
@@ -46,10 +47,14 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.adminModuleService.getModules()
         .subscribe({
-          next: modules => this.modules = modules,
+          next: modules => {
+            this.modules = modules;
+            console.log(this.modules);
+          },
           error: error => this.snackBar.showErGingIetsMis(error)
         })
     );
+    console.log(this.modules);
   }
 
   public deleteModule(moduleId: string): void {
@@ -79,7 +84,9 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
   }
 
   openCloseSession(module: Module): void {
-    if (module.status) {
+    console.log(module.status);
+    if ((module.status === 'open')) {
+      console.log('sluit maar');
       this.subscription.add(
         this.adminModuleService.closeSession(module.id)
           .subscribe({
@@ -92,7 +99,14 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
       this.subscription.add(
         this.adminModuleService.openSession(module.id)
           .subscribe({
-            error: error => this.snackBar.showErGingIetsMis(error),
+            error: error => {
+              if (error.status === 400 ) {
+                this.snackBar.showError('Voeg eerst een component toe');
+              }
+              else {
+                this.snackBar.showErGingIetsMis(error);
+              }
+            },
             complete: () => this.snackBar.showSuccess('Module is geopend.')
           })
       );
