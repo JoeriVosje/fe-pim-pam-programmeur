@@ -36,6 +36,10 @@ export class KlassenStudentenToevoegenWrapperComponent implements OnInit, OnDest
 
   addStudent(student: StudentRequest): void {
     if (student.firstName != null && student.lastName != null && student.email != null) {
+      if (!this.validateEmail(student.email)){
+        this.snackBar.showError('Voer een geldige e-mail adres in');
+        return;
+      }
       if (this.loading === false) {
         this.loading = true;
         this.service.saveStudent(student).subscribe({
@@ -53,5 +57,10 @@ export class KlassenStudentenToevoegenWrapperComponent implements OnInit, OnDest
     } else {
       this.snackBar.showError('Oeps, alle velden invullen aub!');
     }
+  }
+
+  validateEmail(email): boolean {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   }
 }
