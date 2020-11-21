@@ -13,6 +13,7 @@ import { ContentOverviewComponent } from './content-overview/content-overview.co
 import { HeaderComponent } from './header/header.component';
 import { InputComponent } from './input/input.component';
 import { ModalComponent } from './modal/modal.component';
+import {ModalModule} from './modal/modal.module';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
 import { PppFormInputComponent } from './ppp-form-input/ppp-form-input.component';
 import { SelectComponent } from './select/select.component';
@@ -37,7 +38,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ThreeDotButtonComponent,
     InputComponent,
     ContentOverviewComponent,
-    ModalComponent,
     SelectComponent,
     PppFormInputComponent,
     ErrorOverlayComponent,
@@ -63,11 +63,12 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ReactiveFormsModule,
     MatMenuModule,
     MatDialogModule,
-    MatProgressSpinnerModule, 
+    MatProgressSpinnerModule,
+    ModalModule,
     OverlayModule
   ],
-  providers: [ 
-    OverlayService 
+  providers: [
+    OverlayService
   ]
 })
 export class PppComponentsModule { }

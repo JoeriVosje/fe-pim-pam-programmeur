@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
+import { ModalComponent } from '../../../ppp-components/modal/modal.component';
 import { Screen } from '../../models/screen.model';
-import { SchermenModalComponent } from '../modal/schermen-modal.component';
 
 @Component({
   selector: 'schermen-question',
@@ -29,7 +29,7 @@ export class SchermenQuestionComponent {
   }
 
   public onSkip(): void  {
-    const modal = this.modal.open(SchermenModalComponent, {
+    const modal = this.modal.open(ModalComponent, {
       width: '368px',
       data: {
         title: 'Weet je het zeker?',
@@ -55,7 +55,7 @@ export class SchermenQuestionComponent {
   }
 
   public toNext(): void {
-    console.log(this.answerForm.get(''));
+    // console.log(this.answerForm.get(''));
     this.screen.lastScreen ? this.finished.emit() : this.nextScreen.emit();
   }
 
