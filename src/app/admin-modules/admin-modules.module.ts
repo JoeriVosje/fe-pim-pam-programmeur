@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
@@ -62,6 +63,7 @@ import { SchermOverzichtWrapperComponent } from './schermen-overzicht/wrapper/sc
     LayoutModule,
     MatButtonModule,
     MatIconModule,
+    MatSlideToggleModule,
     MatListModule,
     DragDropModule,
     EditorModule,
