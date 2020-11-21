@@ -37,4 +37,16 @@ export class AdminModulesService {
       observe: 'response'
     });
   }
+
+  openSession(id: string): Observable<HttpResponse<void>> {
+    return this.httpClient.post<void>(`${this.baseurl}/Session/Open`, { moduleid: id }, {
+      observe: 'response'
+    });
+  }
+
+  closeSession(id: string): Observable<HttpResponse<void>> {
+    return this.httpClient.post<void>(`${this.baseurl}/Session/Close`, { moduleid: id }, {
+      observe: 'response'
+    });
+  }
 }

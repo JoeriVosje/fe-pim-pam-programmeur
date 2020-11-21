@@ -14,6 +14,9 @@ export class SchermenOverzichtComponent {
   @Input()
   public moduleName: string;
 
+  @Input()
+  public loaded: string;
+
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 

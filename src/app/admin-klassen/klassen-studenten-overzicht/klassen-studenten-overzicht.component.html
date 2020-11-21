@@ -7,11 +7,18 @@
     <h4 class="column-header header-four">DATUM TOEGEVOEGD</h4>
   </div>
 
-  <div class="empty-board" *ngIf="studenten?.length < 1; else itemsPresent">
-    <span class="empty-board-text">
+  <div *ngIf="!loaded">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div class="empty-board" *ngIf="studenten == undefined || studenten.length < 1; else itemsPresent">
+    <span class="empty-board-text" *ngIf="loaded">
       Er zijn nog geen studenten toegevoegd. Klik op de knop rechtsonder om een student toe te voegen.
     </span>
+    <span class="empty-board-text" *ngIf="!loaded">
+      Studenten worden opgehaald..
+    </span>
   </div>
+
   <ng-template #itemsPresent>
     <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
       <studenten-item *cdkVirtualFor="let student of studenten; let even = even"

@@ -5,6 +5,7 @@ import { AdminModulesService } from 'src/app/admin-modules/admin-modules.service
 import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { KlasRequest } from '../../klassen-request.model';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'klassen-toevoegen-wrapper',

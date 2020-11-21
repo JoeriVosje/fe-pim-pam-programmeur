@@ -6,6 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { OverlayModule } from '@angular/cdk/overlay';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { ButtonComponent } from './button/button.component';
 import { ContentOverviewComponent } from './content-overview/content-overview.component';
@@ -20,6 +21,7 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
 import { OverlayService } from './overlay/overlay.service';
 import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
 import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -39,7 +41,8 @@ import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.componen
     SelectComponent,
     PppFormInputComponent,
     ErrorOverlayComponent,
-    SuccesOverlayComponent
+    SuccesOverlayComponent,
+    SpinnerComponent
   ],
   exports: [
     OverviewTemplateComponent,
@@ -51,6 +54,7 @@ import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.componen
     ContentOverviewComponent,
     SelectComponent,
     ErrorOverlayComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -59,6 +63,7 @@ import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.componen
     ReactiveFormsModule,
     MatMenuModule,
     MatDialogModule,
+    MatProgressSpinnerModule, 
     OverlayModule
   ],
   providers: [ 

@@ -1,28 +1,35 @@
 <ppp-content-overview [title]="'Modules'" size="'auto'" [hideBorder]="true">
 
-<div class="overview-start with-three-columns">
-  <h4 class="column-header header-one">NAAM</h4>
-  <h4 class="column-header header-two">STATUS</h4>
-  <h4 class="column-header header-three">DATUM TOEGEVOEGD</h4>
-</div>
+  <div class="overview-start with-three-columns">
+    <h4 class="column-header header-one">NAAM</h4>
+    <h4 class="column-header header-two">STATUS</h4>
+    <h4 class="column-header header-three">DATUM TOEGEVOEGD</h4>
+  </div>
 
-  <div class="empty-board" *ngIf="modules.length < 1; else itemsPresent">
-    <span class="empty-board-text">
+  <div *ngIf="!loaded">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div class="empty-board" *ngIf="modules == undefined || modules.length < 1; else itemsPresent">
+    <span class="empty-board-text" *ngIf="loaded">
       Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
+    </span>
+    <span class="empty-board-text" *ngIf="!loaded">
+      Klassen worden opgehaald..
     </span>
   </div>
   <ng-template #itemsPresent>
-  <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
-    <modules-item *cdkVirtualFor="let module of modules; let even = even"
-                  [name]="module.name"
-                  [moduleId]="module.id"
-                  [status]="module.status"
-                  [dateAdded]="module.creationDate"
-                  [background]="even ? 'light-item-clickable' : 'dark-item-clickable'"
-                  [hasVerticalScrollbar]="modules.length > 5"
-                  (menuItemClicked)="menuItem($event)">
-    </modules-item>
-  </cdk-virtual-scroll-viewport>
+    <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
+      <modules-item *cdkVirtualFor="let module of modules; let even = even"
+                    [name]="module.name"
+                    [moduleId]="module.id"
+                    [status]="module.status"
+                    [dateAdded]="module.creationDate"
+                    [background]="even ? 'light-item-clickable' : 'dark-item-clickable'"
+                    [hasVerticalScrollbar]="modules.length > 5"
+                    (menuItemClicked)="menuItem($event)"
+                    (openCloseToggle)="toggleModule($event)">
+      </modules-item>
+    </cdk-virtual-scroll-viewport>
   </ng-template>
 
   <ppp-button class="align-button bottom-right-padding" (clicked)="toevoegen()">Toevoegen</ppp-button>

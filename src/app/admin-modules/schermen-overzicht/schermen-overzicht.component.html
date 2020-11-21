@@ -1,16 +1,22 @@
 <ppp-content-overview [title]="getTitle()" size="'auto'" [hideBorder]="true">
 
-  <div class="overview-start with-three-columns">
+  <div class="overview-start with-two-columns">
     <h4 class="column-header header-one">TITEL</h4>
-    <h4 class="column-header header-two">THEORIE</h4>
-    <h4 class="column-header header-three">VRAAG</h4>
+    <h4 class="column-header header-two">ANTWOORD</h4>
   </div>
 
-  <div class="empty-board" *ngIf="screens.length < 1; else itemsPresent">
-    <span class="empty-board-text">
+  <div *ngIf="!loaded">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div class="empty-board" *ngIf="screens == undefined || screens.length < 1; else itemsPresent">
+    <span class="empty-board-text" *ngIf="loaded">
       Er zijn nog geen schermen toegevoegd. Klik op de knop rechtsonder om een scherm toe te voegen.
     </span>
+    <span class="empty-board-text" *ngIf="!loaded">
+      Schermen worden opgehaald..
+    </span>
   </div>
+
   <ng-template #itemsPresent>
     <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
       <div cdkDropList (cdkDropListDropped)="drop($event)">

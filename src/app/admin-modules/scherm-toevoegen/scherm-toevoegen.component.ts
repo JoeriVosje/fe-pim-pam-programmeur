@@ -24,6 +24,7 @@ export class SchermToevoegenComponent implements OnInit {
   }
 
   screenForm: FormGroup;
+  @Input() loading: boolean;
 
   async ngOnInit(): Promise<void> {
     this.screenForm = new FormGroup({

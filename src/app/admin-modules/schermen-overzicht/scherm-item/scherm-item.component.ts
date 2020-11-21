@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
-import { Screen } from './scherm-item.model';
+import { Answer, Screen } from './scherm-item.model';
 
 @Component({
   selector: 'screen-item',
@@ -19,7 +19,10 @@ export class SchermItemComponent implements OnInit {
   menuItems: MenuItem[];
   @Input() public hasVerticalScrollbar: boolean;
 
+  public correctAnwser: Answer;
+
   ngOnInit(): void {
+    this.correctAnwser = this.screenInput.answers.filter(e => e.isCorrectAnswer)[0];
     this.menuItems = [
       {name: 'Verwijderen', routeOrID: this.screenInput.id, isRoute: false},
     ];

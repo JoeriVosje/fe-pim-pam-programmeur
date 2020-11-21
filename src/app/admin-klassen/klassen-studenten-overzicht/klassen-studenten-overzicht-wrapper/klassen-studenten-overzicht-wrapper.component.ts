@@ -20,6 +20,7 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
   public studenten: Student[] = [];
   public klasNaam: string;
   public klasId: string;
+  public loaded = false;
   private readonly subscription: Subscription = new Subscription();
 
   constructor(private studentenService: AdminStudentenService,
@@ -41,7 +42,10 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
     this.subscription.add(
       this.studentenService.getStudenten(this.klasId)
         .subscribe({
-          next: studenten => this.studenten = studenten,
+          next: studenten => {
+            this.loaded = true;
+            this.studenten = studenten 
+          },
           error: error => this.snackBar.showErGingIetsMis(error)
         })
     );
