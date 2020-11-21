@@ -52,7 +52,13 @@ export class AdminModulesComponent implements OnInit {
   public deleteModule(moduleId: string): void {
     this.adminModuleService.deleteModule(moduleId)
       .subscribe({
-        error: error => this.snackBar.showErGingIetsMis(error),
+        error: error => {
+          if (error.error.errors[0].includes('Classroom')){
+            this.snackBar.showError('Verwijder eerst de classroom gekoppeld aan de module.');
+            return;
+          }
+          this.snackBar.showErGingIetsMis(error);
+        },
         complete: () => {
           this.snackBar.showVerwijderd('Module');
           this.router.navigate([this.router.url]);
