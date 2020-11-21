@@ -99,6 +99,10 @@ export class AdminModulesComponent implements OnInit {
                 this.snackBar.showError('Voeg eerst een scherm toe');
                 return;
               }
+              if (error.error.errors[0].includes('classroom')) {
+                this.snackBar.showError('Koppel eerst een classroom.');
+                return;
+              }
             }
             this.snackBar.showErGingIetsMis(error);
           },

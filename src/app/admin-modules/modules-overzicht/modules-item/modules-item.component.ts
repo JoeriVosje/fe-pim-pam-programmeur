@@ -41,6 +41,7 @@ export class ModulesItemComponent implements OnInit {
   }
 
   menuItem(menuItem: MenuItem): void {
+    if (menuItem.name === 'Verwijderen') {
     const modal = this.modal.open(ModalComponent, {
     width: '368px',
     data: {
@@ -56,6 +57,10 @@ export class ModulesItemComponent implements OnInit {
         this.menuItemClicked.emit(menuItem);
       }
     });
+    }
+    else {
+      this.menuItemClicked.emit(menuItem);
+    }
   }
 
   navToItem(): void {
