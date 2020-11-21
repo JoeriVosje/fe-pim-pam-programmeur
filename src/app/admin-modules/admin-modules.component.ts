@@ -82,7 +82,7 @@ export class AdminModulesComponent implements OnInit {
           error: error => this.snackBar.showErGingIetsMis(error),
           complete: () => {
             this.snackBar.showSuccess('Module is gesloten.');
-            this.modules.find(value => value.id).status = 'closed';
+            this.modules.find(value => value.id === module.id).status = 'closed';
           }
         });
     } else {
@@ -98,7 +98,7 @@ export class AdminModulesComponent implements OnInit {
           },
           complete: () => {
             this.snackBar.showSuccess('Module is geopend.');
-            this.modules.find(value => value.id).status = 'open';
+            this.modules.find(value => value.id === module.id).status = 'open';
           }
         });
     }
