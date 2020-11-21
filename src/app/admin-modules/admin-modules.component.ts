@@ -96,7 +96,7 @@ export class AdminModulesComponent implements OnInit {
           error: error => {
             if (error.status === 400) {
               if (error.error.errors[0].includes('components')) {
-                this.snackBar.showError('Voeg eerst een component toe');
+                this.snackBar.showError('Voeg eerst een scherm toe');
                 return;
               }
             }
