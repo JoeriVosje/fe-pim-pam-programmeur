@@ -17,10 +17,13 @@
                   [name]="module.name"
                   [moduleId]="module.id"
                   [status]="module.status"
+                  [isOpen]="module.status === 'open'"
+                  [isOpenParentMethod]="isOpen"
                   [dateAdded]="module.creationDate"
                   [background]="even ? 'light-item-clickable' : 'dark-item-clickable'"
                   [hasVerticalScrollbar]="modules.length > 5"
-                  (menuItemClicked)="menuItem($event)">
+    (menuItemClicked)="menuItem($event)"
+    (openCloseToggle)="toggleModule($event)">
     </modules-item>
   </cdk-virtual-scroll-viewport>
   </ng-template>

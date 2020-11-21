@@ -105,3 +105,13 @@
   opacity: 0.85 !important;
 }
 
+/*toggle*/
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #7764E4;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #a496fa;
+}
+
