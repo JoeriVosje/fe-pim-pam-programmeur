@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
+import { ModalComponent } from '../../../ppp-components/modal/modal.component';
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { Module } from './modules-item.model';
 
@@ -35,11 +37,25 @@ export class ModulesItemComponent implements OnInit {
     ];
   }
 
-  constructor() {
+  constructor(private readonly modal: MatDialog) {
   }
 
   menuItem(menuItem: MenuItem): void {
-    this.menuItemClicked.emit(menuItem);
+    const modal = this.modal.open(ModalComponent, {
+    width: '368px',
+    data: {
+      title: 'Weet je het zeker?',
+      text: 'Wet je zeker dat je deze module wilt verwijderen?',
+      buttonText1: 'Verwijderen',
+      buttonText2: 'Annuleren'
+    }
+  });
+
+    modal.afterClosed().subscribe(result => {
+      if (result?.data) {
+        this.menuItemClicked.emit(menuItem);
+      }
+    });
   }
 
   navToItem(): void {

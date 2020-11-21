@@ -1,6 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
+import { ModalComponent } from '../../ppp-components/modal/modal.component';
 import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { Screen } from './scherm-item/scherm-item.model';
 
@@ -39,7 +41,7 @@ export class SchermenOverzichtComponent {
   }
 
   public menuItem(menuItem: MenuItem): void {
-    this.menuItemClicked.emit(menuItem);
+   this.menuItemClicked.emit(menuItem);
   }
 
   toevoegen(): void {

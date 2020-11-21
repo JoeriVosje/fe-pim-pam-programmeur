@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
+import { ModalComponent } from '../../ppp-components/modal/modal.component';
 import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { Student } from '../studenten-item.model';
 

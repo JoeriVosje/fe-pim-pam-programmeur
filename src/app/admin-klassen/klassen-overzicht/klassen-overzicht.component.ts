@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { Klas } from '../klassen-item.model';
+import {ModalComponent} from '../../ppp-components/modal/modal.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'klassen-overzicht',
