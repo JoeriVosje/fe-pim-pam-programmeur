@@ -1,5 +1,5 @@
 <div class="container">
-  <img class="hacker" src="/assets/hacker.png" alt="Pim Pam Programmeur">
+  <img class="hacker" [src]="showTheRealPimPamProgrammeur ? 'assets/the-real-pimpamp.png' : 'assets/hacker.png'" alt="Pim Pam Programmeur" (click)="increasePimPampCounter()">
   <div class="login-page">
     <h1>Pim Pam Programmeur</h1>
     <p>Welkom! Login om verder te gaan.</p>
