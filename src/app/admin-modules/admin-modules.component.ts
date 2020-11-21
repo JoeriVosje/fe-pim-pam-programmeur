@@ -24,6 +24,7 @@ import { Module } from './modules-overzicht/modules-item/modules-item.model';
 export class AdminModulesComponent implements OnInit {
 
   public modules: Module[] = [];
+  public loaded;
 
   isValid = (module: Module) => {
     return this.isOpen(module);
@@ -40,20 +41,25 @@ export class AdminModulesComponent implements OnInit {
   }
 
    public async getModules(): Promise<void> {
-
      try {
        this.modules = await this.adminModuleService.getModules().toPromise();
      } catch (e) {
        this.snackBar.showErGingIetsMis(e);
+       this.loaded = true;
      }
-
-     console.log(`this zijn de modules: ${this.modules}`);
+     this.loaded = true;
    }
 
   public deleteModule(moduleId: string): void {
     this.adminModuleService.deleteModule(moduleId)
       .subscribe({
-        error: error => this.snackBar.showErGingIetsMis(error),
+        error: error => {
+          if (error.error.errors[0].includes('Classroom')) {
+            this.snackBar.showError('Verwijder eerst de classroom gekoppeld aan de module.');
+            return;
+          }
+          this.snackBar.showErGingIetsMis(error);
+        },
         complete: () => {
           this.snackBar.showVerwijderd('Module');
           this.router.navigate([this.router.url]);
@@ -90,11 +96,12 @@ export class AdminModulesComponent implements OnInit {
         .subscribe({
           error: error => {
             if (error.status === 400) {
-              console.log(error);
-              this.snackBar.showError('Voeg eerst een component toe');
-            } else {
-              this.snackBar.showErGingIetsMis(error);
+              if (error.error.errors[0].includes('components')) {
+                this.snackBar.showError('Voeg eerst een scherm toe');
+                return;
+              }
             }
+            this.snackBar.showErGingIetsMis(error);
           },
           complete: () => {
             this.snackBar.showSuccess('Module is geopend.');

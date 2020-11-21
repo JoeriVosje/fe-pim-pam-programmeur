@@ -23,12 +23,7 @@
   padding: 14px 14px;
 }
 
-.input-icons mat-icon {
-  position: absolute !important;
-  padding: 14px 14px;
-}
-
 /* extra padding when this input field contains an icon */
-.icon {
-  padding-left: 44px;
+.input-icons input {
+  padding-left: 50px;
 }

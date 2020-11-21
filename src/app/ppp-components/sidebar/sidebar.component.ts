@@ -14,7 +14,7 @@ export class SidebarComponent {
   @Output()
   public sidenavEmitter = new EventEmitter<string>();
 
-  public homeLink = 'home';
+  public homeLink = '';
   public studentHomeLink = 'student';
   public classesLink = 'classes';
   public modulesLink = 'modules';

@@ -1,5 +1,18 @@
 .container {
   min-height: 100%;
-  padding: 48px;
   background-color: #172C4C;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-row-gap: 32px;
+  padding: 48px;
+}
+schermen-theory {
+  grid-row: 1 / 2;
+}
+
+schermen-question {
+  grid-row: 2 / 3;
 }

@@ -16,6 +16,12 @@ export class ModulesOverzichtComponent implements OnInit {
   @Input()
   public isOpen: (module: Module) => boolean;
 
+  @Input()
+  public loaded: boolean;
+
+  @Input()
+  public isOpen: (module: Module) => boolean;
+
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 

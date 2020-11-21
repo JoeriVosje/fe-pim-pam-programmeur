@@ -18,6 +18,7 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
 
   moduleId: string;
   public screens: Screen[] = [];
+  public loaded = false;
   private readonly subscription: Subscription = new Subscription();
 
   public moduleName: string;
@@ -78,7 +79,10 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.service.getScreens(this.moduleId)
         .subscribe({
-          next: screens => this.screens = screens,
+          next: screens => {
+            this.loaded = true;
+            this.screens = screens
+          },
           error: error => this.snackBar.showErGingIetsMis(error)
         })
     );

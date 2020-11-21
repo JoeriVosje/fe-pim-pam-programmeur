@@ -1,32 +1,14 @@
 <div class="container">
+  <div class="grid">
 
-<!--  Theorie-->
-  <ppp-content-overview *ngIf="screen.theory"
-                        [title]="screen.title"
-                        [size]="'auto'">
+    <schermen-theory [screen]="screen"
+                     (nextScreen)="nextScreen.emit()"
+                     (finished)="finished.emit()">
+    </schermen-theory>
 
-    <div class="input-field-padding">
-      <span [innerHTML]="screen.theory | keepHtml"> </span>
-      <ppp-button class="align-button"
-                  *ngIf="showButton()"
-                  (clicked)="onNext()">
-        Volgende
-      </ppp-button>
-    </div>
-
-  </ppp-content-overview>
-
-<!--  Vraag-->
-  <ppp-content-overview *ngIf="screen.question"
-                        [title]="'Vraag'"
-                        [size]="'auto'">
-
-    <div class="input-field-padding">
-      <ppp-button class="align-button"
-                  (clicked)="onNext()">
-        Volgende
-      </ppp-button>
-    </div>
-
-  </ppp-content-overview>
+    <schermen-question [screen]="screen"
+                       (nextScreen)="nextScreen.emit()"
+                       (finished)="finished.emit()">
+    </schermen-question>
+  </div>
 </div>

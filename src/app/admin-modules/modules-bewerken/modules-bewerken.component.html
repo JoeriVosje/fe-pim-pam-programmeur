@@ -5,11 +5,18 @@
     <div *ngIf="loading">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-    <div class="input-field-padding">
-      <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)" value="{{ moduleName }}">
-        Naam
-      </ppp-input>
-      <ppp-button class="align-button" (clicked)="update()">Toevoegen</ppp-button>
+    <div class="empty-board" *ngIf="loading">
+      <span class="empty-board-text">
+      Module wordt bewerkt..
+    </span>
+    </div>
+    <div *ngIf="!loading">
+      <div class="input-field-padding">
+        <ppp-input [size]="'L'" (inputFieldChange)="getInputValue($event)" value="{{ moduleName }}">
+          Naam
+        </ppp-input>
+        <ppp-button class="align-button" (clicked)="update()">Toevoegen</ppp-button>
+      </div>
     </div>
   </ppp-content-overview>
 </overview-template>

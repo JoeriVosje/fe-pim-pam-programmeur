@@ -1,0 +1,10 @@
+<ppp-content-overview *ngIf="screen.theory" [title]="screen.title" [size]="'auto'">
+  <div class="theory-content">
+    <span [innerHTML]="screen.theory | keepHtml"></span>
+    <ppp-button class="align-button"
+                *ngIf="showButton()"
+                (clicked)="onNext()">
+      {{ getNextButtonText() }}
+    </ppp-button>
+  </div>
+</ppp-content-overview>

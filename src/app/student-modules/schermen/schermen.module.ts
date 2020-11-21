@@ -1,21 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { PppComponentsModule } from '../../ppp-components/ppp-components.module';
-import { EscapeHtmlPipe } from './pipe/keep-html.pipe';
+import { SchermenQuestionModule } from './question/schermen-question.module';
 import { SchermenComponent } from './schermen.component';
-
+import { SchermenTheoryModule } from './theory/schermen-theory.module';
 
 
 @NgModule({
-  declarations: [
-    SchermenComponent,
-    EscapeHtmlPipe
-  ],
+  declarations: [SchermenComponent],
   exports: [SchermenComponent],
   imports: [
     CommonModule,
-    PppComponentsModule
+    SchermenQuestionModule,
+    SchermenTheoryModule
   ]
 })
 export class SchermenModule { }

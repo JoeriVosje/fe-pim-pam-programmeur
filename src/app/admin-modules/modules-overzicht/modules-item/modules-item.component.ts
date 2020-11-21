@@ -57,7 +57,6 @@ export class ModulesItemComponent implements OnInit {
         name: this.name,
         creationDate: null
       };
-      console.log(module);
       this.openCloseToggle.emit(module);
       this.status = this.isOpen ? 'open' : 'closed';
       this.isOpen = this.isOpenParentMethod(module);

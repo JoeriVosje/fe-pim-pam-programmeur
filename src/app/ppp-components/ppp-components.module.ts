@@ -6,12 +6,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { OverlayModule } from '@angular/cdk/overlay';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { ButtonComponent } from './button/button.component';
 import { ContentOverviewComponent } from './content-overview/content-overview.component';
 import { HeaderComponent } from './header/header.component';
 import { InputComponent } from './input/input.component';
 import { ModalComponent } from './modal/modal.component';
+import {ModalModule} from './modal/modal.module';
 import { OverviewTemplateComponent } from './overview-template/overview-template.component';
 import { PppFormInputComponent } from './ppp-form-input/ppp-form-input.component';
 import { SelectComponent } from './select/select.component';
@@ -20,6 +22,7 @@ import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.com
 import { OverlayService } from './overlay/overlay.service';
 import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
 import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 /**
  * In plaats van een aparte library is deze module aangemaakt.
@@ -35,11 +38,11 @@ import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.componen
     ThreeDotButtonComponent,
     InputComponent,
     ContentOverviewComponent,
-    ModalComponent,
     SelectComponent,
     PppFormInputComponent,
     ErrorOverlayComponent,
-    SuccesOverlayComponent
+    SuccesOverlayComponent,
+    SpinnerComponent
   ],
   exports: [
     OverviewTemplateComponent,
@@ -51,6 +54,7 @@ import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.componen
     ContentOverviewComponent,
     SelectComponent,
     ErrorOverlayComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -59,10 +63,12 @@ import { SuccesOverlayComponent } from './succes-overlay/succes-overlay.componen
     ReactiveFormsModule,
     MatMenuModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+    ModalModule,
     OverlayModule
   ],
-  providers: [ 
-    OverlayService 
+  providers: [
+    OverlayService
   ]
 })
 export class PppComponentsModule { }

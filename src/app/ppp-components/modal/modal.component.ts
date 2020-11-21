@@ -1,54 +1,22 @@
-import { Component, Output, Inject, Input, EventEmitter } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { ModalData } from './modal.model';
 
 @Component({
   selector: 'ppp-modal',
-  templateUrl: './modal.component.html'
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.css']
+
 })
 
 export class ModalComponent {
 
-  @Input() texts: any;
-  @Input() buttontext: string;
-  @Output() eventClick = new EventEmitter();
-
-  constructor(public dialog: MatDialog) {
-  }
-
-  openDialog(): void {
-
-    const dialogRef = this.dialog.open(ModalComponentDialog, {
-      data: this.texts,
-      disableClose: true,
-      autoFocus: true,
-      panelClass: 'ppp-modalbox'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.eventClick.emit(result);
-    });
-  }
-}
-
-@Component({
-  selector: 'ppp-modaldialog',
-  templateUrl: './modaldialog.component.html',
-  styleUrls: ['./modal.component.css']
-})
-
-export class ModalComponentDialog {
-
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {
-      confirmText: string,
-      message: string,
-      title: string
-      },
-    public dialogRef: MatDialogRef<ModalComponentDialog>) {
-  }
+    public dialogRef: MatDialogRef<ModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ModalData) {}
 
-  close(): void {
-    this.dialogRef.close('modal gesloten');
+  public skip(skip: boolean): void {
+    this.dialogRef.close({data: skip});
   }
-
 }
