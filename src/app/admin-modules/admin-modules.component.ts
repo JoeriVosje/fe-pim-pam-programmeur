@@ -81,7 +81,6 @@ export class AdminModulesComponent implements OnInit {
   }
 
   openCloseSession(module: Module): void {
-    console.log(module.status);
     if (module.isOpen) {
       this.adminModuleService.closeSession(module.id)
         .subscribe({
@@ -112,8 +111,6 @@ export class AdminModulesComponent implements OnInit {
   }
 
   isOpen(module: Module): boolean {
-    console.log(module);
-    console.log(this.modules);
     return this.modules.find(value => value.id === module.id).isOpen;
   }
 }

@@ -28,7 +28,6 @@ export class ModulesItemComponent implements OnInit {
   spamFilter = false;
 
   ngOnInit(): void {
-    console.log(`status: ${this.isOpen}`);
     this.menuItems = [
       {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true, data: this.name},
       {name: 'Bewerken', routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
