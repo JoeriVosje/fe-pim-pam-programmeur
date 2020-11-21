@@ -53,7 +53,7 @@ export class SchermToevoegenComponent implements OnInit {
     return !(typeof input !== undefined && input && input.length > 0);
   }
   public addScreen(): void {
-    if (this.isEmpty(this.screenForm.controls.question.value)) {
+    if (this.isEmpty(this.screenForm.controls.title.value)) {
       this.validationFailed.emit('Titel is verplicht.');
       return;
     }
