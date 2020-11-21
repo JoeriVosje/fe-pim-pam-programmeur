@@ -31,7 +31,7 @@ export class SchermenOverzichtComponent {
   @Input()
   public screens: Screen[];
 
-  constructor(private readonly modal: MatDialog) {
+  constructor() {
   }
 
   drop(event: CdkDragDrop<Screen[]>): void {

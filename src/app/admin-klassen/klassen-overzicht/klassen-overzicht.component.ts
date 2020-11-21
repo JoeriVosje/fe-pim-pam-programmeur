@@ -24,7 +24,7 @@ export class KlassenOverzichtComponent implements OnInit {
   @Output()
   public toevoegenClicked: EventEmitter<void> = new EventEmitter();
 
-  constructor(private readonly modal: MatDialog) {
+  constructor() {
   }
 
   public menuItem(menuItem: MenuItem): void {

@@ -33,7 +33,7 @@ export class KlassenStudentenOverzichtComponent implements OnInit {
   @Input()
   klasNaam: string;
 
-  constructor(private readonly modal: MatDialog) {
+  constructor() {
   }
 
   public menuItem(menuItem: MenuItem): void {
