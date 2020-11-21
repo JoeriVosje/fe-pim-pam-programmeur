@@ -73,7 +73,7 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
       width: '368px',
       data: {
         title: 'Weet je het zeker?',
-        text: 'Wet je zeker dat je deze scherm wilt verwijderen?',
+        text: 'Wet je zeker dat je dit scherm wilt verwijderen?',
         buttonText1: 'Verwijderen',
         buttonText2: 'Annuleren'
       }

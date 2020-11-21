@@ -18,7 +18,7 @@
     </span>
   </div>
   <ng-template #itemsPresent>
-  <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
+  <cdk-virtual-scroll-viewport itemSize="1" class="items-container">
     <modules-item *cdkVirtualFor="let module of modules; let even = even"
                   [name]="module.name"
                   [moduleId]="module.id"
