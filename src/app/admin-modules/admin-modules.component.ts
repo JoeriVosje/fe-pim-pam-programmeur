@@ -26,7 +26,7 @@ export class AdminModulesComponent implements OnInit {
   public modules: Module[] = [];
   public loaded;
 
-  isOpenParentMethod = (module: Module) => {
+  isValid = (module: Module) => {
     return this.isOpen(module);
   }
 
@@ -40,15 +40,15 @@ export class AdminModulesComponent implements OnInit {
     await this.getModules();
   }
 
-  public async getModules(): Promise<void> {
-    try {
-      this.modules = await this.adminModuleService.getModules().toPromise();
-    } catch (e) {
-      this.snackBar.showErGingIetsMis(e);
-      this.loaded = true;
-    }
-    this.loaded = true;
-  }
+   public async getModules(): Promise<void> {
+     try {
+       this.modules = await this.adminModuleService.getModules().toPromise();
+     } catch (e) {
+       this.snackBar.showErGingIetsMis(e);
+       this.loaded = true;
+     }
+     this.loaded = true;
+   }
 
   public deleteModule(moduleId: string): void {
     this.adminModuleService.deleteModule(moduleId)
