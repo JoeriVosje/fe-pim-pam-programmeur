@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
-import { PppSnackerService } from '../ppp-services/ppp-snacker.service';
-import { AdminModulesService } from './admin-modules.service';
-import { AdminScreensService } from './admin-screens.service';
-import { Module } from './modules-overzicht/modules-item/modules-item.model';
+import {MenuItem} from '../ppp-components/three-dot-button/menu-item.model';
+import {PppSnackerService} from '../ppp-services/ppp-snacker.service';
+import {AdminModulesService} from './admin-modules.service';
+import {AdminScreensService} from './admin-screens.service';
+import {Module} from './modules-overzicht/modules-item/modules-item.model';
 
 /**
  * Dit component moet de bovenste laag van de modules app
@@ -39,15 +39,15 @@ export class AdminModulesComponent implements OnInit {
     await this.getModules();
   }
 
-   public async getModules(): Promise<void> {
+  public async getModules(): Promise<void> {
 
-     try {
-       this.modules = await this.adminModuleService.getModules().toPromise();
-     } catch (e) {
-       this.snackBar.showErGingIetsMis(e);
-     }
+    try {
+      this.modules = await this.adminModuleService.getModules().toPromise();
+    } catch (e) {
+      this.snackBar.showErGingIetsMis(e);
+    }
 
-   }
+  }
 
   public deleteModule(moduleId: string): void {
     this.adminModuleService.deleteModule(moduleId)
@@ -89,10 +89,12 @@ export class AdminModulesComponent implements OnInit {
         .subscribe({
           error: error => {
             if (error.status === 400) {
-              this.snackBar.showError('Voeg eerst een component toe');
-            } else {
-              this.snackBar.showErGingIetsMis(error);
+              if (error.error.errors[0].includes('components')){
+                this.snackBar.showError('Voeg eerst een component toe');
+                return;
+              }
             }
+            this.snackBar.showErGingIetsMis(error);
           },
           complete: () => {
             this.snackBar.showSuccess('Module is geopend.');
