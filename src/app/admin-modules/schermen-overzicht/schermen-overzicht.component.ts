@@ -1,10 +1,10 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
+import { ModalComponent } from '../../ppp-components/modal/modal.component';
 import { MenuItem } from '../../ppp-components/three-dot-button/menu-item.model';
 import { Screen } from './scherm-item/scherm-item.model';
-import {ModalComponent} from '../../ppp-components/modal/modal.component';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'screens-overzicht',
