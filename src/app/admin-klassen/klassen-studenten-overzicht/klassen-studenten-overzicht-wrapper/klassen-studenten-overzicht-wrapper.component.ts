@@ -44,7 +44,7 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
         .subscribe({
           next: studenten => {
             this.loaded = true;
-            this.studenten = studenten 
+            this.studenten = studenten;
           },
           error: error => this.snackBar.showErGingIetsMis(error)
         })
