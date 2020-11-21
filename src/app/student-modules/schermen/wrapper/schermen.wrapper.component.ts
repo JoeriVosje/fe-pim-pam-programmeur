@@ -51,7 +51,7 @@ export class SchermenWrapperComponent implements OnInit, OnDestroy {
         .subscribe({
           next: screens => this.screens = screens,
           error: error => {
-            this.snackBar.showErGingIetsMis(error);
+            console.log(error);
             this.isLoading = false;
           },
           complete: () => this.isLoading = false

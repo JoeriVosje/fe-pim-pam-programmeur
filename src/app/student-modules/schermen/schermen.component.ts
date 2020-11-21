@@ -15,16 +15,4 @@ export class SchermenComponent {
 
   constructor() {
   }
-
-  public onNext(): void {
-    this.screen.lastScreen ? this.finished.emit() : this.nextScreen.emit();
-  }
-
-  public showButton(): boolean {
-    return !this.screen.question;
-  }
-
-  public getNextButtonText(): string {
-    return this.screen.lastScreen ? 'Module afsluiten' : 'Volgende';
-  }
 }
