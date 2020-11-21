@@ -1,7 +1,7 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
-  <screens-overzicht [moduleName]="moduleName" [screens]="screens"
+  <screens-overzicht [moduleName]="moduleName" [loaded]="loaded" [screens]="screens"
                      (menuItemClicked)="verwijderen($event)"
                      (toevoegenClicked)="toevoegen()"
                       (reOrdered)="reOrderScreens($event)"></screens-overzicht>

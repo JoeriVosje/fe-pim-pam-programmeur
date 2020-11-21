@@ -2,17 +2,28 @@
                    [isAdmin]="true"
                    [icon]="'layers'">
   <ppp-content-overview [title]="getTitle()" [size]="'auto'">
-    <form [formGroup]="screenForm">
-      <div class="input-field-padding">
-<!--Title-->
-        <ppp-form-input formControlName="title" type="text">Titel</ppp-form-input>
-        <div class="end-of-input-padding"></div>
-<!--Theory-->
-        <div class="input-label">Theorie</div>
-        <editor
-          class="form-field"
-          formControlName="theory"
-          [init]="{
+<!--Loading stuff-->
+    <div *ngIf="loading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="empty-board" *ngIf="loading">
+      <span class="empty-board-text">
+      Vraag wordt verstuurd..
+    </span>
+    </div>
+    <div *ngIf="!loading">
+      <!--Form start-->
+      <form [formGroup]="screenForm">
+        <div class="input-field-padding">
+          <!--Title-->
+          <ppp-form-input formControlName="title" type="text">Titel</ppp-form-input>
+          <div class="end-of-input-padding"></div>
+          <!--Theory-->
+          <div class="input-label">Theorie</div>
+          <editor
+            class="form-field"
+            formControlName="theory"
+            [init]="{
                        base_url: '/tinymce',
                        suffix: '.min'  ,
                        height: 300,
@@ -24,20 +35,21 @@
           'help wordcount'],
           toolbar: 'undo redo | formatselect | bold italic |  alignleft aligncenter alignright alignjustify | ' +
            'bullist numlist outdent indent | code codesample image | help'}">
-        </editor>
-        <div class="end-of-input-padding-large"></div>
-<!--Question-->
-        <div class="column-double-question">
-          <ppp-form-input formControlName="question" class="column-double-question-first-child">Vraag</ppp-form-input>
-          <mat-checkbox formControlName="skippable" class="column-double-question-second-child">
-            Student mag vraag overslaan
-          </mat-checkbox>
-        </div>
-        <div class="end-of-input-padding"></div>
-<!--Multiple Choice-->
-        <mat-radio-group formControlName="correctAnswer">
-<!--A + B-->
-          <div class="column-double with-gap">
+          </editor>
+          <div class="end-of-input-padding-large"></div>
+          <!--Question-->
+          <div class="column-double-question">
+            <ppp-form-input formControlName="question" class="column-double-question-first-child">Vraag</ppp-form-input>
+            <mat-checkbox formControlName="skippable" class="column-double-question-second-child">
+              Student mag vraag overslaan
+            </mat-checkbox>
+          </div>
+          <div class="end-of-input-padding"></div>
+          <!--Multiple Choice-->
+          <div class="input-label">Selecteer het juiste antwoord</div>
+          <mat-radio-group formControlName="correctAnswer">
+            <!--A + B-->
+            <div class="column-double with-gap">
             <span class="column-double-first-child">
               <span class="column-double-multiple-choice-option">
                 <span class="column-double-multiple-choice-first-child">
@@ -48,7 +60,7 @@
                 </span>
               </span>
             </span>
-            <span class="column-double-second-child">
+              <span class="column-double-second-child">
               <span class="column-double-multiple-choice-option">
                 <span class="column-double-multiple-choice-first-child">
                   <mat-radio-button value="B">B</mat-radio-button>
@@ -58,9 +70,9 @@
                 </span>
               </span>
             </span>
-          </div>
-          <!--C + D-->
-          <div class="column-double with-gap">
+            </div>
+            <!--C + D-->
+            <div class="column-double with-gap">
             <span class="column-double-first-child">
               <span class="column-double-multiple-choice-option">
                 <span class="column-double-multiple-choice-first-child">
@@ -71,7 +83,7 @@
                 </span>
               </span>
             </span>
-            <span class="column-double-second-child">
+              <span class="column-double-second-child">
               <span class="column-double-multiple-choice-option">
                 <span class="column-double-multiple-choice-first-child">
                   <mat-radio-button value="D">D</mat-radio-button>
@@ -81,15 +93,16 @@
                 </span>
               </span>
             </span>
-          </div>
-        </mat-radio-group>
-        <div class="end-of-input-padding"></div>
-<!--Feedback-->
-        <ppp-form-input formControlName="feedback" type="text">Feedback</ppp-form-input>
-<!--Add Button-->
-        <ppp-button (clicked)="addScreen()" class="align-button">Toevoegen</ppp-button>
-      </div>
-    </form>
+            </div>
+          </mat-radio-group>
+          <div class="end-of-input-padding"></div>
+          <!--Feedback-->
+          <ppp-form-input formControlName="feedback" type="text">Feedback</ppp-form-input>
+          <!--Add Button-->
+          <ppp-button (clicked)="addScreen()" class="align-button">Toevoegen</ppp-button>
+        </div>
+      </form>
+    </div>
   </ppp-content-overview>
   <div class="end-of-input-padding-large"></div>
 </overview-template>

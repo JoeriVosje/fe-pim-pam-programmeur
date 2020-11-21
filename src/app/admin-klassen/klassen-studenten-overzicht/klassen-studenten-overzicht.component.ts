@@ -19,6 +19,9 @@ export class KlassenStudentenOverzichtComponent implements OnInit {
   @Input()
   public studenten: Student[];
 
+  @Input()
+  public loaded: boolean;
+
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 
