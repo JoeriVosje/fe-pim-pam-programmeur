@@ -2,13 +2,13 @@
   <div class="grid">
 
     <schermen-theory [screen]="screen"
-                     (nextScreen)="nextScreen.emit()"
-                     (finished)="finished.emit()">
+                     (next)="sendResult.emit()">
     </schermen-theory>
 
     <schermen-question [screen]="screen"
-                       (nextScreen)="nextScreen.emit()"
-                       (finished)="finished.emit()">
+                       [feedback]="feedback"
+                       (sendResult)="sendResult.emit($event)"
+                       (skip)="skip.emit()">
     </schermen-question>
   </div>
 </div>

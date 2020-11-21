@@ -1,9 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
+import { ErrorOverlayComponent } from '../../../ppp-components/error-overlay/error-overlay.component';
 import { ModalComponent } from '../../../ppp-components/modal/modal.component';
-import { Screen } from '../../models/screen.model';
+import { OverlayService } from '../../../ppp-components/overlay/overlay.service';
+import { OverlayRefComponent } from '../../../ppp-components/overlay/overlayRef.component';
+import { SuccesOverlayComponent } from '../../../ppp-components/succes-overlay/succes-overlay.component';
+import { Feedback, Screen } from '../../models/screen.model';
 
 @Component({
   selector: 'schermen-question',
@@ -13,16 +17,31 @@ import { Screen } from '../../models/screen.model';
 export class SchermenQuestionComponent {
 
   @Input() public screen: Screen;
-  @Output() public nextScreen = new EventEmitter<void>();
-  @Output() public finished = new EventEmitter<void>();
+  @Output() public sendResult = new EventEmitter<string>();
+  @Output() public skip = new EventEmitter<void>();
 
   public answerForm: FormGroup;
   public alphabet = 'ABCD';
   public submitted = false;
 
+  private _feedback: Feedback;
+
+  @Input()
+  public set feedback(feedback: Feedback) {
+    this._feedback = feedback;
+    if (this._feedback) {
+      this.handleFeedback(this._feedback);
+    }
+  }
+
+  public get feedback(): Feedback {
+    return this._feedback;
+  }
+
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly modal: MatDialog) {
+    private readonly modal: MatDialog,
+    private readonly overlayService: OverlayService) {
     this.answerForm = formBuilder.group({
       options: ['', Validators.required]
     });
@@ -41,22 +60,19 @@ export class SchermenQuestionComponent {
 
     modal.afterClosed().subscribe(result => {
       if (result.data) {
-        this.toNext();
+        this.skip.emit();
+        this.clearState();
       }
     });
   }
 
-  public onNext(): void {
+  public onSubmit(): void {
     this.submitted = true;
     if (this.answerForm.valid) {
-      this.toNext();
+      const answer = this.answerForm.get('options').value.id;
+      this.sendResult.emit(answer);
       this.clearState();
     }
-  }
-
-  public toNext(): void {
-    // console.log(this.answerForm.get(''));
-    this.screen.lastScreen ? this.finished.emit() : this.nextScreen.emit();
   }
 
   public showRequiredError(): boolean {
@@ -73,6 +89,16 @@ export class SchermenQuestionComponent {
 
   public getNextButtonText(): string {
     return this.screen.lastScreen ? 'Module afsluiten' : 'Volgende';
+  }
+
+  private handleFeedback(feedback: Feedback): void {
+    if (feedback.success) {
+      const dialogRef: OverlayRefComponent = this.overlayService.open(SuccesOverlayComponent);
+      setTimeout(() => { dialogRef.close(); }, 5000);
+    } else {
+      const dialogRef: OverlayRefComponent = this.overlayService.open(ErrorOverlayComponent);
+      setTimeout(() => { dialogRef.close(); }, 5000); // autoclose after 5 seconds
+    }
   }
 
   private clearState(): void {

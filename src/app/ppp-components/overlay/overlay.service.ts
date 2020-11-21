@@ -9,8 +9,8 @@ interface OverlayDialogConfig {
     hasBackdrop?: boolean;
     backdropClass?: string;
   }
-  
-@Injectable()
+
+@Injectable({ providedIn: 'root' })
 export class OverlayService {
 
   constructor(private overlay: Overlay) { }
@@ -27,7 +27,7 @@ export class OverlayService {
 
     overlayRef.attach(overlayPortal);
 
-    overlayRef.backdropClick().subscribe(_ => dialogRef.close());   
+    overlayRef.backdropClick().subscribe(_ => dialogRef.close());
 
     return dialogRef;
   }
@@ -42,7 +42,7 @@ export class OverlayService {
       .global()
       .centerHorizontally()
       .centerVertically();
-    
+
     const overlayConfig = new OverlayConfig({
       hasBackdrop: true,
       backdropClass: 'backdrop',

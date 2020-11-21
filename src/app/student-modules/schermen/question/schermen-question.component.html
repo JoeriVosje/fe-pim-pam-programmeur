@@ -3,19 +3,18 @@
 
     <p>{{ screen.question }}</p>
 
-    <mat-error *ngIf="showRequiredError()">
-      <strong>Vergeet niet een antwoord op te geven!</strong>
-    </mat-error>
-
     <mat-radio-group formControlName="options">
       <div *ngFor="let answer of screen.answers; index as i">
-        <mat-radio-button [value]="alphabet[i]"></mat-radio-button>
+        <mat-radio-button [value]="answer"></mat-radio-button>
         <label><strong>{{ alphabet[i] + '.' }}</strong></label>
         <p>{{ answer.description }}</p>
       </div>
     </mat-radio-group>
 
     <div class="question-buttons">
+      <mat-error *ngIf="showRequiredError()">
+        <strong>Vergeet niet een antwoord op te geven!</strong>
+      </mat-error>
       <button *ngIf="screen.skippable"
               mat-flat-button
               class="warning"
@@ -25,7 +24,7 @@
       </button>
       <button mat-flat-button
               type="button"
-              (click)="onNext()">
+              (click)="onSubmit()">
         {{ getNextButtonText() }}
       </button>
     </div>

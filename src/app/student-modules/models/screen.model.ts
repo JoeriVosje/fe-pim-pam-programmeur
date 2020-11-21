@@ -14,3 +14,9 @@ export interface Answer {
   id: string;
   description: string;
 }
+
+export interface Feedback {
+  success?: boolean;
+  hint?: string;
+}
+
