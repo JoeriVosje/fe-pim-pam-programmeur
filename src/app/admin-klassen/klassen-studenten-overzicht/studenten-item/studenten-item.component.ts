@@ -29,6 +29,7 @@ export class StudentenItemComponent implements OnInit {
   }
 
   menuItem(menuItem: MenuItem): void {
+    this.initMenuItems();
     this.menuItemClicked.emit(menuItem);
   }
 }
