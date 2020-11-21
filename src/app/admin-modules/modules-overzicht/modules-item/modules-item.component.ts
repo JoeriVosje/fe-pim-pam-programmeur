@@ -52,7 +52,7 @@ export class ModulesItemComponent implements OnInit {
   });
 
     modal.afterClosed().subscribe(result => {
-      if (result.data) {
+      if (result?.data) {
         this.menuItemClicked.emit(menuItem);
       }
     });

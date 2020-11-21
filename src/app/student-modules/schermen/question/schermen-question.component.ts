@@ -40,7 +40,7 @@ export class SchermenQuestionComponent {
     });
 
     modal.afterClosed().subscribe(result => {
-      if (result.data) {
+      if (result?.data) {
         this.toNext();
       }
     });
