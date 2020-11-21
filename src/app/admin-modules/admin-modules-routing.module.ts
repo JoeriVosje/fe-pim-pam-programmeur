@@ -18,7 +18,7 @@ const breadCrumpMap = new Map([
 
 const routes: Routes = [
   {
-    path: '', component: AdminModulesComponent,
+    path: 'modules', component: AdminModulesComponent,
     canActivate: [AdminLoginGuard],
     data: {
       breadCrumbs: [breadCrumpMap.get(0)],
