@@ -51,7 +51,7 @@ export class ModulesItemComponent implements OnInit {
         width: '368px',
         data: {
           title: 'Weet je het zeker?',
-          text: 'Wet je zeker dat je deze module wilt verwijderen?',
+          text: 'Weet je zeker dat je deze module wilt verwijderen?',
           buttonText1: 'Verwijderen',
           buttonText2: 'Annuleren'
         }

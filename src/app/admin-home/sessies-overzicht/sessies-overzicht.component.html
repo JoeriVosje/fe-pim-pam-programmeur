@@ -24,7 +24,7 @@
     </span>
   </div>
   <ng-template #itemsPresent>
-    <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
+    <cdk-virtual-scroll-viewport itemSize="1" class="items-container">
       <sessies-item *cdkVirtualFor="let sessie of sessies; let even = even"
                     [name]="sessie.module.name"
                     [studentsFinished]="sessie.studentsFinished"
