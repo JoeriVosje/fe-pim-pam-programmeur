@@ -16,11 +16,18 @@ export class StudentenItemComponent implements OnInit {
   menuItems: MenuItem[];
 
   ngOnInit(): void {
+    this.initMenuItems();
+  }
+
+  private initMenuItems(): void {
     this.menuItems = [
       {name: 'Verwijderen', routeOrID: this.student.id, isRoute: false},
     ];
   }
-  constructor() { }
+
+  constructor() {
+  }
+
   menuItem(menuItem: MenuItem): void {
     this.menuItemClicked.emit(menuItem);
   }

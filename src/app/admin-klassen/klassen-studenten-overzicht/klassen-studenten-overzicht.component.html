@@ -20,7 +20,7 @@
   </div>
 
   <ng-template #itemsPresent>
-    <cdk-virtual-scroll-viewport itemSize="1" class="items-container">
+    <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
       <studenten-item *cdkVirtualFor="let student of studenten; let even = even"
                       [student]="student"
                       [background]="even? 'light-item' : 'dark-item'"

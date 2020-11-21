@@ -30,6 +30,10 @@ export class ModulesItemComponent implements OnInit {
   spamFilter = false;
 
   ngOnInit(): void {
+    this.initMenuItems();
+  }
+
+  private initMenuItems(): void {
     this.menuItems = [
       {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true, data: this.name},
       {name: 'Bewerken', routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
@@ -41,29 +45,30 @@ export class ModulesItemComponent implements OnInit {
   }
 
   menuItem(menuItem: MenuItem): void {
+    this.initMenuItems();
     if (menuItem.name === 'Verwijderen') {
-    const modal = this.modal.open(ModalComponent, {
-    width: '368px',
-    data: {
-      title: 'Weet je het zeker?',
-      text: 'Wet je zeker dat je deze module wilt verwijderen?',
-      buttonText1: 'Verwijderen',
-      buttonText2: 'Annuleren'
-    }
-  });
+      const modal = this.modal.open(ModalComponent, {
+        width: '368px',
+        data: {
+          title: 'Weet je het zeker?',
+          text: 'Wet je zeker dat je deze module wilt verwijderen?',
+          buttonText1: 'Verwijderen',
+          buttonText2: 'Annuleren'
+        }
+      });
 
-    modal.afterClosed().subscribe(result => {
-      if (result?.data) {
-        this.menuItemClicked.emit(menuItem);
-      }
-    });
-    }
-    else {
+      modal.afterClosed().subscribe(result => {
+        if (result?.data) {
+          this.menuItemClicked.emit(menuItem);
+        }
+      });
+    } else {
       this.menuItemClicked.emit(menuItem);
     }
   }
 
   navToItem(): void {
+    this.initMenuItems();
     this.menuItemClicked.emit(this.menuItems[0]);
   }
 
@@ -71,8 +76,8 @@ export class ModulesItemComponent implements OnInit {
     if (!this.spamFilter) {
       this.spamFilter = true;
       const module: Module = {
-        status : this.status,
-        isOpen : this.isOpen,
+        status: this.status,
+        isOpen: this.isOpen,
         id: this.moduleId,
         name: this.name,
         creationDate: null
