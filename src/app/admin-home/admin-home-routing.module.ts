@@ -5,7 +5,7 @@ import { AdminLoginGuard } from '../admin-login-guard';
 import { WrapperComponent } from './sessies-overzicht/wrapper/wrapper.component';
 
 const breadCrumpMap = new Map([
-  [0, {name: 'Overzicht', route: 'home'}],
+  [0, {name: 'Overzicht', route: ''}],
 ]);
 
 const routes: Routes = [
