@@ -7,6 +7,6 @@
     <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L" icon="lock" [placeholder]="'Wachtwoord'"></ppp-input>
     <div style="padding-bottom: 16px"></div>
     <ppp-button [loginButton]="true" (clicked)="inloggen()" [type]="'highlight'">Inloggen</ppp-button>
-    <p class="mat-error" *ngIf="loginFailed">Login is mislukt. Probeer het opnieuw.</p>
+    <p class="mat-error" *ngIf="!loginFailed">Login is mislukt. Probeer het opnieuw.</p>
   </div>
 </div>

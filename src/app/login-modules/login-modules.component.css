@@ -2,6 +2,10 @@ div p:first-of-type {
   margin-bottom: 16px;
 }
 
+div p:last-of-type {
+  margin-top: 16px;
+}
+
 .container {
   height: 100%;
   background-color: #172C4C;
