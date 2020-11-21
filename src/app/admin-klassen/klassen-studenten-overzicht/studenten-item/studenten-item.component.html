@@ -1,11 +1,11 @@
 <div [ngClass]="hasVerticalScrollbar ? 'needs-margin' : null">
   <div [ngClass]="background" class="column-items-start with-four-columns">
 
-    <span class="column-one" id="name">{{ student.firstName }}</span>
-    <span class="column-two" id="last-name">{{ student.lastName }}</span>
-    <span class="column-three" id="email">{{ student.email }}</span>
+    <span class="column-one with-overflow" id="name">{{ student.firstName }}</span>
+    <span class="column-two with-overflow" id="last-name">{{ student.lastName }}</span>
+    <span class="column-three with-overflow" id="email">{{ student.email }}</span>
     <span class="column-four column-double">
-    <span class="column-double-first-child" id="creation-date">{{ student.creationDate | date:'dd/MM/yyyy'}}</span>
+    <span class="column-double-first-child with-overflow" id="creation-date">{{ student.creationDate | date:'dd/MM/yyyy'}}</span>
     <span class="column-double-second-child-end">
     <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
       </span>

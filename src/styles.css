@@ -116,9 +116,6 @@ html, body {
 /* GRID LIST CONTENT */
 
 .column-one {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   font-weight: bold;
   padding-left: 32px;
@@ -127,9 +124,6 @@ html, body {
 }
 
 .column-two {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   padding-left: 32px;
   grid-row: 2 / 3;
@@ -137,9 +131,6 @@ html, body {
 }
 
 .column-three {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   padding-left: 32px;
   grid-row: 2 / 3;
@@ -147,9 +138,6 @@ html, body {
 }
 
 .column-four {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   padding-left: 32px;
   grid-row: 2 / 3;
@@ -157,9 +145,6 @@ html, body {
 }
 
 .column-five {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   padding-left: 32px;
   grid-row: 2 / 3;
@@ -167,9 +152,6 @@ html, body {
 }
 
 .column-six {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   padding-left: 32px;
   grid-row: 2 / 3;
@@ -180,29 +162,30 @@ html, body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+.column-small-double {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
 
-.column-double-first-child {
+.with-overflow {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.column-double-first-child {
   align-self: center;
   grid-row: 1 / 2;
   grid-column: 1 / 2;
 }
 
 .column-double-second-child {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   grid-row: 1 / 2;
   grid-column: 2 / 3;
 }
 
 .column-double-second-child-end {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   align-self: center;
   justify-self: end;
   padding-right: 48px;

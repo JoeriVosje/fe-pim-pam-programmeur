@@ -1,10 +1,11 @@
 <div [ngClass]="hasVerticalScrollbar ? 'needs-margin' : null">
-  <div [ngClass]="background" class="column-items-start with-two-columns">
+  <div [ngClass]="background" class="column-items-start with-three-columns">
 
-    <span class="column-one" id="title">{{ screenInput.title }}</span>
-    <span class="column-two column-double">
+    <span class="column-one with-overflow" id="title">{{ screenInput.title }}</span>
+    <span class="column-two with-overflow" id="theorie">{{ screenInput.theory }}</span>
+    <span class="column-three column-small-double">
 
-  <span class="column-double-first-child" id="question">{{ question }}</span>
+  <span class="column-double-first-child with-overflow" id="question">{{ question }}</span>
     <span class="column-double-second-child-end">
     <ppp-three-dot-button (menuItemClicked)="menuItem($event)" [menuItems]="menuItems"></ppp-three-dot-button>
     </span>

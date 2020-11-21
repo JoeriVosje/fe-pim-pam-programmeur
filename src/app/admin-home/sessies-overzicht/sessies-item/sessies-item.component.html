@@ -1,12 +1,12 @@
 <div [ngClass]="hasVerticalScrollbar ? 'needs-margin' : null">
   <div [ngClass]="background" class="column-items-start with-six-columns">
 
-    <span class="column-one" id="name">{{ name }}</span>
-    <span class="column-two" id="status">{{ timeFinished ? 'Afgerond' : 'Bezig' }}</span>
-    <span class="column-three" id="progress"> {{progressString}}
+    <span class="column-one with-overflow" id="name">{{ name }}</span>
+    <span class="column-two with-overflow" id="status">{{ timeFinished ? 'Afgerond' : 'Bezig' }}</span>
+    <span class="column-three with-overflow" id="progress"> {{progressString}}
       <mat-progress-bar class="progress-bar" mode="determinate" value={{progress}} width=60%></mat-progress-bar></span>
-    <span class="column-four" id="dateStarted">{{ timeStarted | date: 'dd/MM/yyyy' }}</span>
-    <span class="column-five" id="timeStarted">{{ timeStarted | date: 'HH:mm' }}</span>
-    <span class="column-six" id="timeFinished">{{ timeFinished | date: 'HH:mm' }}</span>
+    <span class="column-four with-overflow" id="dateStarted">{{ timeStarted | date: 'dd/MM/yyyy' }}</span>
+    <span class="column-five with-overflow" id="timeStarted">{{ timeStarted | date: 'HH:mm' }}</span>
+    <span class="column-six with-overflow" id="timeFinished">{{ timeFinished | date: 'HH:mm' }}</span>
   </div>
 </div>
