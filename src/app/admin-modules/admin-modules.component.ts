@@ -47,7 +47,6 @@ export class AdminModulesComponent implements OnInit {
        this.snackBar.showErGingIetsMis(e);
      }
 
-     console.log(`this zijn de modules: ${this.modules}`);
    }
 
   public deleteModule(moduleId: string): void {
@@ -90,7 +89,6 @@ export class AdminModulesComponent implements OnInit {
         .subscribe({
           error: error => {
             if (error.status === 400) {
-              console.log(error);
               this.snackBar.showError('Voeg eerst een component toe');
             } else {
               this.snackBar.showErGingIetsMis(error);
@@ -105,8 +103,6 @@ export class AdminModulesComponent implements OnInit {
   }
 
   isOpen(module: Module): boolean {
-    console.log(module);
-    console.log(this.modules);
     return this.modules.find(value => value.id === module.id).isOpen;
   }
 }
