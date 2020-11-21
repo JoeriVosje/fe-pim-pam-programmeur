@@ -68,14 +68,18 @@ export class SchermToevoegenComponent implements OnInit {
           this.validationFailed.emit('Als de theorie leeg is, is de vraag verplicht.');
           return;
         }
-
     }
     if (!this.isEmpty(this.screenForm.controls.question.value )){
       if (!this.validMultipleChoiceAnswers()){
         this.validationFailed.emit('Vul alle opties van de vraag in.');
         return;
-      } else if (this.isEmpty(this.screenForm.controls.correctAnswer.value)) {
+      }
+      if (this.isEmpty(this.screenForm.controls.correctAnswer.value)) {
         this.validationFailed.emit('Selecteer het correcte antwoord.');
+        return;
+      }
+      if (this.isEmpty(this.screenForm.controls.feedback.value)) {
+        this.validationFailed.emit('Een hint is verplicht');
         return;
       }
     }

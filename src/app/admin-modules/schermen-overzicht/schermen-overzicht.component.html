@@ -2,7 +2,7 @@
 
   <div class="overview-start with-two-columns">
     <h4 class="column-header header-one">TITEL</h4>
-    <h4 class="column-header header-two">ANTWOORD</h4>
+    <h4 class="column-header header-two">VRAAG</h4>
   </div>
 
   <div *ngIf="!loaded">
@@ -18,7 +18,7 @@
   </div>
 
   <ng-template #itemsPresent>
-    <cdk-virtual-scroll-viewport itemSize="50" class="items-container">
+    <cdk-virtual-scroll-viewport itemSize="1" class="items-container">
       <div cdkDropList (cdkDropListDropped)="drop($event)">
         <screen-item *cdkVirtualFor="let screen of screens; let even = even"
                      [hasVerticalScrollbar]="screens.length > 5"
