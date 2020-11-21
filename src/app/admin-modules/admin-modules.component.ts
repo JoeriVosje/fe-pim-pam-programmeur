@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {MenuItem} from '../ppp-components/three-dot-button/menu-item.model';
-import {PppSnackerService} from '../ppp-services/ppp-snacker.service';
-import {AdminModulesService} from './admin-modules.service';
-import {AdminScreensService} from './admin-screens.service';
-import {Module} from './modules-overzicht/modules-item/modules-item.model';
+import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
+import { PppSnackerService } from '../ppp-services/ppp-snacker.service';
+import { AdminModulesService } from './admin-modules.service';
+import { AdminScreensService } from './admin-screens.service';
+import { Module } from './modules-overzicht/modules-item/modules-item.model';
 
 /**
  * Dit component moet de bovenste laag van de modules app
@@ -24,9 +24,9 @@ import {Module} from './modules-overzicht/modules-item/modules-item.model';
 export class AdminModulesComponent implements OnInit {
 
   public modules: Module[] = [];
-  public loaded = false;
+  public loaded;
 
-  isValid = (module: Module) => {
+  isOpenParentMethod = (module: Module) => {
     return this.isOpen(module);
   }
 
@@ -42,20 +42,19 @@ export class AdminModulesComponent implements OnInit {
 
   public async getModules(): Promise<void> {
     try {
-      this.loaded = true;
       this.modules = await this.adminModuleService.getModules().toPromise();
     } catch (e) {
       this.snackBar.showErGingIetsMis(e);
-      this.loaded  = false;
+      this.loaded = true;
     }
-    this.loaded  = false;
+    this.loaded = true;
   }
 
   public deleteModule(moduleId: string): void {
     this.adminModuleService.deleteModule(moduleId)
       .subscribe({
         error: error => {
-          if (error.error.errors[0].includes('Classroom')){
+          if (error.error.errors[0].includes('Classroom')) {
             this.snackBar.showError('Verwijder eerst de classroom gekoppeld aan de module.');
             return;
           }
@@ -96,7 +95,7 @@ export class AdminModulesComponent implements OnInit {
         .subscribe({
           error: error => {
             if (error.status === 400) {
-              if (error.error.errors[0].includes('components')){
+              if (error.error.errors[0].includes('components')) {
                 this.snackBar.showError('Voeg eerst een component toe');
                 return;
               }
