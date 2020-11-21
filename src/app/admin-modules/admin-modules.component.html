@@ -1,5 +1,6 @@
 <overview-template [title]="'Modules'"
                    [isAdmin]="true"
                    [icon]="'layers'">
+  <modules-overzicht [isOpen]="isValid" [modules]="modules" (menuItemClicked)="menuItem($event)" (toevoegenClicked)="toevoegen()" (toggleClicked)="openCloseSession($event)"></modules-overzicht>
   <modules-overzicht [modules]="modules" [loaded]="loaded" (menuItemClicked)="menuItem($event)" (toevoegenClicked)="toevoegen()"></modules-overzicht>
 </overview-template>

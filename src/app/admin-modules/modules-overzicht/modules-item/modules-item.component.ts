@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
+import { Module } from './modules-item.model';
 
 @Component({
   selector: 'modules-item',
@@ -10,12 +11,21 @@ import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.mod
 export class ModulesItemComponent implements OnInit {
   @Input() public hasVerticalScrollbar: boolean;
   @Input() public name: string;
-  @Input() public status: boolean;
+  @Input() public status: string;
   @Input() public dateAdded: string;
   @Input() public background: string;
   @Input() public moduleId: string;
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
+  @Output() public openCloseToggle: EventEmitter<Module> = new EventEmitter();
   menuItems: MenuItem[];
+
+  @Input()
+  isOpen: boolean;
+
+  @Input()
+  isOpenParentMethod: (value: any) => boolean;
+
+  spamFilter = false;
 
   ngOnInit(): void {
     this.menuItems = [
@@ -34,5 +44,22 @@ export class ModulesItemComponent implements OnInit {
 
   navToItem(): void {
     this.menuItemClicked.emit(this.menuItems[0]);
+  }
+
+  openCloseModule(): void {
+    if (!this.spamFilter) {
+      this.spamFilter = true;
+      const module: Module = {
+        status : this.status,
+        isOpen : this.isOpen,
+        id: this.moduleId,
+        name: this.name,
+        creationDate: null
+      };
+      this.openCloseToggle.emit(module);
+      this.status = this.isOpen ? 'open' : 'closed';
+      this.isOpen = this.isOpenParentMethod(module);
+      setTimeout((_) => this.spamFilter = false, 1000);
+    }
   }
 }

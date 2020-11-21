@@ -1,0 +1,40 @@
+form {
+  padding: 24px 32px 32px;
+}
+
+form mat-error {
+  padding-left: 32px;
+}
+
+mat-radio-group {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto;
+  grid-row-gap: 32px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-right: 32px;
+}
+
+mat-radio-group div {
+  display: flex;
+  padding-left: 32px;
+}
+
+mat-radio-group div label {
+  padding-right: 4px;
+}
+
+mat-radio-group div mat-radio-button {
+  margin-right: 24px;
+}
+
+.question-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.warning {
+  margin-right: 32px;
+  background-color: #F53C56;
+}

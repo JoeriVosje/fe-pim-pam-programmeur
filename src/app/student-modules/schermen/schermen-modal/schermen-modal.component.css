@@ -1,0 +1,21 @@
+.modal-content {
+  text-align: center;
+}
+
+.modal-content p {
+  padding-bottom: 16px;
+}
+
+button {
+  margin: 8px;
+}
+
+.warning {
+  background-color: #F53C56;
+}
+
+.decline {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #172B4D;
+}

@@ -1,12 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { MenuItem } from '../ppp-components/three-dot-button/menu-item.model';
-import { PppSnackerService } from '../ppp-services/ppp-snacker.service';
-import { AdminModulesService } from './admin-modules.service';
-import { AdminScreensService } from './admin-screens.service';
-import { Module } from './modules-overzicht/modules-item/modules-item.model';
+import {MenuItem} from '../ppp-components/three-dot-button/menu-item.model';
+import {PppSnackerService} from '../ppp-services/ppp-snacker.service';
+import {AdminModulesService} from './admin-modules.service';
+import {AdminScreensService} from './admin-screens.service';
+import {Module} from './modules-overzicht/modules-item/modules-item.model';
 
 /**
  * Dit component moet de bovenste laag van de modules app
@@ -22,12 +21,14 @@ import { Module } from './modules-overzicht/modules-item/modules-item.model';
   templateUrl: './admin-modules.component.html',
   styleUrls: ['./admin-modules.component.css']
 })
-export class AdminModulesComponent implements OnInit, OnDestroy {
+export class AdminModulesComponent implements OnInit {
 
   public modules: Module[] = [];
   public loaded = false;
 
-  private readonly subscription: Subscription = new Subscription();
+  isValid = (module: Module) => {
+    return this.isOpen(module);
+  }
 
   constructor(private readonly adminModuleService: AdminModulesService,
               private readonly adminScreensService: AdminScreensService,
@@ -35,39 +36,37 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
               private snackBar: PppSnackerService) {
   }
 
-  ngOnInit(): void {
-    this.getModules();
+  async ngOnInit(): Promise<void> {
+    await this.getModules();
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  public getModules(): void {
-    this.subscription.add(
-      this.adminModuleService.getModules()
-        .subscribe({
-          next: modules => {
-            this.loaded = true;
-            this.modules = modules
-          },
-          error: error => this.snackBar.showErGingIetsMis(error)
-        })
-    );
+  public async getModules(): Promise<void> {
+    try {
+      this.loaded = true;
+      this.modules = await this.adminModuleService.getModules().toPromise();
+    } catch (e) {
+      this.snackBar.showErGingIetsMis(e);
+      this.loaded  = false;
+    }
+    this.loaded  = false;
   }
 
   public deleteModule(moduleId: string): void {
-    this.subscription.add(
-      this.adminModuleService.deleteModule(moduleId)
-        .subscribe({
-          error: error => this.snackBar.showErGingIetsMis(error),
-          complete: () => {
-            this.snackBar.showVerwijderd('Module');
-            this.router.navigate([this.router.url]);
-            this.getModules();
+    this.adminModuleService.deleteModule(moduleId)
+      .subscribe({
+        error: error => {
+          if (error.error.errors[0].includes('Classroom')){
+            this.snackBar.showError('Verwijder eerst de classroom gekoppeld aan de module.');
+            return;
           }
-        })
-    );
+          this.snackBar.showErGingIetsMis(error);
+        },
+        complete: () => {
+          this.snackBar.showVerwijderd('Module');
+          this.router.navigate([this.router.url]);
+          this.getModules();
+        }
+      });
   }
 
   public menuItem(menuItem: MenuItem): void {
@@ -80,5 +79,39 @@ export class AdminModulesComponent implements OnInit, OnDestroy {
 
   toevoegen(): void {
     this.router.navigate(['modules/add']);
+  }
+
+  openCloseSession(module: Module): void {
+    if (module.isOpen) {
+      this.adminModuleService.closeSession(module.id)
+        .subscribe({
+          error: error => this.snackBar.showErGingIetsMis(error),
+          complete: () => {
+            this.snackBar.showSuccess('Module is gesloten.');
+            this.modules.find(value => value.id === module.id).status = 'closed';
+          }
+        });
+    } else {
+      this.adminModuleService.openSession(module.id)
+        .subscribe({
+          error: error => {
+            if (error.status === 400) {
+              if (error.error.errors[0].includes('components')){
+                this.snackBar.showError('Voeg eerst een component toe');
+                return;
+              }
+            }
+            this.snackBar.showErGingIetsMis(error);
+          },
+          complete: () => {
+            this.snackBar.showSuccess('Module is geopend.');
+            this.modules.find(value => value.id === module.id).status = 'open';
+          }
+        });
+    }
+  }
+
+  isOpen(module: Module): boolean {
+    return this.modules.find(value => value.id === module.id).isOpen;
   }
 }
