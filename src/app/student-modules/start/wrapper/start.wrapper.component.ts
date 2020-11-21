@@ -5,7 +5,6 @@ import { Session } from '../../models/session.model';
 import { Student } from '../../models/student.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
-import {PppSnackerService} from '../../../ppp-services/ppp-snacker.service';
 
 @Component({
   selector: 'student-start-wrapper',
@@ -21,8 +20,8 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly navigatie: StudentModulesNavigation,
-    private readonly service: StudentModulesService,
-    private readonly snackBar: PppSnackerService) { }
+    private readonly service: StudentModulesService
+  ) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -39,7 +38,7 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
         .subscribe({
           next: student => this.student = student,
           error: error => {
-            this.snackBar.showErGingIetsMis(error);
+            console.log(error);
             this.isLoading = false;
           },
           complete: () => this.loadSession(this.student.classroom.module.id)
@@ -53,7 +52,7 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
         .subscribe({
           next: session => this.session = session,
           error: error => {
-            this.snackBar.showErGingIetsMis(error);
+            console.log(error);
             this.isLoading = false;
           },
           complete: () => this.isLoading = false
