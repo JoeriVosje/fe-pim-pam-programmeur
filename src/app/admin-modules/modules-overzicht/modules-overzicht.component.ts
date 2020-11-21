@@ -14,10 +14,10 @@ export class ModulesOverzichtComponent implements OnInit {
   public modules: Module[];
 
   @Input()
-  public loaded: boolean;
+  public isOpen: (module: Module) => boolean;
 
   @Input()
-  public isOpen: (module: Module) => boolean;
+  public loaded: boolean;
 
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();

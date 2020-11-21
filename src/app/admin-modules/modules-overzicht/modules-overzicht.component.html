@@ -14,22 +14,24 @@
       Er zijn nog geen modules toegevoegd. Klik op de knop rechtsonder om een module toe te voegen.
     </span>
     <span class="empty-board-text" *ngIf="!loaded">
-      Klassen worden opgehaald..
+      Modules worden opgehaald..
     </span>
   </div>
   <ng-template #itemsPresent>
-    <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
-      <modules-item *cdkVirtualFor="let module of modules; let even = even"
-                    [name]="module.name"
-                    [moduleId]="module.id"
-                    [status]="module.status"
-                    [dateAdded]="module.creationDate"
-                    [background]="even ? 'light-item-clickable' : 'dark-item-clickable'"
-                    [hasVerticalScrollbar]="modules.length > 5"
-                    (menuItemClicked)="menuItem($event)"
-                    (openCloseToggle)="toggleModule($event)">
-      </modules-item>
-    </cdk-virtual-scroll-viewport>
+  <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
+    <modules-item *cdkVirtualFor="let module of modules; let even = even"
+                  [name]="module.name"
+                  [moduleId]="module.id"
+                  [status]="module.status"
+                  [isOpen]="module.status === 'open'"
+                  [isOpenParentMethod]="isOpen"
+                  [dateAdded]="module.creationDate"
+                  [background]="even ? 'light-item-clickable' : 'dark-item-clickable'"
+                  [hasVerticalScrollbar]="modules.length > 5"
+    (menuItemClicked)="menuItem($event)"
+    (openCloseToggle)="toggleModule($event)">
+    </modules-item>
+  </cdk-virtual-scroll-viewport>
   </ng-template>
 
   <ppp-button class="align-button bottom-right-padding" (clicked)="toevoegen()">Toevoegen</ppp-button>
