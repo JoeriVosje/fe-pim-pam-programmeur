@@ -15,11 +15,7 @@ export class SchermenModalComponent {
     public dialogRef: MatDialogRef<SchermenModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ModalData) {}
 
-  public skip(): void {
-    this.dialogRef.close(true);
+  public skip(skip: boolean): void {
+    this.dialogRef.close({data: skip});
   }
-
-  // public close(skip: boo): void {
-  //   this.dialogRef.close();
-  // }
 }

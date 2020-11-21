@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Screen } from '../../models/screen.model';
-import {SchermenModalComponent} from '../schermen-modal/schermen-modal.component';
+import {SchermenModalComponent} from '../modal/schermen-modal.component';
 
 @Component({
   selector: 'schermen-question',
@@ -29,27 +29,33 @@ export class SchermenQuestionComponent {
   }
 
   public onSkip(): void  {
-    const dialogRef = this.modal.open(SchermenModalComponent, {
+    const modal = this.modal.open(SchermenModalComponent, {
       width: '368px',
       data: {
-        title: 'Titel',
-        text: 'Dit is de modal',
+        title: 'Weet je het zeker?',
+        text: 'Deze actie kun je niet terugdraaien.',
         buttonText1: 'Overslaan',
         buttonText2: 'Annuleren'
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    modal.afterClosed().subscribe(result => {
+      if (result.data) {
+        this.toNext();
+      }
     });
   }
 
   public onNext(): void {
     this.submitted = true;
     if (this.answerForm.valid) {
-      this.screen.lastScreen ? this.finished.emit() : this.nextScreen.emit();
+      this.toNext();
       this.clearState();
     }
+  }
+
+  public toNext(): void {
+    this.screen.lastScreen ? this.finished.emit() : this.nextScreen.emit();
   }
 
   public showRequiredError(): boolean {
