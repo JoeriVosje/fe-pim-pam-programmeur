@@ -19,10 +19,10 @@ export class SchermItemComponent implements OnInit {
   menuItems: MenuItem[];
   @Input() public hasVerticalScrollbar: boolean;
 
-  public correctAnwser: Answer;
+  public question: string;
 
   ngOnInit(): void {
-    this.correctAnwser = this.screenInput.answers.filter(e => e.isCorrectAnswer)[0];
+    this.question = this.screenInput.question;
     this.menuItems = [
       {name: 'Verwijderen', routeOrID: this.screenInput.id, isRoute: false},
     ];
