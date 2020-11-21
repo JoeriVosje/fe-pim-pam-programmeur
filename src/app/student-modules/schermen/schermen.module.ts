@@ -7,23 +7,25 @@ import { MatRadioModule } from '@angular/material/radio';
 
 import { PppComponentsModule } from '../../ppp-components/ppp-components.module';
 import { EscapeHtmlPipe } from './pipe/keep-html.pipe';
+import {SchermenQuestionModule} from './question/schermen-question.module';
 import { SchermenComponent } from './schermen.component';
+import { SchermenQuestionComponent } from './question/schermen-question.component';
+import { SchermenModalComponent } from './schermen-modal/schermen-modal.component';
 
 
 
 @NgModule({
   declarations: [
+    EscapeHtmlPipe,
     SchermenComponent,
-    EscapeHtmlPipe
+    SchermenModalComponent
   ],
   exports: [SchermenComponent],
   imports: [
     CommonModule,
-    PppComponentsModule,
     MatButtonModule,
-    MatFormFieldModule,
-    MatRadioModule,
-    ReactiveFormsModule
+    PppComponentsModule,
+    SchermenQuestionModule
   ]
 })
 export class SchermenModule { }

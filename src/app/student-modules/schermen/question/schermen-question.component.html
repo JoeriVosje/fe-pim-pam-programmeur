@@ -1,0 +1,34 @@
+<ppp-content-overview *ngIf="screen.question" [title]="'Vraag'" [size]="'auto'">
+  <form [formGroup]="answerForm">
+
+    <p>{{ screen.question }}</p>
+
+    <mat-error *ngIf="showRequiredError()">
+      <strong>Vergeet niet een antwoord op te geven!</strong>
+    </mat-error>
+
+    <mat-radio-group formControlName="options">
+      <div *ngFor="let answer of screen.answers; index as i">
+        <mat-radio-button [value]="alphabet[i]"></mat-radio-button>
+        <label><strong>{{ alphabet[i] + '.' }}</strong></label>
+        <p>{{ answer.description }}</p>
+      </div>
+    </mat-radio-group>
+
+    <div class="question-buttons">
+      <button *ngIf="screen.skippable"
+              mat-flat-button
+              class="warning"
+              type="button"
+              (click)="onSkip()">
+        {{ getSkippableButtonText() }}
+      </button>
+      <button mat-flat-button
+              type="button"
+              (click)="onNext()">
+        {{ getNextButtonText() }}
+      </button>
+    </div>
+
+  </form>
+</ppp-content-overview>

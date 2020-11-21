@@ -13,46 +13,6 @@
   grid-row: 1 / 2;
 }
 
-.question {
+schermen-question {
   grid-row: 2 / 3;
-}
-
-form {
-  padding-top: 32px;
-}
-
-form mat-error {
-  padding-left: 32px;
-}
-
-mat-radio-group {
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto auto;
-  grid-row-gap: 32px;
-  padding-top: 32px;
-  padding-bottom: 32px;
-}
-
-.answers {
-  display: flex;
-  padding-left: 32px;
-}
-
-.answers label {
-  padding-right: 4px;
-}
-
-.answers mat-radio-button {
-  margin-right: 24px;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.warning {
-  margin-right: 32px;
-  background-color: #F53C56;
 }
