@@ -22,12 +22,24 @@ export class LoginModulesComponent implements OnInit {
   public login: EventEmitter<LoginRequest> = new EventEmitter();
 
   @Input()
-  public loginFailed: boolean = false;
+  public loginFailed = false;
 
   private password: string;
   private email: string;
 
+  private realPimpampCounter = 0;
+  showTheRealPimPamProgrammeur = false;
+
   constructor() { }
+
+  increasePimPampCounter(): void {
+    if (!this.showTheRealPimPamProgrammeur) {
+      this.realPimpampCounter++;
+      if (this.realPimpampCounter === 10) {
+        this.showTheRealPimPamProgrammeur = true;
+      }
+    }
+  }
 
   ngOnInit(): void {
   }
