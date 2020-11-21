@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Screen } from '../../models/screen.model';
-import {SchermenModalComponent} from '../modal/schermen-modal.component';
+import { SchermenModalComponent } from '../modal/schermen-modal.component';
 
 @Component({
   selector: 'schermen-question',
@@ -55,6 +55,7 @@ export class SchermenQuestionComponent {
   }
 
   public toNext(): void {
+    console.log(this.answerForm.get(''));
     this.screen.lastScreen ? this.finished.emit() : this.nextScreen.emit();
   }
 
