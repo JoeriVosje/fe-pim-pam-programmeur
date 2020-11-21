@@ -58,7 +58,7 @@ ppp-button {
 .empty-board {
     grid-row: 3 / 4;
     grid-column: 1 / 5;
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: 0px;
     color: #172B4D;
     text-align: center;

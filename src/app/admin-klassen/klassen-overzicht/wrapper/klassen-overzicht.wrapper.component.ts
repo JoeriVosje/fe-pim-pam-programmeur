@@ -21,6 +21,7 @@ import { Klas } from '../../klassen-item.model';
 export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
 
   public klassen: Klas[] = [];
+  public loaded = false;
   private readonly subscription: Subscription = new Subscription();
 
   constructor(private klassenService: AdminKlassenService,
@@ -38,7 +39,10 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.klassenService.getKlassen()
         .subscribe({
-          next: klassen => this.klassen = klassen,
+          next: klassen => {
+            this.klassen = klassen
+            this.loaded = true;
+          },
           error: error => this.snackBar.showErGingIetsMis(error)
         })
     );

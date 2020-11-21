@@ -13,6 +13,9 @@ export class KlassenOverzichtComponent implements OnInit {
   @Input()
   public klassen: Klas[];
 
+  @Input()
+  public loaded: boolean;
+
   @Output()
   public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
 

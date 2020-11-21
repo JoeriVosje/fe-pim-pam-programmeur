@@ -14,6 +14,9 @@ export class ModulesOverzichtComponent implements OnInit {
   public modules: Module[];
 
   @Input()
+  public loaded: boolean;
+
+  @Input()
   public isOpen: (module: Module) => boolean;
 
   @Output()
