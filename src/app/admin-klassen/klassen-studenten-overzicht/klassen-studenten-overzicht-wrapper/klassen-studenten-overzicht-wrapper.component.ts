@@ -8,6 +8,8 @@ import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { AdminStudentenService } from '../../admin-studenten-service.service';
 import { Student } from '../../studenten-item.model';
+import {ModalComponent} from '../../../ppp-components/modal/modal.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -27,7 +29,8 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
               private router: Router,
               private route: ActivatedRoute,
               private adminKlassenService: AdminKlassenService,
-              private snackBar: PppSnackerService) {
+              private snackBar: PppSnackerService,
+              private readonly modal: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -60,15 +63,29 @@ export class KlassenStudentenOverzichtWrapperComponent implements OnInit, OnDest
   }
 
   deleteStudent(studentId: string): void {
-    this.studentenService.deleteStudent(studentId).subscribe(
-      {
-        error: error => this.snackBar.showErGingIetsMis(error),
-        complete: () => {
-          this.snackBar.showVerwijderd('Student');
-          this.router.navigate([this.router.url]);
-        }
+    const modal = this.modal.open(ModalComponent, {
+      width: '368px',
+      data: {
+        title: 'Weet je het zeker?',
+        text: 'Wet je zeker dat je deze student wilt verwijderen?',
+        buttonText1: 'Verwijderen',
+        buttonText2: 'Annuleren'
       }
-    );
+    });
+
+    modal.afterClosed().subscribe(result => {
+      if (result?.data) {
+        this.studentenService.deleteStudent(studentId).subscribe(
+          {
+            error: error => this.snackBar.showErGingIetsMis(error),
+            complete: () => {
+              this.snackBar.showVerwijderd('Student');
+              this.router.navigate([this.router.url]);
+            }
+          }
+        );
+      }
+    });
   }
 
   public menuItemClicked(menuItem: MenuItem): void {

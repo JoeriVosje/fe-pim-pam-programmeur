@@ -37,21 +37,7 @@ export class KlassenStudentenOverzichtComponent implements OnInit {
   }
 
   public menuItem(menuItem: MenuItem): void {
-    const modal = this.modal.open(ModalComponent, {
-      width: '368px',
-      data: {
-        title: 'Weet je het zeker?',
-        text: 'Wet je zeker dat je deze student wilt verwijderen?',
-        buttonText1: 'Verwijderen',
-        buttonText2: 'Annuleren'
-      }
-    });
-
-    modal.afterClosed().subscribe(result => {
-      if (result?.data) {
-        this.menuItemClicked.emit(menuItem);
-      }
-    });
+    this.menuItemClicked.emit(menuItem);
   }
 
   ngOnInit(): void {

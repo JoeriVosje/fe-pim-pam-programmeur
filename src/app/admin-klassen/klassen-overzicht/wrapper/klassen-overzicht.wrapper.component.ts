@@ -6,6 +6,8 @@ import { MenuItem } from 'src/app/ppp-components/three-dot-button/menu-item.mode
 import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminKlassenService } from '../../admin-klassen.service';
 import { Klas } from '../../klassen-item.model';
+import {ModalComponent} from '../../../ppp-components/modal/modal.component';
+import {MatDialog} from '@angular/material/dialog';
 
 /**
  * Dit is een zogenoemd 'dom' component. Dit component
@@ -26,7 +28,8 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
 
   constructor(private klassenService: AdminKlassenService,
               private router: Router,
-              private snackBar: PppSnackerService) {
+              private snackBar: PppSnackerService,
+              private readonly modal: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -40,7 +43,7 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
       this.klassenService.getKlassen()
         .subscribe({
           next: klassen => {
-            this.klassen = klassen
+            this.klassen = klassen;
             this.loaded = true;
           },
           error: error => this.snackBar.showErGingIetsMis(error)
@@ -66,13 +69,27 @@ export class KlassenOverzichtWrapperComponent implements OnInit, OnDestroy {
   }
 
   public deleteClass(id: string): void {
-    this.klassenService.deleteKlas(id)
-      .subscribe({
-        error: error => this.snackBar.showErGingIetsMis(error),
-        complete: () => {
-          this.snackBar.showVerwijderd('Klas');
-          this.router.navigate([this.router.url]);
-        }
-      });
+    const modal = this.modal.open(ModalComponent, {
+      width: '368px',
+      data: {
+        title: 'Weet je het zeker?',
+        text: 'Wet je zeker dat je deze klas wilt verwijderen?',
+        buttonText1: 'Verwijderen',
+        buttonText2: 'Annuleren'
+      }
+    });
+
+    modal.afterClosed().subscribe(result => {
+      if (result?.data) {
+        this.klassenService.deleteKlas(id)
+          .subscribe({
+            error: error => this.snackBar.showErGingIetsMis(error),
+            complete: () => {
+              this.snackBar.showVerwijderd('Klas');
+              this.router.navigate([this.router.url]);
+            }
+          });
+      }
+    });
   }
 }

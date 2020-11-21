@@ -1,7 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { ModalComponent } from '../../../ppp-components/modal/modal.component';
 import { MenuItem } from '../../../ppp-components/three-dot-button/menu-item.model';
 import { PppSnackerService } from '../../../ppp-services/ppp-snacker.service';
 import { AdminModulesService } from '../../admin-modules.service';
@@ -27,7 +29,8 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
               private moduleService: AdminModulesService,
               private router: Router,
               private route: ActivatedRoute,
-              private snackBar: PppSnackerService) {
+              private snackBar: PppSnackerService,
+              private readonly modal: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.subscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -66,11 +69,25 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
   }
 
   verwijderen(menuItem: MenuItem): void {
-    this.service.deleteScreen(menuItem.routeOrID).subscribe({
-      error: error => this.snackBar.showErGingIetsMis(error),
-      complete: () => {
-        this.router.navigate([this.router.url]);
-        this.snackBar.showVerwijderd('Scherm');
+    const modal = this.modal.open(ModalComponent, {
+      width: '368px',
+      data: {
+        title: 'Weet je het zeker?',
+        text: 'Wet je zeker dat je deze scherm wilt verwijderen?',
+        buttonText1: 'Verwijderen',
+        buttonText2: 'Annuleren'
+      }
+    });
+
+    modal.afterClosed().subscribe(result => {
+      if (result?.data) {
+        this.service.deleteScreen(menuItem.routeOrID).subscribe({
+          error: error => this.snackBar.showErGingIetsMis(error),
+          complete: () => {
+            this.router.navigate([this.router.url]);
+            this.snackBar.showVerwijderd('Scherm');
+          }
+        });
       }
     });
   }
@@ -81,7 +98,7 @@ export class SchermOverzichtWrapperComponent implements OnInit, OnDestroy {
         .subscribe({
           next: screens => {
             this.loaded = true;
-            this.screens = screens
+            this.screens = screens;
           },
           error: error => this.snackBar.showErGingIetsMis(error)
         })
