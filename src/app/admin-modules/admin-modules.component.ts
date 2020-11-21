@@ -80,7 +80,6 @@ export class AdminModulesComponent implements OnInit {
   }
 
   openCloseSession(module: Module): void {
-    console.log(module.status);
     if (module.isOpen) {
       this.adminModuleService.closeSession(module.id)
         .subscribe({
