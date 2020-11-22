@@ -29,6 +29,9 @@ RUN ng build --output-path=dist
 # base image
 FROM nginx:1.16.0-alpine
 
+# RUN rm -rf /usr/share/nginx/html/* && rm -rf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
 # copy artifact build from the 'build environment'
 COPY --from=build /app/dist /usr/share/nginx/html
 
