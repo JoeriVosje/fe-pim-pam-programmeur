@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog/dialog-ref';
-import {Observable, of} from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { ErrorOverlayComponent } from '../../../ppp-components/error-overlay/error-overlay.component';
 import { ModalComponent } from '../../../ppp-components/modal/modal.component';
@@ -10,6 +10,7 @@ import { OverlayService } from '../../../ppp-components/overlay/overlay.service'
 import { OverlayRefComponent } from '../../../ppp-components/overlay/overlayRef.component';
 import { SkipOverlayComponent } from '../../../ppp-components/skip-overlay/skip-overlay.component';
 import { SuccesOverlayComponent } from '../../../ppp-components/succes-overlay/succes-overlay.component';
+import { Feedback } from '../../models/screen.model';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 
 @Injectable({providedIn: 'root'})
@@ -33,12 +34,12 @@ export class SchermenQuestionService {
     });
   }
 
-  public openFeedbackModal(feedback: string): MatDialogRef<FeedbackModalComponent> {
+  public openFeedbackModal(feedback: Feedback): MatDialogRef<FeedbackModalComponent> {
     return this.modal.open(FeedbackModalComponent, {
       width: '368px',
       data: {
-        title: 'Je hebt een vraag overgeslagen.',
-        text: feedback,
+        title: feedback.success === null ? 'Je hebt een vraag overgeslagen.' : 'Van fouten maken leer je het meest, goed bezig.',
+        text: feedback.hint,
         buttonText: 'OK'
       },
       panelClass: 'modal-padding'

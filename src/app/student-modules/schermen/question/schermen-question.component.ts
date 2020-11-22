@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Feedback, Screen, SkipResponse } from '../../models/screen.model';
+import { Feedback, Screen } from '../../models/screen.model';
 import { SchermenQuestionService } from './schermen-question.service';
 
 @Component({
@@ -48,7 +48,6 @@ export class SchermenQuestionComponent {
       .subscribe(result => {
         if (result.data) {
           this.skip.emit();
-          this.clearState();
         }
       });
   }
@@ -68,7 +67,6 @@ export class SchermenQuestionComponent {
     if (this.answerForm.valid) {
       this.answerId = this.answerForm.get('options').value.id;
       this.sendAnswer.emit(this.answerId);
-      this.clearState();
     }
   }
 
@@ -89,6 +87,7 @@ export class SchermenQuestionComponent {
   }
 
   private handleFeedback(feedback: Feedback): void {
+    this.clearState();
     if (feedback.success === null) {
       this.service.openOverlay('skip')
       .subscribe(value => value ? this.openFeedbackModal(feedback) : null);
@@ -102,7 +101,7 @@ export class SchermenQuestionComponent {
   }
 
   private openFeedbackModal(feedback: Feedback): void {
-    this.service.openFeedbackModal(feedback.hint)
+    this.service.openFeedbackModal(feedback)
       .afterClosed()
       .subscribe(() => {
         this.correctAnswer = feedback.correctAnswerId;
