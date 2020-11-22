@@ -17,8 +17,9 @@ import { Feedback, Screen } from '../../models/screen.model';
 export class SchermenQuestionComponent {
 
   @Input() public screen: Screen;
-  @Output() public sendResult = new EventEmitter<string>();
+  @Output() public sendAnswer = new EventEmitter<string>();
   @Output() public skip = new EventEmitter<void>();
+  @Output() public toNext = new EventEmitter<void>();
 
   public answerForm: FormGroup;
   public alphabet = 'ABCD';
@@ -70,7 +71,7 @@ export class SchermenQuestionComponent {
     this.submitted = true;
     if (this.answerForm.valid) {
       const answer = this.answerForm.get('options').value.id;
-      this.sendResult.emit(answer);
+      this.sendAnswer.emit(answer);
       this.clearState();
     }
   }
@@ -93,8 +94,9 @@ export class SchermenQuestionComponent {
 
   private handleFeedback(feedback: Feedback): void {
     if (feedback.success) {
-      const dialogRef: OverlayRefComponent = this.overlayService.open(SuccesOverlayComponent);
-      setTimeout(() => { dialogRef.close(); }, 5000);
+      const modalSuccess = this.overlayService.open(SuccesOverlayComponent);
+      this.toNext.emit();
+      setTimeout(() => modalSuccess.close(), 3000);
     } else {
       const dialogRef: OverlayRefComponent = this.overlayService.open(ErrorOverlayComponent);
       setTimeout(() => { dialogRef.close(); }, 5000); // autoclose after 5 seconds

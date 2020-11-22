@@ -10,7 +10,7 @@ import { Screen } from '../../models/screen.model';
 export class SchermenTheoryComponent {
 
   @Input() public screen: Screen;
-  @Output() public next = new EventEmitter<void>();
+  @Output() public toNext = new EventEmitter<void>();
 
   constructor() { }
 

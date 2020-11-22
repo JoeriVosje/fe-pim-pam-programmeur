@@ -18,6 +18,7 @@ import { OverviewTemplateComponent } from './overview-template/overview-template
 import { PppFormInputComponent } from './ppp-form-input/ppp-form-input.component';
 import { SelectComponent } from './select/select.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import {SkipOverlayComponent} from './skip-overlay/skip-overlay.component';
 import { ThreeDotButtonComponent } from './three-dot-button/three-dot-button.component';
 import { OverlayService } from './overlay/overlay.service';
 import { ErrorOverlayComponent } from './error-overlay/error-overlay.component';
@@ -42,6 +43,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     PppFormInputComponent,
     ErrorOverlayComponent,
     SuccesOverlayComponent,
+    SkipOverlayComponent,
     SpinnerComponent
   ],
   exports: [
@@ -54,6 +56,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ContentOverviewComponent,
     SelectComponent,
     ErrorOverlayComponent,
+    SkipOverlayComponent,
     SpinnerComponent
   ],
   imports: [

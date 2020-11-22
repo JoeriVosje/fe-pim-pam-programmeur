@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import * as moment from 'moment';
+import {take} from 'rxjs/operators';
 import { Result } from '../../models/result.model';
 import {Feedback, Screen} from '../../models/screen.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
@@ -11,15 +12,13 @@ import { StudentModulesService } from '../../student-modules.service';
   selector: 'student-schermen-wrapper',
   templateUrl: './schermen.wrapper.component.html'
 })
-export class SchermenWrapperComponent implements OnInit, OnDestroy {
+export class SchermenWrapperComponent implements OnInit {
 
   public screens: Screen[];
   public currentScreen = 0;
   public isLoading: boolean;
-  public result: Result;
+  public answer: Result;
   public feedback: Feedback;
-
-  private readonly subscription: Subscription = new Subscription();
 
   constructor(
     private readonly navigation: StudentModulesNavigation,
@@ -27,18 +26,15 @@ export class SchermenWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.setUpResult();
+    this.setupAnswer();
     this.loadScreens();
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  public sendResult(answer: string): void {
-    if (answer) {
-      this.result.answerId = answer;
-      this.service.saveResult(this.result)
+  public sendAnswer(answerId: string): void {
+    if (answerId) {
+      this.answer.answerId = answerId;
+      this.service.sendAnswer(this.answer)
+      .pipe(take(1))
       .subscribe({
         next: feedback => this.feedback = feedback,
         error: err => console.log(err)
@@ -57,27 +53,27 @@ export class SchermenWrapperComponent implements OnInit, OnDestroy {
   }
 
   private loadScreens(): void {
-    this.subscription.add(
-      this.service.getScreens()
-        .subscribe({
-          next: screens => {
-            this.screens = screens;
-          },
-          error: error => {
-            console.log(error);
-            this.isLoading = false;
-          },
-          complete: () => this.isLoading = false
-        })
-    );
+    this.service.getScreens()
+      .pipe(take(1))
+      .subscribe({
+        next: screens => {
+          this.screens = screens;
+        },
+        error: error => {
+          console.log(error);
+          this.isLoading = false;
+        },
+        complete: () => this.isLoading = false
+      });
   }
 
   private toNext(): void {
     if (this.screens[this.currentScreen].lastScreen) {
       this.navigation.toStart();
+    } else {
+      this.currentScreen++;
+      this.answer.startTime = moment.utc().inspect();
     }
-    this.result.startTime = moment.utc().inspect();
-    this.currentScreen++;
   }
 
   private isLastScreen(): void {
@@ -86,8 +82,8 @@ export class SchermenWrapperComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setUpResult(): void {
-    this.result = {
+  private setupAnswer(): void {
+    this.answer = {
       answerId: '',
       sessionId: this.service.getSessionId(),
       userId: this.service.getUserId(),

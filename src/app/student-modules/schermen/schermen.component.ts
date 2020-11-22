@@ -11,8 +11,9 @@ export class SchermenComponent {
 
   @Input() public screen: Screen;
   @Input() public feedback: Feedback;
-  @Output() public sendResult = new EventEmitter<string>();
+  @Output() public sendAnswer = new EventEmitter<string>();
   @Output() public skip = new EventEmitter<void>();
+  @Output() public toNext = new EventEmitter<void>();
 
   constructor() {
   }

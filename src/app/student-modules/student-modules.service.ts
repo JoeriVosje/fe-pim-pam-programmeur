@@ -43,7 +43,8 @@ export class StudentModulesService {
     return this.http.get<Screen[]>(`${this.baseUrl}Component/module/${this.moduleId}`);
   }
 
-  public saveResult(result: Result): Observable<Feedback> {
+  public sendAnswer(result: Result): Observable<Feedback> {
+    console.log(result);
     // return this.http.post<Feedback>(`${this.baseUrl}Result`, result);
     return of({success: true, hint: 'Dit is een hint'});
   }
