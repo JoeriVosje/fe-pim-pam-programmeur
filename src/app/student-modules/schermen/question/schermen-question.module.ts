@@ -7,11 +7,12 @@ import { MatRadioModule } from '@angular/material/radio';
 
 import { PppComponentsModule } from '../../../ppp-components/ppp-components.module';
 import { SchermenQuestionComponent } from './schermen-question.component';
+import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
 
 
 
 @NgModule({
-  declarations: [SchermenQuestionComponent],
+  declarations: [SchermenQuestionComponent, FeedbackModalComponent],
   exports: [SchermenQuestionComponent],
   imports: [
     CommonModule,

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { Screen } from './models/screen.model';
+import { Feedback, Result, Screen, Skip, SkipResponse } from './models/screen.model';
 import { Session } from './models/session.model';
 import { Student } from './models/student.model';
 
@@ -14,12 +14,14 @@ export class StudentModulesService {
 
   private moduleId: string;
   private sessionId: string;
+  private userId: string;
 
   public constructor(private readonly http: HttpClient) { }
 
   public getStudent(): Observable<Student> {
     return this.http.get<Student>(`${this.baseUrl}User/current`).pipe(
-      tap(student => this.moduleId = student.classroom.module.id)
+      tap(student => this.moduleId = student.classroom.module.id),
+      tap(student => this.userId = student.id)
     );
   }
 
@@ -39,12 +41,35 @@ export class StudentModulesService {
     return this.http.get<Screen[]>(`${this.baseUrl}Component/module/${this.moduleId}`);
   }
 
+  public sendAnswer(result: Result): Observable<Feedback> {
+    return this.http.post<Feedback>(`${this.baseUrl}Result`, result);
+  }
+
+  public skipQuestion(skip: Skip): Observable<Feedback> {
+    return this.http.post<SkipResponse>(`${this.baseUrl}Result/skip`, skip)
+      .pipe(
+        map(response => this.mapToFeedback(response))
+      );
+  }
+
   public getModuleId(): string {
     return this.moduleId;
   }
 
   public getSessionId(): string {
     return this.sessionId;
+  }
+
+  public getUserId(): string {
+    return this.userId;
+  }
+
+  private mapToFeedback(skipResponse: SkipResponse): Feedback {
+    return {
+      success: null,
+      correctAnswerId: skipResponse.id,
+      hint: skipResponse.description
+    };
   }
 }
 

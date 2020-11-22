@@ -3,7 +3,7 @@
     <span [innerHTML]="screen.theory | keepHtml"></span>
     <ppp-button class="align-button"
                 *ngIf="showButton()"
-                (clicked)="onNext()">
+                (clicked)="toNext.emit()">
       {{ getNextButtonText() }}
     </ppp-button>
   </div>

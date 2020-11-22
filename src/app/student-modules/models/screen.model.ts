@@ -14,3 +14,28 @@ export interface Answer {
   id: string;
   description: string;
 }
+
+export interface Result {
+  answerId: string;
+  sessionId: string;
+  userId: string;
+  startTime: string;
+}
+
+export interface Feedback {
+  success?: boolean;
+  correctAnswerId: string;
+  hint: string;
+}
+
+export interface Skip {
+  userId: string;
+  componentId: string;
+  sessionId: string;
+  startTime: string;
+}
+
+export interface SkipResponse {
+  id: string;
+  description: string;
+}

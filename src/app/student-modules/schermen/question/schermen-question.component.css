@@ -2,10 +2,6 @@ form {
   padding: 24px 32px 32px;
 }
 
-form mat-error {
-  padding-left: 32px;
-}
-
 mat-radio-group {
   display: grid;
   grid-template-rows: auto auto;
@@ -32,9 +28,23 @@ mat-radio-group div mat-radio-button {
 .question-buttons {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.question-buttons button {
+  margin-left: 32px;
 }
 
 .warning {
-  margin-right: 32px;
   background-color: #F53C56;
+}
+
+.correct {
+  color: #2DCE98;
+  font-weight: bold;
+}
+
+.wrong {
+  text-decoration: line-through;
+  color: #F53C56;
 }

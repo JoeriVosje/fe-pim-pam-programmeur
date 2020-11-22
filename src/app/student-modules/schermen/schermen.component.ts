@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Screen } from '../models/screen.model';
+import { Feedback, Screen } from '../models/screen.model';
 
 @Component({
   selector: 'student-schermen',
@@ -10,9 +10,12 @@ import { Screen } from '../models/screen.model';
 export class SchermenComponent {
 
   @Input() public screen: Screen;
-  @Output() public nextScreen = new EventEmitter<void>();
-  @Output() public finished = new EventEmitter<void>();
+  @Input() public feedback: Feedback;
+  @Output() public sendAnswer = new EventEmitter<string>();
+  @Output() public skip = new EventEmitter<void>();
+  @Output() public toNext = new EventEmitter<void>();
 
   constructor() {
   }
 }
+

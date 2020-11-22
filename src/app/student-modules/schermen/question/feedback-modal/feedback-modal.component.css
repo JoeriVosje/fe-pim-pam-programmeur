@@ -1,0 +1,17 @@
+.modal-content {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.modal-content p {
+  padding-bottom: 16px;
+  color: #FFFFFF;
+}
+
+.ok {
+  border: 1px solid #FFFFFF;
+  background-color: #FFFFFF;
+  color: #F53C56;
+  width: 184px;
+  margin: 8px;
+}
