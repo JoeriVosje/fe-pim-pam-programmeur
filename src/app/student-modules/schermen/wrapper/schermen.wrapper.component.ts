@@ -1,10 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 
-import * as moment from 'moment';
-import {take} from 'rxjs/operators';
-import { Result } from '../../models/result.model';
-import {Feedback, Screen} from '../../models/screen.model';
+import moment from 'moment';
+import {Feedback, Result, Screen, SkipFeedback} from '../../models/screen.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
 
@@ -19,6 +17,7 @@ export class SchermenWrapperComponent implements OnInit {
   public isLoading: boolean;
   public answer: Result;
   public feedback: Feedback;
+  public skipFeedback: SkipFeedback;
 
   constructor(
     private readonly navigation: StudentModulesNavigation,
@@ -43,8 +42,17 @@ export class SchermenWrapperComponent implements OnInit {
   }
 
   public skip(): void {
-    // to do send to skip
-    console.log('Skip question');
+    this.service.skipQuestion({
+      userId: this.service.getUserId(),
+      componentId: this.screens[this.currentScreen].id,
+      sessionId: this.service.getSessionId(),
+      startTime: this.answer.startTime
+    })
+      .pipe(take(1))
+      .subscribe({
+        next: skipFeedback => this.skipFeedback = skipFeedback,
+        error: err => console.log(err)
+      });
   }
 
   public getScreen(): Screen {
@@ -72,7 +80,7 @@ export class SchermenWrapperComponent implements OnInit {
       this.navigation.toStart();
     } else {
       this.currentScreen++;
-      this.answer.startTime = moment.utc().inspect();
+      this.answer.startTime = moment().format();
     }
   }
 
@@ -87,7 +95,7 @@ export class SchermenWrapperComponent implements OnInit {
       answerId: '',
       sessionId: this.service.getSessionId(),
       userId: this.service.getUserId(),
-      startTime: moment.utc().inspect(),
+      startTime: moment().format()
     };
   }
 }

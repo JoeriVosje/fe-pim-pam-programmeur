@@ -1,12 +1,10 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { Result } from './models/result.model';
-import { Feedback, Screen } from './models/screen.model';
+import {Feedback, Result, Screen, Skip, SkipFeedback} from './models/screen.model';
 import { Session } from './models/session.model';
-import { Skip } from './models/skip';
 import { Student } from './models/student.model';
 
 @Injectable({providedIn: 'root'})
@@ -44,15 +42,17 @@ export class StudentModulesService {
   }
 
   public sendAnswer(result: Result): Observable<Feedback> {
-    console.log(result);
-    // return this.http.post<Feedback>(`${this.baseUrl}Result`, result);
-    return of({success: true, hint: 'Dit is een hint'});
+    // console.log(result);
+    return this.http.post<Feedback>(`${this.baseUrl}Result`, result);
+    // return of({success: true, hint: 'Dit is een hint'});
   }
 
-  public skipQuestion(skip: Skip): Observable<HttpResponse<void>> {
-    return this.http.post<void>(`${this.baseUrl}Result/skip`, skip, {
-        observe: 'response'
-      });
+  public skipQuestion(skip: Skip): Observable<SkipFeedback> {
+    // return this.http.post<void>(`${this.baseUrl}Result/skip`, skip, {
+    //     observe: 'response'
+    //   });
+
+    return of({id: 'id', description: 'Dit is een uitleg'});
   }
 
   public getModuleId(): string {

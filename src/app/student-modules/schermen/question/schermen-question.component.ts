@@ -1,4 +1,4 @@
-import { Component, DoCheck, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -6,8 +6,9 @@ import { ErrorOverlayComponent } from '../../../ppp-components/error-overlay/err
 import { ModalComponent } from '../../../ppp-components/modal/modal.component';
 import { OverlayService } from '../../../ppp-components/overlay/overlay.service';
 import { OverlayRefComponent } from '../../../ppp-components/overlay/overlayRef.component';
+import { SkipOverlayComponent } from '../../../ppp-components/skip-overlay/skip-overlay.component';
 import { SuccesOverlayComponent } from '../../../ppp-components/succes-overlay/succes-overlay.component';
-import { Feedback, Screen } from '../../models/screen.model';
+import { Feedback, Screen, SkipFeedback } from '../../models/screen.model';
 
 @Component({
   selector: 'schermen-question',
@@ -26,17 +27,30 @@ export class SchermenQuestionComponent {
   public submitted = false;
 
   private _feedback: Feedback;
+  private _skipFeedback: SkipFeedback;
 
   @Input()
   public set feedback(feedback: Feedback) {
-    this._feedback = feedback;
-    if (this._feedback) {
+    if (feedback) {
+      this._feedback = feedback;
       this.handleFeedback(this._feedback);
     }
   }
 
   public get feedback(): Feedback {
     return this._feedback;
+  }
+
+  @Input()
+  public set skipFeedback(skipFeedback: SkipFeedback) {
+    if (skipFeedback) {
+      this._skipFeedback = skipFeedback;
+      this.handleSkipFeedback(this._skipFeedback);
+    }
+  }
+
+  public get skipFeedback(): SkipFeedback {
+    return this._skipFeedback;
   }
 
   constructor(
@@ -99,8 +113,13 @@ export class SchermenQuestionComponent {
       setTimeout(() => modalSuccess.close(), 3000);
     } else {
       const dialogRef: OverlayRefComponent = this.overlayService.open(ErrorOverlayComponent);
-      setTimeout(() => { dialogRef.close(); }, 5000); // autoclose after 5 seconds
+      setTimeout(() => { dialogRef.close(); }, 3000);
     }
+  }
+
+  private handleSkipFeedback(feedback: SkipFeedback): void {
+    const modalSkip = this.overlayService.open(SkipOverlayComponent);
+    setTimeout(() => modalSkip.close(), 3000);
   }
 
   private clearState(): void {

@@ -15,8 +15,26 @@ export interface Answer {
   description: string;
 }
 
-export interface Feedback {
-  success?: boolean;
-  hint?: string;
+export interface Result {
+  answerId: string;
+  sessionId: string;
+  userId: string;
+  startTime: string;
 }
 
+export interface Feedback {
+  success: boolean;
+  hint: string;
+}
+
+export interface Skip {
+  userId: string;
+  componentId: string;
+  sessionId: string;
+  startTime: string;
+}
+
+export interface SkipFeedback {
+  id: string;
+  description: string;
+}
