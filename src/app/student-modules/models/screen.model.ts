@@ -24,6 +24,7 @@ export interface Result {
 
 export interface Feedback {
   success: boolean;
+  correctAnswerId: string;
   hint: string;
 }
 
