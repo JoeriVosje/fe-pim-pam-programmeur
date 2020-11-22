@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Feedback, Screen, SkipFeedback } from '../../models/screen.model';
+import { Feedback, Screen, SkipResponse } from '../../models/screen.model';
 import { SchermenQuestionService } from './schermen-question.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class SchermenQuestionComponent {
   @Output() public toNext = new EventEmitter<void>();
 
   public answerForm: FormGroup;
+  public answerId: string;
   public alphabet = 'ABCD';
   public submitted = false;
   public correctAnswer: string;
@@ -24,7 +25,6 @@ export class SchermenQuestionComponent {
   public canNavigateToNext = false;
 
   private _feedback: Feedback;
-  private _skipFeedback: SkipFeedback;
 
   @Input()
   public set feedback(feedback: Feedback) {
@@ -36,18 +36,6 @@ export class SchermenQuestionComponent {
 
   public get feedback(): Feedback {
     return this._feedback;
-  }
-
-  @Input()
-  public set skipFeedback(skipFeedback: SkipFeedback) {
-    if (skipFeedback) {
-      this._skipFeedback = skipFeedback;
-      this.handleSkipFeedback(this._skipFeedback);
-    }
-  }
-
-  public get skipFeedback(): SkipFeedback {
-    return this._skipFeedback;
   }
 
   constructor(private readonly service: SchermenQuestionService) {
@@ -78,8 +66,8 @@ export class SchermenQuestionComponent {
   private submit(): void {
     this.submitted = true;
     if (this.answerForm.valid) {
-      const answer = this.answerForm.get('options').value.id;
-      this.sendAnswer.emit(answer);
+      this.answerId = this.answerForm.get('options').value.id;
+      this.sendAnswer.emit(this.answerId);
       this.clearState();
     }
   }
@@ -101,25 +89,24 @@ export class SchermenQuestionComponent {
   }
 
   private handleFeedback(feedback: Feedback): void {
-    if (feedback.success) {
+    if (feedback.success === null) {
+      this.service.openOverlay('skip')
+      .subscribe(value => value ? this.openFeedbackModal(feedback) : null);
+    } else if (feedback.success) {
       this.service.openOverlay('success')
         .subscribe(value => value ? this.toNext.emit() : null);
     } else {
       this.service.openOverlay('error')
-        .subscribe(value => console.log(value));
+        .subscribe(value => value ? this.openFeedbackModal(feedback) : null);
     }
   }
 
-  private handleSkipFeedback(skipFeedback: SkipFeedback): void {
-    this.service.openOverlay('skip')
-      .subscribe(result => result ? this.openFeedbackModal(skipFeedback) : null);
-  }
-
-  private openFeedbackModal(skipFeedback: SkipFeedback): void {
-    this.service.openFeedbackModal(skipFeedback.description)
+  private openFeedbackModal(feedback: Feedback): void {
+    this.service.openFeedbackModal(feedback.hint)
       .afterClosed()
       .subscribe(() => {
-        this.correctAnswer = skipFeedback.id;
+        this.correctAnswer = feedback.correctAnswerId;
+        this.wrongAnswer = this.answerId;
         this.canNavigateToNext = true;
       });
   }

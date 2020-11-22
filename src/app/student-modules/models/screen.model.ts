@@ -23,7 +23,7 @@ export interface Result {
 }
 
 export interface Feedback {
-  success: boolean;
+  success?: boolean;
   correctAnswerId: string;
   hint: string;
 }
@@ -35,7 +35,7 @@ export interface Skip {
   startTime: string;
 }
 
-export interface SkipFeedback {
+export interface SkipResponse {
   id: string;
   description: string;
 }

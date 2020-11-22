@@ -1,9 +1,9 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import {Feedback, Result, Screen, Skip, SkipFeedback} from './models/screen.model';
+import { Feedback, Result, Screen, Skip, SkipResponse } from './models/screen.model';
 import { Session } from './models/session.model';
 import { Student } from './models/student.model';
 
@@ -45,8 +45,11 @@ export class StudentModulesService {
     return this.http.post<Feedback>(`${this.baseUrl}Result`, result);
   }
 
-  public skipQuestion(skip: Skip): Observable<SkipFeedback> {
-    return this.http.post<SkipFeedback>(`${this.baseUrl}Result/skip`, skip);
+  public skipQuestion(skip: Skip): Observable<Feedback> {
+    return this.http.post<SkipResponse>(`${this.baseUrl}Result/skip`, skip)
+      .pipe(
+        map(response => this.mapToFeedback(response))
+      );
   }
 
   public getModuleId(): string {
@@ -59,6 +62,14 @@ export class StudentModulesService {
 
   public getUserId(): string {
     return this.userId;
+  }
+
+  private mapToFeedback(skipResponse: SkipResponse): Feedback {
+    return {
+      success: null,
+      correctAnswerId: skipResponse.id,
+      hint: skipResponse.description
+    };
   }
 }
 

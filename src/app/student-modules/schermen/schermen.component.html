@@ -7,7 +7,6 @@
 
     <schermen-question [screen]="screen"
                        [feedback]="feedback"
-                       [skipFeedback]="skipFeedback"
                        (sendAnswer)="sendAnswer.emit($event)"
                        (skip)="skip.emit()"
                        (toNext)="toNext.emit()">

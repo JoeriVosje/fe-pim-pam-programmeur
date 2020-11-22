@@ -1,7 +1,6 @@
 <student-schermen *ngIf="!isLoading"
                   [screen]="getScreen()"
                   [feedback]="feedback"
-                  [skipFeedback]="skipFeedback"
                   (sendAnswer)="sendAnswer($event)"
                   (skip)="skip()"
                   (toNext)="toNext()">

@@ -43,3 +43,8 @@ mat-radio-group div mat-radio-button {
   color: #2DCE98;
   font-weight: bold;
 }
+
+.wrong {
+  text-decoration: line-through;
+  color: #F53C56;
+}

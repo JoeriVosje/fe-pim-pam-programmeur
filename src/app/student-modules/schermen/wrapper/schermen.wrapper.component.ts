@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import moment from 'moment';
-import {Feedback, Result, Screen, SkipFeedback} from '../../models/screen.model';
+import { Feedback, Result, Screen } from '../../models/screen.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
 
@@ -17,7 +17,6 @@ export class SchermenWrapperComponent implements OnInit {
   public isLoading: boolean;
   public answer: Result;
   public feedback: Feedback;
-  public skipFeedback: SkipFeedback;
 
   constructor(
     private readonly navigation: StudentModulesNavigation,
@@ -50,7 +49,7 @@ export class SchermenWrapperComponent implements OnInit {
     })
       .pipe(take(1))
       .subscribe({
-        next: skipFeedback => this.skipFeedback = skipFeedback,
+        next: feedback => this.feedback = feedback,
         error: err => console.log(err)
       });
   }
