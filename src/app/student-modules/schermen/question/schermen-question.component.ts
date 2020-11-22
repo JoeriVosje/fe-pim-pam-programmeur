@@ -9,6 +9,8 @@ import { OverlayRefComponent } from '../../../ppp-components/overlay/overlayRef.
 import { SkipOverlayComponent } from '../../../ppp-components/skip-overlay/skip-overlay.component';
 import { SuccesOverlayComponent } from '../../../ppp-components/succes-overlay/succes-overlay.component';
 import { Feedback, Screen, SkipFeedback } from '../../models/screen.model';
+import {FeedbackModalComponent} from './feedback-modal/feedback-modal.component';
+import {SchermenQuestionService} from './schermen-question.service';
 
 @Component({
   selector: 'schermen-question',
@@ -25,6 +27,9 @@ export class SchermenQuestionComponent {
   public answerForm: FormGroup;
   public alphabet = 'ABCD';
   public submitted = false;
+  public correctAnswer: string;
+  public wrongAnswer: string;
+  public canNavigateToNext: boolean;
 
   private _feedback: Feedback;
   private _skipFeedback: SkipFeedback;
@@ -53,32 +58,19 @@ export class SchermenQuestionComponent {
     return this._skipFeedback;
   }
 
-  constructor(
-    private readonly formBuilder: FormBuilder,
-    private readonly modal: MatDialog,
-    private readonly overlayService: OverlayService) {
-    this.answerForm = formBuilder.group({
-      options: ['', Validators.required]
-    });
+  constructor(private readonly service: SchermenQuestionService) {
+    this.answerForm = this.service.initializeForm();
   }
 
   public onSkip(): void  {
-    const modal = this.modal.open(ModalComponent, {
-      width: '368px',
-      data: {
-        title: 'Weet je het zeker?',
-        text: 'Deze actie kun je niet terugdraaien.',
-        buttonText1: 'Overslaan',
-        buttonText2: 'Annuleren'
-      }
-    });
-
-    modal.afterClosed().subscribe(result => {
-      if (result.data) {
-        this.skip.emit();
-        this.clearState();
-      }
-    });
+    this.service.openOnSkipModal()
+      .afterClosed()
+      .subscribe(result => {
+        if (result.data) {
+          this.skip.emit();
+          this.clearState();
+        }
+      });
   }
 
   public onSubmit(): void {
@@ -87,6 +79,12 @@ export class SchermenQuestionComponent {
       const answer = this.answerForm.get('options').value.id;
       this.sendAnswer.emit(answer);
       this.clearState();
+    }
+  }
+
+  private onNext(): void {
+    if (this.canNavigateToNext) {
+      this.toNext.emit();
     }
   }
 
@@ -108,18 +106,26 @@ export class SchermenQuestionComponent {
 
   private handleFeedback(feedback: Feedback): void {
     if (feedback.success) {
-      const modalSuccess = this.overlayService.open(SuccesOverlayComponent);
-      this.toNext.emit();
-      setTimeout(() => modalSuccess.close(), 3000);
+      this.service.openOverlay('success')
+        .subscribe(value => value ? this.toNext.emit() : null);
     } else {
-      const dialogRef: OverlayRefComponent = this.overlayService.open(ErrorOverlayComponent);
-      setTimeout(() => { dialogRef.close(); }, 3000);
+      this.service.openOverlay('error')
+        .subscribe(value => value ? null : null);
     }
   }
 
   private handleSkipFeedback(feedback: SkipFeedback): void {
-    const modalSkip = this.overlayService.open(SkipOverlayComponent);
-    setTimeout(() => modalSkip.close(), 3000);
+    this.service.openOverlay('skip')
+      .subscribe(result => result ? this.openFeedbackModal(feedback) : null);
+  }
+
+  private openFeedbackModal(feedback: SkipFeedback): void {
+    this.service.openFeedbackModal(feedback.description)
+      .afterClosed()
+      .subscribe(() => {
+        this.correctAnswer = feedback.id;
+        this.canNavigateToNext = true;
+      });
   }
 
   private clearState(): void {

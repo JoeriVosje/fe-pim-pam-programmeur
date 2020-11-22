@@ -38,3 +38,8 @@ mat-radio-group div mat-radio-button {
 .warning {
   background-color: #F53C56;
 }
+
+.correct {
+  color: #2DCE98;
+  font-weight: bold;
+}

@@ -6,8 +6,12 @@
     <mat-radio-group formControlName="options">
       <div *ngFor="let answer of screen.answers; index as i">
         <mat-radio-button [value]="answer"></mat-radio-button>
-        <label><strong>{{ alphabet[i] + '.' }}</strong></label>
-        <p>{{ answer.description }}</p>
+        <label [ngClass]="{correct: correctAnswer === answer.id, wrong: wrongAnswer === answer.id}">
+          <strong>{{ alphabet[i] + '.' }}</strong>
+        </label>
+        <p [ngClass]="{correct: correctAnswer === answer.id, wrong: wrongAnswer === answer.id}">
+          {{ answer.description }}
+        </p>
       </div>
     </mat-radio-group>
 

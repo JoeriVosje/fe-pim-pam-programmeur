@@ -46,6 +46,11 @@
   transform: translate(-50%, -50%);
 }
 
+.modal-padding >
+  mat-dialog-container {
+  background-color: #F53C56;
+}
+
 /* Snackbar */
 
 .snackbar {

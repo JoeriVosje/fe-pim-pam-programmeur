@@ -27,8 +27,6 @@ export class OverlayService {
 
     overlayRef.attach(overlayPortal);
 
-    overlayRef.backdropClick().subscribe(_ => dialogRef.close());
-
     return dialogRef;
   }
 

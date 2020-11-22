@@ -42,17 +42,11 @@ export class StudentModulesService {
   }
 
   public sendAnswer(result: Result): Observable<Feedback> {
-    // console.log(result);
     return this.http.post<Feedback>(`${this.baseUrl}Result`, result);
-    // return of({success: true, hint: 'Dit is een hint'});
   }
 
   public skipQuestion(skip: Skip): Observable<SkipFeedback> {
-    // return this.http.post<void>(`${this.baseUrl}Result/skip`, skip, {
-    //     observe: 'response'
-    //   });
-
-    return of({id: 'id', description: 'Dit is een uitleg'});
+    return this.http.post<SkipFeedback>(`${this.baseUrl}Result/skip`, skip);
   }
 
   public getModuleId(): string {
