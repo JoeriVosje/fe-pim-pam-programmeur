@@ -5,14 +5,29 @@
 
 .grid {
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
   grid-row-gap: 32px;
   padding: 48px;
 }
-schermen-theory {
+
+.progress-bar {
   grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+}
+
+mat-progress-bar {
+  margin-top: 8px;
+}
+
+schermen-theory {
+  grid-row: 2 / 3;
 }
 
 schermen-question {
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
 }

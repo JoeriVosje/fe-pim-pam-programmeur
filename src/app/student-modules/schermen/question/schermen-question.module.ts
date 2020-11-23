@@ -6,8 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 
 import { PppComponentsModule } from '../../../ppp-components/ppp-components.module';
-import { SchermenQuestionComponent } from './schermen-question.component';
 import { FeedbackModalComponent } from './feedback-modal/feedback-modal.component';
+import { SchermenQuestionComponent } from './schermen-question.component';
 
 
 
