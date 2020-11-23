@@ -23,7 +23,7 @@ export class StartComponent {
   }
 
   public getName(): string {
-    return content['content.title'] + `, ${this.student.firstName}`;
+    return content['content.title'] + ` ${this.student.firstName},`;
   }
 
   public getPersonalText(): string {

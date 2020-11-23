@@ -1,7 +1,7 @@
 {
   "title": "Home",
-  "content.title": "Welkom",
-  "main": "Leuk dat je er bent. Ja, dat is echt helemaal top. Dit is onderdeel van zus zo dit dat noem maar op. Dit stuk tekst is een soort introductie snap je. Wat hier precies komt te staan dat is nog niet helemaal duidelijk. Het is wel duidelijk dat hier uiteindelijk in ieder geval iets komt te staan. Maar wat, dat laten we aan Maxima over. Koningin Maxima wel te verstaan, een beetje respect.",
-  "footer.open": "Je bent onderdeel van klas {klas}. Voor jou is de module {module} ontgrendeld. Druk op de knop rechtsonder om deze module te starten.",
+  "content.title": "Hallo",
+  "main": "Wat fijn dat je er bent. Met Pim Pam Programmeur leer je stapsgewijs programmeren. De lesstof is opgedeeld in modules die bestaan uit stukjes theorie en een aantal bijpassende opdrachten.",
+  "footer.open": "Voor jou is de module {module} klaargezet. Je kunt deze starten door op de knop rechtsonder te klikken. Let erop dat je tijdens het invullen niet op de terugknop drukt in de browser. Je komt dan weer bij de eerste vraag terecht en dat zou zonde zijn.",
   "footer.closed": "Er is op dit moment geen module voor jou beschikbaar. Vraag aan je docent of er een voor je kan worden aangemaakt."
 }
