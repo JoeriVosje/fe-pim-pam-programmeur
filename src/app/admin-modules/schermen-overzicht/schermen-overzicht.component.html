@@ -19,7 +19,7 @@
   </div>
 
   <ng-template #itemsPresent>
-    <cdk-virtual-scroll-viewport itemSize="1" class="items-container">
+    <cdk-virtual-scroll-viewport itemSize="72" class="items-container">
       <div cdkDropList (cdkDropListDropped)="drop($event)">
         <screen-item *cdkVirtualFor="let screen of screens; let even = even"
                      [hasVerticalScrollbar]="screens.length > 5"

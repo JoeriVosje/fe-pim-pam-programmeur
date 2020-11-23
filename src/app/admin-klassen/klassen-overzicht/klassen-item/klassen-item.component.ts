@@ -15,6 +15,10 @@ export class KlassenItemComponent implements OnInit {
   menuItems: MenuItem[];
 
   ngOnInit(): void {
+    this.initMenuItems();
+  }
+
+  private initMenuItems(): void {
     this.menuItems = [
       {name: 'Studenten', routeOrID: '/classes/' + this.klas.id + '/students', isRoute: true, data: this.klas.name},
       {name: 'Verwijderen', routeOrID: this.klas.id, isRoute: false},
@@ -25,10 +29,12 @@ export class KlassenItemComponent implements OnInit {
   }
 
   menuItem(menuItem: MenuItem): void {
+    this.initMenuItems();
     this.menuItemClicked.emit(menuItem);
   }
 
   navToItem(): void {
+    this.initMenuItems();
     this.menuItemClicked.emit(this.menuItems[0]);
   }
 
