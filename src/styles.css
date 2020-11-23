@@ -162,6 +162,16 @@ html, body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+.column-small-double {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.with-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 .column-double-first-child {
   align-self: center;
