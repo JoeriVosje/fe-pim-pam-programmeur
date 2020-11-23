@@ -40,6 +40,19 @@ export class SchermenWrapperComponent implements OnInit {
     }
   }
 
+  public saveTheory(){
+    this.service.saveTheory({
+      userId: this.service.getUserId(),
+      componentId: this.screens[this.currentScreen].id,
+      sessionId: this.service.getSessionId(),
+      startTime: this.answer.startTime
+    }).pipe(take(1))
+    .subscribe({
+      next: _ => this.toNext(),
+      error: err => console.log(err)
+    });
+  }
+
   public skip(): void {
     this.service.skipQuestion({
       userId: this.service.getUserId(),
