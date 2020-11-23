@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { Feedback, Result, Screen, Skip, SkipResponse } from './models/screen.model';
+import { Feedback, Result, Screen, Skip } from './models/screen.model';
 import { Session } from './models/session.model';
 import { Student } from './models/student.model';
 
@@ -46,9 +46,12 @@ export class StudentModulesService {
   }
 
   public skipQuestion(skip: Skip): Observable<Feedback> {
-    return this.http.post<SkipResponse>(`${this.baseUrl}Result/skip`, skip)
+    return this.http.post<Feedback>(`${this.baseUrl}Result/skip`, skip)
       .pipe(
-        map(response => this.mapToFeedback(response))
+        map(feedback => {
+          feedback.success = null;
+          return feedback;
+        })
       );
   }
 
@@ -66,14 +69,6 @@ export class StudentModulesService {
 
   public getUserId(): string {
     return this.userId;
-  }
-
-  private mapToFeedback(skipResponse: SkipResponse): Feedback {
-    return {
-      success: null,
-      correctAnswerId: skipResponse.id,
-      hint: skipResponse.description
-    };
   }
 }
 

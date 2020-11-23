@@ -25,7 +25,6 @@ export class SchermenComponent {
   }
 
   public getProgress(): string {
-    console.log(this.progress);
     return `${this.progress.current + 1}/${this.progress.total}`;
   }
 }
