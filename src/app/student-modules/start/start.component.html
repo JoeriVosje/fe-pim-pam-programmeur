@@ -2,7 +2,7 @@
   <ppp-content-overview [title]="getName()" [size]="'auto'">
     <div class="input-field-padding">
       <p style="padding-bottom: 24px">{{ getText('main') }}</p>
-      <p *ngIf="canStartModule">{{ getPersonalText() }}</p>
+      <p *ngIf="canStartModule">{{ getPersonalText() }} <br><br>Klik wanneer je klaar bent aan het einde van de module op de knop ‘Module afsluiten’. Je komt dan terug bij dit scherm en bent dan klaar.<br><br>Veel plezier!</p>
       <p *ngIf="!canStartModule">{{ getPersonalText() }}</p>
       <ppp-button class="align-button"
                   *ngIf="canStartModule"
