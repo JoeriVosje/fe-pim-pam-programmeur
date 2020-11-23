@@ -39,3 +39,8 @@ export interface SkipResponse {
   id: string;
   description: string;
 }
+
+export interface Progress {
+  current: number;
+  total: number;
+}

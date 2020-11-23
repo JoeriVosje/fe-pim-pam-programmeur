@@ -1,6 +1,11 @@
 <div class="container">
   <div class="grid">
 
+    <div class="progress-bar">
+      <label>Voortgang: {{ getProgress() }}</label>
+      <mat-progress-bar [value]="getProgressBarPercentage()"></mat-progress-bar>
+    </div>
+
     <schermen-theory [screen]="screen"
                      (saveTheory)="saveTheory.emit()">
     </schermen-theory>

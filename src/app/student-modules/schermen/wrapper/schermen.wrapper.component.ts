@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import moment from 'moment';
-import { Feedback, Result, Screen } from '../../models/screen.model';
+import { Feedback, Progress, Result, Screen } from '../../models/screen.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
 
@@ -108,6 +108,13 @@ export class SchermenWrapperComponent implements OnInit {
       sessionId: this.service.getSessionId(),
       userId: this.service.getUserId(),
       startTime: moment().format()
+    };
+  }
+
+  public getProgress(): Progress {
+    return {
+      current: this.currentScreen,
+      total: this.screens.length
     };
   }
 }
