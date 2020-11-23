@@ -20,6 +20,7 @@ export class ModulesItemComponent implements OnInit {
   @Output() public menuItemClicked: EventEmitter<MenuItem> = new EventEmitter();
   @Output() public openCloseToggle: EventEmitter<Module> = new EventEmitter();
   menuItems: MenuItem[];
+  menuItemNames;
 
   @Input()
   isOpen: boolean;
@@ -34,10 +35,11 @@ export class ModulesItemComponent implements OnInit {
   }
 
   private initMenuItems(): void {
+    this.menuItemNames = ['Schermen', 'Bewerken', 'Verwijderen'];
     this.menuItems = [
-      {name: 'Schermen', routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true, data: this.name},
-      {name: 'Bewerken', routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
-      {name: 'Verwijderen', routeOrID: this.moduleId, isRoute: false},
+      {name: this.menuItemNames[0], routeOrID: '/modules/' + this.moduleId + '/screens', isRoute: true, data: this.name},
+      {name: this.menuItemNames[1], routeOrID: '/modules/' + this.moduleId + '/edit', isRoute: true},
+      {name: this.menuItemNames[2], routeOrID: this.moduleId, isRoute: false},
     ];
   }
 
@@ -46,7 +48,7 @@ export class ModulesItemComponent implements OnInit {
 
   menuItem(menuItem: MenuItem): void {
     this.initMenuItems();
-    if (menuItem.name === 'Verwijderen') {
+    if (menuItem.name === this.menuItemNames[2]) {
       const modal = this.modal.open(ModalComponent, {
         width: '368px',
         data: {
@@ -59,11 +61,11 @@ export class ModulesItemComponent implements OnInit {
 
       modal.afterClosed().subscribe(result => {
         if (result?.data) {
-          this.menuItemClicked.emit(menuItem);
+          this.menuItemClicked.emit(this.menuItems[2]);
         }
       });
     } else {
-      this.menuItemClicked.emit(menuItem);
+      this.menuItemClicked.emit(menuItem.name === this.menuItemNames[0] ? this.menuItems[0] : this.menuItems[1]);
     }
   }
 
