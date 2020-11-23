@@ -88,6 +88,7 @@ export class SchermenQuestionComponent {
 
   private handleFeedback(feedback: Feedback): void {
     this.clearState();
+    console.log(feedback);
     if (feedback.success === null) {
       this.service.openOverlay('skip')
       .subscribe(value => value ? this.openFeedbackModal(feedback) : null);
