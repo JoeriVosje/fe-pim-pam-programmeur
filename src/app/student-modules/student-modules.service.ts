@@ -52,6 +52,10 @@ export class StudentModulesService {
       );
   }
 
+  public saveTheory(skip: Skip): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}Result/skip`, skip);
+  }
+
   public getModuleId(): string {
     return this.moduleId;
   }

@@ -33,11 +33,24 @@ export class SchermenWrapperComponent implements OnInit {
       this.answer.answerId = answerId;
       this.service.sendAnswer(this.answer)
       .pipe(take(1))
-      .subscribe({
+    .subscribe({
         next: feedback => this.feedback = feedback,
         error: err => console.log(err)
       });
     }
+  }
+
+  public saveTheory(): void{
+    this.service.saveTheory({
+      userId: this.service.getUserId(),
+      componentId: this.screens[this.currentScreen].id,
+      sessionId: this.service.getSessionId(),
+      startTime: this.answer.startTime
+    }).pipe(take(1))
+    .subscribe({
+      next: _ => this.toNext(),
+      error: err => console.log(err)
+    });
   }
 
   public skip(): void {
