@@ -3,7 +3,7 @@
   <div class="login-page">
     <h1>Pim Pam Programmeur</h1>
     <p>Welkom! Login om verder te gaan.</p>
-    <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L" icon="email" [placeholder]="'Gebruikersnaam of e-mail'"></ppp-input>
+    <ppp-input (inputFieldChange)="getEmail($event)" [type]="'email'" size="L" icon="email" [placeholder]="'E-mail'"></ppp-input>
     <ppp-input (inputFieldChange)="getPassword($event)" [type]="'password'" size="L" icon="lock" [placeholder]="'Wachtwoord'"></ppp-input>
     <div style="padding-bottom: 16px"></div>
     <ppp-button [loginButton]="true" (clicked)="inloggen()" [type]="'highlight'">Inloggen</ppp-button>
