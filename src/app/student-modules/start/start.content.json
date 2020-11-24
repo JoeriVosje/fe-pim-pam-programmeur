@@ -2,6 +2,6 @@
   "title": "Home",
   "content.title": "Hallo",
   "main": "Wat fijn dat je er bent. Met Pim Pam Programmeur leer je stapsgewijs programmeren. De lesstof is opgedeeld in modules die bestaan uit stukjes theorie en een aantal bijpassende opdrachten.",
-  "footer.open": "Voor jou is de module {module} klaargezet. Je kunt deze starten door op de knop rechtsonder te klikken. Let erop dat je tijdens het invullen niet op de terugknop drukt in de browser. Je komt dan weer bij de eerste vraag terecht en dat zou zonde zijn.",
+  "footer.open": "Voor jou is de module {module} klaargezet. Je kunt deze starten door op de knop rechtsonder te klikken.",
   "footer.closed": "Er is op dit moment geen module voor jou beschikbaar. Vraag aan je docent of er een voor je kan worden aangemaakt."
 }
