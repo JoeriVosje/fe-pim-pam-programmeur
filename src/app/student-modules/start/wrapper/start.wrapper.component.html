@@ -1,5 +1,6 @@
 <student-start *ngIf="!isLoading"
                [student]="student"
                [canStartModule]="canStartModule()"
+               [buttonText]="getButtonText()"
                (naarSchermen)="naarSchermen()">
 </student-start>

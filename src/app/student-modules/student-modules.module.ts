@@ -34,6 +34,11 @@ export class StudentModulesModule {
       canActivate: [StudentLoginGuard]
     },
     {
+      path: `${StudentModulesNavigation.SCHERMEN}/:lastAnwseredScreen`,
+      component: SchermenWrapperComponent,
+      canActivate: [StudentLoginGuard, SchermenGuard]
+    },
+    {
       path: StudentModulesNavigation.SCHERMEN,
       component: SchermenWrapperComponent,
       canActivate: [StudentLoginGuard, SchermenGuard]

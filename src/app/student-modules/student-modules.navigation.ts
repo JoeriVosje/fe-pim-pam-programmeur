@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Screen } from './models/screen.model';
 
 @Injectable({ providedIn: 'root' })
 export class StudentModulesNavigation {
@@ -18,7 +19,7 @@ export class StudentModulesNavigation {
     this.internal(StudentModulesNavigation.STUDENT);
   }
 
-  public toScreens(): void {
-    this.internal(StudentModulesNavigation.SCHERMEN);
+  public toScreens(lastAnwseredScreen : Screen ): void {
+    this.internal(`${StudentModulesNavigation.SCHERMEN}/${lastAnwseredScreen == null ? '' : lastAnwseredScreen.id}`);
   }
 }

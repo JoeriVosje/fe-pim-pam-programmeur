@@ -5,6 +5,7 @@ import moment from 'moment';
 import { Feedback, Progress, Result, Screen } from '../../models/screen.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'student-schermen-wrapper',
@@ -17,12 +18,16 @@ export class SchermenWrapperComponent implements OnInit {
   public isLoading: boolean;
   public answer: Result;
   public feedback: Feedback;
+  public lastAnwseredScreenId: string;
 
   constructor(
     private readonly navigation: StudentModulesNavigation,
-    private readonly service: StudentModulesService) { }
+    private readonly service: StudentModulesService,
+    private readonly route: ActivatedRoute) { }
 
+    
   ngOnInit(): void {
+    this.lastAnwseredScreenId = this.route.snapshot.paramMap.get('lastAnwseredScreen');
     this.isLoading = true;
     this.setupAnswer();
     this.loadScreens();
@@ -78,6 +83,10 @@ export class SchermenWrapperComponent implements OnInit {
       .subscribe({
         next: screens => {
           this.screens = screens;
+          if (this.currentScreen == 0 && this.lastAnwseredScreenId != null) {
+            const screenIndex = this.screens.findIndex(e => e.id == this.lastAnwseredScreenId);
+            this.currentScreen = screenIndex + 1;
+          }
         },
         error: error => {
           console.log(error);

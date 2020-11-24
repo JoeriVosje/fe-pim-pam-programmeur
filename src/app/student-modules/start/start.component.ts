@@ -12,6 +12,8 @@ export class StartComponent {
 
   @Input() public student: Student;
   @Input() public canStartModule: boolean;
+  @Input() public buttonText: string;
+
   @Output() public naarSchermen = new EventEmitter<void>();
 
   public headerIcon = 'home_outline';
