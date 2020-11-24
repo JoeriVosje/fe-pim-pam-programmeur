@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { Feedback, Result, Screen, Skip } from './models/screen.model';
-import { Session } from './models/session.model';
+import { Session, SessionStatus } from './models/session.model';
 import { Student } from './models/student.model';
 
 @Injectable({providedIn: 'root'})
@@ -39,6 +39,10 @@ export class StudentModulesService {
 
   public getScreens(): Observable<Screen[]> {
     return this.http.get<Screen[]>(`${this.baseUrl}Component/module/${this.moduleId}`);
+  }
+
+  public getSessionStatus(): Observable<SessionStatus> {
+    return this.http.get<SessionStatus>(`${this.baseUrl}Session/status`);
   }
 
   public sendAnswer(result: Result): Observable<Feedback> {

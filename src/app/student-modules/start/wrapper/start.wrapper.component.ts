@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Session } from '../../models/session.model';
+import { Session, SessionStatus } from '../../models/session.model';
 import { Student } from '../../models/student.model';
 import { StudentModulesNavigation } from '../../student-modules.navigation';
 import { StudentModulesService } from '../../student-modules.service';
@@ -14,9 +14,11 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
 
   public student: Student;
   public session: Session;
+  public sessionStatus: SessionStatus;
   public isLoading: boolean;
 
   private readonly subscription: Subscription = new Subscription();
+  private buttonText: string;
 
   constructor(
     private readonly navigatie: StudentModulesNavigation,
@@ -46,11 +48,14 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
     );
   }
 
-  private loadSession(moduleId: string): void {
+  private loadSessionInfo(){
     this.subscription.add(
-      this.service.getSession(moduleId)
+      this.service.getSessionStatus()
         .subscribe({
-          next: session => this.session = session,
+          next: status => {
+            this.buttonText = status.lastAnsweredComponent == null ? 'Start module' : 'Hervat module'
+            this.sessionStatus = status
+          },
           error: error => {
             console.log(error);
             this.isLoading = false;
@@ -60,12 +65,34 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
     );
   }
 
+  private loadSession(moduleId: string): void {
+    this.subscription.add(
+      this.service.getSession(moduleId)
+        .subscribe({
+          next: session => this.session = session,
+          error: error => {
+            console.log(error);
+            this.isLoading = false;
+          },
+          complete: () => this.loadSessionInfo()
+        })
+    );
+  }
+
   public canStartModule(): boolean {
+    if(this.sessionStatus.finished){
+      return false;
+    }
+
     return !!this.session;
   }
 
+  public getButtonText(): string {
+    return this.buttonText;
+  }
+
   public naarSchermen(): void {
-    this.navigatie.toScreens();
+    this.navigatie.toScreens(this.sessionStatus.lastAnsweredComponent);
   }
 
 }

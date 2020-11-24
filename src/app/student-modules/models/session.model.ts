@@ -1,3 +1,5 @@
+import { Screen } from './screen.model';
+
 export interface Session {
   sessionId: string;
   module: Module;
@@ -11,4 +13,9 @@ export interface Module {
   id: string;
   name: string;
   creationDate: string;
+}
+export interface SessionStatus {
+  sessionId: string;
+  lastAnsweredComponent: Screen;
+  finished: boolean;
 }
