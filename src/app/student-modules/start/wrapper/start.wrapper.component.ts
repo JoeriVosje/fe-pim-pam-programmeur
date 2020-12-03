@@ -80,7 +80,7 @@ export class StartWrapperComponent implements OnInit, OnDestroy {
   }
 
   public canStartModule(): boolean {
-    if(this.sessionStatus.finished){
+    if(!this.sessionStatus || this.sessionStatus.finished){
       return false;
     }
 
